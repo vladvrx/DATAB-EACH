@@ -1,6 +1,6 @@
 # Coastal World hosted size
 
-Inventory of every real file on [coastalworld.merci-michel.com](https://coastalworld.merci-michel.com), compared with a local `three-rescue` dump layout.
+Inventory of every real file on compared with a local `three-rescue` dump layout.
 
 ## Answer
 
