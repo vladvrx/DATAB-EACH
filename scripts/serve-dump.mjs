@@ -5,7 +5,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(__dirname, "../coastal-world-dump");
+const root = path.resolve(__dirname, "../reference");
 const port = Number(process.env.DUMP_PORT || 43180);
 
 const mime = {

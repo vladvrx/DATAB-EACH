@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Download hosted Coastal World files into coastal-world-dump/."""
+"""Download hosted Coastal World files into reference/."""
 from __future__ import annotations
 
 import json
@@ -9,7 +9,7 @@ from pathlib import Path
 from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
-DUMP = ROOT / "coastal-world-dump"
+DUMP = ROOT / "reference"
 INVENTORY = ROOT / "src/data/inventory.json"
 ORIGIN = "https://coastalworld.merci-michel.com"
 ctx = ssl.create_default_context()

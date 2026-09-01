@@ -95,7 +95,7 @@ export default function Home() {
           >
             reference.html
           </a>{" "}
-          (serve <code className="font-mono text-xs">coastal-world-dump/</code>{" "}
+          (serve the <code className="font-mono text-xs">reference/</code>{" "}
           as the site root). Drop that file into your three-rescue folder next
           to <code className="font-mono text-xs">assets/</code>,{" "}
           <code className="font-mono text-xs">icons/</code>,{" "}

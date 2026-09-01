@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DUMP = ROOT / "coastal-world-dump"
+DUMP = ROOT / "reference"
 SRC_HTML = Path("/tmp/cw/index.html")
 INVENTORY = ROOT / "src/data/inventory.json"
 BLENDER_MAP = Path("/tmp/cw/blender-map.json")
