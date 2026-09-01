@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Coastal World — full hosted size",
+  title: "Data B-each reference inventory",
   description:
-    "Complete file inventory of the published Coastal World game: 31.53 MiB across 1,309 hosted files, mapped against a local three-rescue dump.",
+    "Reference inventory for the Data B-each island asset collection, mapped against a local three-rescue dump.",
 };
 
 export default function RootLayout({

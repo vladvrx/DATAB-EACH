@@ -1,29 +1,22 @@
-# reference/
+# Data B-each reference collection
 
-Self-contained Coastal World boot folder: `reference.html` plus every hosted file it loads.
-
-Serve **this folder** as the site root:
-
-```bash
-npm run dump:serve
-# or from this directory: python3 -m http.server 43180
-```
-
-Then open http://127.0.0.1:43180/reference.html
-
-Do not open `reference.html` as `file://`. Scripts fetch `/assets/…` from the origin root.
+This folder contains the retained island, character, audio, model, interface assets, and replicated boot pages used for reference work on **Data B-each**. Serve this folder as a static site to run the local reference build.
 
 ## Layout
 
 | Path | What it is |
 | --- | --- |
-| `reference.html` / `index.html` | Rebuilt boot page |
-| `assets/` | JS bundles, GLBs, audio, images, fonts, locale JSON |
-| `icons/` | Favicons and PWA icons |
-| `oldBrowser/` | Fallback JPEG |
-| `embedded/` | Cursor SVGs extracted from the original CSS |
-| `vendors/draco/` | Draco WASM/JS decoder |
-| `share/` | Open Graph image |
-| `.gltf/` | Logical Blender export names → hashed `/assets` files |
-| `_external/urls.json` | Third-party URLs (not hosted on the game origin) |
-| `MANIFEST.json` | URL → local path map |
+| `index.html` | Local reference boot page |
+| `reference.html` | Duplicate boot page for reference inspection |
+| `assets/` | Neutralized locale data, bundles, models, audio, fonts, and image assets |
+| `assets/databeach-logo.png` | New chunky pixel-cartoon Data B-each logo |
+| `icons/` | Retained app icons for visual reference |
+| `oldBrowser/` | Legacy fallback image |
+| `embedded/` | Cursor SVGs retained for reference |
+| `vendors/draco/` | Draco decoder files used by the retained model assets |
+| `share/share_en.png` | Data B-each share graphic |
+| `.gltf/` | Logical model names mapped to local files |
+| `_external/urls.json` | Generic third-party URLs only |
+| `MANIFEST.json` | Preserved asset inventory with neutral local paths |
+
+Financial-company logos were replaced with transparent placeholders and the 16 partner slots are labeled **TECH COMPANY #1** through **TECH COMPANY #16** in the locale data. The boot pages retain the original runtime structure while using the neutralized Data B-each copy and assets.

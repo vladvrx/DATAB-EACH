@@ -68,41 +68,26 @@ export default function Home() {
     <div className="mx-auto flex min-h-screen max-w-6xl flex-col gap-10 px-4 py-8 sm:px-6 sm:py-12">
       <header className="space-y-4">
         <p className="text-sm font-medium tracking-wide text-primary uppercase">
-          Coastal World · hosted inventory
+          Data B-each · reference inventory
         </p>
         <h1 className="max-w-3xl text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
-          The published game is {fmtMiB(totals.bytes)} (
+          The retained reference snapshot is {fmtMiB(totals.bytes)} (
           {fmtMB(totals.bytes)}) across {fmtCount(totals.real_files)} files.
         </h1>
         <p className="max-w-2xl text-muted-foreground text-pretty">
-          Yes — the earlier 1,305-file / 32.4 MB pass was this same origin. This
-          recount downloaded every real file on{" "}
-          <a
-            className="text-foreground underline decoration-primary/50 underline-offset-4"
-            href="https://coastalworld.merci-michel.com"
-          >
-            coastalworld.merci-michel.com
-          </a>
-          . HTML + <code className="font-mono text-xs">main.js</code> is still
+          This inventory records the hosted asset snapshot used for the Data
+          B-each reference collection. The retained files are now neutralized.
+          Source origin label: <code className="font-mono text-xs">databeach.local</code>.
+          HTML + <code className="font-mono text-xs">main.js</code> is still
           only ~275 KB. The rest is vendor JS, hundreds of GLBs, terrain
           textures, and twelve audio files.
         </p>
         <p className="text-sm">
-          Rebuilt boot page:{" "}
-          <a
-            className="text-primary underline underline-offset-4"
-            href="http://127.0.0.1:43180/reference.html"
-          >
-            reference.html
-          </a>{" "}
-          (serve the <code className="font-mono text-xs">reference/</code>{" "}
-          as the site root). Drop that file into your three-rescue folder next
-          to <code className="font-mono text-xs">assets/</code>,{" "}
-          <code className="font-mono text-xs">icons/</code>,{" "}
-          <code className="font-mono text-xs">oldBrowser/</code>,{" "}
-          <code className="font-mono text-xs">embedded/</code>,{" "}
-          <code className="font-mono text-xs">_external/</code>, and{" "}
-          <code className="font-mono text-xs">.gltf</code>.
+          The replicated boot pages are back in{" "}
+          <code className="font-mono text-xs">reference/</code>. Run{" "}
+          <code className="font-mono text-xs">npm run dump:serve</code> to
+          open the neutralized Data B-each reference build with its retained
+          visual assets and new logo.
         </p>
       </header>
 
@@ -408,7 +393,7 @@ export default function Home() {
       <InventoryExplorer inventory={inventory} />
 
       <footer className="border-t pt-6 text-sm text-muted-foreground">
-        Measured {inventory.generated} from {inventory.origin}.{" "}
+        Measured {inventory.generated} from the preserved hosted snapshot.{" "}
         {fmtCount(inventory.blender_export_key_count)} Blender export keys and{" "}
         {fmtCount(inventory.unhashed_alias_count)} unhashed{" "}
         <code className="font-mono text-xs">/assets/images/…</code> aliases

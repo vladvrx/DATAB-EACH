@@ -1,6 +1,6 @@
-# Coastal World hosted size
+# Data B-each reference inventory
 
-Inventory of every real file on compared with a local `three-rescue` dump layout.
+Inventory of the retained island reference assets compared with a local `three-rescue` dump layout.
 
 ## Answer
 
@@ -44,7 +44,7 @@ I cannot read `C:\Users\user\Downloads\three-rescue-2026-09-01` from this enviro
 | `icons/` | `/icons/*` and maybe `favicon.ico` | Yes, 0.43 MiB |
 | `oldBrowser/` | `/oldBrowser/oldBrowser.jpg` | Yes, 56 KB |
 | `embedded/` | `data:` URLs already inside HTML | No extra hosted bytes |
-| `_external/` | Cookie Law, GTM, reCAPTCHA, YouTube, coastalbank.com | Other domains |
+| `_external/` | Cookie Law, GTM, reCAPTCHA, YouTube | Other domains |
 | `MANIFEST.json` | Dump index | Not a game file |
 | `.gltf` | Logical `/blender/Exports/*` names | **Not hosted.** Those URLs return SPA HTML. Real models are hashed `.glb` files in `assets/`. |
 
@@ -58,13 +58,7 @@ Quick check that `assets/` is complete: it should contain **12 `.m4a` files** an
 
 ## Reference folder
 
-Everything needed to boot the page is in **`reference/`**: `reference.html` plus `assets/`, `icons/`, `oldBrowser/`, `embedded/`, `vendors/`, `share/`, and the rest (~35 MB, 1,319 files).
-
-```bash
-npm run dump:serve        # http://127.0.0.1:43180/reference.html
-```
-
-Serve **that folder** as `/`. Do not open it as `file://`.
+The **`reference/`** folder keeps the retained island, character, audio, model, and interface assets (~35 MB), along with neutralized locale data, the new Data B-each logo, and replicated `index.html` / `reference.html` boot pages. Serve this folder with `npm run dump:serve` to open the local reference build.
 
 ## Run the inventory locally
 

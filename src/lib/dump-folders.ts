@@ -41,10 +41,10 @@ export const DUMP_FOLDERS: DumpFolder[] = [
   {
     name: "_external",
     path: "three-rescue-2026-09-01/_external",
-    mapsTo: "other domains, not coastalworld.merci-michel.com",
+    mapsTo: "other domains, not databeach.local",
     inHostedTotal: false,
     summary:
-      "Cookie Law (cdn.cookielaw.org), Google Tag Manager, reCAPTCHA, YouTube embeds/thumbnails, coastalbank.com legal pages, and merci-michel.com. Those are not part of the 31.53 MiB game payload.",
+      "Cookie Law (cdn.cookielaw.org), Google Tag Manager, reCAPTCHA, and YouTube embeds. Those are not part of the 31.53 MiB reference payload.",
   },
   {
     name: "MANIFEST.json",
@@ -103,7 +103,7 @@ export const MISSING_FROM_DUMP_LIST = [
   {
     path: "/sitemap.xml",
     bytes: 340,
-    why: "Points at coastalworld.com, not extra game assets.",
+    why: "A historical site map, not part of the retained reference assets.",
   },
   {
     path: "/robots.txt",

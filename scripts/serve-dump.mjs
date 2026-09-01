@@ -59,6 +59,6 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, "0.0.0.0", () => {
-  console.log(`Coastal World dump at http://127.0.0.1:${port}/`);
-  console.log(`reference.html at http://127.0.0.1:${port}/reference.html`);
+  console.log(`Data B-each reference collection at http://127.0.0.1:${port}/`);
+  console.log(`Boot pages: http://127.0.0.1:${port}/ and http://127.0.0.1:${port}/reference.html`);
 });

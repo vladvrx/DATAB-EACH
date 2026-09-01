@@ -1,12 +1,10 @@
 {
-  "note": "Third-party URLs the game loads at runtime. Not part of the 31.53 MiB origin payload.",
+  "note": "Generic third-party URLs retained for reference only. No finance-service URLs are included.",
   "urls": [
     "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js",
     "https://www.googletagmanager.com/gtm.js?id=GTM-5P852C7",
     "https://www.recaptcha.net/recaptcha/api.js?onload=_onRecaptchaLoaded",
     "https://www.youtube.com/iframe_api",
-    "https://www.youtube-nocookie.com/embed/",
-    "https://www.coastalbank.com/privacy-notice/",
-    "https://www.coastalbank.com/wp-content/uploads/coastal-world-terms-of-use.pdf"
+    "https://www.youtube-nocookie.com/embed/"
   ]
 }
