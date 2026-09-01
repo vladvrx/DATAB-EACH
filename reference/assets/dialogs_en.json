@@ -68,9 +68,9 @@
       "isPrompt": true,
       "id": "Custom",
       "choices": {
-        "No": {
-          "id": "No",
-          "value": "No thanks!",
+        "Yes": {
+          "id": "Yes",
+          "value": "Yes",
           "next": [
             {
               "action": "GOTO",
@@ -78,114 +78,13 @@
             }
           ]
         },
-        "Yes": {
-          "id": "Yes",
-          "value": "Let's do it!",
+        "No": {
+          "id": "No",
+          "value": "No thanks",
           "next": [
             {
-              "action": "CP_START",
-              "opts": []
-            },
-            {
               "action": "GOTO",
-              "node": "QuestionA"
-            }
-          ]
-        }
-      }
-    },
-    "QuestionA": {
-      "isSpeak": true,
-      "id": "QuestionA",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "AnswerA"
-        }
-      ],
-      "before": [
-        {
-          "action": "EMOTE",
-          "opts": [
-            "Thinking"
-          ]
-        }
-      ],
-      "bubbles": [
-        "First things first, tell me <strong>what you&#39;re most interested in...</strong>"
-      ]
-    },
-    "AnswerA": {
-      "isPrompt": true,
-      "id": "AnswerA",
-      "choices": {
-        "saving": {
-          "id": "saving",
-          "value": "Saving",
-          "next": [
-            {
-              "action": "CP_QUESTION_1",
-              "opts": []
-            },
-            {
-              "action": "GOTO",
-              "node": "QuestionB"
-            }
-          ]
-        },
-        "budgeting": {
-          "id": "budgeting",
-          "value": "Budgeting",
-          "next": [
-            {
-              "action": "CP_QUESTION_1",
-              "opts": []
-            },
-            {
-              "action": "GOTO",
-              "node": "QuestionB"
-            }
-          ]
-        },
-        "buildCredit": {
-          "id": "buildCredit",
-          "value": "Building progress",
-          "next": [
-            {
-              "action": "CP_QUESTION_1",
-              "opts": []
-            },
-            {
-              "action": "GOTO",
-              "node": "QuestionB"
-            }
-          ]
-        },
-        "business": {
-          "id": "business",
-          "value": "Business",
-          "next": [
-            {
-              "action": "CP_QUESTION_1",
-              "opts": []
-            },
-            {
-              "action": "GOTO",
-              "node": "QuestionB"
-            }
-          ]
-        },
-        "smartSpending": {
-          "id": "smartSpending",
-          "value": "Smart spending",
-          "next": [
-            {
-              "action": "CP_QUESTION_1",
-              "opts": []
-            },
-            {
-              "action": "GOTO",
-              "node": "QuestionB"
+              "node": "Skip"
             }
           ]
         }
@@ -209,165 +108,6 @@
       ],
       "bubbles": [
         "No problem, I&#39;ll drop you off on <strong>Cove Island</strong>"
-      ]
-    },
-    "Finish": {
-      "isSpeak": true,
-      "id": "Finish",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Finish2"
-        }
-      ],
-      "before": [
-        {
-          "action": "EMOTE",
-          "opts": [
-            "Happy"
-          ]
-        }
-      ],
-      "bubbles": [
-        "Alriiight! I&#39;ll take you to a harbor to meet some of our friends who share your interests."
-      ]
-    },
-    "AnswerB": {
-      "isPrompt": true,
-      "id": "AnswerB",
-      "choices": {
-        "environment": {
-          "id": "environment",
-          "value": "Environment",
-          "next": [
-            {
-              "action": "CP_QUESTION_2",
-              "opts": []
-            },
-            {
-              "action": "GOTO",
-              "node": "Finish"
-            }
-          ]
-        },
-        "community": {
-          "id": "community",
-          "value": "Diversity, equity, inclusion",
-          "next": [
-            {
-              "action": "CP_QUESTION_2",
-              "opts": []
-            },
-            {
-              "action": "GOTO",
-              "node": "Finish"
-            }
-          ]
-        },
-        "family": {
-          "id": "family",
-          "value": "Family",
-          "next": [
-            {
-              "action": "CP_QUESTION_2",
-              "opts": []
-            },
-            {
-              "action": "GOTO",
-              "node": "Finish"
-            }
-          ]
-        },
-        "givingBack": {
-          "id": "givingBack",
-          "value": "Giving back",
-          "next": [
-            {
-              "action": "CP_QUESTION_2",
-              "opts": []
-            },
-            {
-              "action": "GOTO",
-              "node": "Finish"
-            }
-          ]
-        },
-        "healthWelness": {
-          "id": "healthWelness",
-          "value": "Health & wellness",
-          "next": [
-            {
-              "action": "CP_QUESTION_2",
-              "opts": []
-            },
-            {
-              "action": "GOTO",
-              "node": "Finish"
-            }
-          ]
-        }
-      }
-    },
-    "QuestionB": {
-      "isSpeak": true,
-      "id": "QuestionB",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "QuestionB2"
-        }
-      ],
-      "before": [
-        {
-          "action": "EMOTE",
-          "opts": [
-            "Gain"
-          ]
-        }
-      ],
-      "bubbles": [
-        "Interesting! I’m pretty sure my friends can help you with that..."
-      ]
-    },
-    "QuestionB2": {
-      "isSpeak": true,
-      "id": "QuestionB2",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "AnswerB"
-        }
-      ],
-      "before": [
-        {
-          "action": "EMOTE",
-          "opts": [
-            "Thinking"
-          ]
-        }
-      ],
-      "bubbles": [
-        "I also need to know which topic <strong>you care most about...</strong>"
-      ]
-    },
-    "Finish2": {
-      "isSpeak": true,
-      "id": "Finish2",
-      "next": [
-        {
-          "action": "END"
-        }
-      ],
-      "before": [
-        {
-          "action": "BUBBLE_STYLE",
-          "opts": [
-            "custom-path"
-          ]
-        }
-      ],
-      "bubbles": [
-        "During your trip, search for the stars to find the fintechs that suit you best."
       ]
     }
   },
