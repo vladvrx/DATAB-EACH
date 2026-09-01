@@ -87,6 +87,23 @@ export default function Home() {
           only ~275 KB. The rest is vendor JS, hundreds of GLBs, terrain
           textures, and twelve audio files.
         </p>
+        <p className="text-sm">
+          Rebuilt boot page:{" "}
+          <a
+            className="text-primary underline underline-offset-4"
+            href="http://127.0.0.1:43180/reference.html"
+          >
+            reference.html
+          </a>{" "}
+          (serve <code className="font-mono text-xs">coastal-world-dump/</code>{" "}
+          as the site root). Drop that file into your three-rescue folder next
+          to <code className="font-mono text-xs">assets/</code>,{" "}
+          <code className="font-mono text-xs">icons/</code>,{" "}
+          <code className="font-mono text-xs">oldBrowser/</code>,{" "}
+          <code className="font-mono text-xs">embedded/</code>,{" "}
+          <code className="font-mono text-xs">_external/</code>, and{" "}
+          <code className="font-mono text-xs">.gltf</code>.
+        </p>
       </header>
 
       <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

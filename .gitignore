@@ -30,6 +30,15 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+# Coastal World dump binaries (regenerate with scripts/download-dump.py)
+/coastal-world-dump/assets/
+/coastal-world-dump/icons/
+/coastal-world-dump/oldBrowser/
+/coastal-world-dump/vendors/
+/coastal-world-dump/share/
+/coastal-world-dump/favicon.ico
+/coastal-world-dump/manifest.webmanifest
+
 # env files (can opt-in for committing if needed)
 .env*
 

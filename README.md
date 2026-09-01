@@ -56,7 +56,19 @@ I cannot read `C:\Users\user\Downloads\three-rescue-2026-09-01` from this enviro
 
 Quick check that `assets/` is complete: it should contain **12 `.m4a` files** and **339 `.glb` files**. Also look for `dialogs_en.json` (120 KB) — locale JSON is concatenated at runtime (`/assets/fintechs_en.json`, `characters_en.json`, `dialogs_en.json`, `items_en.json`, `quests_en.json`) and is easy for a static scraper to miss.
 
-## Run locally
+## Rebuilt reference HTML
+
+`coastal-world-dump/reference.html` is the original boot page, rebuilt for a three-rescue dump layout (`assets/`, `icons/`, `oldBrowser/`, `embedded/`, `_external/`, `.gltf`).
+
+```bash
+npm run rebuild:html      # regenerate reference.html
+npm run dump:download     # fetch hosted files into coastal-world-dump/
+npm run dump:serve        # http://127.0.0.1:43180/reference.html
+```
+
+Copy `reference.html` into `three-rescue-2026-09-01/` and serve **that folder** as `/`. Do not open it as `file://`.
+
+## Run the inventory locally
 
 ```bash
 npm install
