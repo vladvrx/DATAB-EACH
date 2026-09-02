@@ -23,8 +23,9 @@ const defaultAsset = resolve(
   projectRoot,
   "reference/assets/character.df6ab95f65453426.glb",
 );
-const sourcePath = resolve(process.argv[2] || defaultAsset);
-const outputPath = resolve(process.argv[3] || defaultAsset);
+const extraArgs = process.argv.slice(2).filter((value) => value !== "--slim-only");
+const sourcePath = resolve(extraArgs[0] || defaultAsset);
+const outputPath = resolve(extraArgs[1] || defaultAsset);
 const workDirectory = mkdtempSync(join(tmpdir(), "datab-each-alien-"));
 const decodedPath = join(workDirectory, "character-decoded.glb");
 const rebuiltPath = join(workDirectory, "character-alien-uncompressed.glb");
@@ -40,7 +41,7 @@ try {
   const decoded = parseGlb(readFileSync(decodedPath));
   const customizationStats = stripCustomizationNodes(decoded);
   const normalizedWeightAccessors = normalizeAllSkinWeights(decoded);
-  const designStats = alienizeCharacter(decoded);
+  const designStats = alienizeCharacter(decoded, { slimOnly: process.argv.includes("--slim-only") });
   writeFileSync(rebuiltPath, encodeGlb(decoded));
   pruneGeometry(rebuiltPath, prunedPath);
   compressGeometry(prunedPath, compressedPath);
@@ -66,6 +67,7 @@ try {
       `Base vertices: ${designStats.originalVertexCount}`,
       `Alien detail vertices: ${designStats.addedVertexCount}`,
       `Collapsed upper-head vertices: ${designStats.collapsedUpperHeadVertices}`,
+      `Slimmed leg vertices: ${designStats.slimmedLegVertices}`,
       `Removed customization nodes: ${customizationStats.removedNodeCount}`,
       `Removed shoe nodes: ${customizationStats.removedShoeNodeCount}`,
       `Removed belt-bag nodes: ${customizationStats.removedBeltBagNodeCount}`,
@@ -236,8 +238,8 @@ function assertNoCustomizationGeometry(glb) {
   }
 }
 
-function alienizeCharacter(glb) {
-  const { json, bin } = glb;
+function alienizeCharacter(glb, { slimOnly = false } = {}) {
+  const { json } = glb;
   const bodyNodeIndex = json.nodes.findIndex(
     (node) => node.name === "Chara_Low_Rig:BODY_01",
   );
@@ -246,8 +248,11 @@ function alienizeCharacter(glb) {
   const bodyNode = json.nodes[bodyNodeIndex];
   const primitive = json.meshes[bodyNode.mesh]?.primitives?.[0];
   if (!primitive) throw new Error("The shared character body has no mesh primitive.");
+  if (primitive.extras?.databEachSlimLegs) {
+    throw new Error("This character already has slimmer legs.");
+  }
   if (primitive.extras?.databEachAlienDesign != null) {
-    throw new Error("This character already contains the alien design.");
+    slimOnly = true;
   }
 
   const requiredAttributes = [
@@ -274,133 +279,61 @@ function alienizeCharacter(glb) {
   const chestJoint = jointNames.findIndex((name) => name.endsWith("Chest_M"));
   if (chestJoint < 0) throw new Error("Could not find the character's chest joint.");
 
-  const collapsedUpperHeadVertices = collapseUpperHeadGeometry({
+  let collapsedUpperHeadVertices = 0;
+  if (!slimOnly) {
+    collapsedUpperHeadVertices = collapseUpperHeadGeometry({
+      positions,
+      uvs,
+      joints,
+      weights,
+      jointNames,
+      chestJoint,
+    });
+    addCollapsedFacePatch({
+      positions,
+      uvs,
+      joints,
+      weights,
+      indices,
+      chestJoint,
+      originalVertexCount,
+    });
+    moveFaceToTorso({
+      positions,
+      uvs,
+      joints,
+      weights,
+      chestJoint,
+      originalVertexCount,
+    });
+    lowerArms({
+      positions,
+      joints,
+      weights,
+      jointNames,
+      originalVertexCount,
+    });
+    addTorsoCap(positions, uvs, joints, weights, indices, chestJoint);
+    addAntenna(positions, uvs, joints, weights, indices, chestJoint, -1);
+    addAntenna(positions, uvs, joints, weights, indices, chestJoint, 1);
+    addEarFin(positions, uvs, joints, weights, indices, chestJoint, -1);
+    addEarFin(positions, uvs, joints, weights, indices, chestJoint, 1);
+  }
+
+  const slimmedLegVertices = slimLegs({
     positions,
-    uvs,
     joints,
     weights,
     jointNames,
-    chestJoint,
   });
-  addCollapsedFacePatch({
-    positions,
-    uvs,
-    joints,
-    weights,
-    indices,
-    chestJoint,
-    originalVertexCount,
-  });
-  moveFaceToTorso({
-    positions,
-    uvs,
-    joints,
-    weights,
-    chestJoint,
-    originalVertexCount,
-  });
-  lowerArms({
-    positions,
-    joints,
-    weights,
-    jointNames,
-    originalVertexCount,
-  });
-  addTorsoCap(positions, uvs, joints, weights, indices, chestJoint);
-  addAntenna(positions, uvs, joints, weights, indices, chestJoint, -1);
-  addAntenna(positions, uvs, joints, weights, indices, chestJoint, 1);
-  addEarFin(positions, uvs, joints, weights, indices, chestJoint, -1);
-  addEarFin(positions, uvs, joints, weights, indices, chestJoint, 1);
 
-  const normals = recomputeNormals(positions, indices);
-  const vertexCount = positions.length / 3;
-  const vertexBuffer = createVertexBuffer({
-    positions,
-    normals,
-    uvs,
-    joints,
-    weights,
-  });
-  const indexBuffer = createIndexBuffer(indices);
-  const vertexOffset = align4(bin.length);
-  const indexOffset = align4(vertexOffset + vertexBuffer.length);
-  const combinedBin = Buffer.alloc(indexOffset + indexBuffer.length);
-  bin.copy(combinedBin);
-  vertexBuffer.copy(combinedBin, vertexOffset);
-  indexBuffer.copy(combinedBin, indexOffset);
-  glb.bin = combinedBin;
-
-  const vertexView = json.bufferViews.push({
-    buffer: 0,
-    byteOffset: vertexOffset,
-    byteLength: vertexBuffer.length,
-    byteStride: 52,
-    target: 34962,
-  }) - 1;
-  const indexView = json.bufferViews.push({
-    buffer: 0,
-    byteOffset: indexOffset,
-    byteLength: indexBuffer.length,
-    target: 34963,
-  }) - 1;
-  const positionBounds = vectorBounds(positions, 3);
-
-  primitive.attributes.POSITION = json.accessors.push({
-    bufferView: vertexView,
-    byteOffset: 0,
-    componentType: FLOAT,
-    count: vertexCount,
-    type: "VEC3",
-    min: positionBounds.min,
-    max: positionBounds.max,
-  }) - 1;
-  primitive.attributes.NORMAL = json.accessors.push({
-    bufferView: vertexView,
-    byteOffset: 12,
-    componentType: FLOAT,
-    count: vertexCount,
-    type: "VEC3",
-  }) - 1;
-  primitive.attributes.TEXCOORD_0 = json.accessors.push({
-    bufferView: vertexView,
-    byteOffset: 24,
-    componentType: FLOAT,
-    count: vertexCount,
-    type: "VEC2",
-  }) - 1;
-  primitive.attributes.JOINTS_0 = json.accessors.push({
-    bufferView: vertexView,
-    byteOffset: 32,
-    componentType: UNSIGNED_BYTE,
-    count: vertexCount,
-    type: "VEC4",
-  }) - 1;
-  primitive.attributes.WEIGHTS_0 = json.accessors.push({
-    bufferView: vertexView,
-    byteOffset: 36,
-    componentType: FLOAT,
-    count: vertexCount,
-    type: "VEC4",
-  }) - 1;
-  primitive.indices = json.accessors.push({
-    bufferView: indexView,
-    byteOffset: 0,
-    componentType: UNSIGNED_SHORT,
-    count: indices.length,
-    type: "SCALAR",
-    min: [0],
-    max: [vertexCount - 1],
-  }) - 1;
-  primitive.extras = {
-    ...(primitive.extras || {}),
-    databEachAlienDesign: 2,
-  };
-  json.buffers[0].byteLength = combinedBin.length;
+  writeBodyPrimitive(glb, primitive, { positions, uvs, joints, weights, indices });
 
   return {
     originalVertexCount,
-    addedVertexCount: vertexCount - originalVertexCount,
+    addedVertexCount: positions.length / 3 - originalVertexCount,
     collapsedUpperHeadVertices,
+    slimmedLegVertices,
   };
 }
 
@@ -573,6 +506,152 @@ function moveFaceToTorso({
     positions[offset + 2] = 0.45 + (z - 0.32) * 0.2;
     bindVertexToJoint(joints, weights, vertex, chestJoint);
   }
+}
+
+function slimLegs({ positions, joints, weights, jointNames }) {
+  const vertexCount = positions.length / 3;
+  const influenceFor = (name) => {
+    if (/(?:Hip)_[LR]$/.test(name)) return 0.35;
+    if (/(?:Knee)_[LR]$/.test(name)) return 1;
+    if (/(?:Ankle)_[LR]$/.test(name)) return 0.95;
+    if (/(?:Toes)_[LR]$/.test(name)) return 0.22;
+    return 0;
+  };
+
+  const axis = {
+    L: { x: 0, z: 0, weight: 0 },
+    R: { x: 0, z: 0, weight: 0 },
+  };
+  const perVertex = new Array(vertexCount);
+
+  for (let vertex = 0; vertex < vertexCount; vertex += 1) {
+    let left = 0;
+    let right = 0;
+    for (let component = 0; component < 4; component += 1) {
+      const name = jointNames[joints[vertex * 4 + component]] || "";
+      const influence = weights[vertex * 4 + component] * influenceFor(name);
+      if (name.endsWith("_L")) left += influence;
+      if (name.endsWith("_R")) right += influence;
+    }
+    perVertex[vertex] = { left, right };
+    const side = left >= right ? "L" : "R";
+    const weight = side === "L" ? left : right;
+    if (weight < 0.12) continue;
+    axis[side].x += positions[vertex * 3] * weight;
+    axis[side].z += positions[vertex * 3 + 2] * weight;
+    axis[side].weight += weight;
+  }
+
+  for (const side of ["L", "R"]) {
+    if (axis[side].weight <= 0) continue;
+    axis[side].x /= axis[side].weight;
+    axis[side].z /= axis[side].weight;
+  }
+
+  const slim = 0.52;
+  let slimmed = 0;
+  for (let vertex = 0; vertex < vertexCount; vertex += 1) {
+    const { left, right } = perVertex[vertex];
+    const side = left >= right ? "L" : "R";
+    const weight = Math.min(1, side === "L" ? left : right);
+    if (weight < 0.12 || axis[side].weight <= 0) continue;
+    const amount = (1 - slim) * weight;
+    const x = positions[vertex * 3];
+    const z = positions[vertex * 3 + 2];
+    positions[vertex * 3] = x + (axis[side].x - x) * amount;
+    positions[vertex * 3 + 2] = z + (axis[side].z - z) * amount;
+    slimmed += 1;
+  }
+  return slimmed;
+}
+
+function writeBodyPrimitive(glb, primitive, { positions, uvs, joints, weights, indices }) {
+  const { json, bin } = glb;
+  const normals = recomputeNormals(positions, indices);
+  const vertexCount = positions.length / 3;
+  const vertexBuffer = createVertexBuffer({
+    positions,
+    normals,
+    uvs,
+    joints,
+    weights,
+  });
+  const indexBuffer = createIndexBuffer(indices);
+  const vertexOffset = align4(bin.length);
+  const indexOffset = align4(vertexOffset + vertexBuffer.length);
+  const combinedBin = Buffer.alloc(indexOffset + indexBuffer.length);
+  bin.copy(combinedBin);
+  vertexBuffer.copy(combinedBin, vertexOffset);
+  indexBuffer.copy(combinedBin, indexOffset);
+  glb.bin = combinedBin;
+
+  const vertexView = json.bufferViews.push({
+    buffer: 0,
+    byteOffset: vertexOffset,
+    byteLength: vertexBuffer.length,
+    byteStride: 52,
+    target: 34962,
+  }) - 1;
+  const indexView = json.bufferViews.push({
+    buffer: 0,
+    byteOffset: indexOffset,
+    byteLength: indexBuffer.length,
+    target: 34963,
+  }) - 1;
+  const positionBounds = vectorBounds(positions, 3);
+
+  primitive.attributes.POSITION = json.accessors.push({
+    bufferView: vertexView,
+    byteOffset: 0,
+    componentType: FLOAT,
+    count: vertexCount,
+    type: "VEC3",
+    min: positionBounds.min,
+    max: positionBounds.max,
+  }) - 1;
+  primitive.attributes.NORMAL = json.accessors.push({
+    bufferView: vertexView,
+    byteOffset: 12,
+    componentType: FLOAT,
+    count: vertexCount,
+    type: "VEC3",
+  }) - 1;
+  primitive.attributes.TEXCOORD_0 = json.accessors.push({
+    bufferView: vertexView,
+    byteOffset: 24,
+    componentType: FLOAT,
+    count: vertexCount,
+    type: "VEC2",
+  }) - 1;
+  primitive.attributes.JOINTS_0 = json.accessors.push({
+    bufferView: vertexView,
+    byteOffset: 32,
+    componentType: UNSIGNED_BYTE,
+    count: vertexCount,
+    type: "VEC4",
+  }) - 1;
+  primitive.attributes.WEIGHTS_0 = json.accessors.push({
+    bufferView: vertexView,
+    byteOffset: 36,
+    componentType: FLOAT,
+    count: vertexCount,
+    type: "VEC4",
+  }) - 1;
+  primitive.indices = json.accessors.push({
+    bufferView: indexView,
+    byteOffset: 0,
+    componentType: UNSIGNED_SHORT,
+    count: indices.length,
+    type: "SCALAR",
+    min: [0],
+    max: [vertexCount - 1],
+  }) - 1;
+  primitive.extras = {
+    ...(primitive.extras || {}),
+    databEachAlienDesign: primitive.extras?.databEachAlienDesign ?? 2,
+    databEachSlimLegs: 1,
+  };
+  json.buffers[0].byteLength = combinedBin.length;
 }
 
 function lowerArms({
