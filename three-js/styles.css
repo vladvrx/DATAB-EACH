@@ -18,6 +18,10 @@
   pointer-events: none !important;
 }
 
+#threejs-hud .menu:not(.is-open) .menu-background {
+  visibility: hidden;
+}
+
 #threejs-hud header:not(.is-visible),
 #threejs-hud header:not(.is-visible) * {
   pointer-events: none !important;
