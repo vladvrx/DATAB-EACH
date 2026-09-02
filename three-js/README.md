@@ -40,3 +40,5 @@ The intro Data B-each logo only stays on screen while **Start the journey** is v
 | `src/hud/` | Start, dialogue, menus |
 
 Locales stay in `reference/assets/dialogs_en.json`, `quests_en.json`, `characters_en.json`.
+
+Studio still edits this build: **Apply to game** writes island props, quests, characters, and dialogue into `reference/assets` and patches the same `loadWebGL` bundles. Open `/three-js` after Apply. A Three.js-only copy also lives at [github.com/vladvrx/datab-each-threejs](https://github.com/vladvrx/datab-each-threejs); this `three-js/` folder is the in-repo backup.
