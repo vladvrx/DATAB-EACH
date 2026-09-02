@@ -11,6 +11,7 @@ import {
 } from "../../vendor/vendor.75f6e6ae65453426.js";
 import { ThreeJsRoot } from "./root.js";
 import { installHud } from "./hud.js";
+import { installCartoonOutline } from "./outline.js";
 
 function disablePhoneAndMap(app) {
   const blocked = new Set(["Phone", "QuestsDebug"]);
@@ -42,6 +43,7 @@ export async function startEngine() {
 
   const app = await vueApp.pluginManager.install();
   disablePhoneAndMap(app);
+  installCartoonOutline(app.$webgl);
   watch(() => app.$store.isMovingWithMouse, (moving) => {
     document.body.classList.toggle("moving-with-mouse", !!moving);
   }, { immediate: true });
@@ -123,6 +125,7 @@ export async function startEngine() {
     });
     vueApp.mount("#app");
     installHud(app);
+    installCartoonOutline(app.$webgl);
     window.__THREE_JS_GAME__ = { vueApp, app };
   };
 

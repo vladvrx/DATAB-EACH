@@ -5,7 +5,21 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const WEBGL_CACHE = "neon-water-runfx";
+// Cartoon outline lives in three-js/src/outline.js (fullscreen depth pass).
+// Keep this cache token in sync so Apply/reload does not serve a stale webgl bundle
+// without the neon-water/run-fx patches that this script owns.
+const WEBGL_CACHE = "neon-water-runfx-outline-feet";
+
+const CHARACTER_URL_SWAPS = [
+  [
+    'const zn = "./reference/assets/character.df6ab95f65453426.glb",',
+    'const zn = "./reference/assets/character.df6ab95f65453426.glb?v=triangle-feet",',
+  ],
+  [
+    'const zn="/assets/character.df6ab95f65453426.glb"',
+    'const zn="/assets/character.df6ab95f65453426.glb?v=triangle-feet"',
+  ],
+];
 
 const WATER_COLOR_SWAPS = [
   ["#3fbfff", "#39ff14"],
@@ -108,6 +122,10 @@ function patchRunFx(source) {
   return applySwaps(source, RUN_FX_SWAPS);
 }
 
+function patchCharacterUrl(source) {
+  return applySwaps(source, CHARACTER_URL_SWAPS);
+}
+
 function patchIntroCam(source) {
   return applySwaps(source, INTRO_CAM_SWAPS);
 }
@@ -152,7 +170,7 @@ const vendorFiles = [
 
 const patched = [];
 for (const file of webglFiles) {
-  if (patchFile(file, (source) => patchRunFx(patchWaterColors(source)))) {
+  if (patchFile(file, (source) => patchCharacterUrl(patchRunFx(patchWaterColors(source))))) {
     patched.push(path.relative(projectRoot, file));
   }
 }
@@ -163,12 +181,38 @@ for (const file of vendorFiles) {
   }
 }
 
+function ensureOutlineHook(source) {
+  if (source.includes("from \"./outline.js\"")) return source;
+  if (!source.includes("installHud")) return source;
+  return source
+    .replace(
+      'import { installHud } from "./hud.js";',
+      'import { installHud } from "./hud.js";\nimport { installCartoonOutline } from "./outline.js";',
+    )
+    .replace(
+      "disablePhoneAndMap(app);",
+      "disablePhoneAndMap(app);\n  installCartoonOutline(app.$webgl);",
+    )
+    .replace(
+      "installHud(app);\n    window.__THREE_JS_GAME__",
+      "installHud(app);\n    installCartoonOutline(app.$webgl);\n    window.__THREE_JS_GAME__",
+    );
+}
+
 const indexFiles = [
   path.join(projectRoot, "three-js", "index.html"),
   path.join(projectRoot, "index.html"),
 ];
 for (const file of indexFiles) {
   if (patchFile(file, bustWebgl)) patched.push(path.relative(projectRoot, file));
+}
+
+const engineFile = path.join(projectRoot, "three-js", "src", "engine.js");
+if (patchFile(engineFile, ensureOutlineHook)) patched.push(path.relative(projectRoot, engineFile));
+
+const outlineFile = path.join(projectRoot, "three-js", "src", "outline.js");
+if (!fs.existsSync(outlineFile)) {
+  console.warn("Missing three-js/src/outline.js — cartoon outlines will not install.");
 }
 
 if (!patched.length) {
