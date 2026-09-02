@@ -3,9 +3,6 @@
     "Intro": {
       "gradientID": 0,
       "face": 1,
-      "head": "Head-Beanie",
-      "body": "Body-Bumbag",
-      "bottom": "Bottom-Boots",
       "script": "Intro",
       "scriptArgs": {
         "scene": "IslandWest",
@@ -15,9 +12,6 @@
     "Aven_Quest": {
       "gradientID": 2,
       "face": 0,
-      "head": null,
-      "body": "Body-Bumbag",
-      "bottom": "Bottom-LowSneakers",
       "script": "Quest",
       "scriptArgs": {
         "fintech": "aven"
@@ -26,68 +20,15 @@
     "Aven_Ambassador": {
       "gradientID": 2,
       "face": 0,
-      "head": "Head-Cap",
-      "body": null,
-      "bottom": null,
       "script": "Ambassador",
       "scriptArgs": {
         "fintech": "aven",
         "animation": "Idle2"
       }
     },
-    "Aspiration_Quest": {
-      "gradientID": 1,
-      "face": 1,
-      "head": "Head-Visor",
-      "body": "Body-Bumbag",
-      "bottom": "Bottom-LowSneakers",
-      "script": "Quest",
-      "scriptArgs": {
-        "fintech": "aspiration"
-      }
-    },
-    "Aspiration_Ambassador": {
-      "gradientID": 1,
-      "face": 0,
-      "head": "Head-Cap",
-      "body": null,
-      "bottom": null,
-      "script": "Ambassador",
-      "scriptArgs": {
-        "fintech": "aspiration",
-        "animation": "Idle2"
-      }
-    },
-    "Bluevine_Quest": {
-      "gradientID": 11,
-      "face": 1,
-      "head": "Head-FrenchBeret",
-      "body": null,
-      "bottom": "Bottom-MidSneakers",
-      "script": "Quest",
-      "scriptArgs": {
-        "fintech": "bluevine",
-        "animation": "Thinking"
-      }
-    },
-    "Bluevine_Ambassador": {
-      "gradientID": 11,
-      "face": 1,
-      "head": "Head-Cap",
-      "body": null,
-      "bottom": null,
-      "script": "Ambassador",
-      "scriptArgs": {
-        "fintech": "bluevine",
-        "animation": "Idle2"
-      }
-    },
     "Brigit_Quest": {
       "gradientID": 3,
       "face": 1,
-      "head": "Head-BikeHelmet",
-      "body": null,
-      "bottom": null,
       "script": "MiniGame",
       "scriptArgs": {
         "scene": "CircuitBike",
@@ -98,226 +39,15 @@
     "Brigit_Ambassador": {
       "gradientID": 3,
       "face": 0,
-      "head": "Head-Cap",
-      "body": null,
-      "bottom": null,
       "script": "Ambassador",
       "scriptArgs": {
         "fintech": "brigit",
         "animation": "Idle2"
       }
     },
-    "X1_Ambassador": {
-      "gradientID": 0,
-      "face": 0,
-      "head": "Head-Cap",
-      "body": "Body-UrbanBackpack",
-      "bottom": null,
-      "script": "Ambassador",
-      "scriptArgs": {
-        "fintech": "x1",
-        "animation": "Idle3"
-      }
-    },
-    "X1_Quest": {
-      "gradientID": 0,
-      "face": 1,
-      "head": "Head-BikeHelmet",
-      "body": null,
-      "bottom": "Bottom-LowSneakers",
-      "script": "MiniGame",
-      "scriptArgs": {
-        "fintech": "x1",
-        "scene": "CircuitJetski",
-        "animation": "Thinking"
-      }
-    },
-    "Possible_Ambassador": {
-      "gradientID": 14,
-      "face": 1,
-      "head": "Head-Glass2",
-      "body": "Body-Bumbag",
-      "bottom": null,
-      "script": "Ambassador",
-      "scriptArgs": {
-        "fintech": "possible",
-        "animation": "Idle3"
-      }
-    },
-    "Possible_Quest": {
-      "gradientID": 14,
-      "face": 1,
-      "head": "Head-Visor",
-      "body": null,
-      "bottom": "Bottom-Boots",
-      "script": "Quest",
-      "scriptArgs": {
-        "fintech": "possible",
-        "animation": "Idle2"
-      }
-    },
-    "Lendingpoint_Ambassador": {
-      "gradientID": 13,
-      "face": 1,
-      "head": "Head-Glass1",
-      "body": null,
-      "bottom": "Bottom-MidSneakers",
-      "script": "Ambassador",
-      "scriptArgs": {
-        "fintech": "lendingpoint",
-        "animation": "Idle2"
-      }
-    },
-    "Lendingpoint_Quest": {
-      "gradientID": 13,
-      "face": 0,
-      "head": "Head-BikeHelmet",
-      "body": "Body-UrbanBackpack",
-      "bottom": null,
-      "script": "Quest",
-      "scriptArgs": {
-        "fintech": "lendingpoint",
-        "animation": "Idle3"
-      }
-    },
-    "Tempkey_Quest": {
-      "gradientID": 0,
-      "face": 0,
-      "head": "Head-Dino",
-      "body": "Body-Dino",
-      "bottom": "Bottom-Dino",
-      "script": "Quest",
-      "scriptArgs": {
-        "fintech": "tempkey",
-        "animation": "Idle3"
-      }
-    },
-    "Coastal_Quest": {
-      "gradientID": 0,
-      "face": 1,
-      "head": "Head-MotorcycleHelmet",
-      "body": "Body-Bumbag",
-      "bottom": "Bottom-FastShoes",
-      "script": "MiniGame",
-      "scriptArgs": {
-        "scene": "CircuitCar",
-        "animation": "Thinking"
-      }
-    },
-    "Coastal_Ambassador": {
-      "gradientID": 0,
-      "face": 0,
-      "head": "Head-Cap",
-      "body": null,
-      "bottom": null,
-      "script": "Ambassador",
-      "scriptArgs": {
-        "animation": "Idle2"
-      }
-    },
-    "Prosper_Quest": {
-      "gradientID": 6,
-      "face": 0,
-      "head": null,
-      "body": "Body-Bumbag",
-      "bottom": "Bottom-LowSneakers",
-      "script": "Quest",
-      "scriptArgs": {
-        "fintech": "prosper",
-        "animation": "Idle3"
-      }
-    },
-    "Prosper_Ambassador": {
-      "gradientID": 6,
-      "face": 0,
-      "head": "Head-Cap",
-      "body": null,
-      "bottom": null,
-      "script": "Ambassador",
-      "scriptArgs": {
-        "fintech": "prosper",
-        "animation": "Idle2"
-      }
-    },
-    "Kikoff_Quest": {
-      "gradientID": 9,
-      "face": 0,
-      "head": "Head-Visor",
-      "body": null,
-      "bottom": "Bottom-Sandals",
-      "script": "Quest",
-      "scriptArgs": {
-        "fintech": "kikoff",
-        "animation": "Thinking"
-      }
-    },
-    "Kikoff_Ambassador": {
-      "gradientID": 9,
-      "face": 1,
-      "head": "Head-Cap",
-      "body": null,
-      "bottom": null,
-      "script": "Ambassador",
-      "scriptArgs": {
-        "fintech": "kikoff",
-        "animation": "Idle2"
-      }
-    },
-    "Greenwood_Quest": {
-      "gradientID": 12,
-      "face": 0,
-      "head": "Head-Heaset",
-      "body": null,
-      "bottom": "Bottom-FastShoes",
-      "script": "Quest",
-      "scriptArgs": {
-        "fintech": "greenwood",
-        "animation": "Thinking"
-      }
-    },
-    "Greenwood_Ambassador": {
-      "gradientID": 12,
-      "face": 0,
-      "head": "Head-Cap",
-      "body": null,
-      "bottom": null,
-      "script": "Ambassador",
-      "scriptArgs": {
-        "fintech": "greenwood",
-        "animation": "Idle2"
-      }
-    },
-    "One_Quest": {
-      "gradientID": 8,
-      "face": 0,
-      "head": "Head-Visor",
-      "body": "Body-Bumbag",
-      "bottom": "Bottom-Sandals",
-      "script": "MiniGame",
-      "scriptArgs": {
-        "scene": "CircuitBoat",
-        "fintech": "one",
-        "animation": "Thinking"
-      }
-    },
-    "One_Ambassador": {
-      "gradientID": 8,
-      "face": 1,
-      "head": "Head-Cap",
-      "body": null,
-      "bottom": null,
-      "script": "Ambassador",
-      "scriptArgs": {
-        "fintech": "one",
-        "animation": "Idle2"
-      }
-    },
     "Pomelo_Quest": {
       "gradientID": 7,
       "face": 0,
-      "head": null,
-      "body": "Body-UrbanBackpack",
-      "bottom": "Bottom-Boots",
       "script": "Quest",
       "scriptArgs": {
         "fintech": "pomelo",
@@ -327,43 +57,15 @@
     "Pomelo_Ambassador": {
       "gradientID": 7,
       "face": 1,
-      "head": "Head-Cap",
-      "body": null,
-      "bottom": null,
       "script": "Ambassador",
       "scriptArgs": {
         "fintech": "pomelo",
         "animation": "Idle2"
       }
     },
-    "Till_Quest": {
-      "gradientID": 4,
-      "face": 0,
-      "head": "Head-BikeHelmet",
-      "body": null,
-      "bottom": "Bottom-MidSneakers",
-      "script": "Quest",
-      "scriptArgs": {
-        "fintech": "till"
-      }
-    },
-    "Till_Ambassador": {
-      "gradientID": 4,
-      "face": 1,
-      "head": "Head-Cap",
-      "body": null,
-      "bottom": null,
-      "script": "Ambassador",
-      "scriptArgs": {
-        "fintech": "till"
-      }
-    },
     "Zenda_Quest": {
       "gradientID": 10,
       "face": 1,
-      "head": "Head-Glass2",
-      "body": "Body-UrbanBackpack",
-      "bottom": "Bottom-Boots",
       "script": "Quest",
       "scriptArgs": {
         "fintech": "zenda",
@@ -373,242 +75,51 @@
     "Zenda_Ambassador": {
       "gradientID": 10,
       "face": 1,
-      "head": "Head-Cap",
-      "body": null,
-      "bottom": null,
       "script": "Ambassador",
       "scriptArgs": {
         "fintech": "zenda",
         "animation": "Idle2"
       }
     },
-    "Zenda_Sick_EastA": {
-      "gradientID": 26,
-      "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-MidSneakers",
-      "script": "ZendaSick",
-      "scriptArgs": {}
-    },
-    "Zenda_Sick_NorthA": {
-      "gradientID": 26,
-      "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-LowSneakers",
-      "script": "ZendaSick",
-      "scriptArgs": {}
-    },
-    "Zenda_Sick_EastB": {
-      "gradientID": 26,
-      "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": null,
-      "script": "ZendaSick",
-      "scriptArgs": {}
-    },
     "Zenda_Sick_WestA": {
       "gradientID": 26,
       "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-Boots",
       "script": "ZendaSick",
       "scriptArgs": {}
     },
     "Zenda_Sick_WestC": {
       "gradientID": 26,
       "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-LowSneakers",
       "script": "ZendaSick",
       "scriptArgs": {}
     },
     "Zenda_Sick_WestD": {
       "gradientID": 26,
       "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": null,
       "script": "ZendaSick",
       "scriptArgs": {}
-    },
-    "Zenda_Sick_NorthB": {
-      "gradientID": 26,
-      "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-Sandals",
-      "script": "ZendaSick",
-      "scriptArgs": {}
-    },
-    "Zenda_Sick_FourA": {
-      "gradientID": 26,
-      "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-Palm",
-      "script": "ZendaSick",
-      "scriptArgs": {}
-    },
-    "Zenda_Sick_FourB": {
-      "gradientID": 26,
-      "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-Sandals",
-      "script": "ZendaSick",
-      "scriptArgs": {}
-    },
-    "Sailor_WestA": {
-      "gradientID": 0,
-      "face": 1,
-      "head": "Head-Beanie",
-      "body": null,
-      "bottom": "Bottom-Boots",
-      "script": "Sailor",
-      "scriptArgs": {
-        "scene": "IslandEast",
-        "point": "PortSpawnB",
-        "animation": "Idle2"
-      }
-    },
-    "Sailor_WestB": {
-      "gradientID": 0,
-      "face": 0,
-      "head": "Head-Beanie",
-      "body": null,
-      "bottom": "Bottom-Boots",
-      "script": "Sailor",
-      "scriptArgs": {
-        "scene": "IslandNorth",
-        "point": "PortSpawnA",
-        "animation": "Idle2"
-      }
-    },
-    "Sailor_EastA": {
-      "gradientID": 0,
-      "face": 1,
-      "head": "Head-Beanie",
-      "body": null,
-      "bottom": "Bottom-Boots",
-      "script": "Sailor",
-      "scriptArgs": {
-        "scene": "IslandFour",
-        "point": "PortSpawnA",
-        "animation": "Idle2"
-      }
-    },
-    "Sailor_EastB": {
-      "gradientID": 0,
-      "face": 1,
-      "head": "Head-Beanie",
-      "body": null,
-      "bottom": "Bottom-Boots",
-      "script": "Sailor",
-      "scriptArgs": {
-        "scene": "IslandWest",
-        "point": "PortSpawnA",
-        "animation": "Idle2"
-      }
-    },
-    "Sailor_NorthA": {
-      "gradientID": 0,
-      "face": 0,
-      "head": "Head-Beanie",
-      "body": null,
-      "bottom": "Bottom-Boots",
-      "script": "Sailor",
-      "scriptArgs": {
-        "scene": "IslandWest",
-        "point": "PortSpawnB",
-        "animation": "Idle2"
-      }
-    },
-    "Sailor_NorthB": {
-      "gradientID": 0,
-      "face": 0,
-      "head": "Head-Beanie",
-      "body": null,
-      "bottom": "Bottom-Boots",
-      "script": "Sailor",
-      "scriptArgs": {
-        "scene": "IslandFour",
-        "point": "PortSpawnB",
-        "animation": "Idle2"
-      }
-    },
-    "Sailor_FourA": {
-      "gradientID": 0,
-      "face": 0,
-      "head": "Head-Beanie",
-      "body": null,
-      "bottom": "Bottom-Boots",
-      "script": "Sailor",
-      "scriptArgs": {
-        "scene": "IslandEast",
-        "point": "PortSpawnA",
-        "animation": "Idle2"
-      }
-    },
-    "Sailor_FourB": {
-      "gradientID": 0,
-      "face": 1,
-      "head": "Head-Beanie",
-      "body": null,
-      "bottom": "Bottom-Boots",
-      "script": "Sailor",
-      "scriptArgs": {
-        "scene": "IslandNorth",
-        "point": "PortSpawnB",
-        "animation": "Idle2"
-      }
     },
     "Citizen_West_PomeloIslandHint": {
       "gradientID": 22,
       "face": 0,
-      "head": null,
-      "body": "Body-UrbanBackpack",
-      "bottom": "Bottom-Sandals",
       "script": "TalkingCitizen",
       "scriptArgs": {}
     },
     "Citizen_West_ChestHint": {
       "gradientID": 23,
       "face": 1,
-      "head": "Head-Visor",
-      "body": null,
-      "bottom": "Bottom-Boots",
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_West_AspirationHint": {
-      "gradientID": 25,
-      "face": 0,
-      "head": "Head-VahineCrown",
-      "body": null,
-      "bottom": null,
       "script": "TalkingCitizen",
       "scriptArgs": {}
     },
     "Citizen_West_Forest": {
       "gradientID": 24,
       "face": 0,
-      "head": "Head-AstronautHelmet",
-      "body": "Body-JetPack",
-      "bottom": "Bottom-Boots",
       "script": "TalkingCitizen",
       "scriptArgs": {}
     },
     "Citizen_West_Beach": {
       "gradientID": 23,
       "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-Sandals",
       "script": "TalkingCitizen",
       "scriptArgs": {
         "animation": "Fear"
@@ -617,203 +128,12 @@
     "Citizen_West_WalkingA": {
       "gradientID": 24,
       "face": 0,
-      "head": "Head-Beanie",
-      "body": "Body-Bumbag",
-      "bottom": "Bottom-MidSneakers",
       "script": "PassiveCitizen",
       "scriptArgs": {}
-    },
-    "Citizen_West_Speaker": {
-      "gradientID": 22,
-      "face": 1,
-      "head": "Head-Heaset",
-      "body": null,
-      "bottom": "Bottom-FastShoes",
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_East_GameHint": {
-      "gradientID": 23,
-      "face": 0,
-      "head": "Head-MotorcycleHelmet",
-      "body": null,
-      "bottom": null,
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_East_ChestHint": {
-      "gradientID": 23,
-      "face": 1,
-      "head": "Head-MotorcycleHelmet",
-      "body": "Body-PandaBackpack",
-      "bottom": "Bottom-Sandals",
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_East_SkateparkHint": {
-      "gradientID": 24,
-      "face": 0,
-      "head": "Head-Heaset",
-      "body": null,
-      "bottom": null,
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_East_BridgeHint": {
-      "gradientID": 24,
-      "face": 0,
-      "head": "Head-Heaset",
-      "body": null,
-      "bottom": null,
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_East_ParkHint": {
-      "gradientID": 23,
-      "face": 0,
-      "head": "Head-DeerHat",
-      "body": null,
-      "bottom": null,
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_East_BeachHint": {
-      "gradientID": 22,
-      "face": 1,
-      "head": "Head-Heaset",
-      "body": "Body-Bumbag",
-      "bottom": "Bottom-Sandals",
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_East_Beach": {
-      "gradientID": 25,
-      "face": 0,
-      "head": "Head-AstronautHelmet",
-      "body": "Body-Wings",
-      "bottom": "Bottom-FastShoes",
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_North_Coffee": {
-      "gradientID": 24,
-      "face": 1,
-      "head": "Head-VahineCrown",
-      "body": null,
-      "bottom": "Bottom-Boots",
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_North_Bear": {
-      "gradientID": 22,
-      "face": 0,
-      "head": "Head-BearBeanie",
-      "body": "Body-PandaBackpack",
-      "bottom": "Bottom-LowSneakers",
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_North_Greenwood": {
-      "gradientID": 25,
-      "face": 1,
-      "head": "Head-Glass1",
-      "body": null,
-      "bottom": "Bottom-FastShoes",
-      "script": "TalkingCitizen",
-      "scriptArgs": {
-        "animation": "Dancing"
-      }
-    },
-    "Citizen_North_Phare": {
-      "gradientID": 23,
-      "face": 1,
-      "head": "Head-Glass2",
-      "body": null,
-      "bottom": "Bottom-Boots",
-      "script": "TalkingCitizen",
-      "scriptArgs": {
-        "animation": "Idle3"
-      }
-    },
-    "Citizen_North_Beach": {
-      "gradientID": 22,
-      "face": 0,
-      "head": "Head-BikeHelmet",
-      "body": "Body-UrbanBackpack",
-      "bottom": "Bottom-MidSneakers",
-      "script": "TalkingCitizen",
-      "scriptArgs": {
-        "animation": "Thinking"
-      }
-    },
-    "Citizen_North_Lake": {
-      "gradientID": 24,
-      "face": 0,
-      "head": "Head-Unicorn",
-      "body": null,
-      "bottom": null,
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_North_Island": {
-      "gradientID": 24,
-      "face": 0,
-      "head": "Head-Beanie",
-      "body": null,
-      "bottom": "Bottom-FastShoes",
-      "script": "TalkingCitizen",
-      "scriptArgs": {
-        "animation": "Happy"
-      }
-    },
-    "Citizen_Est_StandingF": {
-      "gradientID": 24,
-      "face": 0,
-      "head": "Head-VahineCrown",
-      "body": "Body-Wings",
-      "bottom": null,
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_East_SwimmingA": {
-      "gradientID": 22,
-      "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": null,
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Swimming"
-      }
-    },
-    "Citizen_East_SwimmingB": {
-      "gradientID": 23,
-      "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": null,
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Swimming"
-      }
-    },
-    "Citizen_East_SwimmingC": {
-      "gradientID": 25,
-      "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": null,
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Swimming"
-      }
     },
     "Citizen_West_SwimmingA": {
       "gradientID": 24,
       "face": 1,
-      "head": null,
-      "body": null,
-      "bottom": null,
       "script": "PassiveCitizen",
       "scriptArgs": {
         "animation": "Swimming"
@@ -822,9 +142,6 @@
     "Citizen_West_SwimmingB": {
       "gradientID": 23,
       "face": 1,
-      "head": null,
-      "body": null,
-      "bottom": null,
       "script": "PassiveCitizen",
       "scriptArgs": {
         "animation": "Swimming"
@@ -833,95 +150,14 @@
     "Citizen_West_SwimmingC": {
       "gradientID": 22,
       "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": null,
       "script": "PassiveCitizen",
       "scriptArgs": {
         "animation": "Swimming"
-      }
-    },
-    "Citizen_North_SwimmingA": {
-      "gradientID": 23,
-      "face": 1,
-      "head": null,
-      "body": null,
-      "bottom": null,
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Swimming"
-      }
-    },
-    "Citizen_North_WalkingA": {
-      "gradientID": 23,
-      "face": 0,
-      "head": "Head-Beanie",
-      "body": null,
-      "bottom": "Bottom-Boots",
-      "script": "PassiveCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_North_SwimmingC": {
-      "gradientID": 24,
-      "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": null,
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Swimming"
-      }
-    },
-    "Citizen_North_TowelA": {
-      "gradientID": 24,
-      "face": 1,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-Sandals",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Towel"
-      }
-    },
-    "Citizen_North_TowelB": {
-      "gradientID": 23,
-      "face": 1,
-      "head": "Head-Glass1",
-      "body": null,
-      "bottom": null,
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Towel"
-      }
-    },
-    "Citizen_North_TowelC": {
-      "gradientID": 22,
-      "face": 1,
-      "head": null,
-      "body": null,
-      "bottom": null,
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Towel"
-      }
-    },
-    "Citizen_East_TowelA": {
-      "gradientID": 25,
-      "face": 1,
-      "head": null,
-      "body": null,
-      "bottom": null,
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Towel"
       }
     },
     "Citizen_West_TowelA": {
       "gradientID": 24,
       "face": 1,
-      "head": "Head-Glass1",
-      "body": null,
-      "bottom": null,
       "script": "PassiveCitizen",
       "scriptArgs": {
         "animation": "Towel"
@@ -930,9 +166,6 @@
     "Citizen_West_TowelB": {
       "gradientID": 22,
       "face": 1,
-      "head": "Head-Glass2",
-      "body": null,
-      "bottom": null,
       "script": "PassiveCitizen",
       "scriptArgs": {
         "animation": "Towel"
@@ -941,9 +174,6 @@
     "Citizen_West_SeatingA": {
       "gradientID": 25,
       "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-Sandals",
       "script": "PassiveCitizen",
       "scriptArgs": {
         "animation": "Seating"
@@ -952,9 +182,6 @@
     "Citizen_West_SeatingB": {
       "gradientID": 23,
       "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-Sandals",
       "script": "PassiveCitizen",
       "scriptArgs": {
         "animation": "Seating"
@@ -963,9 +190,6 @@
     "Citizen_West_SeatingC": {
       "gradientID": 22,
       "face": 1,
-      "head": "Head-Cap",
-      "body": null,
-      "bottom": "Bottom-Sandals",
       "script": "PassiveCitizen",
       "scriptArgs": {
         "animation": "Seating"
@@ -974,9 +198,6 @@
     "Citizen_West_SeatingD": {
       "gradientID": 24,
       "face": 0,
-      "head": "Head-FrenchBeret",
-      "body": null,
-      "bottom": "Bottom-Sandals",
       "script": "PassiveCitizen",
       "scriptArgs": {
         "animation": "Seating"
@@ -985,9 +206,6 @@
     "Citizen_West_BeachSeatingA": {
       "gradientID": 24,
       "face": 1,
-      "head": null,
-      "body": null,
-      "bottom": null,
       "script": "PassiveCitizen",
       "scriptArgs": {
         "animation": "Towel"
@@ -996,139 +214,14 @@
     "Citizen_West_BeachSeatingB": {
       "gradientID": 31,
       "face": 1,
-      "head": null,
-      "body": null,
-      "bottom": null,
       "script": "PassiveCitizen",
       "scriptArgs": {
         "animation": "Sport"
       }
     },
-    "Citizen_East_SeatingA": {
-      "gradientID": 23,
-      "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-Sandals",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Seating"
-      }
-    },
-    "Citizen_East_SeatingB": {
-      "gradientID": 25,
-      "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-Sandals",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Seating"
-      }
-    },
-    "Citizen_East_SeatingC": {
-      "gradientID": 24,
-      "face": 0,
-      "head": "Head-BikeHelmet",
-      "body": null,
-      "bottom": "Bottom-LowSneakers",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Seating"
-      }
-    },
-    "Citizen_East_BeachSeatingA": {
-      "gradientID": 23,
-      "face": 1,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-MidSneakers",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Towel"
-      }
-    },
-    "Citizen_East_BeachSeatingB": {
-      "gradientID": 29,
-      "face": 1,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-Sandals",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Towel"
-      }
-    },
-    "Citizen_North_SeatingA": {
-      "gradientID": 23,
-      "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-FastShoes",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Seating"
-      }
-    },
-    "Citizen_North_SeatingB": {
-      "gradientID": 23,
-      "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-Sandals",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Seating"
-      }
-    },
-    "Citizen_North_SeatingC": {
-      "gradientID": 24,
-      "face": 0,
-      "head": "Head-Heaset",
-      "body": null,
-      "bottom": "Bottom-MidSneakers",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Seating"
-      }
-    },
-    "Citizen_North_SeatingD": {
-      "gradientID": 24,
-      "face": 1,
-      "head": null,
-      "body": null,
-      "bottom": null,
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Seating"
-      }
-    },
-    "Citizen_North_SeatingE": {
-      "gradientID": 23,
-      "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-Sandals",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Seating"
-      }
-    },
-    "Citizen_West_StandingA": {
-      "gradientID": 22,
-      "face": 0,
-      "head": "Head-VahineCrown",
-      "body": null,
-      "bottom": "Bottom-Sandals",
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
     "Citizen_West_StandingB": {
       "gradientID": 25,
       "face": 1,
-      "head": "Head-VahineCrown",
-      "body": null,
-      "bottom": "Bottom-Sandals",
       "script": "PassiveCitizen",
       "scriptArgs": {
         "animation": "Sport"
@@ -1137,9 +230,6 @@
     "Citizen_West_StandingE": {
       "gradientID": 28,
       "face": 1,
-      "head": "Head-Glass1",
-      "body": null,
-      "bottom": "Bottom-FastShoes",
       "script": "PassiveCitizen",
       "scriptArgs": {
         "animation": "Sport"
@@ -1148,9 +238,6 @@
     "Citizen_West_StandingF": {
       "gradientID": 31,
       "face": 1,
-      "head": "Head-VahineCrown",
-      "body": null,
-      "bottom": "Bottom-Sandals",
       "script": "PassiveCitizen",
       "scriptArgs": {
         "animation": "Sport"
@@ -1159,125 +246,12 @@
     "Citizen_West_StandingC": {
       "gradientID": 24,
       "face": 1,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-LowSneakers",
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_West_StandingD": {
-      "gradientID": 22,
-      "face": 0,
-      "head": "Head-Glass2",
-      "body": null,
-      "bottom": null,
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_North_StandingA": {
-      "gradientID": 25,
-      "face": 1,
-      "head": null,
-      "body": null,
-      "bottom": null,
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Seating"
-      }
-    },
-    "Citizen_North_StandingB": {
-      "gradientID": 23,
-      "face": 0,
-      "head": "Head-FrenchBeret",
-      "body": null,
-      "bottom": null,
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_North_StandingC": {
-      "gradientID": 22,
-      "face": 1,
-      "head": "Head-Visor",
-      "body": "Body-Bumbag",
-      "bottom": null,
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_North_StandingD": {
-      "gradientID": 24,
-      "face": 0,
-      "head": "Head-Visor",
-      "body": null,
-      "bottom": "Bottom-MidSneakers",
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_North_DancingA": {
-      "gradientID": 24,
-      "face": 1,
-      "head": "Head-Glass1",
-      "body": null,
-      "bottom": "Bottom-FastShoes",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Dancing"
-      }
-    },
-    "Citizen_North_DancingB": {
-      "gradientID": 25,
-      "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": "Bottom-FastShoes",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Dancing"
-      }
-    },
-    "Citizen_Est_StandingA": {
-      "gradientID": 22,
-      "face": 1,
-      "head": "Head-Heaset",
-      "body": null,
-      "bottom": null,
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_Est_StandingC": {
-      "gradientID": 22,
-      "face": 1,
-      "head": null,
-      "body": "Body-UrbanBackpack",
-      "bottom": "Bottom-LowSneakers",
-      "script": "TalkingCitizen",
-      "scriptArgs": {}
-    },
-    "Citizen_Est_StandingD": {
-      "gradientID": 22,
-      "face": 1,
-      "head": "Head-Visor",
-      "body": null,
-      "bottom": "Bottom-MidSneakers",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Sport"
-      }
-    },
-    "Citizen_Est_StandingE": {
-      "gradientID": 22,
-      "face": 1,
-      "head": null,
-      "body": null,
-      "bottom": null,
       "script": "TalkingCitizen",
       "scriptArgs": {}
     },
     "Citizen_Easter_EggA": {
       "gradientID": 30,
       "face": 1,
-      "head": "Head-Beanie",
-      "body": null,
-      "bottom": null,
       "script": "PassiveCitizen",
       "scriptArgs": {
         "animation": "Action"
@@ -1286,9 +260,6 @@
     "Citizen_Easter_EggB": {
       "gradientID": 24,
       "face": 0,
-      "head": "Head-Glass1",
-      "body": "Body-Bumbag",
-      "bottom": "Bottom-Boots",
       "script": "PassiveCitizen",
       "scriptArgs": {
         "animation": "Dancing"
@@ -1297,9 +268,6 @@
     "Citizen_Easter_EggC": {
       "gradientID": 29,
       "face": 1,
-      "head": "Head-Visor",
-      "body": "Body-Empty",
-      "bottom": "Bottom-Sandals",
       "script": "PassiveCitizen",
       "scriptArgs": {
         "animation": "Towel"
@@ -1308,9 +276,6 @@
     "Citizen_Easter_EggD": {
       "gradientID": 0,
       "face": 0,
-      "head": "Head-FrenchBeret",
-      "body": "Body-JetPack",
-      "bottom": "Bottom-LowSneakers",
       "script": "TalkingCitizen",
       "scriptArgs": {
         "animation": "Idle3"
@@ -1319,9 +284,6 @@
     "Citizen_Easter_EggE": {
       "gradientID": 28,
       "face": 0,
-      "head": null,
-      "body": null,
-      "bottom": null,
       "script": "TalkingCitizen",
       "scriptArgs": {
         "animation": "Fear"
@@ -1330,240 +292,14 @@
     "Citizen_Easter_EggF": {
       "gradientID": 0,
       "face": 1,
-      "head": "Head-Glass2",
-      "body": "Body-Wings",
-      "bottom": "Bottom-Boots",
       "script": "TalkingCitizen",
       "scriptArgs": {
         "animation": "Idle2"
-      }
-    },
-    "Citizen_East_Test": {
-      "gradientID": 22,
-      "face": 1,
-      "head": "Head-Cap",
-      "body": "Body-UrbanBackpack",
-      "bottom": "Bottom-Boots",
-      "script": "TalkingCitizen",
-      "scriptArgs": {
-        "animation": "Idle"
-      }
-    },
-    "Citizen_Four_SeatingA": {
-      "gradientID": 31,
-      "face": 0,
-      "head": "Head-Fish",
-      "body": "Body-OxygenBottle",
-      "bottom": "Bottom-Palm",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Seating"
-      }
-    },
-    "Citizen_Four_SeatingB": {
-      "gradientID": 3,
-      "face": 0,
-      "head": "Head-Bob",
-      "body": "Body-Empty",
-      "bottom": "Bottom-Sandals",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Seating"
-      }
-    },
-    "Citizen_Four_SeatingC": {
-      "gradientID": 2,
-      "face": 0,
-      "head": "Head-Glass1",
-      "body": "Body-PandaBackpack",
-      "bottom": "Bottom-Sandals",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Seating"
-      }
-    },
-    "Citizen_Four_SeatingD": {
-      "gradientID": 30,
-      "face": 0,
-      "head": "Head-Beanie",
-      "body": "Body-OxygenBottle",
-      "bottom": "Bottom-Palm",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Seating"
-      }
-    },
-    "Citizen_Four_SwimmingA": {
-      "gradientID": 24,
-      "face": 0,
-      "head": "Head-Scuba",
-      "body": "Body-Shark",
-      "bottom": "Bottom-Palm",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Swimming"
-      }
-    },
-    "Citizen_Four_SwimmingB": {
-      "gradientID": 24,
-      "face": 0,
-      "head": "Head-Scuba",
-      "body": "Body-Shark",
-      "bottom": "Bottom-Palm",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Swimming"
-      }
-    },
-    "Citizen_Four_SwimmingC": {
-      "gradientID": 1,
-      "face": 1,
-      "head": "Head-Fish",
-      "body": "Body-Empty",
-      "bottom": "Bottom-Palm",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Swimming"
-      }
-    },
-    "Citizen_Four_TowelA": {
-      "gradientID": 5,
-      "face": 0,
-      "head": "Head-Scuba",
-      "body": null,
-      "bottom": "Bottom-Palm",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Towel"
-      }
-    },
-    "Citizen_Four_TowelB": {
-      "gradientID": 0,
-      "face": 1,
-      "head": "Head-Cap",
-      "body": null,
-      "bottom": "Bottom-Sandals",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Towel"
-      }
-    },
-    "Citizen_Four_DancingA": {
-      "gradientID": 11,
-      "face": 0,
-      "head": "Head-Glass1",
-      "body": "Body-Wings",
-      "bottom": "Bottom-MidSneakers",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Dancing"
-      }
-    },
-    "Citizen_Four_DancingC": {
-      "gradientID": 30,
-      "face": 1,
-      "head": "Head-Heaset",
-      "body": "Body-Empty",
-      "bottom": "Bottom-LowSneakers",
-      "script": "PassiveCitizen",
-      "scriptArgs": {
-        "animation": "Dancing"
-      }
-    },
-    "Citizen_Four_StandingA": {
-      "gradientID": 31,
-      "face": 0,
-      "head": "Head-Visor",
-      "body": "Body-Empty",
-      "bottom": "Bottom-Palm",
-      "script": "TalkingCitizen",
-      "scriptArgs": {
-        "animation": "Sport"
-      }
-    },
-    "Citizen_Four_StandingB": {
-      "gradientID": 31,
-      "face": 0,
-      "head": "Head-Scuba",
-      "body": "Body-Buoy",
-      "bottom": "Bottom-Palm",
-      "script": "TalkingCitizen",
-      "scriptArgs": {
-        "animation": "Idle"
-      }
-    },
-    "Citizen_Four_StandingC": {
-      "gradientID": 28,
-      "face": 0,
-      "head": "Head-Visor",
-      "body": "Body-Bumbag",
-      "bottom": "Bottom-Sandals",
-      "script": "TalkingCitizen",
-      "scriptArgs": {
-        "animation": "Idle"
-      }
-    },
-    "Citizen_Four_StandingD": {
-      "gradientID": 7,
-      "face": 0,
-      "head": "Head-Cap",
-      "body": "Body-UrbanBackpack",
-      "bottom": "Bottom-Boots",
-      "script": "TalkingCitizen",
-      "scriptArgs": {
-        "animation": "Idle2"
-      }
-    },
-    "Citizen_Four_StandingE": {
-      "gradientID": 3,
-      "face": 0,
-      "head": "Head-Visor",
-      "body": "Body-Buoy",
-      "bottom": "Bottom-Palm",
-      "script": "TalkingCitizen",
-      "scriptArgs": {
-        "animation": "Idle"
-      }
-    },
-    "Citizen_Four_JumpHint": {
-      "gradientID": 31,
-      "face": 0,
-      "head": "Head-BikeHelmet",
-      "body": "Body-UrbanBackpack",
-      "bottom": "Bottom-LowSneakers",
-      "script": "TalkingCitizen",
-      "scriptArgs": {
-        "animation": "Idle"
-      }
-    },
-    "Citizen_Four_GameHint": {
-      "gradientID": 25,
-      "face": 1,
-      "head": "Head-BikeHelmet",
-      "body": "Body-Shark",
-      "bottom": "Bottom-LowSneakers",
-      "script": "TalkingCitizen",
-      "scriptArgs": {
-        "animation": "Idle2"
-      }
-    },
-    "Citizen_Four_ResortHint": {
-      "gradientID": 23,
-      "face": 1,
-      "head": "Head-Bob",
-      "body": "Body-Bumbag",
-      "bottom": "Bottom-Palm",
-      "script": "TalkingCitizen",
-      "scriptArgs": {
-        "animation": "Idle"
       }
     },
     "Test_ChatGpt": {
       "gradientID": 24,
       "face": 0,
-      "head": "Head-AstronautHelmet",
-      "body": "Body-OxygenBottle",
-      "bottom": "Bottom-Boots",
       "script": "TalkingCitizen",
       "scriptArgs": {
         "animation": "Idle"

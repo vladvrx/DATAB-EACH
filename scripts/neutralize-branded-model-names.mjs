@@ -25,7 +25,6 @@ const replacements = [
   ['Asset_StandX1', 'Asset_StandTechCompany15'],
   ['Asset_StandZenda', 'Asset_StandTechCompany09'],
   ['Asset_StandMovo', 'Asset_StandNeutral05'],
-  ['Asset_StandCoastal', 'Asset_StandDataBeach'],
 ];
 
 const mapping = new Map();
@@ -57,3 +56,7 @@ for (const file of walk(reference)) {
 }
 
 console.log(`Neutralized ${mapping.size} branded model filenames.`);
+
+// Keep retired character customization and logo models out of the runnable
+// reference even when this older model-renaming helper is run directly.
+await import('./remove-character-customization.mjs');

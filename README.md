@@ -1,3 +1,22 @@
+# Data B-each
+
+The retained Data B-each reference build is the main site for this project.
+Running the app opens the playable reference experience at `/`.
+
+The inventory dashboard remains available at `/inventory`.
+
+## Run locally
+
+```bash
+npm run dev
+```
+
+The reference build is served from the tracked `reference/` folder without
+copying its assets into `public/`. Its boot page and all referenced assets are
+available at the site root so the original runtime paths continue to work.
+
+---
+
 # Data B-each reference inventory
 
 Inventory of the retained island reference assets compared with a local `three-rescue` dump layout.

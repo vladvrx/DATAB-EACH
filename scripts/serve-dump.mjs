@@ -45,6 +45,7 @@ const server = http.createServer((req, res) => {
   }
   fs.readFile(file, (err, data) => {
     if (err) {
+      console.warn(`[404] ${urlPath}`);
       res.writeHead(404, { "content-type": "text/plain" }).end("not found");
       return;
     }

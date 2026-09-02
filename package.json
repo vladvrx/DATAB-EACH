@@ -1,5 +1,5 @@
 {
-  "name": "coastal-world-inventory",
+  "name": "datab-each",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,6 +7,7 @@
     "build": "next build --turbopack",
     "start": "next start -p 43173",
     "lint": "eslint",
+    "test:alien-customization": "playwright test tests/alien-customization.spec.js --workers=1",
     "rebuild:html": "python3 scripts/rebuild-reference.py",
     "dump:download": "python3 scripts/download-dump.py",
     "dump:serve": "node scripts/serve-dump.mjs"
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@playwright/test": "^1.55.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

@@ -51,8 +51,6 @@ function renamedAsset(name) {
     }
   }
   if (/^phone-fintech-/i.test(next)) next = next.replace(/^phone-fintech-/i, 'phone-tech-company-');
-  if (next.startsWith('Asset_CoastalWorld')) next = next.replace('Asset_CoastalWorld', 'Asset_DataBeach');
-  if (next.startsWith('Asset_StandCoastal')) next = next.replace('Asset_StandCoastal', 'Asset_StandDataBeach');
   return next;
 }
 
@@ -364,3 +362,7 @@ if (fs.existsSync(vendorBundle)) {
 }
 
 console.log(`Sanitized ${oldToNewAsset.size} branded asset filenames and neutralized the reference collection.`);
+
+// Re-apply the permanent character/accessory and retired-logo removals after a
+// source sanitization pass so those assets cannot be restored by a rebuild.
+await import('./remove-character-customization.mjs');
