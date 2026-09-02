@@ -1,0 +1,5 @@
+UFO mesh attribution
+Title: Ufo
+Author: yanix (https://sketchfab.com/yanix)
+Source: https://sketchfab.com/3d-models/ufo-2d55eec1da344c9a9943abafbd07f0f9
+License: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
