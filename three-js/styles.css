@@ -1,5 +1,10 @@
 #threejs-hud {
   pointer-events: none;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 12;
 }
 
 #threejs-hud .pointer,
@@ -86,32 +91,26 @@ html.journey-started .page-intro {
 }
 
 #threejs-hud .dialog[data-v-fda03aae] {
-  position: fixed;
-  inset: 0;
-  z-index: 12;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   pointer-events: none;
 }
 
-#threejs-hud .dialog-bubble[data-v-9946fd7c] {
-  position: relative !important;
-  top: auto !important;
-  right: auto !important;
+#threejs-hud .dialog-bubble[data-v-9946fd7c],
+.dialog-bubble[data-v-9946fd7c] {
+  position: fixed !important;
+  top: 50vh !important;
+  right: var(--app-padding);
   bottom: auto !important;
-  left: auto !important;
-  width: 100%;
-  transform: none;
+  left: var(--app-padding);
+  width: auto;
+  transform: translateY(-50%);
 }
 
 #threejs-hud .dialog-component.dialog-bubble:not(.visible) {
-  transform: translateY(80px);
+  transform: translateY(calc(-50% + 80px));
 }
 
 #threejs-hud .dialog-component.dialog-bubble.visible {
-  transform: none;
+  transform: translateY(-50%);
 }
 
 .page-intro.threejs-start-fallback[hidden] {

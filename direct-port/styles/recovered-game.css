@@ -2313,14 +2313,13 @@ button.keypressed .round[data-v-b03f534f] {
 }
 
 .dialog-bubble[data-v-9946fd7c] {
-  position:relative;
-  top:auto;
-  right:auto;
-  left:auto;
+  position:fixed;
+  top:50vh;
+  right:var(--app-padding);
+  left:var(--app-padding);
   z-index:3;
-  width:100%;
-  padding:0 var(--app-padding);
-  text-align:center
+  text-align:center;
+  transform:translateY(-50%)
 }
 
 .bubble[data-v-9946fd7c] {
@@ -2704,14 +2703,7 @@ select[data-v-49ab79f6] {
 }
 
 .dialog[data-v-fda03aae] {
-  pointer-events:none;
-  position:fixed;
-  inset:0;
-  z-index:12;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center
+  pointer-events:none
 }
 
 .dialog-spinner[data-v-fda03aae] {
