@@ -1,5 +1,4 @@
 import { initializePageBehavior } from "./page-behavior.js";
-import { startSessionPressure } from "./session-pressure.js";
 
 const siteDataUrl = new URL("../data/site.json", import.meta.url);
 const runtimeUrl = new URL("../../vendor/main.35e6243a65453426.js", import.meta.url);
@@ -33,7 +32,6 @@ async function boot() {
   initializePageBehavior({ logoUrl, cursorUrl });
   window.__DATA = await loadSiteData();
   await import(runtimeUrl.href);
-  return startSessionPressure();
 }
 
 export function startGame() {

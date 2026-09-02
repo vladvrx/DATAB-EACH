@@ -1,11 +1,8 @@
 # Data B-each
 
-The retained Data B-each reference build is the main site for this project.
-Running the app opens the playable reference experience at `/`.
+The playable game is the **Three.js** build at `/three-js` (and `/`).
 
-The **Three.js recreation** (original `loadWebGL` engine plus cloned start screen, dialogue, and menus — no phone or map) is at `/three-js`. A standalone copy of only that game is [datab-each-threejs](https://github.com/vladvrx/datab-each-threejs). This repo keeps `three-js/` as the backup of that version.
-
-The inventory dashboard remains available at `/inventory`.
+The recovered Vue HUD remains at `/direct-port` as a visual reference. A standalone copy of only the Three.js game is [datab-each-threejs](https://github.com/vladvrx/datab-each-threejs). This repo keeps `three-js/` as the backup of that version.
 
 The inventory dashboard remains available at `/inventory`.
 

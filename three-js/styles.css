@@ -136,7 +136,9 @@ html.journey-started .page-intro {
 .new-phone,
 .phone-overlay,
 .page-phone,
-.phone-tab.map {
+.phone-tab.map,
+#session-pressure,
+body.pressure-surge::after {
   display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;

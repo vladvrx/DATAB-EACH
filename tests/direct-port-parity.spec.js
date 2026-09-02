@@ -175,67 +175,6 @@ test("direct port keeps alien customization and the two-tab phone", async ({ pag
   expect(remoteRequests).toEqual([]);
 });
 
-test("session pressure increases challenge with time, unlocks, and completions", async ({ page }) => {
-  const pageErrors = [];
-  const remoteRequests = [];
-  watchRemoteRequests(page, remoteRequests);
-  page.on("pageerror", (error) => pageErrors.push(error.stack || error.message));
-
-  await page.goto(PORT_URL, { waitUntil: "domcontentloaded" });
-  await expect(page.locator("#preloader")).toBeHidden({ timeout: 90_000 });
-  await expect
-    .poll(() => page.evaluate(() => window.__DATAB_EACH_SESSION_PRESSURE__?.snapshot() ?? null))
-    .not.toBeNull();
-  await expect
-    .poll(() => page.evaluate(() => window.__DATAB_EACH_SESSION_PRESSURE__.snapshot().ready))
-    .toBe(true);
-
-  const initial = await page.evaluate(() => window.__DATAB_EACH_SESSION_PRESSURE__.snapshot());
-  expect(initial).toMatchObject({ stage: 0, stageName: "Calm", targetTimeMultiplier: 1 });
-
-  await page.evaluate(() => {
-    const globals = document.querySelector("#app").__vue_app__.config.globalProperties;
-    globals.$circuit.targetTime = 70;
-    window.__DATAB_EACH_SESSION_PRESSURE__.advance(240);
-  });
-  await expect
-    .poll(() => page.evaluate(() => window.__DATAB_EACH_SESSION_PRESSURE__.snapshot().stage))
-    .toBe(1);
-  await expect
-    .poll(() => page.evaluate(() => {
-      const globals = document.querySelector("#app").__vue_app__.config.globalProperties;
-      return globals.$circuit.targetTime;
-    }))
-    .toBe(66.5);
-
-  await page.evaluate(() => {
-    const globals = document.querySelector("#app").__vue_app__.config.globalProperties;
-    globals.$savestate.game.quests.AvenMain = true;
-    globals.$savestate.setVariable("hasHammer", true);
-  });
-  await expect
-    .poll(() => page.evaluate(() => {
-      const globals = document.querySelector("#app").__vue_app__.config.globalProperties;
-      return globals.$quests.list.AvenSide.unlocked;
-    }))
-    .toBe(true);
-  await expect
-    .poll(() => page.evaluate(() => window.__DATAB_EACH_SESSION_PRESSURE__.snapshot().stage))
-    .toBe(2);
-  await expect(page.locator("#session-pressure")).toContainText("Charged");
-  expect(await page.evaluate(() => document.body.dataset.sessionPressureStage)).toBe("2");
-
-  await page.evaluate(() => {
-    const globals = document.querySelector("#app").__vue_app__.config.globalProperties;
-    globals.$savestate.game.vars.questsCompletedCount += 2;
-  });
-  await expect
-    .poll(() => page.evaluate(() => window.__DATAB_EACH_SESSION_PRESSURE__.snapshot().stage))
-    .toBe(3);
-  expect(pageErrors).toEqual([]);
-  expect(remoteRequests).toEqual([]);
-});
-
 test("direct port preserves the complete intro handoff and original walk clips", async ({ browser }) => {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
   const port = await boot(context, `${PORT_URL}&journey=full`);
@@ -274,15 +213,6 @@ test("direct port preserves the complete intro handoff and original walk clips",
   expect(beforeMove.questCount).toBeGreaterThan(0);
   expect(beforeMove.position).not.toBeNull();
   expect(beforeMove.movementSpeed).toBeGreaterThan(0);
-
-  await port.page.evaluate(() => window.__DATAB_EACH_SESSION_PRESSURE__.advance(240));
-  await expect
-    .poll(async () => (await runtimeState(port.page)).movementSpeed)
-    .toBeLessThan(beforeMove.movementSpeed);
-  await port.page.evaluate(() => window.__DATAB_EACH_SESSION_PRESSURE__.advance(6));
-  await expect
-    .poll(async () => (await runtimeState(port.page)).movementSpeed)
-    .toBeCloseTo(beforeMove.movementSpeed, 5);
 
   const movementSamples = [];
   await port.page.keyboard.down("KeyW");
@@ -379,7 +309,6 @@ test("direct port exposes recovered source contracts and reload-safe SPA routes"
     "direct-port/index.html",
     "direct-port/src/bootstrap.js",
     "direct-port/src/page-behavior.js",
-    "direct-port/src/session-pressure.js",
     "vendor/vendor.75f6e6ae65453426.js",
     "vendor/webgl.3250e36a65453426.js",
     "vendor/main.35e6243a65453426.js",

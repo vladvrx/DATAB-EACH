@@ -13,9 +13,9 @@ npm install
 npm run dev
 ```
 
-Open [http://127.0.0.1:43173/three-js/](http://127.0.0.1:43173/three-js/).
+Open [http://127.0.0.1:43173/three-js](http://127.0.0.1:43173/three-js) or `/`. Both serve this Three.js build.
 
-The recovered Vue HUD build remains at `/`. Use it as the visual reference while playing this port.
+The recovered Vue HUD build remains at `/direct-port`.
 
 ## What boots
 
