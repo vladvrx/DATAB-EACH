@@ -23,7 +23,9 @@ const defaultAsset = resolve(
   projectRoot,
   "reference/assets/character.df6ab95f65453426.glb",
 );
-const extraArgs = process.argv.slice(2).filter((value) => value !== "--slim-only");
+const extraArgs = process.argv
+  .slice(2)
+  .filter((value) => value !== "--slim-only" && value !== "--stubby-only");
 const sourcePath = resolve(extraArgs[0] || defaultAsset);
 const outputPath = resolve(extraArgs[1] || defaultAsset);
 const workDirectory = mkdtempSync(join(tmpdir(), "datab-each-alien-"));
@@ -68,6 +70,7 @@ try {
       `Alien detail vertices: ${designStats.addedVertexCount}`,
       `Collapsed upper-head vertices: ${designStats.collapsedUpperHeadVertices}`,
       `Slimmed leg vertices: ${designStats.slimmedLegVertices}`,
+      `Stubby foot vertices: ${designStats.stubbyFootVertices}`,
       `Removed customization nodes: ${customizationStats.removedNodeCount}`,
       `Removed shoe nodes: ${customizationStats.removedShoeNodeCount}`,
       `Removed belt-bag nodes: ${customizationStats.removedBeltBagNodeCount}`,
@@ -248,10 +251,14 @@ function alienizeCharacter(glb, { slimOnly = false } = {}) {
   const bodyNode = json.nodes[bodyNodeIndex];
   const primitive = json.meshes[bodyNode.mesh]?.primitives?.[0];
   if (!primitive) throw new Error("The shared character body has no mesh primitive.");
-  if (primitive.extras?.databEachSlimLegs) {
-    throw new Error("This character already has slimmer legs.");
+  if (primitive.extras?.databEachStubbyFeet) {
+    throw new Error("This character already has stubby feet.");
   }
+  const alreadySlimmed = Boolean(primitive.extras?.databEachSlimLegs);
   if (primitive.extras?.databEachAlienDesign != null) {
+    slimOnly = true;
+  }
+  if (process.argv.includes("--stubby-only")) {
     slimOnly = true;
   }
 
@@ -320,7 +327,15 @@ function alienizeCharacter(glb, { slimOnly = false } = {}) {
     addEarFin(positions, uvs, joints, weights, indices, chestJoint, 1);
   }
 
-  const slimmedLegVertices = slimLegs({
+  const slimmedLegVertices = alreadySlimmed
+    ? 0
+    : slimLegs({
+        positions,
+        joints,
+        weights,
+        jointNames,
+      });
+  const stubbyFootVertices = stubbyFeet({
     positions,
     joints,
     weights,
@@ -334,6 +349,7 @@ function alienizeCharacter(glb, { slimOnly = false } = {}) {
     addedVertexCount: positions.length / 3 - originalVertexCount,
     collapsedUpperHeadVertices,
     slimmedLegVertices,
+    stubbyFootVertices,
   };
 }
 
@@ -565,6 +581,84 @@ function slimLegs({ positions, joints, weights, jointNames }) {
   return slimmed;
 }
 
+function stubbyFeet({ positions, joints, weights, jointNames }) {
+  const vertexCount = positions.length / 3;
+  const axis = {
+    L: { x: 0, z: 0, weight: 0 },
+    R: { x: 0, z: 0, weight: 0 },
+  };
+  const perVertex = new Array(vertexCount);
+
+  for (let vertex = 0; vertex < vertexCount; vertex += 1) {
+    let leftToes = 0;
+    let rightToes = 0;
+    let leftAnkle = 0;
+    let rightAnkle = 0;
+    for (let component = 0; component < 4; component += 1) {
+      const name = jointNames[joints[vertex * 4 + component]] || "";
+      const weight = weights[vertex * 4 + component];
+      if (name.endsWith("Toes_L")) leftToes += weight;
+      if (name.endsWith("Toes_R")) rightToes += weight;
+      if (name.endsWith("Ankle_L")) leftAnkle += weight;
+      if (name.endsWith("Ankle_R")) rightAnkle += weight;
+    }
+
+    const y = positions[vertex * 3 + 1];
+    const ankleGate = Math.max(0, Math.min(1, (0.11 - y) / 0.08));
+    const left = leftToes * 1.05 + leftAnkle * ankleGate;
+    const right = rightToes * 1.05 + rightAnkle * ankleGate;
+    const side = left >= right ? "L" : "R";
+    const footWeight = side === "L" ? left : right;
+    const toesWeight = side === "L" ? leftToes : rightToes;
+    const ankleWeight = side === "L" ? leftAnkle : rightAnkle;
+    perVertex[vertex] = { side, footWeight, toesWeight, ankleGate };
+
+    const axisWeight = ankleWeight * (0.35 + (1 - ankleGate) * 0.65);
+    if (axisWeight >= 0.18 && y > 0.02 && y < 0.22) {
+      axis[side].x += positions[vertex * 3] * axisWeight;
+      axis[side].z += positions[vertex * 3 + 2] * axisWeight;
+      axis[side].weight += axisWeight;
+    }
+  }
+
+  for (const side of ["L", "R"]) {
+    if (axis[side].weight <= 0) continue;
+    axis[side].x /= axis[side].weight;
+    axis[side].z /= axis[side].weight;
+  }
+
+  const widthScale = 1.68;
+  const lengthScale = 0.34;
+  const stubHeight = 0.044;
+  const stubForward = 0.03;
+  let reshaped = 0;
+
+  for (let vertex = 0; vertex < vertexCount; vertex += 1) {
+    const { side, footWeight, toesWeight, ankleGate } = perVertex[vertex];
+    if (footWeight < 0.12 || axis[side].weight <= 0) continue;
+
+    const amount = Math.min(1, footWeight);
+    const x = positions[vertex * 3];
+    const y = positions[vertex * 3 + 1];
+    const z = positions[vertex * 3 + 2];
+    const padX = axis[side].x;
+    const padZ = axis[side].z + stubForward;
+
+    positions[vertex * 3] = x + (padX + (x - padX) * widthScale - x) * amount;
+    positions[vertex * 3 + 2] = z + (padZ + (z - padZ) * lengthScale - z) * amount;
+
+    if (y > stubHeight) {
+      const flatten = amount * Math.max(0.4, toesWeight, ankleGate * 0.85);
+      positions[vertex * 3 + 1] = y + (stubHeight - y) * flatten * 0.88;
+    }
+    if (positions[vertex * 3 + 1] < 0) {
+      positions[vertex * 3 + 1] = 0;
+    }
+    reshaped += 1;
+  }
+  return reshaped;
+}
+
 function writeBodyPrimitive(glb, primitive, { positions, uvs, joints, weights, indices }) {
   const { json, bin } = glb;
   const normals = recomputeNormals(positions, indices);
@@ -649,7 +743,8 @@ function writeBodyPrimitive(glb, primitive, { positions, uvs, joints, weights, i
   primitive.extras = {
     ...(primitive.extras || {}),
     databEachAlienDesign: primitive.extras?.databEachAlienDesign ?? 2,
-    databEachSlimLegs: 1,
+    databEachSlimLegs: primitive.extras?.databEachSlimLegs ?? 1,
+    databEachStubbyFeet: 1,
   };
   json.buffers[0].byteLength = combinedBin.length;
 }
