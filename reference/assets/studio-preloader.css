@@ -2,11 +2,35 @@
   background: #70bfe4 !important;
 }
 
+#preloader .preloader-progress {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  margin-top: 30px;
+}
+
 #preloader .preloader-counter,
 #preloader .preloader-baseline .default {
   color: #0d4a6b;
   font-weight: 700;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+#preloader .preloader-progress .preloader-counter {
+  margin-top: 0;
+  height: auto;
+  line-height: 1;
+}
+
+#preloader .preloader-progress .preloader-baseline {
+  position: static;
+  bottom: auto;
+  padding: 0;
+  font-size: inherit;
 }
 
 #preloader .logo {
@@ -20,7 +44,15 @@
   box-shadow: 0 18px 48px rgba(7, 24, 42, 0.38);
 }
 
+#preloader .preloader-spinner,
+#preloader .preloader-spinner:after {
+  width: 2.6em;
+  height: 2.6em;
+}
+
 #preloader .preloader-spinner {
+  margin: 0;
+  font-size: 8px;
   border-top-color: rgba(13, 74, 107, 0.22) !important;
   border-right-color: rgba(13, 74, 107, 0.22) !important;
   border-bottom-color: rgba(13, 74, 107, 0.22) !important;

@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="./reference/assets/game-cursor.css">
     <link rel="stylesheet" href="./direct-port/styles/direct-port-ui.css">
     <link rel="stylesheet" href="./three-js/styles.css?v=header-mute">
-    <link rel="stylesheet" href="./reference/assets/studio-preloader.css">
+    <link rel="stylesheet" href="./reference/assets/studio-preloader.css?v=spinner-counter">
     <script src="./reference/assets/studio-bridge.js"></script>
     <link rel="modulepreload" href="./vendor/vendor.75f6e6ae65453426.js">
     <link rel="modulepreload" href="./vendor/webgl.3250e36a65453426.js?v=neon-water">
@@ -32,8 +32,10 @@
   <body>
     <aside id="preloader" aria-live="polite">
       <img class="logo" src="./reference/assets/databeach-logo.png" alt="Data B-each">
-      <p class="preloader-counter">0</p>
-      <div class="preloader-baseline"><div class="preloader-spinner"></div></div>
+      <div class="preloader-progress">
+        <p class="preloader-counter">0</p>
+        <div class="preloader-baseline"><div class="preloader-spinner"></div></div>
+      </div>
       <figure class="preloader-foreground"></figure>
       <canvas class="waves"></canvas>
     </aside>
