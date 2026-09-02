@@ -3,6 +3,8 @@
 The retained Data B-each reference build is the main site for this project.
 Running the app opens the playable reference experience at `/`.
 
+The **Three.js recreation** (original `loadWebGL` engine plus cloned start screen, phone, quests, dialogue, and menus) is at `/three-js/`. See `three-js/README.md`.
+
 The inventory dashboard remains available at `/inventory`.
 
 ## Run locally

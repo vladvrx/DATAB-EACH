@@ -1,0 +1,56 @@
+#threejs-hud {
+  pointer-events: none;
+}
+
+#threejs-hud .pointer,
+#threejs-hud button,
+#threejs-hud a,
+#threejs-hud [data-pointer] {
+  pointer-events: auto;
+}
+
+.threejs-circle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.4em;
+  height: 4.4em;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  background: #fff;
+  color: #3b3777;
+  box-shadow: 0 0.35em 0 rgba(31, 44, 96, 0.18);
+}
+
+.threejs-circle.green {
+  background: #02c6a7;
+  color: #fff;
+}
+
+.threejs-circle.bordered {
+  background: transparent;
+  border: 0.18em solid #fff;
+  color: #fff;
+  box-shadow: none;
+}
+
+.threejs-circle .icon-svg {
+  width: 46%;
+  height: 46%;
+  fill: currentColor;
+}
+
+.threejs-circle.muted .icon-svg {
+  opacity: 0.45;
+}
+
+.phone-overlay[data-v-99fe8ba9] {
+  pointer-events: auto;
+}
+
+.menu-overlay[data-v-2fd699fb] {
+  pointer-events: auto;
+}

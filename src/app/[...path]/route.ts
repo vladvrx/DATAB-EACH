@@ -65,6 +65,10 @@ export async function GET(_request: Request, { params }: GameRouteContext) {
     root = DIRECT_PORT_ROOT;
     relativeSegments = mountedSegments.length ? mountedSegments : ["index.html"];
     fallbackIndex = path.join(DIRECT_PORT_ROOT, "index.html");
+  } else if (mount === "three-js") {
+    root = path.resolve(PROJECT_ROOT, "three-js");
+    relativeSegments = mountedSegments.length ? mountedSegments : ["index.html"];
+    fallbackIndex = path.join(root, "index.html");
   } else if (mount === "vendor") {
     root = VENDOR_ROOT;
     relativeSegments = mountedSegments;

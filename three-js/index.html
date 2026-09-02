@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; base-uri 'self'; connect-src 'self'; font-src 'self' data:; frame-src 'none'; img-src 'self' data: blob:; media-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:; style-src 'self' 'unsafe-inline'; worker-src 'self' blob:">
+    <base href="../">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+    <meta name="theme-color" content="#70bfe4">
+    <meta name="application-name" content="Data B-each">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="description" content="Explore the islands, restore their systems, and complete quests.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Data B-each">
+    <meta property="og:description" content="Explore the islands, restore their systems, and complete quests.">
+    <meta property="og:image" content="./reference/share/share_en.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="./reference/share/share_en.png">
+    <title>Data B-each</title>
+    <link rel="icon" href="./reference/favicon.ico" sizes="any">
+    <link rel="icon" href="./reference/icons/favicon_dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="./reference/icons/favicon_light.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+    <link rel="apple-touch-icon" href="./reference/icons/icon_180.png">
+    <link rel="stylesheet" href="./reference/assets/vendor.a83843c365453426.css">
+    <link rel="stylesheet" href="./direct-port/styles/recovered-game.css">
+    <link rel="stylesheet" href="./reference/assets/game-cursor.css">
+    <link rel="stylesheet" href="./direct-port/styles/direct-port-ui.css">
+    <link rel="stylesheet" href="./three-js/styles.css">
+    <link rel="modulepreload" href="./vendor/vendor.75f6e6ae65453426.js">
+    <link rel="modulepreload" href="./vendor/webgl.3250e36a65453426.js">
+  </head>
+  <body>
+    <aside id="preloader" aria-live="polite">
+      <img class="logo" src="./reference/assets/databeach-logo.png" alt="Data B-each">
+      <p class="preloader-counter">0</p>
+      <div class="preloader-baseline"><div class="preloader-spinner"></div></div>
+      <figure class="preloader-foreground"></figure>
+      <canvas class="waves"></canvas>
+    </aside>
+    <div id="app"></div>
+    <noscript>This game requires JavaScript.</noscript>
+    <script type="module">
+      import { startThreeJsGame } from "./three-js/src/boot.js";
+
+      startThreeJsGame().catch((error) => {
+        console.error("Data B-each Three.js could not start", error);
+        document.documentElement.classList.add("game-start-failed");
+        const counter = document.querySelector(".preloader-counter");
+        if (counter) counter.textContent = "START ERROR";
+      });
+    </script>
+  </body>
+</html>
