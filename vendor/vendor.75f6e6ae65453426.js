@@ -1,4 +1,4 @@
-//  Data B-each [R]
+//  glorb [R]
 //  Build 20250626-165126
 function e(e, t, s, i, n) {
   for (t = t.split ? t.split(".") : t, i = 0; i < t.length; i++) e = e ? e[t[i]] : n;
@@ -27783,7 +27783,7 @@ const _R = Object.freeze(Object.defineProperty({
       }
       analyticsEvent() {
         this.webgl.app.$analytics.pageview({
-          title: `Data B-each - Talk with ${this.partnerID}'s Ambassador`,
+          title: `glorb - Talk with ${this.partnerID}'s Ambassador`,
           path: "/quest-ambassador-" + this.partnerID
         });
       }
@@ -27870,7 +27870,7 @@ class SR extends yR {
   }
   analyticsEvent() {
     this.webgl.app.$analytics.pageview({
-      title: `Data B-each - Talk with ${this.partnerID}'s Quest Giver`,
+      title: `glorb - Talk with ${this.partnerID}'s Quest Giver`,
       path: "/quest-giver-" + this.partnerID
     });
   }
@@ -27890,7 +27890,7 @@ const AR = Object.freeze(Object.defineProperty({
   MR = {
     one: "One",
     prosper: "Prosper",
-    island: "Data B-each",
+    island: "glorb",
     brigit: "Brigit",
     x1: "X1"
   };
@@ -32464,7 +32464,7 @@ const RU = {
       ...RU,
       bgm: "music_island_west",
       pageview: {
-        title: "Data B-each - Island West",
+        title: "glorb - Island West",
         path: "/island-west"
       }
     },
@@ -32478,7 +32478,7 @@ const RU = {
       ...zU,
       bgm: "music_intro",
       pageview: {
-        title: "Data B-each - Intro",
+        title: "glorb - Intro",
         path: "/intro"
       }
     },
@@ -32501,7 +32501,7 @@ const RU = {
         point: "BikeGame"
       },
       pageview: {
-        title: "Data B-each - Bike Race",
+        title: "glorb - Bike Race",
         path: "/race-bike"
       }
     },
@@ -34253,7 +34253,7 @@ const KU = {
         hs(() => i.value, () => {
           i.value && y(!1);
         }), cv.$analytics.pageview({
-          title: "Data B-each - Customize",
+          title: "glorb - Customize",
           path: "/customize"
         });
       }), cv.$router.nrv({

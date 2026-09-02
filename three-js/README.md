@@ -1,6 +1,6 @@
-# Data B-each — Three.js
+# glorb — Three.js
 
-Playable recreation of DATAB-EACH on the original **Three.js r150** engine (`loadWebGL`) plus a HUD for the start screen, dialogue, and menus. There is no in-game phone and no map.
+Playable recreation of glorb on the original **Three.js r150** engine (`loadWebGL`) plus a HUD for the start screen, dialogue, and menus. There is no in-game phone and no map.
 
 This is not the archived `prototypes/threejs-recreation` placeholder. The island, shaders, splats, cameras, NPCs, and intro boat are the recovered WebGL runtime loading the same hashed GLBs from `reference/assets`.
 
@@ -27,7 +27,7 @@ The recovered Vue HUD build remains at `/direct-port`.
    - Dialogue bubbles, typewriter, Yes / No thanks choices
    - Header, pause menu, joystick, interaction button
 
-The intro Data B-each logo only stays on screen while **Start the journey** is visible.
+The intro glorb logo only stays on screen while **Start the journey** is visible.
 
 ## Files
 

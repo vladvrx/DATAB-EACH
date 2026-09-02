@@ -43,7 +43,7 @@
     "id": "MainQuestCompleted",
     "type": "mainQuest",
     "title": "Congratulations",
-    "description": "You finished a company quest. Claim your Data B-each Points."
+    "description": "You finished a company quest. Claim your glorb Points."
   },
   {
     "id": "QuestCompleted",
@@ -61,6 +61,6 @@
     "id": "ChestOpen",
     "type": "coastalPoints",
     "title": "Chest opened",
-    "description": "You found Data B-each Points inside a chest."
+    "description": "You found glorb Points inside a chest."
   }
 ]

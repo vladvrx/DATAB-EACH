@@ -1,4 +1,4 @@
-# DATAB-EACH direct Three.js port
+# glorb direct Three.js port
 
 This is the fidelity build. It comes from the game's authoritative ESM runtime rather than a
 recreated scene. The recovery process preserves the original module graph and behavior while

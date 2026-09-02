@@ -1,6 +1,6 @@
 {
   "format": "datab-each-game-pack-v1",
-  "note": "Props are included as JSON. The original game baked props into Scene_*.glb; drop these files over the locale/scene JSON in DATAB-EACH or keep this pack as the authored source.",
+  "note": "Props are included as JSON. The original game baked props into Scene_*.glb; drop these files over the locale/scene JSON in glorb or keep this pack as the authored source.",
   "scenes": {
     "Scene_CircuitBike": {
       "name": "CircuitBike",
@@ -38478,7 +38478,7 @@
       "unlockCondition": "",
       "reward": 20,
       "rewardItem": null,
-      "rewardText": "<strong>Well done!</strong> There are <strong>{{actorCounts.AvenHouse - 1}} other houses</strong> to find on the islands. Renovate them to unlock more Data B-each Points.",
+      "rewardText": "<strong>Well done!</strong> There are <strong>{{actorCounts.AvenHouse - 1}} other houses</strong> to find on the islands. Renovate them to unlock more glorb Points.",
       "rewardCondition": "$hasHammer && $builtHouseCount >= 1",
       "fintechID": "aven"
     },
@@ -38493,7 +38493,7 @@
       "unlockCondition": "",
       "reward": 20,
       "rewardItem": null,
-      "rewardText": "<strong>Congratulations!</strong> Come back anytime and finish your lap in <strong>less than {{gameGoals.CircuitBike}} seconds</strong> to unlock more Data B-each Points.",
+      "rewardText": "<strong>Congratulations!</strong> Come back anytime and finish your lap in <strong>less than {{gameGoals.CircuitBike}} seconds</strong> to unlock more glorb Points.",
       "rewardCondition": "$hasPlayedCircuitBike",
       "fintechID": "brigit"
     },
@@ -38523,7 +38523,7 @@
       "unlockCondition": "",
       "reward": 20,
       "rewardItem": null,
-      "rewardText": "<strong>So nice!</strong> There is <strong>{{actorCounts.CitizenSick - 1}} other people</strong> that need assistance on the islands. Help them and you&#39;ll be rewarded with more Data B-each Points!",
+      "rewardText": "<strong>So nice!</strong> There is <strong>{{actorCounts.CitizenSick - 1}} other people</strong> that need assistance on the islands. Help them and you&#39;ll be rewarded with more glorb Points!",
       "rewardCondition": "$hasStethoscope && $healedCitizenCount >= 1",
       "fintechID": "zenda"
     },
@@ -39742,7 +39742,7 @@
         "id": "Start",
         "isSpeak": true,
         "bubbles": [
-          "With all the <strong>Data B-each Points</strong> I collected, I was able to unlock enough equipment to go to the moon!",
+          "With all the <strong>glorb Points</strong> I collected, I was able to unlock enough equipment to go to the moon!",
           "Check <strong>your phone</strong> to see what you&#39;ve unlocked!"
         ],
         "before": [
@@ -41439,7 +41439,7 @@
         "id": "Start",
         "isSpeak": true,
         "bubbles": [
-          "You did it! The people of <strong>Data B-each</strong> owe you a debt of gratitude...",
+          "You did it! The people of <strong>glorb</strong> owe you a debt of gratitude...",
           "You don&#39;t do massages too, by any chance?"
         ],
         "before": [
@@ -41530,7 +41530,7 @@
         "id": "Dialogue2",
         "isSpeak": true,
         "bubbles": [
-          "My name is <strong>Michel</strong>, in a way you can say that I am one of the <strong>architects</strong> of this fabulous place that is <strong>Data B-each.</strong>",
+          "My name is <strong>Michel</strong>, in a way you can say that I am one of the <strong>architects</strong> of this fabulous place that is <strong>glorb.</strong>",
           "Really hope you&#39;d love it!",
           "Wanna go back there to explore?"
         ],
@@ -41890,7 +41890,7 @@
       "id": "MainQuestCompleted",
       "type": "mainQuest",
       "title": "Congratulations",
-      "description": "You finished a company quest. Claim your Data B-each Points."
+      "description": "You finished a company quest. Claim your glorb Points."
     },
     {
       "id": "QuestCompleted",
@@ -41908,7 +41908,7 @@
       "id": "ChestOpen",
       "type": "coastalPoints",
       "title": "Chest opened",
-      "description": "You found Data B-each Points inside a chest."
+      "description": "You found glorb Points inside a chest."
     }
   ],
   "site_hints": {

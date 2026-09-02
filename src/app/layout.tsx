@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Data B-each reference inventory",
+  title: "glorb reference inventory",
   description:
-    "Reference inventory for the Data B-each island asset collection, mapped against a local three-rescue dump.",
+    "Reference inventory for the glorb island asset collection, mapped against a local three-rescue dump.",
 };
 
 export default function RootLayout({

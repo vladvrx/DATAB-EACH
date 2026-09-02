@@ -1,4 +1,4 @@
-//  Data B-each [R]
+//  glorb [R]
 //  Build 20250626-165126
 var e = Object.defineProperty,
   t = (t, n, i) => (((t, n, i) => {
@@ -5662,11 +5662,11 @@ const hr = n({}, [["render", function (e, t) {
           if ("PartnerDetails" === e) {
             const e = o.$partners.list[t.partner];
             e && o.$analytics.pageview({
-              title: `Data B-each - Phone - Partners - ${e.name}`,
+              title: `glorb - Phone - Partners - ${e.name}`,
               path: `/phone-partners-${e.id}`
             });
           } else o.$analytics.pageview({
-            title: `Data B-each - Phone - ${e}`,
+            title: `glorb - Phone - ${e}`,
             path: `/phone-${e.toLowerCase()}`
           });
         }(s, c), Object.assign(i, {

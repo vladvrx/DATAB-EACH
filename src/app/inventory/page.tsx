@@ -68,15 +68,15 @@ export default function Home() {
     <div className="mx-auto flex min-h-screen max-w-6xl flex-col gap-10 px-4 py-8 sm:px-6 sm:py-12">
       <header className="space-y-4">
         <p className="text-sm font-medium tracking-wide text-primary uppercase">
-          Data B-each · reference inventory
+          glorb · reference inventory
         </p>
         <h1 className="max-w-3xl text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
           The retained reference snapshot is {fmtMiB(totals.bytes)} (
           {fmtMB(totals.bytes)}) across {fmtCount(totals.real_files)} files.
         </h1>
         <p className="max-w-2xl text-muted-foreground text-pretty">
-          This inventory records the hosted asset snapshot used for the Data
-          B-each reference collection. The retained files are now neutralized.
+          This inventory records the hosted asset snapshot used for the glorb
+          reference collection. The retained files are now neutralized.
           Source origin label: <code className="font-mono text-xs">databeach.local</code>.
           HTML + <code className="font-mono text-xs">main.js</code> is still
           only ~275 KB. The rest is vendor JS, hundreds of GLBs, terrain

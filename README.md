@@ -1,4 +1,4 @@
-# Data B-each
+# glorb
 
 The playable game is the **Three.js** build at `/three-js` (and `/`).
 
@@ -18,7 +18,7 @@ available at the site root so the original runtime paths continue to work.
 
 ---
 
-# Data B-each reference inventory
+# glorb reference inventory
 
 Inventory of the retained island reference assets compared with a local `three-rescue` dump layout.
 
@@ -69,7 +69,7 @@ Quick check that `assets/` is complete: it should contain **12 `.m4a` files** an
 
 ## Reference folder
 
-The **`reference/`** folder keeps the retained island, character, audio, model, and interface assets (~35 MB), along with neutralized locale data, the new Data B-each logo, and replicated `index.html` / `reference.html` boot pages. Serve this folder with `npm run dump:serve` to open the local reference build.
+The **`reference/`** folder keeps the retained island, character, audio, model, and interface assets (~35 MB), along with neutralized locale data, the new glorb logo, and replicated `index.html` / `reference.html` boot pages. Serve this folder with `npm run dump:serve` to open the local reference build.
 
 ## Run the inventory locally
 

@@ -6,7 +6,7 @@
   width: min(84vw, 620px);
   height: auto;
   pointer-events: none;
-  filter: drop-shadow(0 8px 0 rgba(31, 44, 96, 0.38));
+  filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.48));
   transform: translateX(-50%);
 }
 

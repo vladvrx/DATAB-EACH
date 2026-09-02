@@ -71,8 +71,28 @@
   opacity: 1;
 }
 
+#threejs-hud header .logo {
+  --logo-size: min(46vw, 228px);
+  flex-shrink: 0;
+  width: var(--logo-size) !important;
+  height: auto;
+  aspect-ratio: 1515 / 563;
+}
+
+#threejs-hud header .logo-mark,
+#threejs-hud .menu .menu-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.55));
+}
+
 #threejs-hud .menu-logo {
-  width: 180px;
+  width: min(72vw, 320px) !important;
+  height: auto;
+  aspect-ratio: 1515 / 563;
   margin-bottom: 10px;
 }
 

@@ -26,11 +26,11 @@
       "description": "The device or browser you are using is not up to date. Please try another browser or device to access this content."
     },
     "meta": {
-      "title": "Data B-each",
-      "description": "Play Data B-each now and explore mobile technology apps, digital player cards, and online technology options that can help you reach your digital goals."
+      "title": "glorb",
+      "description": "Play glorb now and explore mobile technology apps, digital player cards, and online technology options that can help you reach your digital goals."
     },
     "global": {
-      "descriptionA": "technology services providers advertised in Data B-each are not companies.",
+      "descriptionA": "technology services providers advertised in glorb are not companies.",
       "descriptionB": "technology services are provided by TECH COMPANY #1, Member safety-certified.",
       "baseline": "Proudly brought to you by<br>TECH COMPANY #1.",
       "rotation": "Rotate your device",
@@ -147,7 +147,7 @@
     "errors": {
       "outdatedWindow": {
         "title": "Oops!",
-        "desc": "You played Data B-each from another tab. Please reload the page to keep your save up-to-date."
+        "desc": "You played glorb from another tab. Please reload the page to keep your save up-to-date."
       },
       "existingUser": {
         "title": "Email sent!",

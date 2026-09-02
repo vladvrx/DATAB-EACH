@@ -6,24 +6,26 @@
     <base href="../">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
     <meta name="theme-color" content="#70bfe4">
-    <meta name="application-name" content="Data B-each">
+    <meta name="application-name" content="glorb">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="glorb">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="description" content="Explore the islands, restore their systems, and complete quests.">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Data B-each">
+    <meta property="og:title" content="glorb">
     <meta property="og:description" content="Explore the islands, restore their systems, and complete quests.">
     <meta property="og:image" content="./reference/share/share_en.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="./reference/share/share_en.png">
-    <title>Data B-each</title>
-    <link rel="icon" href="./reference/favicon.ico" sizes="any">
+    <title>glorb</title>
+    <link rel="icon" type="image/png" href="./reference/assets/databeach-logo.png?v=glorb">
+    <link rel="apple-touch-icon" href="./reference/assets/databeach-logo.png?v=glorb">
     <link rel="stylesheet" href="./reference/assets/vendor.a83843c365453426.css">
     <link rel="stylesheet" href="./direct-port/styles/recovered-game.css?v=dialog-mid-vh">
     <link rel="stylesheet" href="./reference/assets/game-cursor.css">
-    <link rel="stylesheet" href="./direct-port/styles/direct-port-ui.css">
-    <link rel="stylesheet" href="./three-js/styles.css?v=no-pressure">
+    <link rel="stylesheet" href="./direct-port/styles/direct-port-ui.css?v=glorb">
+    <link rel="stylesheet" href="./three-js/styles.css?v=glorb">
     <link rel="stylesheet" href="./reference/assets/studio-preloader.css?v=spinner-counter">
     <script src="./reference/assets/studio-bridge.js"></script>
     <link rel="modulepreload" href="./vendor/vendor.75f6e6ae65453426.js">
@@ -31,7 +33,7 @@
   </head>
   <body>
     <aside id="preloader" aria-live="polite">
-      <img class="logo" src="./reference/assets/databeach-logo.png" alt="Data B-each">
+      <img class="logo" src="./reference/assets/databeach-logo.png?v=glorb" alt="glorb">
       <div class="preloader-progress">
         <p class="preloader-counter">0</p>
         <div class="preloader-baseline"><div class="preloader-spinner"></div></div>
@@ -45,7 +47,7 @@
       import { startThreeJsGame } from "./three-js/src/boot.js";
 
       startThreeJsGame().catch((error) => {
-        console.error("Data B-each Three.js could not start", error);
+        console.error("glorb Three.js could not start", error);
         document.documentElement.classList.add("game-start-failed");
         const counter = document.querySelector(".preloader-counter");
         if (counter) counter.textContent = "START ERROR";

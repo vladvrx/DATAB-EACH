@@ -79,8 +79,8 @@ function syncHomeLogo(logoUrl) {
 
   const logo = document.createElement("img");
   logo.className = "databeach-home-logo";
-  logo.src = logoUrl.href;
-  logo.alt = "Data B-each";
+  logo.src = `${logoUrl.href}${logoUrl.search ? "&" : "?"}v=glorb`;
+  logo.alt = "glorb";
   document.body.appendChild(logo);
 }
 

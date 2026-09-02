@@ -38,7 +38,7 @@ function installHeader(app, host) {
     tabindex: "0",
     onClick: () => { app.$store.isMenuOpen = true; },
   });
-  logo.append(el("img", { src: "./reference/assets/databeach-logo.png", alt: "Data B-each", class: "logo-mark" }));
+  logo.append(el("img", { src: "./reference/assets/databeach-logo.png?v=glorb", alt: "glorb", class: "logo-mark", width: "1515", height: "563" }));
   const buttons = el("div", { class: "buttons", "data-v-08688f2d": "" });
   buttons.append(
     circleButton({
@@ -174,8 +174,8 @@ function installMenu(app, host) {
   const infos = el("section", { class: "menu-infos", "data-v-2fd699fb": "" });
   infos.append(
     el("img", {
-      src: "./reference/assets/databeach-logo.png",
-      alt: "Data B-each",
+      src: "./reference/assets/databeach-logo.png?v=glorb",
+      alt: "glorb",
       "data-v-2fd699fb": "",
       class: "menu-logo",
     }),

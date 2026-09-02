@@ -10,7 +10,7 @@
     "unlockCondition": "",
     "reward": 20,
     "rewardItem": null,
-    "rewardText": "<strong>Well done!</strong> There are <strong>{{actorCounts.AvenHouse - 1}} other houses</strong> to find on the islands. Renovate them to unlock more Data B-each Points.",
+    "rewardText": "<strong>Well done!</strong> There are <strong>{{actorCounts.AvenHouse - 1}} other houses</strong> to find on the islands. Renovate them to unlock more glorb Points.",
     "rewardCondition": "$hasHammer && $builtHouseCount >= 1",
     "fintechID": "aven"
   },
@@ -25,7 +25,7 @@
     "unlockCondition": "",
     "reward": 20,
     "rewardItem": null,
-    "rewardText": "<strong>Congratulations!</strong> Come back anytime and finish your lap in <strong>less than {{gameGoals.CircuitBike}} seconds</strong> to unlock more Data B-each Points.",
+    "rewardText": "<strong>Congratulations!</strong> Come back anytime and finish your lap in <strong>less than {{gameGoals.CircuitBike}} seconds</strong> to unlock more glorb Points.",
     "rewardCondition": "$hasPlayedCircuitBike",
     "fintechID": "brigit"
   },
@@ -55,7 +55,7 @@
     "unlockCondition": "",
     "reward": 20,
     "rewardItem": null,
-    "rewardText": "<strong>So nice!</strong> There is <strong>{{actorCounts.CitizenSick - 1}} other people</strong> that need assistance on the islands. Help them and you&#39;ll be rewarded with more Data B-each Points!",
+    "rewardText": "<strong>So nice!</strong> There is <strong>{{actorCounts.CitizenSick - 1}} other people</strong> that need assistance on the islands. Help them and you&#39;ll be rewarded with more glorb Points!",
     "rewardCondition": "$hasStethoscope && $healedCitizenCount >= 1",
     "fintechID": "zenda"
   },
