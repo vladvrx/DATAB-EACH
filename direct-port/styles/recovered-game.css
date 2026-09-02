@@ -882,12 +882,12 @@ textarea {
 }
 
 :root {
-  --cursor-auto: url(../../reference/embedded/cursor-auto.svg) 8 2, auto;
-  --cursor-crosshair: url(../../reference/embedded/cursor-crosshair.svg) 8 2, crosshair;
-  --cursor-pointer: url(../../reference/embedded/cursor-pointer.svg) 8 2, pointer;
-  --cursor-pointerActive: url(../../reference/embedded/cursor-pointer-active.svg) 8 2, pointer;
-  --cursor-grab: url(../../reference/embedded/cursor-grab.svg) 8 2, grab;
-  --cursor-grabbing: url(../../reference/embedded/cursor-grabbing.svg) 8 2, grabbing
+  --cursor-auto: auto;
+  --cursor-crosshair: crosshair;
+  --cursor-pointer: pointer;
+  --cursor-pointerActive: pointer;
+  --cursor-grab: grab;
+  --cursor-grabbing: grabbing
 }
 
 html {
@@ -967,10 +967,7 @@ html {
   z-index:0;
   width:100%;
   height:100%;
-  background-image:url(../../reference/oldBrowser/oldBrowser.jpg);
-  background-repeat:no-repeat;
-  background-position:center center;
-  background-size:cover
+  background:#3b3777
 }
 
 a,

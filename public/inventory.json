@@ -3,11 +3,11 @@
   "origin": "https://databeach.local/",
   "totals": {
     "candidates": 728,
-    "real_files": 728,
+    "real_files": 722,
     "spa_fallbacks": 0,
     "failed": 0,
-    "bytes": 20831070,
-    "gzip_bytes": 16943198
+    "bytes": 20358323,
+    "gzip_bytes": 16475936
   },
   "by_category": {
     "site": {
@@ -81,14 +81,9 @@
       "gzip_bytes": 11444
     },
     "icons": {
-      "files": 6,
-      "bytes": 448582,
-      "gzip_bytes": 434436
-    },
-    "oldBrowser": {
       "files": 1,
-      "bytes": 56000,
-      "gzip_bytes": 52668
+      "bytes": 31835,
+      "gzip_bytes": 19842
     },
     "share": {
       "files": 1,
@@ -5978,60 +5973,12 @@
       "content_type": "image/x-icon"
     },
     {
-      "path": "/icons/favicon_dark.svg",
-      "bytes": 2379,
-      "gzip_bytes": 1208,
-      "category": "icons",
-      "dump_bucket": "icons",
-      "content_type": "image/svg+xml"
-    },
-    {
-      "path": "/icons/favicon_light.svg",
-      "bytes": 2379,
-      "gzip_bytes": 1208,
-      "category": "icons",
-      "dump_bucket": "icons",
-      "content_type": "image/svg+xml"
-    },
-    {
-      "path": "/icons/icon_180.png",
-      "bytes": 50714,
-      "gzip_bytes": 50752,
-      "category": "icons",
-      "dump_bucket": "icons",
-      "content_type": "image/png"
-    },
-    {
-      "path": "/icons/icon_192.png",
-      "bytes": 55640,
-      "gzip_bytes": 55678,
-      "category": "icons",
-      "dump_bucket": "icons",
-      "content_type": "image/png"
-    },
-    {
-      "path": "/icons/icon_512.png",
-      "bytes": 305635,
-      "gzip_bytes": 305748,
-      "category": "icons",
-      "dump_bucket": "icons",
-      "content_type": "image/png"
-    },
-    {
       "path": "/manifest.webmanifest",
       "bytes": 578,
       "gzip_bytes": 325,
       "category": "site",
       "dump_bucket": "missing-from-dump-list (site root)",
       "content_type": "application/manifest+json"
-    },
-    {
-      "path": "/oldBrowser/oldBrowser.jpg",
-      "bytes": 56000,
-      "gzip_bytes": 52668,
-      "category": "oldBrowser",
-      "dump_bucket": "oldBrowser",
-      "content_type": "image/jpeg"
     },
     {
       "path": "/share/share_en.png",

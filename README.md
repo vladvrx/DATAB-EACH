@@ -37,14 +37,7 @@ HTML + `main.js` is still only ~275 KB. The rest is `vendor.js`, hundreds of GLB
 
 ## Were those the files from the 32.4 MB table?
 
-Yes. That table was the live origin, not the Downloads dump. This recount downloaded each file. It found four extras the earlier pass skipped:
-
-- `/icons/icon_192.png`
-- `/icons/icon_512.png`
-- `/sitemap.xml`
-- `/robots.txt`
-
-That is why the total moved from 30.9 MiB / 32.4 MB to 31.53 MiB / 33.06 MB.
+Yes. That table was the live origin, not the Downloads dump.
 
 | Category | Files | Size |
 | --- | ---: | ---: |
@@ -64,12 +57,10 @@ I cannot read `C:\Users\user\Downloads\three-rescue-2026-09-01` from this enviro
 | Dump path | Live mapping | In the 31.53 MiB? |
 | --- | --- | --- |
 | `assets/` | `/assets/` — 1,294 files, **29.69 MiB** | Yes. This is the game. |
-| `icons/` | `/icons/*` and maybe `favicon.ico` | Yes, 0.43 MiB |
-| `oldBrowser/` | `/oldBrowser/oldBrowser.jpg` | Yes, 56 KB |
-| `embedded/` | `data:` URLs already inside HTML | No extra hosted bytes |
-| `_external/` | Cookie Law, GTM, reCAPTCHA, YouTube | Other domains |
 | `MANIFEST.json` | Dump index | Not a game file |
 | `.gltf` | Logical `/blender/Exports/*` names | **Not hosted.** Those URLs return SPA HTML. Real models are hashed `.glb` files in `assets/`. |
+
+`icons/`, `oldBrowser/`, `embedded/`, and `_external/` were dropped from this repo.
 
 ### Likely missing from that folder list
 

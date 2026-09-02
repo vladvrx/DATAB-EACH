@@ -5,13 +5,9 @@
   "entry": "index.html",
   "dump_folders": [
     "assets",
-    "icons",
-    "oldBrowser",
-    "embedded",
-    "_external",
     ".gltf"
   ],
-  "hosted_files": 939,
+  "hosted_files": 933,
   "hosted_bytes": 21109678,
   "blender_logical_files": 350,
   "files": [
@@ -5542,46 +5538,10 @@
       "folder": "favicon.ico"
     },
     {
-      "url": "https://databeach.local/icons/favicon_dark.svg",
-      "local": "icons/favicon_dark.svg",
-      "bytes": 2379,
-      "folder": "icons"
-    },
-    {
-      "url": "https://databeach.local/icons/favicon_light.svg",
-      "local": "icons/favicon_light.svg",
-      "bytes": 2379,
-      "folder": "icons"
-    },
-    {
-      "url": "https://databeach.local/icons/icon_180.png",
-      "local": "icons/icon_180.png",
-      "bytes": 50714,
-      "folder": "icons"
-    },
-    {
-      "url": "https://databeach.local/icons/icon_192.png",
-      "local": "icons/icon_192.png",
-      "bytes": 55640,
-      "folder": "icons"
-    },
-    {
-      "url": "https://databeach.local/icons/icon_512.png",
-      "local": "icons/icon_512.png",
-      "bytes": 305635,
-      "folder": "icons"
-    },
-    {
       "url": "https://databeach.local/manifest.webmanifest",
       "local": "manifest.webmanifest",
       "bytes": 578,
       "folder": "manifest.webmanifest"
-    },
-    {
-      "url": "https://databeach.local/oldBrowser/oldBrowser.jpg",
-      "local": "oldBrowser/oldBrowser.jpg",
-      "bytes": 56000,
-      "folder": "oldBrowser"
     },
     {
       "url": "https://databeach.local/share/share_en.png",

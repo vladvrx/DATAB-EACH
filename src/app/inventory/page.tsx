@@ -122,12 +122,8 @@ export default function Home() {
           <p className="mt-1 max-w-3xl text-sm text-muted-foreground text-pretty">
             The previous table was the live hosted set, not your Downloads
             dump. This pass found {fmtCount(totals.real_files - PREVIOUS.files)}{" "}
-            extra files the earlier count skipped:{" "}
-            <code className="font-mono text-xs">/icons/icon_192.png</code>,{" "}
-            <code className="font-mono text-xs">/icons/icon_512.png</code>,{" "}
-            <code className="font-mono text-xs">/sitemap.xml</code>, and{" "}
-            <code className="font-mono text-xs">/robots.txt</code>. That is why
-            the total moved from {PREVIOUS.bytesMiB} MiB / {PREVIOUS.bytesMB} MB
+            extra files the earlier count skipped, including sitemap and robots.
+            That is why the total moved from {PREVIOUS.bytesMiB} MiB / {PREVIOUS.bytesMB} MB
             to {fmtMiB(totals.bytes)} / {fmtMB(totals.bytes)}.
           </p>
         </div>
