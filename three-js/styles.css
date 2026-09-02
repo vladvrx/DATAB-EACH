@@ -41,6 +41,21 @@
   pointer-events: auto;
 }
 
+.phone-hud,
+.new-phone,
+.phone-overlay,
+.page-phone,
+.phone-tab.map {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+html:not(.intro-cta-visible) .databeach-home-logo,
+html.journey-started .databeach-home-logo {
+  display: none !important;
+}
+
 .threejs-circle {
   position: relative;
   display: inline-flex;

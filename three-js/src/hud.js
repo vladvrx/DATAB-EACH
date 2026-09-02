@@ -1,7 +1,6 @@
 import { w as watch } from "../../vendor/vendor.75f6e6ae65453426.js";
 import { installChrome } from "./hud/chrome.js";
 import { installDialog } from "./hud/dialog.js";
-import { installPhone } from "./hud/phone.js";
 import { installStartScreen } from "./hud/start.js";
 
 function waitForHost() {
@@ -27,7 +26,6 @@ export function installHud(app) {
       installed = true;
       installStartScreen(app, host);
       try { installChrome(app, host); } catch (error) { console.error("Three.js HUD chrome failed", error); }
-      try { installPhone(app, host); } catch (error) { console.error("Three.js HUD phone failed", error); }
       try { installDialog(app, host); } catch (error) { console.error("Three.js HUD dialog failed", error); }
       document.documentElement.classList.add("threejs-hud-ready");
       return true;

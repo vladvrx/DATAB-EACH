@@ -45,12 +45,33 @@ function styleIntroChoices(root) {
   });
 }
 
-function syncHomeLogo(logoUrl) {
-  const intro = document.querySelector(".page-intro");
-  const startButton = document.querySelector(".start-btn");
-  const existing = document.querySelector(".databeach-home-logo");
+function isOnScreen(element) {
+  if (!element || element.hidden) return false;
+  if (element.closest("[hidden], [inert]")) return false;
+  const rect = element.getBoundingClientRect();
+  if (rect.width < 8 || rect.height < 8) return false;
+  const style = window.getComputedStyle(element);
+  return style.display !== "none" && style.visibility !== "hidden" && style.opacity !== "0";
+}
 
-  if (!intro || !startButton) {
+function introWantsLogo() {
+  const intro = window.__THREE_JS_GAME__?.app?.$webgl?.store?.intro
+    ?? document.querySelector("#app")?.__vue_app__?.config?.globalProperties?.$webgl?.store?.intro
+    ?? null;
+  if (intro?.journeyStarted?.value) return false;
+  if (intro && intro.startJourneyVisible && !intro.startJourneyVisible.value) return false;
+  return true;
+}
+
+function syncHomeLogo(logoUrl) {
+  const existing = document.querySelector(".databeach-home-logo");
+  const startButton = introWantsLogo()
+    ? [...document.querySelectorAll(".start-btn")].find(isOnScreen)
+    : null;
+  const show = !!startButton;
+  document.documentElement.classList.toggle("intro-cta-visible", show);
+
+  if (!show) {
     existing?.remove();
     return;
   }

@@ -12,6 +12,20 @@ import {
 import { ThreeJsRoot } from "./root.js";
 import { installHud } from "./hud.js";
 
+function disablePhoneAndMap(app) {
+  const blocked = new Set(["Phone", "QuestsDebug"]);
+  for (const method of ["push", "replace"]) {
+    const original = app.$router[method]?.bind(app.$router);
+    if (!original) continue;
+    app.$router[method] = (location, ...args) => {
+      const name = location && typeof location === "object" ? location.name : null;
+      if (blocked.has(name)) return Promise.resolve();
+      return original(location, ...args);
+    };
+  }
+  if (app.$store?.phone) app.$store.phone.isVisible = false;
+}
+
 export async function startEngine() {
   await restoreReloadOverlay();
   await assets.test();
@@ -27,6 +41,7 @@ export async function startEngine() {
   }
 
   const app = await vueApp.pluginManager.install();
+  disablePhoneAndMap(app);
   const translate = app.$l;
   app.$tpl = (text) => {
     text = String(text ?? "").replace(/&#39;/g, "'").replace(/&quot;/g, '"');

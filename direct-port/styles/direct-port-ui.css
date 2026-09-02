@@ -1,0 +1,35 @@
+.databeach-home-logo {
+  position: fixed;
+  top: 17vh;
+  left: 50%;
+  z-index: 4;
+  width: min(84vw, 620px);
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 0 rgba(31, 44, 96, 0.38));
+  transform: translateX(-50%);
+}
+
+html:not(.intro-cta-visible) .databeach-home-logo,
+html.journey-started .databeach-home-logo {
+  display: none !important;
+}
+
+.dialog .cta.intro-choice-yes {
+  color: #fff !important;
+  background: #00c6a7 !important;
+}
+
+.dialog .cta.intro-choice-no {
+  color: #3b3777 !important;
+  background: #fff !important;
+}
+
+.game-start-failed #preloader {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.game-start-failed .preloader-counter {
+  font-size: 18px;
+}

@@ -1,6 +1,6 @@
 # Data B-each — Three.js
 
-Playable 1:1 recreation of DATAB-EACH on the original **Three.js r150** engine (`loadWebGL`) plus a vanilla HUD that clones the recovered start screen, phone, quests, dialogue, and menus.
+Playable recreation of DATAB-EACH on the original **Three.js r150** engine (`loadWebGL`) plus a HUD for the start screen, dialogue, and menus. There is no in-game phone and no map.
 
 This is not the archived `prototypes/threejs-recreation` placeholder. The island, shaders, splats, cameras, NPCs, and intro boat are the recovered WebGL runtime loading the same hashed GLBs from `reference/assets`.
 
@@ -22,19 +22,21 @@ The recovered Vue HUD build remains at `/`. Use it as the visual reference while
 1. Original Vue plugins (`savestate`, `manifest`, `quests`, `dialogs`, `items`, `characters`, `router`, `preloader`, `webgl`) so the Three.js runtime gets the same `app.$` contracts.
 2. `loadWebGL` from `vendor/webgl.3250e36a65453426.js` — Three.js r150, original shaders, IslandIntro → IslandWest.
 3. Vue `WebGL` wrapper, `NiceRouterView` (intro **Start the journey**), and `NotificationCenter`.
-4. Vanilla HUD in `src/hud/` that talks to `$webgl.store`, `$dialogs`, `$quests`, `$store.phone`, and `$router`:
+4. Vanilla HUD in `src/hud/` that talks to `$webgl.store`, `$dialogs`, and `$router`:
    - Start overlay if the intro route is late
    - Dialogue bubbles, typewriter, Yes / No thanks choices
-   - Phone HUD, in-hand phone, Map with pins, Quests list
    - Header, pause menu, joystick, interaction button
+
+The intro Data B-each logo only stays on screen while **Start the journey** is visible.
 
 ## Files
 
 | Path | Role |
 | --- | --- |
 | `index.html` | Preloader + original CSS |
-| `src/boot.js` | `__DATA`, plugin install, same load order as recovered `main.js` |
+| `src/boot.js` | `__DATA`, then engine import |
+| `src/engine.js` | Plugin install and the same load order as recovered `main.js` |
 | `src/root.js` | Three.js canvas + router + notifications |
-| `src/hud/` | Start, phone, dialogue, menus |
+| `src/hud/` | Start, dialogue, menus |
 
 Locales stay in `reference/assets/dialogs_en.json`, `quests_en.json`, `characters_en.json`.

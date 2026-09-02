@@ -1,9 +1,18 @@
 import { ctaButton, el, playUiSound, unwrap } from "../dom.js";
 
+function syncIntroLogo(app) {
+  const intro = app.$webgl?.store?.intro;
+  const show = !!intro && unwrap(intro.startJourneyVisible) && !unwrap(intro.journeyStarted);
+  document.documentElement.classList.toggle("intro-cta-visible", show);
+  document.documentElement.classList.toggle("journey-started", !!unwrap(intro?.journeyStarted));
+  if (!show) document.querySelector(".databeach-home-logo")?.remove();
+}
+
 function startJourney(app) {
   const intro = app.$webgl?.store?.intro;
   if (!intro || unwrap(intro.journeyStarted)) return false;
   intro.journeyStarted.set(true);
+  syncIntroLogo(app);
   playUiSound(app, "sfx_UI_Dialog_CameraMove_In", { delay: 200 });
   return true;
 }
@@ -48,8 +57,8 @@ export function installStartScreen(app, host) {
   const bind = () => {
     const intro = app.$webgl?.store?.intro;
     if (!intro?.startJourneyVisible?.watchImmediate) return false;
-    intro.startJourneyVisible.watchImmediate(sync);
-    intro.journeyStarted.watchImmediate(sync);
+    intro.startJourneyVisible.watchImmediate(() => { sync(); syncIntroLogo(app); });
+    intro.journeyStarted.watchImmediate(() => { sync(); syncIntroLogo(app); });
     return true;
   };
   if (!bind()) {
