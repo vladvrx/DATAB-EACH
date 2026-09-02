@@ -1,0 +1,460 @@
+{
+  "format": "datab-each-direct-port-v1",
+  "sourceBuild": "20250626-165126",
+  "engine": "three.js",
+  "engineRevision": 150,
+  "basePath": "/three-port/",
+  "sourceStrategy": "Scope-safe AST recovery from the authoritative ESM production chunks",
+  "recoveredSymbols": [
+    "shaderChunks",
+    "TimersMixin",
+    "ReactivityMixin",
+    "DynamicPropsMixin",
+    "InteractiveZonesController",
+    "InteractiveZone",
+    "InteractiveActorMixin",
+    "PropsTransitionMixin",
+    "NpcController",
+    "characterAnimationFrames",
+    "CharacterMixin",
+    "DialogMixin",
+    "CharacterAnimationMixin",
+    "SceneTransitionController",
+    "RafStateMachineMixin",
+    "initializeGameRuntime",
+    "runtimePlugins",
+    "loadWebGL"
+  ],
+  "sharedAssetRoot": "../reference",
+  "bundles": [
+    {
+      "name": "vendor.75f6e6ae65453426.js",
+      "sourceBytes": 1185681,
+      "recoveredBytes": 1535666,
+      "sourceSha256": "9e339b1203f6220e1be4e5dcf24d0c56e676e14d55f5a58515d4401364320125",
+      "recoveredSha256": "1ae17aac743d3f6aab05a63c728b94ef7925b11e45466a26a8e2bc0180352d63",
+      "sourceMap": "assets/vendor.75f6e6ae65453426.js.map",
+      "recoveredVueComponents": [
+        {
+          "compiledName": "Mc",
+          "componentName": "WebGL",
+          "recoveredName": "VueWebGLComponent"
+        },
+        {
+          "compiledName": "Xy",
+          "componentName": "Validate",
+          "recoveredName": "VueValidateComponent"
+        },
+        {
+          "compiledName": "Yy",
+          "componentName": "Cross",
+          "recoveredName": "VueCrossComponent"
+        },
+        {
+          "compiledName": "e_",
+          "componentName": "LazyImage",
+          "recoveredName": "VueLazyImageComponent"
+        },
+        {
+          "compiledName": "l_",
+          "componentName": "ButtonAction",
+          "recoveredName": "VueButtonActionComponent"
+        },
+        {
+          "compiledName": "p_",
+          "componentName": "CallToAction",
+          "recoveredName": "VueCallToActionComponent"
+        },
+        {
+          "compiledName": "y_",
+          "componentName": "CharacterFace",
+          "recoveredName": "VueCharacterFaceComponent"
+        },
+        {
+          "compiledName": "k_",
+          "componentName": "NotifMainQuestCompleted",
+          "recoveredName": "VueNotifMainQuestCompletedComponent"
+        },
+        {
+          "compiledName": "D_",
+          "componentName": "BadgeCircle",
+          "recoveredName": "VueBadgeCircleComponent"
+        },
+        {
+          "compiledName": "V_",
+          "componentName": "NotifQuestCompleted",
+          "recoveredName": "VueNotifQuestCompletedComponent"
+        },
+        {
+          "compiledName": "J_",
+          "componentName": "NotifQuestProgress",
+          "recoveredName": "VueNotifQuestProgressComponent"
+        },
+        {
+          "compiledName": "ix",
+          "componentName": "NotifChestOpen",
+          "recoveredName": "VueNotifChestOpenComponent"
+        },
+        {
+          "compiledName": "vx",
+          "componentName": "Arrow",
+          "recoveredName": "VueArrowComponent"
+        },
+        {
+          "compiledName": "bx",
+          "componentName": "Sound",
+          "recoveredName": "VueSoundComponent"
+        },
+        {
+          "compiledName": "yx",
+          "componentName": "Play",
+          "recoveredName": "VuePlayComponent"
+        },
+        {
+          "compiledName": "_x",
+          "componentName": "Share",
+          "recoveredName": "VueShareComponent"
+        },
+        {
+          "compiledName": "xx",
+          "componentName": "Burger",
+          "recoveredName": "VueBurgerComponent"
+        },
+        {
+          "compiledName": "Sx",
+          "componentName": "CircleButton",
+          "recoveredName": "VueCircleButtonComponent"
+        },
+        {
+          "compiledName": "Lx",
+          "componentName": "NotifHint",
+          "recoveredName": "VueNotifHintComponent"
+        },
+        {
+          "compiledName": "$U",
+          "componentName": "IntroStart",
+          "recoveredName": "VueIntroStartComponent"
+        },
+        {
+          "compiledName": "XU",
+          "componentName": "Intro",
+          "recoveredName": "VueIntroComponent"
+        },
+        {
+          "compiledName": "lH",
+          "componentName": "CustomizeColorScheme",
+          "recoveredName": "VueCustomizeColorSchemeComponent"
+        },
+        {
+          "compiledName": "uH",
+          "componentName": "Customize",
+          "recoveredName": "VueCustomizeComponent"
+        },
+        {
+          "compiledName": "fH",
+          "componentName": "MiniGameCountdown",
+          "recoveredName": "VueMiniGameCountdownComponent"
+        },
+        {
+          "compiledName": "vH",
+          "componentName": "MiniGameControlsButton",
+          "recoveredName": "VueMiniGameControlsButtonComponent"
+        },
+        {
+          "compiledName": "yH",
+          "componentName": "MiniGameControls",
+          "recoveredName": "VueMiniGameControlsComponent"
+        },
+        {
+          "compiledName": "AH",
+          "componentName": "MiniGameTimer",
+          "recoveredName": "VueMiniGameTimerComponent"
+        },
+        {
+          "compiledName": "PH",
+          "componentName": "MiniGameFinish",
+          "recoveredName": "VueMiniGameFinishComponent"
+        },
+        {
+          "compiledName": "WH",
+          "componentName": "MiniGameResults",
+          "recoveredName": "VueMiniGameResultsComponent"
+        },
+        {
+          "compiledName": "eG",
+          "componentName": "Tutorial",
+          "recoveredName": "VueTutorialComponent"
+        }
+      ]
+    },
+    {
+      "name": "webgl.3250e36a65453426.js",
+      "sourceBytes": 271073,
+      "recoveredBytes": 351568,
+      "sourceSha256": "3fee2c7cda04705f3603e8a9918fa769668bff62374129403b513bf5cc05655f",
+      "recoveredSha256": "2736e0e351a721c5f6be7478ad516116f50ab1b3b18d28e4b63a93f5b2a68861",
+      "sourceMap": "assets/webgl.3250e36a65453426.js.map",
+      "recoveredVueComponents": []
+    },
+    {
+      "name": "main.35e6243a65453426.js",
+      "sourceBytes": 129714,
+      "recoveredBytes": 195792,
+      "sourceSha256": "03c0743f3a153067c89c89956d99325c28905f475d60aa36e534c549c0e16e48",
+      "recoveredSha256": "774ebd5bf7f6c77fde22e3988f59c491b22e1c599b39f2e4b55002dede4cdcb8",
+      "sourceMap": "assets/main.35e6243a65453426.js.map",
+      "recoveredVueComponents": [
+        {
+          "compiledName": "tt",
+          "componentName": "RotateDevice",
+          "recoveredName": "VueRotateDeviceComponent"
+        },
+        {
+          "compiledName": "mt",
+          "componentName": "AppMenu",
+          "recoveredName": "VueAppMenuComponent"
+        },
+        {
+          "compiledName": "gt",
+          "componentName": "Logo",
+          "recoveredName": "VueLogoComponent"
+        },
+        {
+          "compiledName": "bt",
+          "componentName": "AppHeader",
+          "recoveredName": "VueAppHeaderComponent"
+        },
+        {
+          "compiledName": "xt",
+          "componentName": "InteractionButton",
+          "recoveredName": "VueInteractionButtonComponent"
+        },
+        {
+          "compiledName": "Mt",
+          "componentName": "Joystick",
+          "recoveredName": "VueJoystickComponent"
+        },
+        {
+          "compiledName": "It",
+          "componentName": "Overlay",
+          "recoveredName": "VueOverlayComponent"
+        },
+        {
+          "compiledName": "Ot",
+          "componentName": "DialogAbout",
+          "recoveredName": "VueDialogAboutComponent"
+        },
+        {
+          "compiledName": "Ht",
+          "componentName": "Exclamation",
+          "recoveredName": "VueExclamationComponent"
+        },
+        {
+          "compiledName": "Vt",
+          "componentName": "ThreePoints",
+          "recoveredName": "VueThreePointsComponent"
+        },
+        {
+          "compiledName": "Nt",
+          "componentName": "Question",
+          "recoveredName": "VueQuestionComponent"
+        },
+        {
+          "compiledName": "jt",
+          "componentName": "Badge",
+          "recoveredName": "VueBadgeComponent"
+        },
+        {
+          "compiledName": "Zt",
+          "componentName": "DialogBubble",
+          "recoveredName": "VueDialogBubbleComponent"
+        },
+        {
+          "compiledName": "en",
+          "componentName": "Prompt",
+          "recoveredName": "VuePromptComponent"
+        },
+        {
+          "compiledName": "nn",
+          "componentName": "DialogButtons",
+          "recoveredName": "VueDialogButtonsComponent"
+        },
+        {
+          "compiledName": "ka",
+          "componentName": "SelectWheel",
+          "recoveredName": "VueSelectWheelComponent"
+        },
+        {
+          "compiledName": "$a",
+          "componentName": "DialogSelector",
+          "recoveredName": "VueDialogSelectorComponent"
+        },
+        {
+          "compiledName": "Sa",
+          "componentName": "DialogSelect",
+          "recoveredName": "VueDialogSelectComponent"
+        },
+        {
+          "compiledName": "La",
+          "componentName": "DialogController",
+          "recoveredName": "VueDialogControllerComponent"
+        },
+        {
+          "compiledName": "Na",
+          "componentName": "PhoneHUD",
+          "recoveredName": "VuePhoneHUDComponent"
+        },
+        {
+          "compiledName": "Ra",
+          "componentName": "InputCheck",
+          "recoveredName": "VueInputCheckComponent"
+        },
+        {
+          "compiledName": "qa",
+          "componentName": "InputMail",
+          "recoveredName": "VueInputMailComponent"
+        },
+        {
+          "compiledName": "Za",
+          "componentName": "EnrollForm",
+          "recoveredName": "VueEnrollFormComponent"
+        },
+        {
+          "compiledName": "to",
+          "componentName": "FormContainer",
+          "recoveredName": "VueFormContainerComponent"
+        },
+        {
+          "compiledName": "io",
+          "componentName": "ItemNotification",
+          "recoveredName": "VueItemNotificationComponent"
+        },
+        {
+          "compiledName": "vo",
+          "componentName": "ApiNotif",
+          "recoveredName": "VueApiNotifComponent"
+        },
+        {
+          "compiledName": "xo",
+          "componentName": "Confettis",
+          "recoveredName": "VueConfettisComponent"
+        },
+        {
+          "compiledName": "$o",
+          "componentName": "PhoneCase",
+          "recoveredName": "VuePhoneCaseComponent"
+        },
+        {
+          "compiledName": "Do",
+          "componentName": "PhoneHand",
+          "recoveredName": "VuePhoneHandComponent"
+        },
+        {
+          "compiledName": "Oo",
+          "componentName": "PhoneScreen",
+          "recoveredName": "VuePhoneScreenComponent"
+        },
+        {
+          "compiledName": "Vo",
+          "componentName": "PhoneNavigation",
+          "recoveredName": "VuePhoneNavigationComponent"
+        },
+        {
+          "compiledName": "Yo",
+          "componentName": "PhoneFeaturedBadge",
+          "recoveredName": "VuePhoneFeaturedBadgeComponent"
+        },
+        {
+          "compiledName": "Uo",
+          "componentName": "MapPin",
+          "recoveredName": "VueMapPinComponent"
+        },
+        {
+          "compiledName": "el",
+          "componentName": "MapConfirmation",
+          "recoveredName": "VueMapConfirmationComponent"
+        },
+        {
+          "compiledName": "ll",
+          "componentName": "Map",
+          "recoveredName": "VueMapComponent"
+        },
+        {
+          "compiledName": "ul",
+          "componentName": "PhoneHeader",
+          "recoveredName": "VuePhoneHeaderComponent"
+        },
+        {
+          "compiledName": "pl",
+          "componentName": "PhoneTag",
+          "recoveredName": "VuePhoneTagComponent"
+        },
+        {
+          "compiledName": "zl",
+          "componentName": "Fintechs",
+          "recoveredName": "VueFintechsComponent"
+        },
+        {
+          "compiledName": "ql",
+          "componentName": "Accessory",
+          "recoveredName": "VueAccessoryComponent"
+        },
+        {
+          "compiledName": "Ql",
+          "componentName": "Accessories",
+          "recoveredName": "VueAccessoriesComponent"
+        },
+        {
+          "compiledName": "cr",
+          "componentName": "Customization",
+          "recoveredName": "VueCustomizationComponent"
+        },
+        {
+          "compiledName": "pr",
+          "componentName": "QuestCardSteps",
+          "recoveredName": "VueQuestCardStepsComponent"
+        },
+        {
+          "compiledName": "mr",
+          "componentName": "QuestCardProgressBar",
+          "recoveredName": "VueQuestCardProgressBarComponent"
+        },
+        {
+          "compiledName": "Dr",
+          "componentName": "QuestCard",
+          "recoveredName": "VueQuestCardComponent"
+        },
+        {
+          "compiledName": "Yr",
+          "componentName": "Quests",
+          "recoveredName": "VueQuestsComponent"
+        },
+        {
+          "compiledName": "qr",
+          "componentName": "FintechVideo",
+          "recoveredName": "VueFintechVideoComponent"
+        },
+        {
+          "compiledName": "tc",
+          "componentName": "PhoneTabView",
+          "recoveredName": "VuePhoneTabViewComponent"
+        },
+        {
+          "compiledName": "nc",
+          "componentName": "NewPhone",
+          "recoveredName": "VueNewPhoneComponent"
+        },
+        {
+          "compiledName": "fc",
+          "componentName": "YoutubePlayer",
+          "recoveredName": "VueYoutubePlayerComponent"
+        },
+        {
+          "compiledName": "vc",
+          "componentName": "App",
+          "recoveredName": "VueAppComponent"
+        }
+      ]
+    }
+  ]
+}

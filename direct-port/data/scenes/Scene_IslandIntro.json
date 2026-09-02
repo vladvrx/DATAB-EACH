@@ -1,0 +1,123 @@
+{
+  "name": "IslandIntro",
+  "bounds": [
+    [
+      13.113579,
+      -11.613289,
+      -213.433426
+    ],
+    [
+      252.187531,
+      17.247711,
+      87.036461
+    ]
+  ],
+  "useBaseAsCollider": false,
+  "points": {
+    "Spawn.001": [
+      206.841797,
+      1.793991,
+      -145.759628,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "BoatIntro.001": [
+      -23.710144,
+      -0.153495,
+      -88.873047,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "assets": [
+    "TreeRoundF",
+    "TreeTriangleC",
+    "TreeSquareA",
+    "TreeRoundE",
+    "TreeTriangleA",
+    "Wall",
+    "Pillar",
+    "RockA",
+    "Slope",
+    "ShipA",
+    "ShipAVerB",
+    "ShipB",
+    "TreeRoundB",
+    "PalmTree",
+    "BoatA",
+    "TreeSquareB",
+    "PicnicTable",
+    "BeachUmbrellaB",
+    "BeachUmbrella",
+    "TreeRoundA",
+    "SolidGroundLong",
+    "TreeCapsuleC",
+    "HouseG",
+    "HouseB",
+    "HouseC",
+    "HouseD",
+    "RampD",
+    "HouseF",
+    "TreeCapsule",
+    "BoatB",
+    "TreeTriangleE",
+    "HouseCabinC",
+    "CarRaceTrack",
+    "BridgeWoodCurvedB",
+    "PontoonLittle",
+    "BeachChair",
+    "Flag",
+    "BridgeWoodCurvedA",
+    "SolidGroundRound",
+    "PalmTreeStreet",
+    "CarRaceBuidling",
+    "HouseA",
+    "RampA",
+    "SkateparkBowl",
+    "RampC",
+    "RampB",
+    "FishingShip",
+    "Truck",
+    "Crossing",
+    "HouseCabinA",
+    "BeachBench",
+    "BeachTable",
+    "SurfShop",
+    "SolidGroundRoundBig",
+    "TruckFood",
+    "BuildingFOff",
+    "ShopForSaleBase",
+    "AvenHouseOff"
+  ],
+  "actors": [
+    {
+      "uid": "NPC_Intro.001",
+      "type": "NPC",
+      "params": {
+        "subtype": "Intro"
+      },
+      "transforms": [
+        -20.716511,
+        0,
+        -100.081581,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  ]
+}

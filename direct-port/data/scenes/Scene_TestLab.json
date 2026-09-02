@@ -1,0 +1,67 @@
+{
+  "name": "TestLab",
+  "bounds": [
+    [
+      -49.78323,
+      -7.994298,
+      -49.78323
+    ],
+    [
+      49.78323,
+      1.5,
+      49.78323
+    ]
+  ],
+  "useBaseAsCollider": true,
+  "points": {
+    "Spawn.001": [
+      -0.095613,
+      2.556661,
+      13.388944,
+      1,
+      1,
+      1,
+      0,
+      0.031543,
+      0,
+      0.999502
+    ]
+  },
+  "areas": {
+    "AmbianceBeach.001": {
+      "position": [
+        -0.177965,
+        9.481153,
+        -0.013148
+      ],
+      "size": 43.234
+    }
+  },
+  "assets": [
+    "BushA",
+    "PalmTree",
+    "BigBushB",
+    "BushB"
+  ],
+  "actors": [
+    {
+      "uid": "NPC_Test_ChatGpt.001",
+      "type": "NPC",
+      "params": {
+        "subtype": "Test_ChatGpt"
+      },
+      "transforms": [
+        -0.152312,
+        1.500004,
+        1.902992,
+        1,
+        1,
+        1,
+        0,
+        -0.039022,
+        0,
+        0.999238
+      ]
+    }
+  ]
+}

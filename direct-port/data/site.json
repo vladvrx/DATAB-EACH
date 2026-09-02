@@ -1,0 +1,195 @@
+{
+  "project": {
+    "timestamp": "20250626-165126",
+    "environment": "production",
+    "url": "https://databeach.local/",
+    "origin": "https://databeach.local",
+    "basepath": "/",
+    "locales": {
+      "en": {
+        "name": "English",
+        "language": "en",
+        "region": "us",
+        "rtl": true,
+        "default": true,
+        "id": "en",
+        "code": "en-US",
+        "iso": "en_US"
+      }
+    },
+    "trailingSlash": true
+  },
+  "site": {
+    "locale": "en",
+    "oldbrowser": {
+      "title": "Sorry",
+      "description": "The device or browser you are using is not up to date. Please try another browser or device to access this content."
+    },
+    "meta": {
+      "title": "Data B-each",
+      "description": "Play Data B-each now and explore mobile technology apps, digital player cards, and online technology options that can help you reach your digital goals."
+    },
+    "global": {
+      "descriptionA": "technology services providers advertised in Data B-each are not companies.",
+      "descriptionB": "technology services are provided by TECH COMPANY #1, Member safety-certified.",
+      "baseline": "Proudly brought to you by<br>TECH COMPANY #1.",
+      "rotation": "Rotate your device",
+      "disclosure": "technology services are provided by TECH COMPANY #1, Member safety-certified, Equal Housing Lender, NMLS # 462289. player cards are issued by TECH COMPANY #1 pursuant to a license by Player Pass U.S.A. Inc. and Player Pass International Incorporated."
+    },
+    "home": {
+      "description": "Already started your journey?",
+      "button": {}
+    },
+    "tutorial": {
+      "desktop": {
+        "world": "Use keys or <strong>click &amp; drag to move</strong>",
+        "game": "Use the left &amp; right buttons <strong>to drive</strong>"
+      },
+      "mobile": {
+        "world": "Drag <strong>to move</strong>",
+        "game": "Use your left &amp; right keys <strong>to drive</strong>"
+      }
+    },
+    "hint": {
+      "customize": {
+        "title": "Change your style!",
+        "description": "Click here to change your alien color."
+      },
+      "quest": {
+        "title": "New quest available",
+        "description": "Click here to check your&nbsp;quests."
+      },
+      "accessories": {
+        "title": "New accessories available",
+        "description": "Click here to buy your&nbsp;new&nbsp;accessories."
+      },
+      "map": {
+        "title": "",
+        "description": "Open the map to quickly navigate and discover places to go"
+      },
+      "fintech": {
+        "title": "Head here first",
+        "description": "Click here to open the map &amp; find out what you can visit"
+      }
+    },
+    "cta": {
+      "no": {
+        "thanks": "No thanks"
+      },
+      "more": "Learn more",
+      "quest": "Launch quest",
+      "about": "About",
+      "collect": "Collect",
+      "continue": "Continue",
+      "customize": "Customize",
+      "validate": "Confirm",
+      "claim": "Claim",
+      "buy": "Buy",
+      "start": "Start the journey",
+      "drive": "Drive me there",
+      "boat": "Boat me there",
+      "discover": "Learn more",
+      "reload": "Reload",
+      "interaction": {
+        "click": "Click & hold",
+        "touch": "Touch & hold",
+        "tap": "Tap tap tap"
+      },
+      "visit": "Visit",
+      "shop": "Shop items"
+    },
+    "quest": {
+      "end": {
+        "title": "Congratulations"
+      },
+      "completed": "Completed quests",
+      "locked": "Quests to unlock",
+      "progress": "Keep going on!"
+    },
+    "phone": {
+      "title": {
+        "fintech": "The Fintechs",
+        "cp": "Data B-each Points",
+        "customize": "Customize Avatar",
+        "quest": "The Quests"
+      },
+      "desc": {
+        "fintech": "<strong>Learn about each brand and the products and services they offer.</strong>",
+        "cp": "<strong>Unlock new accessories with your Data B-each Points. Those with a fire icon will give you a magic skill!</strong>",
+        "customize": "<strong>Choose your alien color.</strong>",
+        "quest": "<strong>Complete quests to earn Data B-each Points.</strong>"
+      },
+      "new": {
+        "item": "new"
+      }
+    },
+    "menu": {
+      "coastallink": "https://www.databeach.local/databeach/"
+    },
+    "game": {
+      "timer": {
+        "timetobeat": "Time to beat",
+        "besttime": "Best time",
+        "seconds": "sec",
+        "target": {
+          "CircuitBike": "70"
+        }
+      },
+      "finish": "finish",
+      "results": {
+        "cta": {
+          "reward": "Get my reward",
+          "quit": "Quit",
+          "replay": "Replay"
+        }
+      }
+    },
+    "errors": {
+      "outdatedWindow": {
+        "title": "Oops!",
+        "desc": "You played Data B-each from another tab. Please reload the page to keep your save up-to-date."
+      },
+      "existingUser": {
+        "title": "Email sent!",
+        "desc": "",
+        "continue": "Continue as guest"
+      },
+      "invalidAccessToken": {
+        "title": "Oops!",
+        "desc": "The link you used to connect is invalid or expired. Please use the form to authenticate again.",
+        "continue": "Continue"
+      }
+    },
+    "arialabel": {
+      "customize": "Customize your profile",
+      "menu": "Open menu",
+      "close": "Close",
+      "sound": "Sound",
+      "open": "Open",
+      "previous": "Previous",
+      "next": "Next",
+      "random": "Randomize",
+      "discard": "Discard",
+      "validate": "Confirm",
+      "play": "Play",
+      "link": "Open the link",
+      "back": "Back",
+      "enter": "Enter",
+      "phone": "Open the phone",
+      "color": "Switch for color",
+      "faceMale": "Male face",
+      "faceFemale": "Female face"
+    }
+  },
+  "page": {
+    "route": {
+      "name": "Home",
+      "url": "https://databeach.local/",
+      "params": {}
+    },
+    "translations": {
+      "en": ""
+    },
+    "locale": "en"
+  }
+}

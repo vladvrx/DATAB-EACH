@@ -1,0 +1,245 @@
+{
+  "name": "EasterEgg",
+  "bounds": [
+    [
+      -40.381733,
+      -9.508005,
+      -40.381733
+    ],
+    [
+      40.381733,
+      2.380172,
+      40.381733
+    ]
+  ],
+  "useBaseAsCollider": true,
+  "points": {
+    "Spawn.001": [
+      9.645113,
+      2.365786,
+      0.129667,
+      1,
+      1,
+      1,
+      0,
+      0.722173,
+      0,
+      0.691713
+    ]
+  },
+  "areas": {
+    "AmbianceBeach.001": {
+      "position": [
+        1.316866,
+        9.481153,
+        1.730821
+      ],
+      "size": 29.406
+    }
+  },
+  "assets": [
+    "PalmTree",
+    "BigBushB",
+    "BushA",
+    "Pavement",
+    "BeachUmbrellaB",
+    "BeachChair",
+    "BushB",
+    "Crate",
+    "Tamtam",
+    "Wilson",
+    "Barrel",
+    "MMBalloon",
+    "RockA",
+    "BushC",
+    "SeaStar",
+    "BeachBall",
+    "ShipAVerB",
+    "FishingShip",
+    "BoatA"
+  ],
+  "actors": [
+    {
+      "uid": "Chest.003",
+      "type": "Chest",
+      "transforms": [
+        -3.629628,
+        1.635914,
+        -5.974444,
+        0.84816194,
+        0.84816223,
+        0.84816217,
+        0.035057,
+        -0.368128,
+        -0.022758,
+        0.928835
+      ]
+    },
+    {
+      "uid": "Chest.004",
+      "type": "Chest",
+      "transforms": [
+        -6.962507,
+        1.807176,
+        14.098346,
+        0.70987427,
+        0.70987439,
+        0.70987427,
+        0.04616,
+        -0.88115,
+        -0.067308,
+        0.46574
+      ]
+    },
+    {
+      "uid": "NPC_Citizen_Easter_EggA.001",
+      "type": "NPC",
+      "params": {
+        "subtype": "Citizen_Easter_EggA"
+      },
+      "transforms": [
+        -3.821714,
+        1.591907,
+        -0.473077,
+        0.99999994,
+        0.99999994,
+        1,
+        0.004648,
+        0.653061,
+        -0.002755,
+        0.757286
+      ]
+    },
+    {
+      "uid": "NPC_Citizen_Easter_EggD.001",
+      "type": "NPC",
+      "params": {
+        "subtype": "Citizen_Easter_EggD"
+      },
+      "transforms": [
+        -0.674063,
+        1.690763,
+        5.028913,
+        1,
+        0.99999994,
+        1.00000012,
+        0.003332,
+        0.935793,
+        -0.00731,
+        0.352459
+      ]
+    },
+    {
+      "uid": "NPC_Citizen_Easter_EggB.001",
+      "type": "NPC",
+      "params": {
+        "subtype": "Citizen_Easter_EggB"
+      },
+      "transforms": [
+        -3.190367,
+        1.543957,
+        2.010676,
+        0.99999994,
+        1,
+        1,
+        0.013579,
+        0.912205,
+        0.00675,
+        0.409454
+      ]
+    },
+    {
+      "uid": "NPC_Citizen_Easter_EggE.001",
+      "type": "NPC",
+      "params": {
+        "subtype": "Citizen_Easter_EggE"
+      },
+      "transforms": [
+        5.661723,
+        0.845708,
+        12.219189,
+        1,
+        0.99999994,
+        1.00000012,
+        0.063623,
+        0.333685,
+        -0.023768,
+        0.940235
+      ]
+    },
+    {
+      "uid": "NPC_Citizen_Easter_EggC.001",
+      "type": "NPC",
+      "params": {
+        "subtype": "Citizen_Easter_EggC"
+      },
+      "transforms": [
+        24.890141,
+        1.343808,
+        5.72362,
+        0.99999994,
+        0.99999994,
+        1.00000012,
+        0.015666,
+        -0.915566,
+        0.016671,
+        0.401518
+      ]
+    },
+    {
+      "uid": "Tamtam.001",
+      "type": "Tamtam",
+      "transforms": [
+        0.514111,
+        1.550179,
+        -1.440449,
+        0.474139,
+        0.47413898,
+        0.47413903,
+        0.004548,
+        0.000049,
+        -0.01085,
+        0.999931
+      ]
+    },
+    {
+      "uid": "Telescope.001",
+      "type": "Telescope",
+      "params": {
+        "targetPosition": "17.683418, 18.657168, 6.525657",
+        "targetLookAt": "24.772716, -4.357497, 9.706995"
+      },
+      "transforms": [
+        10.4893,
+        1.02654,
+        5.02702,
+        0.76062304,
+        0.76062304,
+        0.7606231,
+        0.001652,
+        -0.797383,
+        -0.012776,
+        0.603337
+      ]
+    },
+    {
+      "uid": "NPC_Citizen_Easter_EggF.001",
+      "type": "NPC",
+      "params": {
+        "subtype": "Citizen_Easter_EggF"
+      },
+      "transforms": [
+        4.810788,
+        1.215549,
+        -7.080331,
+        1,
+        1,
+        1.00000012,
+        -0.003203,
+        0.388415,
+        -0.028803,
+        0.921029
+      ]
+    }
+  ]
+}

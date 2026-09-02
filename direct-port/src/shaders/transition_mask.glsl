@@ -1,0 +1,1 @@
+vec2 screenSpaceUv=vec2(gl_FragCoord.xy)/res.xy;vec2 ratio=vec2(clamp(0.,1.,res.x/res.y),clamp(0.,1.,res.y/res.x));screenSpaceUv.x*=ratio.x;screenSpaceUv.y*=ratio.y;screenSpaceUv.x+=(1.-ratio.x)/2.;screenSpaceUv.y+=(1.-ratio.y)/2.;float circle=distance(screenSpaceUv,vec2(0.5));circle=1.-step(circle,maskRadius);
