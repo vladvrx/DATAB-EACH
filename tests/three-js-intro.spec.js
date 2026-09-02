@@ -1,7 +1,7 @@
 const { test, expect } = require("@playwright/test");
 
 test.use({
-  channel: "msedge",
+  channel: "chrome",
   headless: true,
   viewport: { width: 1280, height: 720 },
 });
@@ -20,6 +20,13 @@ async function runtime(page) {
       dialog: app?.$dialogs?.current?.node?.id ?? null,
       dialogVisible: !!app?.$store?.isDialogVisible,
       headerVisible: document.querySelector("#threejs-hud .app-header")?.classList.contains("is-visible") ?? false,
+      menuOpen: !!document.querySelector("#threejs-hud .menu.is-open"),
+      isHeaderVisible: !!app?.$store?.isHeaderVisible,
+      isTransitionActive: !!app?.$store?.isTransitionActive,
+      isMenuOpen: !!app?.$store?.isMenuOpen,
+      isOverlayVisible: !!app?.$store?.isOverlayVisible,
+      sceneState: app?.$store?.sceneState ?? null,
+      playingState: app?.$store?.sceneStates?.Playing ?? null,
       intro: webgl?.store?.intro
         ? {
             journeyStarted: webgl.store.intro.journeyStarted.value,
@@ -69,9 +76,10 @@ test("Three.js intro Yes choice boats the player to Cove Island", async ({ page 
   await expect.poll(async () => (await runtime(page)).scene, { timeout: 60_000 }).toBe("IslandWest");
   await expect.poll(async () => (await runtime(page)).route, { timeout: 30_000 }).toBe("Home");
   await expect.poll(async () => (await runtime(page)).canMove, { timeout: 30_000 }).toBe(true);
+  await expect.poll(async () => (await runtime(page)).headerVisible, { timeout: 30_000 }).toBe(true);
 
   const after = await runtime(page);
   expect(after.dialogVisible).toBe(false);
-  expect(after.headerVisible).toBe(true);
+  expect(after.menuOpen).toBe(false);
   expect(errors).toEqual([]);
 });

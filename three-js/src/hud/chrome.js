@@ -57,7 +57,23 @@ function installHeader(app, host) {
       && !unwrap(store.currentFullscreenVideo)
       && !flag(store.isCinematicActive);
   };
-  watch(visible, (show) => header.classList.toggle("is-visible", show), { immediate: true });
+  watch(
+    () => [
+      app.$route?.name,
+      unwrap(app.$store.sceneState),
+      unwrap(app.$store.sceneStates?.Playing),
+      flag(app.$store.isHeaderVisible),
+      flag(app.$store.isTransitionActive),
+      flag(app.$store.isMenuOpen),
+      flag(app.$store.isCustomizeOpen),
+      flag(app.$store.isDialogVisible),
+      flag(app.$store.isOverlayVisible),
+      unwrap(app.$store.currentFullscreenVideo),
+      flag(app.$store.isCinematicActive),
+    ],
+    () => header.classList.toggle("is-visible", visible()),
+    { immediate: true },
+  );
 }
 
 function installMenuCanvas(canvas) {
