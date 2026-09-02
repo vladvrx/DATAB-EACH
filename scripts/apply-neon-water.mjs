@@ -8,18 +8,9 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 // Cartoon outline lives in three-js/src/outline.js (fullscreen depth pass).
 // Keep this cache token in sync so Apply/reload does not serve a stale webgl bundle
 // without the neon-water/run-fx patches that this script owns.
-const WEBGL_CACHE = "neon-water-runfx-outline-feet";
+const WEBGL_CACHE = "neon-water-runfx-outline";
 
-const CHARACTER_URL_SWAPS = [
-  [
-    'const zn = "./reference/assets/character.df6ab95f65453426.glb",',
-    'const zn = "./reference/assets/character.df6ab95f65453426.glb?v=triangle-feet",',
-  ],
-  [
-    'const zn="/assets/character.df6ab95f65453426.glb"',
-    'const zn="/assets/character.df6ab95f65453426.glb?v=triangle-feet"',
-  ],
-];
+const CHARACTER_URL_SWAPS = [];
 
 const WATER_COLOR_SWAPS = [
   ["#3fbfff", "#39ff14"],
@@ -190,12 +181,8 @@ function ensureOutlineHook(source) {
       'import { installHud } from "./hud.js";\nimport { installCartoonOutline } from "./outline.js";',
     )
     .replace(
-      "disablePhoneAndMap(app);",
-      "disablePhoneAndMap(app);\n  installCartoonOutline(app.$webgl);",
-    )
-    .replace(
       "installHud(app);\n    window.__THREE_JS_GAME__",
-      "installHud(app);\n    installCartoonOutline(app.$webgl);\n    window.__THREE_JS_GAME__",
+      "installHud(app);\n    watch(() => app.$preloader.hidden, (hidden) => {\n      if (hidden) installCartoonOutline(app.$webgl);\n    }, { immediate: true });\n    window.__THREE_JS_GAME__",
     );
 }
 

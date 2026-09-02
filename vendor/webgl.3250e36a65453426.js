@@ -3892,7 +3892,7 @@ function Un(e, t, s, i = 0) {
   for (let d = 0, p = n.meshCoords.length; d < p; d++) n.meshCoords[d] *= a;
   return n.anchor = r, n.sourceSize = e.sourceSize, n.spriteSourceSize = e.spriteSourceSize, n.vertices = e.vertices, n.verticesUV = e.verticesUV, n.triangles = e.triangles, n;
 }
-const zn = "./reference/assets/character.df6ab95f65453426.glb?v=triangle-feet",
+const zn = "./reference/assets/character.df6ab95f65453426.glb",
   Bn = wt.select,
   Nn = Mt.load;
 Mt.load = (e, t) => Pe.get(e) ? Promise.resolve(Pe.get(e)) : Nn(e, t);

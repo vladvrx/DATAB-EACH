@@ -43,7 +43,6 @@ export async function startEngine() {
 
   const app = await vueApp.pluginManager.install();
   disablePhoneAndMap(app);
-  installCartoonOutline(app.$webgl);
   watch(() => app.$store.isMovingWithMouse, (moving) => {
     document.body.classList.toggle("moving-with-mouse", !!moving);
   }, { immediate: true });
@@ -125,7 +124,9 @@ export async function startEngine() {
     });
     vueApp.mount("#app");
     installHud(app);
-    installCartoonOutline(app.$webgl);
+    watch(() => app.$preloader.hidden, (hidden) => {
+      if (hidden) installCartoonOutline(app.$webgl);
+    }, { immediate: true });
     window.__THREE_JS_GAME__ = { vueApp, app };
   };
 
