@@ -42,6 +42,16 @@ export async function startEngine() {
 
   const app = await vueApp.pluginManager.install();
   disablePhoneAndMap(app);
+  watch(() => app.$store.isMovingWithMouse, (moving) => {
+    document.body.classList.toggle("moving-with-mouse", !!moving);
+  }, { immediate: true });
+  let biomeId = null;
+  watch(() => app.$store.currentBiome, (biome) => {
+    const id = biome?.id || biome;
+    if (biomeId) document.body.classList.remove(`biome-${biomeId}`);
+    if (id) document.body.classList.add(`biome-${id}`);
+    biomeId = id || null;
+  }, { immediate: true });
   const translate = app.$l;
   app.$tpl = (text) => {
     text = String(text ?? "").replace(/&#39;/g, "'").replace(/&quot;/g, '"');

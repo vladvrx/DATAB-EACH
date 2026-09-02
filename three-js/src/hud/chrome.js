@@ -61,13 +61,18 @@ function installHeader(app, host) {
     const store = app.$store;
     const sceneState = unwrap(store.sceneState);
     const playing = unwrap(store.sceneStates?.Playing);
+    const width = Number(unwrap(app.$viewport?.width) || window.innerWidth);
+    const topNotif = flag(app.$notifs?.isTopActive);
     return flag(store.isHeaderVisible)
       && !flag(store.isTransitionActive)
       && !flag(store.isMenuOpen)
       && !flag(store.isCustomizeOpen)
       && !flag(store.isDialogVisible)
+      && !flag(store.isApiErrorVisible)
       && !flag(store.isOverlayVisible)
+      && !(width < 750 && topNotif)
       && Number(sceneState) >= Number(playing)
+      && !flag(store.isTelescopeActiveDelayed)
       && !unwrap(store.currentFullscreenVideo)
       && !flag(store.isCinematicActive);
   };
@@ -81,7 +86,11 @@ function installHeader(app, host) {
       flag(app.$store.isMenuOpen),
       flag(app.$store.isCustomizeOpen),
       flag(app.$store.isDialogVisible),
+      flag(app.$store.isApiErrorVisible),
       flag(app.$store.isOverlayVisible),
+      flag(app.$notifs?.isTopActive),
+      unwrap(app.$viewport?.width),
+      flag(app.$store.isTelescopeActiveDelayed),
       unwrap(app.$store.currentFullscreenVideo),
       flag(app.$store.isCinematicActive),
     ],

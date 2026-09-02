@@ -33,7 +33,11 @@ async function runtime(page) {
             startJourneyVisible: webgl.store.intro.startJourneyVisible.value,
           }
         : null,
-      canMove: webgl?.scenes?.current?.player?.canMove ?? false,
+      tutorial: webgl?.scenes?.current?.state === app?.$store?.sceneStates?.Tutorial
+        || Number(app?.$store?.sceneState) === Number(app?.$store?.sceneStates?.Tutorial),
+      tutorialVisible: !!document.querySelector(".tutorial-container"),
+      muteVisible: !!document.querySelector("#threejs-hud [data-sound-toggle]")
+        && document.querySelector("#threejs-hud .app-header")?.classList.contains("is-visible"),
     };
   });
 }
@@ -76,7 +80,20 @@ test("Three.js intro Yes choice boats the player to Cove Island", async ({ page 
   await expect.poll(async () => (await runtime(page)).scene, { timeout: 60_000 }).toBe("IslandWest");
   await expect.poll(async () => (await runtime(page)).route, { timeout: 30_000 }).toBe("Home");
   await expect.poll(async () => (await runtime(page)).canMove, { timeout: 30_000 }).toBe(true);
+
+  const afterBoat = await runtime(page);
+  if (afterBoat.sceneState < afterBoat.playingState) {
+    await expect.poll(async () => (await runtime(page)).tutorialVisible, { timeout: 20_000 }).toBe(true);
+    await page.keyboard.down("KeyW");
+    await expect.poll(async () => {
+      const now = await runtime(page);
+      return Number(now.sceneState) >= Number(now.playingState);
+    }, { timeout: 60_000 }).toBe(true);
+    await page.keyboard.up("KeyW");
+  }
+
   await expect.poll(async () => (await runtime(page)).headerVisible, { timeout: 30_000 }).toBe(true);
+  await expect(page.locator("#threejs-hud .app-header [data-sound-toggle]")).toBeVisible();
 
   const after = await runtime(page);
   expect(after.dialogVisible).toBe(false);

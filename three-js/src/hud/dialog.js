@@ -135,6 +135,29 @@ export function installDialog(app, host) {
     requestAnimationFrame(() => aside.classList.add("visible"));
   }
 
+  function renderSelect(node) {
+    typed = true;
+    const aside = el("aside", {
+      class: "dialog-component dialog-select",
+      "data-v-23585691": "",
+    });
+    const section = el("section", { class: "dialog-selector", "data-v-49ab79f6": "" });
+    const list = el("div", { class: "prompt", "data-v-3df37bd2": "" });
+    for (const choice of promptChoices(node)) {
+      const label = (choice.value || choice.id || "").trim();
+      list.append(ctaButton({
+        text: label,
+        color: "white",
+        extraClass: "pointer",
+        onClick: () => choose(choice),
+      }));
+    }
+    section.append(list);
+    aside.append(section);
+    root.append(aside);
+    requestAnimationFrame(() => aside.classList.add("visible"));
+  }
+
   function nodeId() {
     return app.$dialogs.current?.node?.id ?? app.$dialogs.current?.node?.fullID ?? null;
   }
@@ -167,7 +190,11 @@ export function installDialog(app, host) {
     }
 
     if (node.isSpeak) renderSpeak(node);
-    else if (node.isPrompt) renderChoices(node);
+    else if (node.isPrompt) {
+      const count = Object.keys(node.choices || {}).length;
+      if (count > 2) renderSelect(node);
+      else renderChoices(node);
+    }
   }
 
   function speaking() {

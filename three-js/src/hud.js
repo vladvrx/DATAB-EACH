@@ -1,6 +1,7 @@
 import { w as watch } from "../../vendor/vendor.75f6e6ae65453426.js";
 import { installChrome } from "./hud/chrome.js";
 import { installDialog } from "./hud/dialog.js";
+import { installItemNotification, installSpinner } from "./hud/pickups.js";
 import { installStartScreen } from "./hud/start.js";
 
 function waitForHost() {
@@ -27,6 +28,8 @@ export function installHud(app) {
       installStartScreen(app, host);
       try { installChrome(app, host); } catch (error) { console.error("Three.js HUD chrome failed", error); }
       try { installDialog(app, host); } catch (error) { console.error("Three.js HUD dialog failed", error); }
+      try { installItemNotification(app, host); } catch (error) { console.error("Three.js item notification failed", error); }
+      try { installSpinner(app, host); } catch (error) { console.error("Three.js spinner failed", error); }
       document.documentElement.classList.add("threejs-hud-ready");
       return true;
     };
