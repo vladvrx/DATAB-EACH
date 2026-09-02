@@ -120,6 +120,8 @@ def build_html(parts: dict[str, str], style: str) -> str:
     <style>
 {style}
     </style>
+    <link rel="stylesheet" href="/assets/game-cursor.css">
+    <script src="/assets/game-cursor.js" defer></script>
     <noscript></noscript>
     <script>{parts["old_detect_js"]}</script>
   </head>

@@ -1,0 +1,41 @@
+@media (pointer: fine) {
+  html.game-cursor-ready,
+  html.game-cursor-ready * {
+    cursor: none !important;
+  }
+}
+
+#game-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: none;
+  width: 64px;
+  height: 64px;
+  pointer-events: none;
+  user-select: none;
+}
+
+#game-cursor.is-visible {
+  display: block;
+}
+
+#game-cursor img {
+  display: block;
+  width: 64px;
+  height: 64px;
+  pointer-events: none;
+  user-select: none;
+  transition: filter 80ms ease;
+}
+
+#game-cursor.is-pressed img {
+  filter: invert(1) brightness(1.08);
+}
+
+@media (pointer: coarse) {
+  #game-cursor {
+    display: none !important;
+  }
+}
