@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Download hosted Coastal World files into reference/."""
+"""Download hosted Data B-each files into reference/."""
 from __future__ import annotations
 
 import json
@@ -11,7 +11,7 @@ from urllib.request import Request, urlopen
 ROOT = Path(__file__).resolve().parents[1]
 DUMP = ROOT / "reference"
 INVENTORY = ROOT / "src/data/inventory.json"
-ORIGIN = "https://coastalworld.merci-michel.com"
+ORIGIN = "https://databeach.local/"
 ctx = ssl.create_default_context()
 SKIP = {"/", "/sitemap.xml", "/robots.txt"}
 
@@ -19,7 +19,7 @@ SKIP = {"/", "/sitemap.xml", "/robots.txt"}
 def fetch(path: str, dest: Path) -> tuple[str, int]:
     dest.parent.mkdir(parents=True, exist_ok=True)
     url = ORIGIN + path
-    req = Request(url, headers={"User-Agent": "coastal-world-dump/1.0"})
+    req = Request(url, headers={"User-Agent": "databeach-dump/1.0"})
     with urlopen(req, context=ctx, timeout=60) as resp:
         body = resp.read()
     dest.write_bytes(body)

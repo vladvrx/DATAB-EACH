@@ -20,7 +20,7 @@ const companyNumbers = {
   prosper: 11,
   possible: 12,
   lendingpoint: 13,
-  coastal: 14,
+  island: 14,
   x1: 15,
   tempkey: 16,
 };
@@ -40,9 +40,9 @@ function collectFiles(folder) {
 
 function renamedAsset(name) {
   let next = name;
-  const fintechMatch = name.match(/^fintech-([a-z0-9]+)(-.+)$/i);
-  if (fintechMatch) {
-    const [, slug, suffix] = fintechMatch;
+  const partnerMatch = name.match(/^partner-([a-z0-9]+)(-.+)$/i);
+  if (partnerMatch) {
+    const [, slug, suffix] = partnerMatch;
     const normalized = slug.toLowerCase();
     if (companyNumbers[normalized]) {
       next = `tech-company-${String(companyNumbers[normalized]).padStart(2, '0')}${suffix}`;
@@ -50,7 +50,7 @@ function renamedAsset(name) {
       next = `neutral-logo-${String(extraLogoNumbers[normalized]).padStart(2, '0')}${suffix}`;
     }
   }
-  if (/^phone-fintech-/i.test(next)) next = next.replace(/^phone-fintech-/i, 'phone-tech-company-');
+  if (/^phone-partner-/i.test(next)) next = next.replace(/^phone-partner-/i, 'phone-tech-company-');
   return next;
 }
 
@@ -69,14 +69,14 @@ for (const [oldName, newName] of oldToNewAsset) {
 }
 
 const protectedKeys = new Set([
-  'id', 'fintech', 'fintechID', 'icon', 'item', 'script', 'scene', 'point', 'node', 'next',
+  'id', 'partner', 'partnerID', 'icon', 'item', 'script', 'scene', 'point', 'node', 'next',
   'opts', 'before', 'rewardCondition', 'unlockCondition', 'customPath', 'url', 'ctaUrl', 'video',
 ]);
 
 const displayReplacements = [
-  ['Possible Finance', 'TECH COMPANY #12'],
+  ['TECH COMPANY #12', 'TECH COMPANY #12'],
   ['Possible', 'TECH COMPANY #12'],
-  ['One Finance', 'TECH COMPANY #7'],
+  ['TECH COMPANY #7', 'TECH COMPANY #7'],
   ['GreenFi', 'TECH COMPANY #2'],
   ['OnePay', 'TECH COMPANY #7'],
   ['InComm', 'TECH COMPANY #9'],
@@ -91,37 +91,37 @@ const displayReplacements = [
   ['Kikoff', 'TECH COMPANY #10'],
   ['Prosper', 'TECH COMPANY #11'],
   ['TempKey', 'TECH COMPANY #16'],
-  ['Coastal', 'TECH COMPANY #14'],
+  ['Data B-each', 'TECH COMPANY #14'],
 ];
 
 function sanitizeDisplayText(input) {
   let text = input;
-  text = text.replace(/Coastal World/gi, 'Data B-each');
-  text = text.replace(/CoastalWorld/g, 'DataBeach');
-  text = text.replace(/coastalworld/gi, 'databeach');
-  text = text.replace(/coastal-world/gi, 'databeach');
-  text = text.replace(/https:\/\/databeach(?:\.merci-michel\.com|\.com)/gi, 'https://databeach.local');
-  text = text.replace(/Coastal Community Bank/gi, 'TECH COMPANY #1');
-  text = text.replace(/coastalbank\.com/gi, 'databeach.local');
-  text = text.replace(/Coastal Points/gi, 'Data B-each Points');
+  text = text.replace(/Data B-each/gi, 'Data B-each');
+  text = text.replace(/DataBeach/g, 'DataBeach');
+  text = text.replace(/databeach/gi, 'databeach');
+  text = text.replace(/databeach/gi, 'databeach');
+  text = text.replace(/https:\/\/databeach(?:\.databeach\.com|\.com)/gi, 'https://databeach.local');
+  text = text.replace(/TECH COMPANY #1/gi, 'TECH COMPANY #1');
+  text = text.replace(/databeach\.com/gi, 'databeach.local');
+  text = text.replace(/Databloons/gi, 'Databloons');
   for (const [from, to] of displayReplacements) {
     text = text.replace(new RegExp(`\\b${from.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&')}\\b`, 'gi'), to);
   }
   const neutralTerms = [
-    [/(mobile|digital) banking/gi, '$1 technology'],
-    [/banking services/gi, 'technology services'],
-    [/banking platform/gi, 'technology platform'],
-    [/financial technology company/gi, 'technology company'],
-    [/financial technology/gi, 'technology'],
-    [/financial services/gi, 'digital services'],
-    [/financial future/gi, 'digital future'],
-    [/financial adventure/gi, 'digital adventure'],
-    [/financial system/gi, 'digital system'],
-    [/financial health/gi, 'digital wellbeing'],
-    [/\bfinancial\b/gi, 'digital'],
-    [/\bBig Banks\b/gi, 'big companies'],
+    [/(mobile|digital) technology/gi, '$1 technology'],
+    [/technology services/gi, 'technology services'],
+    [/technology platform/gi, 'technology platform'],
+    [/technology company/gi, 'technology company'],
+    [/digital technology/gi, 'technology'],
+    [/technology services/gi, 'digital services'],
+    [/digital future/gi, 'digital future'],
+    [/island adventure/gi, 'digital adventure'],
+    [/digital system/gi, 'digital system'],
+    [/digital wellbeing/gi, 'digital wellbeing'],
+    [/\bdigital\b/gi, 'digital'],
+    [/\bbig companies\b/gi, 'big companies'],
     [/\bbanks?\b/gi, 'companies'],
-    [/\bbanking\b/gi, 'technology'],
+    [/\btechnology\b/gi, 'technology'],
     [/\bcredit cards?\b/gi, 'player cards'],
     [/\bdebit cards?\b/gi, 'player cards'],
     [/\bcredit\b/gi, 'progress'],
@@ -166,10 +166,10 @@ function sanitizeBootHtml(input) {
       const parsed = JSON.parse(raw.replaceAll('\\\\"', '\\"'));
       let serialized = JSON.stringify(transformValues(parsed));
       serialized = serialized
-        .replace(/coastalworld/gi, 'databeach')
-        .replace(/coastal-world/gi, 'databeach')
-        .replace(/coastalbank\.com/gi, 'databeach.local')
-        .replace(/https:\/\/databeach(?:\.merci-michel\.com|\.com)/gi, 'https://databeach.local');
+        .replace(/databeach/gi, 'databeach')
+        .replace(/databeach/gi, 'databeach')
+        .replace(/databeach\.com/gi, 'databeach.local')
+        .replace(/https:\/\/databeach(?:\.databeach\.com|\.com)/gi, 'https://databeach.local');
       const encoded = serialized.replaceAll('\\', '\\\\').replaceAll("'", "\\'");
       text = `${text.slice(0, start + dataStart.length)}${encoded}${text.slice(end)}`;
     } catch {
@@ -192,13 +192,13 @@ function writeJson(file, value) {
 }
 
 // Give every partner a neutral, playful identity while preserving internal IDs and paths.
-const fintechFile = path.join(assetsRoot, 'fintechs_en.json');
-const fintechData = readJson(fintechFile);
-for (const [id, record] of Object.entries(fintechData.fintechs)) {
+const partnerFile = path.join(assetsRoot, 'partners_en.json');
+const partnerData = readJson(partnerFile);
+for (const [id, record] of Object.entries(partnerData.partners)) {
   const number = companyNumbers[id];
   if (!number) continue;
   const label = `TECH COMPANY #${number}`;
-  fintechData.fintechs[id] = {
+  partnerData.partners[id] = {
     ...record,
     name: label,
     description: `<strong>${label}</strong> - A playful technology team building digital tools for curious explorers.`,
@@ -213,7 +213,7 @@ for (const [id, record] of Object.entries(fintechData.fintechs)) {
     ctaUrl: null,
   };
 }
-writeJson(fintechFile, fintechData);
+writeJson(partnerFile, partnerData);
 
 for (const fileName of ['quests_en.json', 'dialogs_en.json', 'characters_en.json']) {
   const file = path.join(assetsRoot, fileName);
@@ -238,8 +238,8 @@ writeJson(manifestFile, {
 
 const urlsFile = path.join(referenceRoot, '_external', 'urls.json');
 const urls = readJson(urlsFile);
-urls.note = 'Generic third-party URLs retained for reference only. No finance-service URLs are included.';
-urls.urls = urls.urls.filter((url) => !/coastal|bank|financial/i.test(url));
+urls.note = 'Generic third-party URLs retained for reference only. No partner-service URLs are included.';
+urls.urls = urls.urls.filter((url) => !/island|bank|digital/i.test(url));
 writeJson(urlsFile, urls);
 
 const logicalMapFile = path.join(referenceRoot, '.gltf', 'logical-to-hashed.json');
@@ -260,7 +260,7 @@ if (fs.existsSync(manifestPath)) {
     .filter((entry) => !entry.local || fs.existsSync(path.join(referenceRoot, entry.local)))
     .map((entry) => {
       const next = { ...entry };
-      next.url = String(next.url || '').replace(/https:\/\/coastalworld\.merci-michel\.com/gi, 'https://databeach.local');
+      next.url = String(next.url || '').replace(/https:\/\/databeach\.databeach\.com/gi, 'https://databeach.local');
       for (const [oldName, newName] of oldToNewAsset) {
         next.url = next.url.replaceAll(oldName, newName);
         next.local = String(next.local || '').replaceAll(oldName, newName);
@@ -292,24 +292,24 @@ if (fs.existsSync(manifestPath)) {
 const textExtensions = new Set(['.json', '.js', '.css', '.md', '.webmanifest', '.xmp', '.xml', '.txt', '.html']);
 for (const file of collectFiles(referenceRoot)) {
   if (!textExtensions.has(path.extname(file).toLowerCase())) continue;
-  if ([fintechFile, manifestFile, urlsFile, logicalMapFile, manifestPath].includes(file)) continue;
+  if ([partnerFile, manifestFile, urlsFile, logicalMapFile, manifestPath].includes(file)) continue;
   let text = fs.readFileSync(file, 'utf8');
   text = text.replaceAll('?v=databeach-boot-1', '');
   for (const [oldName, newName] of oldToNewAsset) text = text.replaceAll(oldName, newName);
   if (path.extname(file).toLowerCase() === '.html') text = sanitizeBootHtml(text);
   else {
-    text = text.replace(/Coastal World/gi, 'Data B-each');
-    text = text.replace(/CoastalWorld/g, 'DataBeach');
-    text = text.replace(/coastalworld/gi, 'databeach');
-    text = text.replace(/coastal-world/gi, 'databeach');
-    text = text.replace(/Coastal Community Bank/gi, 'TECH COMPANY #1');
-    text = text.replace(/coastalbank\.com/gi, 'databeach.local');
-    text = text.replace(/Coastal Points/gi, 'Data B-each Points');
+    text = text.replace(/Data B-each/gi, 'Data B-each');
+    text = text.replace(/DataBeach/g, 'DataBeach');
+    text = text.replace(/databeach/gi, 'databeach');
+    text = text.replace(/databeach/gi, 'databeach');
+    text = text.replace(/TECH COMPANY #1/gi, 'TECH COMPANY #1');
+    text = text.replace(/databeach\.com/gi, 'databeach.local');
+    text = text.replace(/Databloons/gi, 'Databloons');
   }
-  text = text.replaceAll('logo-coastal-bank', 'logo-databeach');
-  text = text.replaceAll('logo-coastal-world', 'logo-databeach-wordmark');
-  text = text.replaceAll('logo-coastal-coastal', 'logo-databeach-mark');
-  text = text.replaceAll('logo-coastal-small', 'logo-databeach-small');
+  text = text.replaceAll('logo-databeach-hub', 'logo-databeach');
+  text = text.replaceAll('logo-databeach', 'logo-databeach-wordmark');
+  text = text.replaceAll('logo-island-island', 'logo-databeach-mark');
+  text = text.replaceAll('logo-island-small', 'logo-databeach-small');
   fs.writeFileSync(file, text, 'utf8');
 }
 
@@ -335,7 +335,7 @@ This folder contains the retained island, character, audio, model, interface ass
 | \`_external/urls.json\` | Generic third-party URLs only |
 | \`MANIFEST.json\` | Preserved asset inventory with neutral local paths |
 
-Financial-company logos were replaced with transparent placeholders and the 16 partner slots are labeled **TECH COMPANY #1** through **TECH COMPANY #16** in the locale data. The boot pages retain the original runtime structure while using the neutralized Data B-each copy and assets.
+Technology-partner logos were replaced with transparent placeholders and the 16 partner slots are labeled **TECH COMPANY #1** through **TECH COMPANY #16** in the locale data. The boot pages retain the original runtime structure while using the neutralized Data B-each copy and assets.
 `, 'utf8');
 
 // The bundle also carries inline SVG brand marks. Replace their paths with empty symbols.
@@ -344,15 +344,15 @@ if (fs.existsSync(vendorBundle)) {
   let vendorText = fs.readFileSync(vendorBundle, 'utf8');
   vendorText = vendorText.replaceAll('?v=databeach-boot-1', '');
   const logoIds = {
-    'logo-coastal-bank': 'logo-databeach',
-    'logo-coastal-world': 'logo-databeach-wordmark',
-    'logo-coastal-coastal': 'logo-databeach-mark',
-    'logo-coastal-small': 'logo-databeach-small',
+    'logo-databeach-hub': 'logo-databeach',
+    'logo-databeach': 'logo-databeach-wordmark',
+    'logo-island-island': 'logo-databeach-mark',
+    'logo-island-small': 'logo-databeach-small',
   };
   for (const [oldId, newId] of Object.entries(logoIds)) vendorText = vendorText.replaceAll(oldId, newId);
-  vendorText = vendorText.replace(/Coastal Points/gi, 'Data B-each Points');
+  vendorText = vendorText.replace(/Databloons/gi, 'Databloons');
   let inlineLogoCount = 0;
-  vendorText = vendorText.replace(/("symbol":")<symbol id=\\\\"(logo-(?:fintech|databeach)-[^"\\]+)\\\\"[\s\S]*?<\/symbol>(")/g, (_match, prefix, id, suffix) => {
+  vendorText = vendorText.replace(/("symbol":")<symbol id=\\\\"(logo-(?:partner|databeach)-[^"\\]+)\\\\"[\s\S]*?<\/symbol>(")/g, (_match, prefix, id, suffix) => {
     inlineLogoCount += 1;
     return `${prefix}<symbol id=\\\\"${id}\\\\" class=\\\\"neutral-logo\\\\" viewBox=\\\\"0 0 1 1\\\\"><rect width=\\\\"1\\\\" height=\\\\"1\\\\" fill=\\\\"none\\\\"/></symbol>${suffix}`;
   });

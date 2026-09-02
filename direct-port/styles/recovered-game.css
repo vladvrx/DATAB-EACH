@@ -763,7 +763,7 @@ textarea {
   }
 }
 
-@keyframes headerFintechIn {
+@keyframes headerPartnerIn {
   0% {
     transform:translateY(-100%)
   }
@@ -2121,11 +2121,11 @@ button.keypressed .round[data-v-b03f534f] {
   animation-direction:alternate
 }
 
-[data-v-f40cd082] .icon-logo-fintech-till {
+[data-v-f40cd082] .icon-logo-partner-till {
   width:60%
 }
 
-[data-v-f40cd082] .icon-logo-fintech-one {
+[data-v-f40cd082] .icon-logo-partner-one {
   width:55%
 }
 
@@ -3057,7 +3057,7 @@ button[data-v-3d9fa6fd] {
   width:3em
 }
 
-.coastal-points[data-v-3d9fa6fd] {
+.data-points[data-v-3d9fa6fd] {
   position:relative;
   display:flex;
   flex-direction:column;
@@ -3068,7 +3068,7 @@ button[data-v-3d9fa6fd] {
   overflow:hidden
 }
 
-.coastal-points span[data-v-3d9fa6fd] {
+.data-points span[data-v-3d9fa6fd] {
   position:absolute;
   display:flex;
   align-items:center;
@@ -3078,7 +3078,7 @@ button[data-v-3d9fa6fd] {
   text-align:center
 }
 
-.coastal-points span[data-v-3d9fa6fd]:nth-child(1) {
+.data-points span[data-v-3d9fa6fd]:nth-child(1) {
   transform:translateY(110%)
 }
 
@@ -4025,7 +4025,7 @@ html.phone .phone-navigation.is-hidden[data-v-ad29435e] {
   opacity:.5
 }
 
-.Fintechs .nav-button[data-v-ad29435e]:after {
+.Partners .nav-button[data-v-ad29435e]:after {
   background:linear-gradient(140deg,#eedafa 20%,#c7e0fb 90%);
   opacity:.4
 }
@@ -4259,7 +4259,7 @@ html.phone .phone-navigation.is-hidden[data-v-ad29435e] {
   will-change:transform
 }
 
-.circle .logo-fintech-till[data-v-0bed9cfd] {
+.circle .logo-partner-till[data-v-0bed9cfd] {
   width:45%
 }
 
@@ -4801,7 +4801,7 @@ html.phone .square[data-v-6d8ac982] {
   background:white
 }
 
-.fintechs .phone-background[data-v-6d8ac982] {
+.partners .phone-background[data-v-6d8ac982] {
   background:linear-gradient(148deg,#c7e0fb 24%,#eedafa 96%)
 }
 
@@ -4839,19 +4839,19 @@ html.phone .square[data-v-6d8ac982] {
   background:linear-gradient(180deg,#ff9833 38%,rgba(255,152,51,0) 100%)
 }
 
-.fintechs .phone-top-gradient[data-v-eb8db0c6] {
+.partners .phone-top-gradient[data-v-eb8db0c6] {
   background:linear-gradient(180deg,#c7e0fb 38%,rgba(199,224,251,0) 100%)
 }
 
-.fintechs[data-v-e1d68c88] {
+.partners[data-v-e1d68c88] {
   cursor:var(--cursor-grab)
 }
 
-.fintechs[data-v-e1d68c88]:active {
+.partners[data-v-e1d68c88]:active {
   cursor:var(--cursor-grabbing)
 }
 
-.fintech[data-v-e1d68c88] {
+.partner[data-v-e1d68c88] {
   position:relative;
   display:flex;
   flex-direction:column;
@@ -4859,42 +4859,42 @@ html.phone .square[data-v-6d8ac982] {
 }
 
 @media(hover: hover) {
-  .fintech:hover .fintech-badge[data-v-e1d68c88] {
+  .partner:hover .partner-badge[data-v-e1d68c88] {
     transform:translateY(calc(4px * var(--phone-scale)))
   }
 
-  .fintech[data-v-e1d68c88]:hover .featured-badge {
+  .partner[data-v-e1d68c88]:hover .featured-badge {
     transform:rotate(-5deg) translateY(calc(-1px * var(--phone-scale)))
   }
 
-  .fintech:hover p[data-v-e1d68c88] {
+  .partner:hover p[data-v-e1d68c88] {
     opacity:.85
   }
 
-  .fintech:hover .fintech-card[data-v-e1d68c88] {
+  .partner:hover .partner-card[data-v-e1d68c88] {
     background:#e2e9fd
   }
 }
 
 @media(hover: none) and(pointer: coarse) {
-  .fintech:active .fintech-badge[data-v-e1d68c88] {
+  .partner:active .partner-badge[data-v-e1d68c88] {
     transform:translateY(calc(4px * var(--phone-scale)))
   }
 
-  .fintech[data-v-e1d68c88]:active .featured-badge {
+  .partner[data-v-e1d68c88]:active .featured-badge {
     transform:rotate(-5deg) translateY(calc(-1px * var(--phone-scale)))
   }
 
-  .fintech:active p[data-v-e1d68c88] {
+  .partner:active p[data-v-e1d68c88] {
     opacity:.85
   }
 
-  .fintech:active .fintech-card[data-v-e1d68c88] {
+  .partner:active .partner-card[data-v-e1d68c88] {
     background:#e2e9fd
   }
 }
 
-.fintech-card[data-v-e1d68c88] {
+.partner-card[data-v-e1d68c88] {
   display:flex;
   align-items:center;
   padding:calc(16px * var(--phone-scale)) calc(10px * var(--phone-scale));
@@ -4906,17 +4906,17 @@ html.phone .square[data-v-6d8ac982] {
   transition:background .2s ease-in-out
 }
 
-.fintech-card[data-v-e1d68c88]:active {
+.partner-card[data-v-e1d68c88]:active {
   cursor:var(--cursor-pointerActive)
 }
 
 @media(min-width: 640px) {
-  .fintech-card[data-v-e1d68c88] {
+  .partner-card[data-v-e1d68c88] {
     font-size:calc(12px * var(--phone-scale) * var(--phone-text-scale))
   }
 }
 
-.fintech-content>p[data-v-e1d68c88] {
+.partner-content>p[data-v-e1d68c88] {
   margin-bottom:calc(8px * var(--phone-scale));
   transition:opacity .2s ease-in-out
 }
@@ -4925,26 +4925,26 @@ html.phone .square[data-v-6d8ac982] {
   font-weight:700
 }
 
-.fintech-tags[data-v-e1d68c88] {
+.partner-tags[data-v-e1d68c88] {
   display:flex;
   flex-wrap:wrap
 }
 
-.fintech-tags[data-v-e1d68c88]>.tag-text {
+.partner-tags[data-v-e1d68c88]>.tag-text {
   margin-bottom:calc(6px * var(--phone-scale))
 }
 
-.fintech-tags[data-v-e1d68c88]>.tag-text:not(:last-child) {
+.partner-tags[data-v-e1d68c88]>.tag-text:not(:last-child) {
   margin-right:calc(6px * var(--phone-scale))
 }
 
-.fintech-badge-wrapper[data-v-e1d68c88] {
+.partner-badge-wrapper[data-v-e1d68c88] {
   position:relative;
   margin-right:calc(16px * var(--phone-scale));
   background:transparent
 }
 
-.fintech-badge[data-v-e1d68c88] {
+.partner-badge[data-v-e1d68c88] {
   width:calc(80px * var(--phone-scale));
   min-width:calc(80px * var(--phone-scale));
   height:calc(80px * var(--phone-scale));
@@ -4955,12 +4955,12 @@ html.phone .square[data-v-6d8ac982] {
   will-change:transform
 }
 
-.fintech-badge[data-v-e1d68c88] .icon-logo-fintech-till,
-.fintech-badge[data-v-e1d68c88] .icon-logo-fintech-one {
+.partner-badge[data-v-e1d68c88] .icon-logo-partner-till,
+.partner-badge[data-v-e1d68c88] .icon-logo-partner-one {
   width:70%
 }
 
-.fintech-border[data-v-e1d68c88] {
+.partner-border[data-v-e1d68c88] {
   position:relative;
   width:100%;
   height:1px;
@@ -4968,7 +4968,7 @@ html.phone .square[data-v-6d8ac982] {
   background-color:#9e9bbe33
 }
 
-.fintech-border[data-v-e1d68c88]:before {
+.partner-border[data-v-e1d68c88]:before {
   position:absolute;
   top:1px;
   width:100%;
@@ -5055,7 +5055,7 @@ html.phone .square[data-v-6d8ac982] {
   line-height:.5
 }
 
-.coastal-points[data-v-d4312759] {
+.data-points[data-v-d4312759] {
   display:flex;
   align-items:center;
   padding:calc(6px * var(--phone-scale)) calc(5px * var(--phone-scale)) calc(6px * var(--phone-scale)) calc(15px * var(--phone-scale));
@@ -5067,7 +5067,7 @@ html.phone .square[data-v-6d8ac982] {
   border-radius:calc(30px * var(--phone-scale))
 }
 
-.coastal-points>span[data-v-d4312759] {
+.data-points>span[data-v-d4312759] {
   margin-right:calc(5px * var(--phone-scale))
 }
 
@@ -5160,14 +5160,14 @@ html.phone .square[data-v-6d8ac982] {
   cursor:var(--cursor-grabbing)
 }
 
-.coastal-points-wrapper[data-v-be0e0387] {
+.data-points-wrapper[data-v-be0e0387] {
   display:flex;
   align-items:center;
   justify-content:center;
   margin:calc(24px * var(--phone-scale)) 0
 }
 
-.coastal-points[data-v-be0e0387] {
+.data-points[data-v-be0e0387] {
   display:flex;
   align-items:center;
   justify-content:center;
@@ -5180,7 +5180,7 @@ html.phone .square[data-v-6d8ac982] {
   border-radius:calc(30px * var(--phone-scale))
 }
 
-.coastal-points figure[data-v-be0e0387] {
+.data-points figure[data-v-be0e0387] {
   width:calc(40px * var(--phone-scale));
   margin-left:calc(4px * var(--phone-scale))
 }
@@ -5197,7 +5197,7 @@ html.phone .square[data-v-6d8ac982] {
   justify-self:center
 }
 
-@keyframes coastalpoints {
+@keyframes datapoints {
   0% {
     opacity:0;
     transform:translateY(30%)
@@ -5656,7 +5656,7 @@ html.phone .square[data-v-6d8ac982] {
   text-align:center
 }
 
-.card-header-text[data-v-a6a26e1b] .coastal-points {
+.card-header-text[data-v-a6a26e1b] .data-points {
   width:calc(30px * var(--phone-scale));
   height:calc(30px * var(--phone-scale));
   margin-left:calc(4px * var(--phone-scale))
@@ -5670,11 +5670,11 @@ html.phone .square[data-v-6d8ac982] {
   color:#3b3777
 }
 
-.Main .card-header-text .coastal-points[data-v-a6a26e1b] {
+.Main .card-header-text .data-points[data-v-a6a26e1b] {
   overflow:visible
 }
 
-.Main .card-header-text .coastal-points[data-v-a6a26e1b]:before {
+.Main .card-header-text .data-points[data-v-a6a26e1b]:before {
   position:absolute;
   top:calc(4px * var(--phone-scale));
   left:calc(4px * var(--phone-scale));
@@ -5736,7 +5736,7 @@ html.phone .square[data-v-6d8ac982] {
   background:linear-gradient(65deg,#fff 70%,#ffd138 100%)
 }
 
-.Fintech .card-background[data-v-a6a26e1b],
+.Partner .card-background[data-v-a6a26e1b],
 .Side .card-background[data-v-a6a26e1b] {
   background:linear-gradient(65deg,#fff 70%,#02c6a7 100%)
 }
@@ -5771,12 +5771,12 @@ html.phone .square[data-v-6d8ac982] {
   text-align:center
 }
 
-.card-completed-reward[data-v-a6a26e1b] .coastal-points {
+.card-completed-reward[data-v-a6a26e1b] .data-points {
   width:calc(40px * var(--phone-scale));
   height:calc(40px * var(--phone-scale))
 }
 
-.card-completed-reward[data-v-a6a26e1b] .coastal-items {
+.card-completed-reward[data-v-a6a26e1b] .data-items {
   width:calc(46px * var(--phone-scale));
   height:calc(46px * var(--phone-scale));
   margin-left:calc(-4px * var(--phone-scale))
@@ -5954,7 +5954,7 @@ html.phone .square[data-v-6d8ac982] {
   padding:calc(20px * var(--phone-scale));
   background-color:var(--background);
   box-shadow:0 0 15px #0003;
-  animation:headerFintechIn 1s cubic-bezier(.23,1,.32,1) forwards
+  animation:headerPartnerIn 1s cubic-bezier(.23,1,.32,1) forwards
 }
 
 @media(min-width: 640px) {

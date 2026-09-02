@@ -50,7 +50,7 @@
       0,
       0.956827
     ],
-    "FintechSpawnPomelo.001": [
+    "PartnerSpawnPomelo.001": [
       -144.80751,
       3.400204,
       23.634537,
@@ -62,7 +62,7 @@
       -0.00498,
       0.354695
     ],
-    "FintechSpawnZenda.001": [
+    "PartnerSpawnZenda.001": [
       -89.491516,
       3.604354,
       56.093676,
@@ -74,7 +74,7 @@
       -0.002755,
       0.133893
     ],
-    "FintechSpawnBrigit.001": [
+    "PartnerSpawnBrigit.001": [
       -64.348121,
       10.964539,
       105.459394,
@@ -86,7 +86,7 @@
       0.023833,
       0.5297
     ],
-    "FintechSpawnAven.001": [
+    "PartnerSpawnAven.001": [
       -42.36013200000001,
       2.905344,
       168.22311200000001,
@@ -2014,10 +2014,10 @@
       ]
     },
     {
-      "uid": "FintechStandGround.004",
-      "type": "FintechStandGround",
+      "uid": "PartnerStandGround.004",
+      "type": "PartnerStandGround",
       "params": {
-        "fintech": "zenda"
+        "partner": "zenda"
       },
       "transforms": [
         -86.218574,
@@ -2033,10 +2033,10 @@
       ]
     },
     {
-      "uid": "FintechStandGround.005",
-      "type": "FintechStandGround",
+      "uid": "PartnerStandGround.005",
+      "type": "PartnerStandGround",
       "params": {
-        "fintech": "brigit"
+        "partner": "brigit"
       },
       "transforms": [
         -74.70890800000001,
@@ -2052,10 +2052,10 @@
       ]
     },
     {
-      "uid": "FintechStandGround.006",
-      "type": "FintechStandGround",
+      "uid": "PartnerStandGround.006",
+      "type": "PartnerStandGround",
       "params": {
-        "fintech": "aven"
+        "partner": "aven"
       },
       "transforms": [
         -46.51503300000001,
@@ -2071,10 +2071,10 @@
       ]
     },
     {
-      "uid": "FintechStandGround.007",
-      "type": "FintechStandGround",
+      "uid": "PartnerStandGround.007",
+      "type": "PartnerStandGround",
       "params": {
-        "fintech": "pomelo"
+        "partner": "pomelo"
       },
       "transforms": [
         -153.156555,

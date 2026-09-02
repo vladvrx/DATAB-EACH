@@ -14,13 +14,17 @@
 /coverage
 /playwright-report
 /test-results
+/clean-test-env
 
 # next.js
 /.next/
 /out/
 
-# production
-/build
+# production & deliverables
+/build/*
+!/build/DATAB-EACH-submission.zip
+!/build/design-intent.docx
+!/build/build-log.md
 
 # misc
 .DS_Store

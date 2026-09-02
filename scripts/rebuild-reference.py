@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rebuild Coastal World's reference.html for a three-rescue dump layout."""
+"""Rebuild Data B-each's reference.html for a three-rescue dump layout."""
 from __future__ import annotations
 
 import base64
@@ -13,7 +13,7 @@ DUMP = ROOT / "reference"
 SRC_HTML = Path("/tmp/cw/index.html")
 INVENTORY = ROOT / "src/data/inventory.json"
 BLENDER_MAP = Path("/tmp/cw/blender-map.json")
-ORIGIN = "https://coastalworld.merci-michel.com"
+ORIGIN = "https://databeach.local/"
 
 CURSOR_NAMES = [
     "cursor-auto",
@@ -31,7 +31,7 @@ def extract_parts(html: str) -> dict[str, str]:
     locale_js, old_detect_js, old_body_js, data_js, _mod = scripts
     head = re.search(r"<head>(.*?)</head>", html, re.S).group(1)
     title = re.search(r"<title>(.*?)</title>", head, re.S)
-    title_text = title.group(1) if title else "Coastal World"
+    title_text = title.group(1) if title else "Data B-each"
     head_no_style = re.sub(r"<style[\s\S]*?</style>", "", head)
     head_no_style = re.sub(r"<script[\s\S]*?</script>", "", head_no_style)
     head_no_style = re.sub(r"<title>[\s\S]*?</title>", "", head_no_style)
@@ -75,7 +75,7 @@ def rewrite_head_href(tag: str) -> str:
     tag = re.sub(r"(/assets/[^\"'?]+)\?v=[^\"']+", r"\1", tag)
     tag = re.sub(r"(/manifest\.webmanifest)\?v=[^\"']+", r"\1", tag)
     tag = tag.replace(
-        "https://coastalworld.com/share/share_en.png?v=918eafe8",
+        "https://databeach.local/share/share_en.png?v=918eafe8",
         "/share/share_en.png",
     )
     return tag
@@ -92,7 +92,7 @@ def build_html(parts: dict[str, str], style: str) -> str:
         head_lines.append(rewrite_head_href(tag))
 
     comment = f"""<!--
-  Coastal World reference HTML
+  Data B-each reference HTML
   Rebuilt {datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")} from
   {ORIGIN} to sit at the root of a three-rescue dump.
 
@@ -201,8 +201,8 @@ Scene layout JSON (`Scene_IslandWest.json`, …) is inlined inside
                     "https://www.recaptcha.net/recaptcha/api.js?onload=_onRecaptchaLoaded",
                     "https://www.youtube.com/iframe_api",
                     "https://www.youtube-nocookie.com/embed/",
-                    "https://www.coastalbank.com/privacy-notice/",
-                    "https://www.coastalbank.com/wp-content/uploads/coastal-world-terms-of-use.pdf",
+                    "https://databeach.local/privacy-notice/",
+                    "https://databeach.local/wp-content/uploads/databeach-terms-of-use.pdf",
                 ],
             },
             indent=2,

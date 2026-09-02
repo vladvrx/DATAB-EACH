@@ -17,7 +17,7 @@ function removeRetiredAccess(root) {
 }
 
 function removeRetiredPhoneTabs(root) {
-  for (const label of ["Accessories", "Fintechs", "Customization"]) {
+  for (const label of ["Accessories", "Partners", "Customization"]) {
     const selector = `button[aria-label="${label}"], img[alt="${label}"]`;
     elements(root, selector).forEach((element) => {
       const entry = element.closest("li.nav-item") ?? element.closest(".icons > div") ?? element;

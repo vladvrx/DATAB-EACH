@@ -1,8 +1,8 @@
 {
   "AvenMain": {
     "id": "AvenMain",
-    "type": "Fintech",
-    "icon": "fintech-aven",
+    "type": "Partner",
+    "icon": "partner-aven",
     "item": "Hammer",
     "title": "TECH COMPANY #3",
     "description": "Talk with TECH COMPANY #3<br>to renovate a house.",
@@ -10,14 +10,14 @@
     "unlockCondition": "",
     "reward": 20,
     "rewardItem": null,
-    "rewardText": "<strong>Well done!</strong> There are <strong>{{actorCounts.AvenHouse - 1}} other houses</strong> to find on the islands. Renovate them to unlock more Data B-each Points.",
+    "rewardText": "<strong>Well done!</strong> There are <strong>{{actorCounts.AvenHouse - 1}} other houses</strong> to find on the islands. Renovate them to unlock more Databloons.",
     "rewardCondition": "$hasHammer && $builtHouseCount >= 1",
-    "fintechID": "aven"
+    "partnerID": "aven"
   },
   "BrigitMain": {
     "id": "BrigitMain",
-    "type": "Fintech",
-    "icon": "fintech-brigit",
+    "type": "Partner",
+    "icon": "partner-brigit",
     "item": null,
     "title": "TECH COMPANY #1",
     "description": "Talk with TECH COMPANY #1<br>and participate in a<br>bike race.",
@@ -25,14 +25,14 @@
     "unlockCondition": "",
     "reward": 20,
     "rewardItem": null,
-    "rewardText": "<strong>Congratulations!</strong> Come back anytime and finish your lap in <strong>less than {{gameGoals.CircuitBike}} seconds</strong> to unlock more Data B-each Points.",
+    "rewardText": "<strong>Congratulations!</strong> Come back anytime and finish your lap in <strong>less than {{gameGoals.CircuitBike}} seconds</strong> to unlock more Databloons.",
     "rewardCondition": "$hasPlayedCircuitBike",
-    "fintechID": "brigit"
+    "partnerID": "brigit"
   },
   "PomeloMain": {
     "id": "PomeloMain",
-    "type": "Fintech",
-    "icon": "fintech-pomelo",
+    "type": "Partner",
+    "icon": "partner-pomelo",
     "item": "Screwdriver",
     "title": "TECH COMPANY #8",
     "description": "Talk with TECH COMPANY #8<br>to build the bridge.",
@@ -42,12 +42,12 @@
     "rewardItem": null,
     "rewardText": "<strong>Nice!</strong> Keep your eyes open, there are chests on the island, next to the house.",
     "rewardCondition": "$hasScrewdriver && $isBridgeRepaired",
-    "fintechID": "pomelo"
+    "partnerID": "pomelo"
   },
   "ZendaMain": {
     "id": "ZendaMain",
-    "type": "Fintech",
-    "icon": "fintech-zenda",
+    "type": "Partner",
+    "icon": "partner-zenda",
     "item": "Stethoscope",
     "title": "TECH COMPANY #9",
     "description": "Talk with TECH COMPANY #9,<br>and aid someone in pain.",
@@ -55,9 +55,9 @@
     "unlockCondition": "",
     "reward": 20,
     "rewardItem": null,
-    "rewardText": "<strong>So nice!</strong> There is <strong>{{actorCounts.CitizenSick - 1}} other people</strong> that need assistance on the islands. Help them and you&#39;ll be rewarded with more Data B-each Points!",
+    "rewardText": "<strong>So nice!</strong> There is <strong>{{actorCounts.CitizenSick - 1}} other people</strong> that need assistance on the islands. Help them and you&#39;ll be rewarded with more Databloons!",
     "rewardCondition": "$hasStethoscope && $healedCitizenCount >= 1",
-    "fintechID": "zenda"
+    "partnerID": "zenda"
   },
   "AvenSide": {
     "id": "AvenSide",
@@ -72,7 +72,7 @@
     "rewardItem": null,
     "rewardText": "Help renovate the houses",
     "rewardCondition": "$builtHouseCount [===] #actorCounts.AvenHouse",
-    "fintechID": "aven"
+    "partnerID": "aven"
   },
   "BrigitSide": {
     "id": "BrigitSide",
@@ -87,7 +87,7 @@
     "rewardItem": null,
     "rewardText": "Complete the bike race in under {{gameGoals.CircuitBike}}s.",
     "rewardCondition": "$gameCircuitBikeTime > 0 && $gameCircuitBikeTime <= #gameGoals.CircuitBike",
-    "fintechID": "brigit"
+    "partnerID": "brigit"
   },
   "ZendaSide": {
     "id": "ZendaSide",
@@ -102,6 +102,6 @@
     "rewardItem": null,
     "rewardText": "Help the people in pain",
     "rewardCondition": "$healedCitizenCount [===] #actorCounts.CitizenSick",
-    "fintechID": "zenda"
+    "partnerID": "zenda"
   }
 }

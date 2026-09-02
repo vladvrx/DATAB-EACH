@@ -423,7 +423,7 @@ function replaceVueComponentSetup(ast, oldName, newName) {
 }
 
 function removeMainOnlineVideo(ast) {
-  replaceVueComponentSetup(ast, "FintechVideo", "OfflineArticleVideoPlaceholder");
+  replaceVueComponentSetup(ast, "PartnerVideo", "OfflineArticleVideoPlaceholder");
   replaceVueComponentSetup(ast, "YoutubePlayer", "OfflineFullscreenVideoPlaceholder");
   const obsoleteBindings = new Set(["ic", "sc"]);
   const removedBindings = new Set();
@@ -757,7 +757,7 @@ async function extractSiteData() {
   data.project.origin = "";
   data.project.basepath = "./";
   data.page.route.url = "./";
-  data.site.menu.coastallink = "#";
+  data.site.menu.islandlink = "#";
   const dataDirectory = path.join(outputRoot, "data");
   await fs.mkdir(dataDirectory, { recursive: true });
   await fs.writeFile(path.join(dataDirectory, "site.json"), `${JSON.stringify(data, null, 2)}\n`);

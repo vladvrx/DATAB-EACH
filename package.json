@@ -13,6 +13,11 @@
     "port:analyze": "node scripts/analyze-direct-port.mjs",
     "port:recover": "npm run port:build && npm run port:extract && npm run port:analyze",
     "test:port": "playwright test tests/direct-port-parity.spec.js --workers=1",
+    "package:sim": "node scripts/package-submission.mjs",
+    "test:sim": "node scripts/test-sim-economy.mjs",
+    "test:submission": "playwright test tests/submission-verification.spec.js --workers=1",
+    "doc:intent": "python scripts/create-design-intent-docx.py",
+    "serve:sim": "node -e \"const http=require('http'), fs=require('fs'), path=require('path'); http.createServer((req,res)=>{ let p=req.url.split('?')[0]; if(p==='/'||p==='') p='/index.html'; const fp=path.join('submission', p); if(fs.existsSync(fp)&&fs.statSync(fp).isFile()){ res.writeHead(200); fs.createReadStream(fp).pipe(res); } else { res.writeHead(404); res.end('Not Found'); } }).listen(43173, ()=>console.log('Serving simulation at http://localhost:43173'));\"",
     "rebuild:html": "python3 scripts/rebuild-reference.py",
     "dump:download": "python3 scripts/download-dump.py",
     "dump:serve": "node scripts/serve-dump.mjs"

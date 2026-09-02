@@ -1,4 +1,4 @@
-//  Merci-Michel [R]
+//  Data B-each [R]
 //  Build 20250626-165126
 var e = Object.defineProperty,
   t = (t, n, i) => (((t, n, i) => {
@@ -197,7 +197,7 @@ const it = ["tabindex"],
         }), u("p", {
           innerHTML: e.$l("global.baseline")
         }, null, 8, rt), p(x, {
-          href: e.$l("menu.coastallink"),
+          href: e.$l("menu.islandlink"),
           text: e.$l("cta.discover"),
           class: "menu-cta",
           tabindex: m.value ? 0 : -1,
@@ -608,7 +608,7 @@ const Pt = n(Tt, [["render", function (e, t) {
   VueDialogAboutComponent = n({
     __name: "DialogAbout",
     props: {
-      fintech: {
+      partner: {
         default: "aspiration"
       }
     },
@@ -617,13 +617,13 @@ const Pt = n(Tt, [["render", function (e, t) {
       async function n() {
         o.$dialogs.exitDialog(!0), o.$webgl.store.frozenPlayerDelay = 450, await T(400), o.$router.push({
           name: "Phone"
-        }), o.$store.phone.tab.id = "FintechDetails", o.$store.phone.tab.props = {
-          fintech: t.fintech,
+        }), o.$store.phone.tab.id = "PartnerDetails", o.$store.phone.tab.props = {
+          partner: t.partner,
           isFromDialog: !0
         };
       }
       return (e, i) => (r(), c("div", At, [u("div", Dt, [p(H, {
-        icon: `logo-fintech-${t.fintech}`,
+        icon: `logo-partner-${t.partner}`,
         class: "dialog-icon",
         "is-button": !0,
         onClick: n
@@ -3108,10 +3108,10 @@ const Ea = {
         i = s(),
         l = s();
       a(() => n.current.opts, e => {
-        i.value = e && e.closable, e && e.fintech && (l.value = e.fintech);
+        i.value = e && e.closable, e && e.partner && (l.value = e.partner);
       });
       const u = b(() => !(o.$store.isOverlayVisible || o.$store.currentFullscreenVideoDelayed || !i.value || (o.$viewport.width > 700 ? !n.current.id : !n.current.id || n.current.node && (n.current.node.isPrompt || n.current.node.isGPTPrompt || n.current.node.isGPTInput)))),
-        h = b(() => !(o.$store.isOverlayVisible || o.$store.currentFullscreenVideoDelayed || !n.current.opts || !n.current.opts.fintech || !o.$fintechs.list[n.current.opts.fintech] || o.$fintechs.list[n.current.opts.fintech].isHidden || n.current.node && (n.current.node.isPrompt || n.current.node.isGPTPrompt || n.current.node.isGPTInput)));
+        h = b(() => !(o.$store.isOverlayVisible || o.$store.currentFullscreenVideoDelayed || !n.current.opts || !n.current.opts.partner || !o.$partners.list[n.current.opts.partner] || o.$partners.list[n.current.opts.partner].isHidden || n.current.node && (n.current.node.isPrompt || n.current.node.isGPTPrompt || n.current.node.isGPTInput)));
       function v() {
         o.$dialogs.exitDialog(!0);
       }
@@ -3152,8 +3152,8 @@ const Ea = {
         default: O(() => [h.value ? (r(), $(VueDialogAboutComponent, {
           key: 0,
           class: "dialog-about",
-          fintech: l.value
-        }, null, 8, ["fintech"])) : f("", !0)]),
+          partner: l.value
+        }, null, 8, ["partner"])) : f("", !0)]),
         _: 1
       }), p(z, {
         css: !1,
@@ -3180,7 +3180,7 @@ const Ea = {
     class: "icon-coin"
   },
   Fa = {
-    class: "coastal-points"
+    class: "data-points"
   },
   Oa = ["innerHTML"],
   za = ["innerHTML"],
@@ -3200,11 +3200,11 @@ const Ea = {
         n = b(() => !t.isHeaderVisible || t.isFormOpen || t.isDialogVisibleDelayed || t.isMenuOpen || t.isTransitionActive || t.isOverlayVisible || o.$viewport.width < 660 && o.$notifs.isBottomActive.value || o.$viewport.width < 660 && t.isInteractionButtonVisible || o.$viewport.width < 660 && t.isInteractionDone || t.isApiErrorVisible || t.sceneState < t.sceneStates.Playing || t.phone.isVisible || t.isTelescopeActiveDelayed || t.isCinematicActive || t.currentFullscreenVideo),
         i = b(() => !n.value),
         a = M.get("phone-map", 64, 64),
-        l = M.get("phone-fintech", 64, 64),
+        l = M.get("phone-partner", 64, 64),
         h = M.get("phone-point", 64, 128),
         m = M.get("phone-customization", 64, 64),
         g = [a, l, M.get("phone-quest", 64, 64), m, h],
-        y = ["Map", "Fintechs", "Accessories", "Quests", "Customize"],
+        y = ["Map", "Partners", "Accessories", "Quests", "Customize"],
         w = s(),
         k = s(),
         x = s(),
@@ -3217,36 +3217,36 @@ const Ea = {
           name: "Phone"
         });
       }
-      return E.value = P.coastalPoints, C.value = P.coastalPoints, _(() => {
+      return E.value = P.dataPoints, C.value = P.dataPoints, _(() => {
         I = x.value.querySelector(".icon-coin .icon");
         const e = async () => {
-          C.value = P.coastalPoints, I.classList.add("collect"), ne({
+          C.value = P.dataPoints, I.classList.add("collect"), ne({
             target: x.value,
-            selector: ".coastal-points span:first-child",
+            selector: ".data-points span:first-child",
             ease: "outSwift",
             transform: ["translateY(0)", "translateY(-110%)"],
             duration: 250
           }), ne({
             target: x.value,
-            selector: ".coastal-points span:last-child",
+            selector: ".data-points span:last-child",
             ease: "outSwift",
             transform: ["translateY(110%)", "translateY(0)"],
             duration: 250
-          }), await T(300), E.value = P.coastalPoints, ne({
+          }), await T(300), E.value = P.dataPoints, ne({
             target: x.value,
-            selector: ".coastal-points span:first-child",
+            selector: ".data-points span:first-child",
             transform: ["translateY(-110%)", "translateY(0)"],
             duration: .1
           }), ne({
             target: x.value,
-            selector: ".coastal-points span:last-child",
+            selector: ".data-points span:last-child",
             transform: ["translateY(0)", "translateY(110%)"],
             duration: .1
           }), await T(750), I.classList.remove("collect");
         };
         let t = null;
         v(() => {
-          clearTimeout(t), n.value || C.value === P.coastalPoints || (t = setTimeout(e, 800));
+          clearTimeout(t), n.value || C.value === P.dataPoints || (t = setTimeout(e, 800));
         });
       }), (e, t) => (r(), c("section", {
         ref_key: "hud",
@@ -4003,11 +4003,11 @@ const So = e => (P("data-v-681e419f"), e = e(), I(), e),
     __name: "PhoneNavigation",
     setup(e) {
       const t = M.get("phone-map", 64, 128),
-        n = M.get("phone-fintech", 64, 128),
+        n = M.get("phone-partner", 64, 128),
         i = M.get("phone-point", 64, 128),
         s = M.get("phone-customization", 64, 128),
         a = M.get("phone-quest", 64, 128),
-        l = ["Map", "Fintechs", "Accessories", "Customization", "Quests"],
+        l = ["Map", "Partners", "Accessories", "Customization", "Quests"],
         f = [t, n, i, s, a],
         h = b(() => o.$store.newItem),
         m = b(() => o.$store.isPhoneOpen),
@@ -4035,7 +4035,7 @@ const So = e => (P("data-v-681e419f"), e = e(), I(), e),
       }
       return (e, t) => (r(), c("div", {
         class: S(["phone-navigation", {
-          "is-hidden": "FintechDetails" == e.$store.phone.tab.id
+          "is-hidden": "PartnerDetails" == e.$store.phone.tab.id
         }])
       }, [u("nav", zo, [u("ul", Bo, [(r(), c(B, null, j(l, (t, n) => u("li", {
         key: t + n,
@@ -4354,8 +4354,8 @@ const jo = (e => (P("data-v-e9c6883c"), e = e(), I(), e))(() => u("svg", {
             "is-done": n.isMainQuestCompleted
           }])
         }, [p(a, {
-          id: `logo-fintech-${n.index}`,
-          class: S(`logo-fintech-${n.index}`)
+          id: `logo-partner-${n.index}`,
+          class: S(`logo-partner-${n.index}`)
         }, null, 8, ["id", "class"])], 2), (r(), c("svg", {
           viewBox: "0 0 70 87",
           xmlns: "http://www.w3.org/2000/svg",
@@ -4384,7 +4384,7 @@ const jo = (e => (P("data-v-e9c6883c"), e = e(), I(), e))(() => u("svg", {
   VueMapConfirmationComponent = n({
     __name: "MapConfirmation",
     props: {
-      fintech: {
+      partner: {
         type: String,
         default: null
       }
@@ -4397,16 +4397,16 @@ const jo = (e => (P("data-v-e9c6883c"), e = e(), I(), e))(() => u("svg", {
         i = M.get("misc-taxi"),
         s = M.get("misc-boat"),
         a = b(() => {
-          const e = o.$fintechs.list[n.fintech];
+          const e = o.$partners.list[n.partner];
           if (!e) return;
           return e.tpCoords.island === o.$webgl.scenes.currentSceneID.value ? i : s;
         }),
         l = b(() => {
-          const e = o.$fintechs.list[n.fintech];
+          const e = o.$partners.list[n.partner];
           if (e) return e.name;
         });
       function f() {
-        const e = o.$fintechs.list[n.fintech];
+        const e = o.$partners.list[n.partner];
         if (!e) return;
         const t = e.tpCoords;
         o.$router.push({
@@ -4461,7 +4461,7 @@ const il = n({}, [["render", function (e, t) {
       let t = 1024,
         n = .5;
       const i = fe.coords,
-        f = Object.entries(fe.pins).filter(([e]) => !!o.$fintechs.list[e]).map(([e, t]) => {
+        f = Object.entries(fe.pins).filter(([e]) => !!o.$partners.list[e]).map(([e, t]) => {
           var i, s;
           const a = null == (s = null == (i = fe.coords) ? void 0 : i[t.island]) ? void 0 : s.bounds;
           if (!a) return [e, t];
@@ -4489,7 +4489,7 @@ const il = n({}, [["render", function (e, t) {
           y: ((.5 * a + .5) * t.height + t.y) * n
         })),
         v = o.$device.type.phone ? fe.mobileImg : fe.desktopImg,
-        g = o.$fintechs.list,
+        g = o.$partners.list,
         y = s(),
         b = s(!1),
         w = s(g[Object.keys(g)[0]].id),
@@ -4667,8 +4667,8 @@ const il = n({}, [["render", function (e, t) {
           y: e.position.y - 18,
           object: e.object,
           clickable: x.value,
-          "is-interest": d(o).$fintechs.list[t].isInterest,
-          "is-main-quest-completed": d(o).$fintechs.list[t].isQuestCompleted,
+          "is-interest": d(o).$partners.list[t].isInterest,
+          "is-main-quest-completed": d(o).$partners.list[t].isQuestCompleted,
           onPinclick: J
         }, null, 8, ["index", "x", "y", "object", "clickable", "is-interest", "is-main-quest-completed"]))), 128)), u("div", {
           class: "userPosition",
@@ -4682,12 +4682,12 @@ const il = n({}, [["render", function (e, t) {
         }, [al, u("div", ol, [p(he, {
           type: e.$savestate.game.player.face
         }, null, 8, ["type"])])], 4)], 512)], 512), p(VueMapConfirmationComponent, {
-          fintech: w.value,
+          partner: w.value,
           class: S({
             "confirmation-visible": b.value
           }),
           onClose: J
-        }, null, 8, ["fintech", "class"])], 4);
+        }, null, 8, ["partner", "class"])], 4);
       };
     }
   }, [["__scopeId", "data-v-d7359a46"]]),
@@ -4906,7 +4906,7 @@ function Ml() {
   }()));
 }
 const Tl = {
-    class: "phone-tab fintechs"
+    class: "phone-tab partners"
   },
   El = {
     "data-scrollable": "",
@@ -4914,43 +4914,43 @@ const Tl = {
   },
   Ll = ["onClick"],
   Pl = (e => (P("data-v-e1d68c88"), e = e(), I(), e))(() => u("div", {
-    class: "fintech-border"
+    class: "partner-border"
   }, null, -1)),
   Il = {
-    class: "fintech-card"
+    class: "partner-card"
   },
   Al = ["aria-label", "onClick"],
   Dl = {
-    class: "fintech-content"
+    class: "partner-content"
   },
   Fl = ["innerHTML"],
   Ol = {
-    class: "fintech-tags"
+    class: "partner-tags"
   },
-  VueFintechsComponent = n({
-    __name: "Fintechs",
+  VuePartnersComponent = n({
+    __name: "Partners",
     setup(e) {
-      const t = Object.values(o.$fintechs.list).filter(e => !e.isHidden).sort((e, t) => e.name.localeCompare(t.name)).sort((e, t) => +t.isInterest - +e.isInterest);
+      const t = Object.values(o.$partners.list).filter(e => !e.isHidden).sort((e, t) => e.name.localeCompare(t.name)).sort((e, t) => +t.isInterest - +e.isInterest);
       function n(e) {
-        o.$store.phone.tab.id = "FintechDetails", o.$store.phone.tab.props = {
-          fintech: e,
+        o.$store.phone.tab.id = "PartnerDetails", o.$store.phone.tab.props = {
+          partner: e,
           isFromDialog: !1
         }, o.$webgl.audio.playSound("sfx_phone_click_medium");
       }
       return Ml(), (e, i) => (r(), c("article", Tl, [p(yl), u("div", El, [p(VuePhoneHeaderComponent, {
-        title: e.$l("phone.title.fintech"),
-        description: e.$l("phone.desc.fintech")
+        title: e.$l("phone.title.partner"),
+        description: e.$l("phone.desc.partner")
       }, null, 8, ["title", "description"]), (r(!0), c(B, null, j(d(t), e => (r(), c("section", {
         key: e.id,
-        class: "fintech",
+        class: "partner",
         onClick: t => n(e.id)
       }, [Pl, u("div", Il, [u("button", {
-        class: "fintech-badge-wrapper",
+        class: "partner-badge-wrapper",
         "aria-label": e.id,
         onClick: t => n(e.id)
       }, [p(H, {
-        icon: `logo-fintech-${e.id}`,
-        class: "fintech-badge"
+        icon: `logo-partner-${e.id}`,
+        class: "partner-badge"
       }, null, 8, ["icon"]), e.isInterest ? (r(), $(VuePhoneFeaturedBadgeComponent, {
         key: 0
       })) : f("", !0)], 8, Al), u("div", Dl, [u("p", {
@@ -4979,14 +4979,14 @@ const Tl = {
     class: "item-locked"
   },
   Yl = {
-    class: "buy-cta-info coastal-points"
+    class: "buy-cta-info data-points"
   },
   Rl = {
     class: "buy-cta-label"
   },
   Xl = {
     key: 3,
-    class: "coastal-points"
+    class: "data-points"
   },
   VueAccessoryComponent = n({
     __name: "Accessory",
@@ -5005,7 +5005,7 @@ const Tl = {
         m = o.$savestate.game,
         g = o.$items.all[t.item],
         y = b(() => {
-          if (g) return g.isClaimed ? "collected" : g.price < 0 ? "locked" : m.coastalPoints >= g.price ? "buyable" : "too-expensive";
+          if (g) return g.isClaimed ? "collected" : g.price < 0 ? "locked" : m.dataPoints >= g.price ? "buyable" : "too-expensive";
         });
       a(y, () => {
         n.value && E({
@@ -5052,14 +5052,14 @@ const Tl = {
         }, {
           default: O(() => [u("div", Yl, [u("span", null, C(d(g).price), 1), p(d(L), {
             class: "points",
-            alt: "Data B-each Points",
+            alt: "Databloons",
             contain: !0,
             url: d(i)
           }, null, 8, ["url"])]), u("div", Rl, C(e.$l("cta.buy")), 1)]),
           _: 1
         })) : (r(), c("div", Xl, [u("span", null, C(d(g).price), 1), p(d(L), {
           class: "points",
-          alt: "Data B-each Points",
+          alt: "Databloons",
           contain: !0,
           url: d(i)
         }, null, 8, ["url"])]))])], 2);
@@ -5074,7 +5074,7 @@ const Tl = {
     class: "content"
   },
   Gl = {
-    class: "coastal-points"
+    class: "data-points"
   },
   Kl = {
     class: "items-grid"
@@ -5085,10 +5085,10 @@ const Tl = {
       const t = s(),
         n = M.get("phone-point"),
         i = s();
-      Ml(), v(() => i.value = o.$savestate.game.coastalPoints), a(i, () => {
+      Ml(), v(() => i.value = o.$savestate.game.dataPoints), a(i, () => {
         t.value && E({
           target: t.value,
-          animation: "coastalpoints",
+          animation: "datapoints",
           easing: "outQuint",
           duration: 500
         });
@@ -5104,7 +5104,7 @@ const Tl = {
       }, null, 8, ["title", "description"]), u("section", {
         ref_key: "cpWrapper",
         ref: t,
-        class: "coastal-points-wrapper"
+        class: "data-points-wrapper"
       }, [u("div", Gl, [u("span", null, C(i.value), 1), p(d(L), {
         "height-ratio": "100%",
         contain: !0,
@@ -5368,8 +5368,8 @@ const hr = n({}, [["render", function (e, t) {
       }, null, 8, ["url"])], 64)) : (r(), c(B, {
         key: 2
       }, [wr, u("span", kr, C(d(n).reward), 1), p(d(L), {
-        class: "coastal-points",
-        alt: "Data B-each Points",
+        class: "data-points",
+        alt: "Databloons",
         contain: !0,
         url: d(i)
       }, null, 8, ["url"])], 64))])], 2), u("div", xr, [p(d(H), {
@@ -5379,14 +5379,14 @@ const hr = n({}, [["render", function (e, t) {
         color: "yellow"
       })]), u("div", Mr, [Tr, d(n).reward ? (r(), c("span", Er, C(d(n).reward), 1)) : f("", !0), d(n).rewardItem ? (r(), $(d(L), {
         key: 1,
-        class: "coastal-points coastal-items",
-        alt: "Data B-each Points",
+        class: "data-points data-items",
+        alt: "Databloons",
         contain: !0,
         url: d(M).get("item-" + d(n).rewardItem.id, 128, 256)
       }, null, 8, ["url"])) : (r(), $(d(L), {
         key: 2,
-        class: "coastal-points",
-        alt: "Data B-each Points",
+        class: "data-points",
+        alt: "Databloons",
         contain: !0,
         url: d(i)
       }, null, 8, ["url"]))])])) : (r(), c("section", Lr, ["in-progress" == a.value ? (r(), c("h3", {
@@ -5439,7 +5439,7 @@ const hr = n({}, [["render", function (e, t) {
     setup(e) {
       const t = {
           Main: 1e7,
-          Fintech: 2,
+          Partner: 2,
           Side: 1
         },
         n = e => {
@@ -5509,8 +5509,8 @@ const hr = n({}, [["render", function (e, t) {
     Map: {
       component: VueMapComponent
     },
-    Fintechs: {
-      component: VueFintechsComponent
+    Partners: {
+      component: VuePartnersComponent
     },
     Accessories: {
       component: VueAccessoriesComponent
@@ -5521,15 +5521,15 @@ const hr = n({}, [["render", function (e, t) {
     Quests: {
       component: VueQuestsComponent
     },
-    FintechDetails: {
+    PartnerDetails: {
       component: n({
-        __name: "FintechDetails",
-        props: ["fintech", "isFromDialog"],
+        __name: "PartnerDetails",
+        props: ["partner", "isFromDialog"],
         setup(e) {
           const t = e,
             n = s(),
-            i = o.$fintechs.list,
-            a = b(() => i[t.fintech] || Object.keys(i)[0]),
+            i = o.$partners.list,
+            a = b(() => i[t.partner] || Object.keys(i)[0]),
             d = b(() => !!t.isFromDialog),
             h = e => e.charAt(0).toUpperCase() + e.slice(1);
           function v() {
@@ -5554,7 +5554,7 @@ const hr = n({}, [["render", function (e, t) {
             });
           }
           function y() {
-            o.$store.phone.tab.id = "Fintechs", o.$store.phone.tab.props = null, o.$webgl.audio.playSound("sfx_phone_click_soft");
+            o.$store.phone.tab.id = "Partners", o.$store.phone.tab.props = null, o.$webgl.audio.playSound("sfx_phone_click_soft");
           }
           function _() {
             o.$webgl.audio.playSound("sfx_phone_click_soft"), o.$router.push({
@@ -5584,7 +5584,7 @@ const hr = n({}, [["render", function (e, t) {
               class: "article-back",
               onClick: y
             }, null, 8, ["aria-label"])), p(i, {
-              id: "logo-fintech-" + a.value.id
+              id: "logo-partner-" + a.value.id
             }, null, 8, ["id"])]), u("section", null, [p(k, {
               "aria-label": e.$l("arialabel.link"),
               icon: "share",
@@ -5659,11 +5659,11 @@ const hr = n({}, [["render", function (e, t) {
         const r = t.component || null,
           c = t.useProps ? e.props : null;
         a !== i.key && (!function (e, t) {
-          if ("FintechDetails" === e) {
-            const e = o.$fintechs.list[t.fintech];
+          if ("PartnerDetails" === e) {
+            const e = o.$partners.list[t.partner];
             e && o.$analytics.pageview({
-              title: `Data B-each - Phone - Fintechs - ${e.name}`,
-              path: `/phone-fintechs-${e.id}`
+              title: `Data B-each - Phone - Partners - ${e.name}`,
+              path: `/phone-partners-${e.id}`
             });
           } else o.$analytics.pageview({
             title: `Data B-each - Phone - ${e}`,
@@ -5686,7 +5686,7 @@ const hr = n({}, [["render", function (e, t) {
         if (clearTimeout(u), !e) return function () {
           s = !0;
           const e = i.id;
-          i.key = i.id = i.component = i.props = null, "FintechDetails" === e && (n.tab.id = t, n.tab.props = null);
+          i.key = i.id = i.component = i.props = null, "PartnerDetails" === e && (n.tab.id = t, n.tab.props = null);
         }();
         const a = performance.now(),
           o = 600 - (a - l);
@@ -5872,7 +5872,7 @@ const ac = {
       let n;
       !function () {
         const e = o.$device.type.phone ? fe.mobile : fe.desktop;
-        Ne("phone-map-illu", e, "Coastal map");
+        Ne("phone-map-illu", e, "Island map");
         for (let t in o.$items.all) {
           const e = o.$items.all[t];
           if (e.price <= 0) continue;
@@ -5982,11 +5982,11 @@ if ("Home" === gc.name) {
     const n = e.$preloader.createTask();
     return await t, n.finish(), t;
   };
-  await Promise.all([o(e.$savestate.preload()), o(e.$manifest.load()), o(e.$fintechs.load()), o(e.$items.load())]), await o(e.$quests.load()), await e.$fintechs.initVariables();
-  bc && !e.$fintechs.list[bc] && (bc = null), await e.$savestate.init({
-    requestedFintech: bc,
+  await Promise.all([o(e.$savestate.preload()), o(e.$manifest.load()), o(e.$partners.load()), o(e.$items.load())]), await o(e.$quests.load()), await e.$partners.initVariables();
+  bc && !e.$partners.list[bc] && (bc = null), await e.$savestate.init({
+    requestedPartner: bc,
     requestedChatAssistant: !1
-  }), await e.$quests.init(), await e.$fintechs.linkQuests(), e.$preloader.task(Promise.all([new Ge("Gilmer", {
+  }), await e.$quests.init(), await e.$partners.linkQuests(), e.$preloader.task(Promise.all([new Ge("Gilmer", {
     weight: 500
   }), new Ge("Gilmer", {
     weight: 700

@@ -398,8 +398,8 @@
         },
         {
           "compiledName": "zl",
-          "componentName": "Fintechs",
-          "recoveredName": "VueFintechsComponent"
+          "componentName": "Partners",
+          "recoveredName": "VuePartnersComponent"
         },
         {
           "compiledName": "ql",

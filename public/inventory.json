@@ -1,6 +1,6 @@
 {
   "generated": "2026-09-01T18:36:07Z",
-  "origin": "https://coastalworld.merci-michel.com",
+  "origin": "https://databeach.local/",
   "totals": {
     "candidates": 728,
     "real_files": 728,
@@ -3186,7 +3186,7 @@
       "content_type": "image/png"
     },
     {
-      "path": "/assets/fintechs_en.json",
+      "path": "/assets/partners_en.json",
       "bytes": 3085,
       "gzip_bytes": 523,
       "category": "locale-json",

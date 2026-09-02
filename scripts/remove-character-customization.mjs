@@ -162,12 +162,12 @@ function patchBootPage(file) {
     "Click here to change your alien color.",
   );
   source = source.replace(
-    "<strong>Adjust your style by swiping the accessories unlocked with your Data B-each Points.</strong>",
+    "<strong>Adjust your style by swiping the accessories unlocked with your Databloons.</strong>",
     "<strong>Choose your alien color.</strong>",
   );
   source = source.replace(
-    "<strong>Complete quests to earn Data B-each Points. Go to the customization menu to unlock new accessories!</strong>",
-    "<strong>Complete quests to earn Data B-each Points.</strong>",
+    "<strong>Complete quests to earn Databloons. Go to the customization menu to unlock new accessories!</strong>",
+    "<strong>Complete quests to earn Databloons.</strong>",
   );
 
   const retiredUiScript = `<script id="databeach-retired-customization-ui">
@@ -180,7 +180,7 @@ function patchBootPage(file) {
             element;
           entry.remove();
         };
-        const retiredPhoneLabels = ["Accessories", "Fintechs", "Customization"];
+        const retiredPhoneLabels = ["Accessories", "Partners", "Customization"];
         for (const label of retiredPhoneLabels) {
           root
             .querySelectorAll?.('button[aria-label="' + label + '"]')

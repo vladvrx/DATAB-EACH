@@ -48,7 +48,7 @@ test("boots with color-only alien customization", async ({ page }) => {
   await page.waitForTimeout(1_000);
   await expect(page.getByRole("button", { name: "Map", exact: true })).toHaveCount(1);
   await expect(page.getByRole("button", { name: "Quests", exact: true })).toHaveCount(1);
-  await expect(page.getByRole("button", { name: "Fintechs", exact: true })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Partners", exact: true })).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Accessories", exact: true })).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Customization", exact: true })).toHaveCount(0);
   await expect(page.locator(".nav-items > .nav-item")).toHaveCount(2);

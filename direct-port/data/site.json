@@ -67,7 +67,7 @@
         "title": "",
         "description": "Open the map to quickly navigate and discover places to go"
       },
-      "fintech": {
+      "partner": {
         "title": "Head here first",
         "description": "Click here to open the map &amp; find out what you can visit"
       }
@@ -108,23 +108,23 @@
     },
     "phone": {
       "title": {
-        "fintech": "The Fintechs",
-        "cp": "Data B-each Points",
+        "partner": "The Partners",
+        "cp": "Databloons",
         "customize": "Customize Avatar",
         "quest": "The Quests"
       },
       "desc": {
-        "fintech": "<strong>Learn about each brand and the products and services they offer.</strong>",
-        "cp": "<strong>Unlock new accessories with your Data B-each Points. Those with a fire icon will give you a magic skill!</strong>",
+        "partner": "<strong>Learn about each brand and the products and services they offer.</strong>",
+        "cp": "<strong>Unlock new accessories with your Databloons. Those with a fire icon will give you a magic skill!</strong>",
         "customize": "<strong>Choose your alien color.</strong>",
-        "quest": "<strong>Complete quests to earn Data B-each Points.</strong>"
+        "quest": "<strong>Complete quests to earn Databloons.</strong>"
       },
       "new": {
         "item": "new"
       }
     },
     "menu": {
-      "coastallink": "#"
+      "islandlink": "#"
     },
     "game": {
       "timer": {

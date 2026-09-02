@@ -40,9 +40,9 @@ Scene/support files deleted:
 
 ## Related game content
 
-- Removed fintech definitions: `aspiration`, `bluevine`, `coastal`, `greenwood`, `kikoff`, `lendingpoint`, `one`, `possible`, `prosper`, `tempkey`, `till`, and `x1`.
-- Removed every main and side quest belonging to those fintechs.
-- Removed aggregate `SupermainQuest6`, `SupermainQuest12`, and `SupermainQuest16`, which depended on the removed island fintechs.
+- Removed partner definitions: `aspiration`, `bluevine`, `island`, `greenwood`, `kikoff`, `lendingpoint`, `one`, `possible`, `prosper`, `tempkey`, `till`, and `x1`.
+- Removed every main and side quest belonging to those partners.
+- Removed aggregate `SupermainQuest6`, `SupermainQuest12`, and `SupermainQuest16`, which depended on the removed island partners.
 - Removed their NPCs, ambassadors, hints, and dialogue entries, plus the island-specific `Sailor_*` and `Citizen_*` dialogue/character entries.
 - Removed the retained Cove NPC dialogue that pointed players toward the deleted islands and rewrote the remaining Cove hints so they no longer mention deleted content.
 - Removed the `CircuitBoat`, `CircuitCar`, and `CircuitJetski` race routes, presets, targets, loader entries, and associated assets. `CircuitBike` on Cove Island remains.

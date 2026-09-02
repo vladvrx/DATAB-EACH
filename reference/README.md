@@ -19,4 +19,4 @@ This folder contains the retained island, character, audio, model, interface ass
 | `_external/urls.json` | Generic third-party URLs only |
 | `MANIFEST.json` | Preserved asset inventory with neutral local paths |
 
-Financial-company logos were replaced with transparent placeholders and the 16 partner slots are labeled **TECH COMPANY #1** through **TECH COMPANY #16** in the locale data. The boot pages retain the original runtime structure while using the neutralized Data B-each copy and assets.
+Technology-partner logos were replaced with transparent placeholders and the 16 partner slots are labeled **TECH COMPANY #1** through **TECH COMPANY #16** in the locale data. The boot pages retain the original runtime structure while using the neutralized Data B-each copy and assets.

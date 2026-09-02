@@ -73,7 +73,7 @@ I cannot read `C:\Users\user\Downloads\three-rescue-2026-09-01` from this enviro
 - `/share/share_en.png` (226 KB)
 - Site root: `index.html`, `favicon.ico`, `manifest.webmanifest`, `sitemap.xml`, `robots.txt`
 
-Quick check that `assets/` is complete: it should contain **12 `.m4a` files** and **339 `.glb` files**. Also look for `dialogs_en.json` (120 KB) — locale JSON is concatenated at runtime (`/assets/fintechs_en.json`, `characters_en.json`, `dialogs_en.json`, `items_en.json`, `quests_en.json`) and is easy for a static scraper to miss.
+Quick check that `assets/` is complete: it should contain **12 `.m4a` files** and **339 `.glb` files**. Also look for `dialogs_en.json` (120 KB) — locale JSON is concatenated at runtime (`/assets/partners_en.json`, `characters_en.json`, `dialogs_en.json`, `items_en.json`, `quests_en.json`) and is easy for a static scraper to miss.
 
 ## Reference folder
 

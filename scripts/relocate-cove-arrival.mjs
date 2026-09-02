@@ -94,7 +94,7 @@ if (manifest.dataBeachIslandOffset) {
 
 const arrivalNames = new Set(["Spawn.001", "PortSpawnB.001"]);
 const arrival = manifest.points["Spawn.001"];
-const safeLand = manifest.points["FintechSpawnPomelo.001"];
+const safeLand = manifest.points["PartnerSpawnPomelo.001"];
 const offset = [arrival[0] - safeLand[0], 0, arrival[2] - safeLand[2]];
 
 function shiftPosition(position) {

@@ -113,7 +113,7 @@ export const MISSING_FROM_DUMP_LIST = [
 ];
 
 export const RUNTIME_JSON = [
-  "/assets/fintechs_en.json",
+  "/assets/partners_en.json",
   "/assets/characters_en.json",
   "/assets/dialogs_en.json",
   "/assets/items_en.json",

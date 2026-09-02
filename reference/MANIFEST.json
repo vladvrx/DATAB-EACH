@@ -3394,8 +3394,8 @@
       "folder": "assets"
     },
     {
-      "url": "https://databeach.local/assets/fintechs_en.json",
-      "local": "assets/fintechs_en.json",
+      "url": "https://databeach.local/assets/partners_en.json",
+      "local": "assets/partners_en.json",
       "bytes": 3085,
       "folder": "assets"
     },

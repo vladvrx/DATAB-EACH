@@ -106,7 +106,7 @@ for (const htmlPath of htmlPaths) {
   delete pageData.site.cookies;
   if (pageData.site.menu) {
     pageData.site.menu = {
-      coastallink: pageData.site.menu.coastallink,
+      islandlink: pageData.site.menu.islandlink,
     };
   }
 
