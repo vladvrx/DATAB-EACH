@@ -6123,7 +6123,7 @@ const ql = {
       const m = Wl / c,
         g = e.index * m + re.randomFloat(-.2, .2) + t;
       let y = (.007 + re.randomFloat(.003, .007)) * (1 - 10 * Math.min(Math.pow(f, 1), .1));
-      e.billboard = h, e.angVelocity = 0, e.spriteId = r, e.velocity.x += y * Math.cos(g), e.velocity.z += y * Math.cos(g), e.velocity.y += 2 * y, e.rotation.x = Math.PI / -2, e.rotation.z = y * e.velocity.x * Math.cos(g), e.angle = Math.random() * Math.PI * 2, e.velocityDrag.setScalar(o || .98), e.useVelocityDragMult = !0, e.gravity.y = 0, e.position.copy(s), e.position.x += .1 * Math.random() - .05, e.position.y += .1 * Math.random() - .05, e.position.z += .1 * Math.random() - .05, e.duration = re.randomFloat(a || 80, n || 90), e.scaleInOut = !0, e.scaleTo.setScalar(0), e.scaleFrom.copy(i).multiplyScalar(1), e.alphaFrom = 1, e.alphaTo = 1, e.colorFrom.copy(new V(16777215)).multiplyScalar(1), e.colorTo.copy(new V(7327214)).multiplyScalar(1);
+      e.billboard = h, e.angVelocity = 0, e.spriteId = r, e.velocity.x += y * Math.cos(g), e.velocity.z += y * Math.cos(g), e.velocity.y += 2 * y, e.rotation.x = Math.PI / -2, e.rotation.z = y * e.velocity.x * Math.cos(g), e.angle = Math.random() * Math.PI * 2, e.velocityDrag.setScalar(o || .98), e.useVelocityDragMult = !0, e.gravity.y = 0, e.position.copy(s), e.position.x += .1 * Math.random() - .05, e.position.y += .1 * Math.random() - .05, e.position.z += .1 * Math.random() - .05, e.duration = re.randomFloat(a || 80, n || 90), e.scaleInOut = !0, e.scaleTo.setScalar(0), e.scaleFrom.copy(i).multiplyScalar(1), e.alphaFrom = 1, e.alphaTo = 1, e.colorFrom.copy(new V(6211839)).multiplyScalar(1), e.colorTo.copy(new V(2854890)).multiplyScalar(1);
     }
   },
   Yl = Object.freeze(Object.defineProperty({
@@ -6658,7 +6658,7 @@ const nh = {
       const m = oh / c,
         g = e.index * m + re.randomFloat(-.2, .2) + t;
       let y = .005 * Math.random() + .005;
-      e.billboard = h, e.delay = re.randomFloat(0, 70), e.angVelocity = 0, e.spriteId = r, e.velocity.x += y * Math.cos(g), e.velocity.z += y * Math.cos(g), e.velocity.y += 0, e.rotation.x = Math.PI / -2, e.rotation.z = y * e.velocity.x * Math.cos(g), e.velocityDrag.setScalar(1), e.useVelocityDragMult = !0, e.gravity.y = .01, e.position.copy(s), e.position.x += .2 * Math.random() - .1, e.position.y += .2 * Math.random() - .1, e.position.z += .2 * Math.random() - .1, e.duration = re.randomFloat(a || 300, n || 400), e.scaleFrom.copy(i), e.scaleTo.setScalar(0), e.alpha = 1;
+      e.billboard = h, e.delay = re.randomFloat(0, 70), e.angVelocity = 0, e.spriteId = r, e.velocity.x += y * Math.cos(g), e.velocity.z += y * Math.cos(g), e.velocity.y += 0, e.rotation.x = Math.PI / -2, e.rotation.z = y * e.velocity.x * Math.cos(g), e.velocityDrag.setScalar(1), e.useVelocityDragMult = !0, e.gravity.y = .01, e.position.copy(s), e.position.x += .2 * Math.random() - .1, e.position.y += .2 * Math.random() - .1, e.position.z += .2 * Math.random() - .1, e.duration = re.randomFloat(a || 300, n || 400), e.scaleFrom.copy(i), e.scaleTo.setScalar(0), e.alpha = 1, e.colorFrom.copy(new V(6211839)).multiplyScalar(1), e.colorTo.copy(new V(2854890)).multiplyScalar(1);
     }
   },
   rh = Object.freeze(Object.defineProperty({
