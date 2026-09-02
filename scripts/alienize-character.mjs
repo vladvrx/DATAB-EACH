@@ -511,10 +511,10 @@ function moveFaceToTorso({
 function slimLegs({ positions, joints, weights, jointNames }) {
   const vertexCount = positions.length / 3;
   const influenceFor = (name) => {
-    if (/(?:Hip)_[LR]$/.test(name)) return 0.35;
+    if (/(?:Hip)_[LR]$/.test(name)) return 0.6;
     if (/(?:Knee)_[LR]$/.test(name)) return 1;
-    if (/(?:Ankle)_[LR]$/.test(name)) return 0.95;
-    if (/(?:Toes)_[LR]$/.test(name)) return 0.22;
+    if (/(?:Ankle)_[LR]$/.test(name)) return 1;
+    if (/(?:Toes)_[LR]$/.test(name)) return 0.28;
     return 0;
   };
 
@@ -548,7 +548,7 @@ function slimLegs({ positions, joints, weights, jointNames }) {
     axis[side].z /= axis[side].weight;
   }
 
-  const slim = 0.52;
+  const slim = 0.4;
   let slimmed = 0;
   for (let vertex = 0; vertex < vertexCount; vertex += 1) {
     const { left, right } = perVertex[vertex];
