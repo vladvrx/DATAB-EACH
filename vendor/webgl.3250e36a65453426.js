@@ -4433,7 +4433,7 @@ const Lr = {
     const o = s.props.id,
       a = t.scenes[o];
     if (performance.now(), a.base || a.collider) return;
-    let n = await t.supercache.get(o + kr);
+    let n = window.__STUDIO_OVERLAY__ ? null : await t.supercache.get(o + kr);
     const r = n && function (e) {
       (e = e || new ArrayBuffer()).buffer && (e = e.buffer);
       const t = {
@@ -4570,8 +4570,10 @@ function Er(e, t) {
             }
           }
         }
+        window.__STUDIO_APPLY__ && window.__STUDIO_APPLY__(a, h, u, "props");
       }
     })));
+    window.__STUDIO_APPLY__ && window.__STUDIO_APPLY__(a, h, u, "manifest");
     const v = c.ao[a];
     v && p.push(o((async () => {
       const e = await t.load(v),
@@ -4732,7 +4734,7 @@ function Er(e, t) {
       for (let t = 0; t < b; t++) e[t] = Dt();
     }
     if (r.physicsInstancePromise = e.initPhysics(o), await tr(!0), !r.propsCollider) {
-      const e = [...l.props, ...r.props];
+      const e = [...(l.props || []), ...(r.props || [])];
       for (let s = 0, i = e.length; s < i; s++) {
         const i = e[s],
           o = t.assets[i.asset];

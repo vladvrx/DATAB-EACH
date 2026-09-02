@@ -2,13 +2,10 @@
   "Intro": {
     "__first__": "Hello",
     "Hello": {
-      "isSpeak": true,
       "id": "Hello",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Hello2"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "HELLO WELCOME..."
       ],
       "before": [
         {
@@ -18,18 +15,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "Welcome aboard, newcomer..."
-      ]
-    },
-    "Hello2": {
-      "isSpeak": true,
-      "id": "Hello2",
       "next": [
         {
           "action": "GOTO",
-          "node": "Hello3"
+          "node": "Hello2"
         }
+      ]
+    },
+    "Hello2": {
+      "id": "Hello2",
+      "isSpeak": true,
+      "bubbles": [
+        "HAVE YOU SEEN WHAT THE Glorbs found!"
       ],
       "before": [
         {
@@ -39,18 +36,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "Come check out what us and the Glorbs found!"
-      ]
-    },
-    "Hello3": {
-      "isSpeak": true,
-      "id": "Hello3",
       "next": [
         {
           "action": "GOTO",
-          "node": "Custom"
+          "node": "Hello3"
         }
+      ]
+    },
+    "Hello3": {
+      "id": "Hello3",
+      "isSpeak": true,
+      "bubbles": [
+        "WE NEED your help restoring the power back on the island, CAN YOU HELP US!!"
       ],
       "before": [
         {
@@ -60,13 +57,16 @@
           ]
         }
       ],
-      "bubbles": [
-        "We need your help restoring the power back on the island, can you help us?"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "Custom"
+        }
       ]
     },
     "Custom": {
-      "isPrompt": true,
       "id": "Custom",
+      "isPrompt": true,
       "choices": {
         "Yes": {
           "id": "Yes",
@@ -91,12 +91,10 @@
       }
     },
     "Skip": {
-      "isSpeak": true,
       "id": "Skip",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "No problem, I&#39;ll drop you off on <strong>Cove Island</strong>"
       ],
       "before": [
         {
@@ -106,31 +104,45 @@
           ]
         }
       ],
-      "bubbles": [
-        "No problem, I&#39;ll drop you off on <strong>Cove Island</strong>"
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "dev": {
     "__first__": "Test",
     "Test": {
-      "isSpeak": true,
       "id": "Test",
+      "isSpeak": true,
+      "bubbles": [
+        "Hello world"
+      ],
       "next": [
         {
           "action": "END"
         }
-      ],
-      "bubbles": [
-        "Hello world"
       ]
     }
   },
   "Aven_Quest_Before": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
+      "isSpeak": true,
+      "bubbles": [
+        "Hi there! Did you know <strong>TECH COMPANY #3</strong> can help finance your next big <strong>home improvement</strong>?",
+        "Great! We&#39;re going to renovate some houses on the island with <strong>TECH COMPANY #3</strong>&#39;s help."
+      ],
+      "before": [
+        {
+          "action": "EMOTE",
+          "opts": [
+            "Hello"
+          ]
+        }
+      ],
       "next": [
         {
           "action": "GIVE_QUEST_ITEM",
@@ -142,28 +154,13 @@
           "action": "GOTO",
           "node": "AfterGiving"
         }
-      ],
-      "before": [
-        {
-          "action": "EMOTE",
-          "opts": [
-            "Hello"
-          ]
-        }
-      ],
-      "bubbles": [
-        "Hi there! Did you know <strong>TECH COMPANY #3</strong> can help empower your next big <strong>home improvement</strong>?",
-        "Great! We&#39;re going to renovate some houses on the island with <strong>TECH COMPANY #3</strong>&#39;s help."
       ]
     },
     "AfterGiving": {
-      "isSpeak": true,
       "id": "AfterGiving",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Next"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Take this <strong>hammer</strong> and help us finish the job."
       ],
       "before": [
         {
@@ -173,17 +170,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "Take this <strong>hammer</strong> and help us finish the job."
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "Next"
+        }
       ]
     },
     "Next": {
-      "isSpeak": true,
       "id": "Next",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "There are several <strong>around</strong> here that need some fixing!"
       ],
       "before": [
         {
@@ -193,20 +191,20 @@
           ]
         }
       ],
-      "bubbles": [
-        "There are several <strong>around</strong> here that need some fixing!"
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Aven_Quest_Started": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Hey! Don&#39;t forget about us, let&#39;s apply the finishing touch to these houses."
       ],
       "before": [
         {
@@ -216,20 +214,21 @@
           ]
         }
       ],
-      "bubbles": [
-        "Hey! Don&#39;t forget about us, let&#39;s apply the finishing touch to these houses."
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Aven_Quest_Completed": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Great work, thanks! Go ahead and keep the <strong>hammer...</strong>",
+        "there are houses in <strong>need of upgrades</strong> all over the island."
       ],
       "before": [
         {
@@ -239,22 +238,20 @@
           ]
         }
       ],
-      "bubbles": [
-        "Great work, thanks! Go ahead and keep the <strong>hammer...</strong>",
-        "there are houses in <strong>need of upgrades</strong> all over the island."
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Aven_Ambassador_FirstTime": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Start2"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Do you own your own home? <strong>TECH COMPANY #3</strong> can help you secure a competitive interest rate on your player cards."
       ],
       "before": [
         {
@@ -264,18 +261,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "Do you own your own home? <strong>TECH COMPANY #3</strong> can help you secure a competitive interest rate on your player cards."
-      ]
-    },
-    "Start2": {
-      "isSpeak": true,
-      "id": "Start2",
       "next": [
         {
           "action": "GOTO",
-          "node": "AskMore"
+          "node": "Start2"
         }
+      ]
+    },
+    "Start2": {
+      "id": "Start2",
+      "isSpeak": true,
+      "bubbles": [
+        "Want to find out how?"
       ],
       "before": [
         {
@@ -285,13 +282,16 @@
           ]
         }
       ],
-      "bubbles": [
-        "Want to find out how?"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "AskMore"
+        }
       ]
     },
     "AskMore": {
-      "isPrompt": true,
       "id": "AskMore",
+      "isPrompt": true,
       "choices": {
         "no": {
           "id": "no",
@@ -316,13 +316,11 @@
       }
     },
     "Yes": {
-      "isSpeak": true,
       "id": "Yes",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Yes2"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "<strong>TECH COMPANY #3</strong> offers player cards that uses the equity from your home.",
+        "Use it on home improvement projects or other large purchases."
       ],
       "before": [
         {
@@ -332,19 +330,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "<strong>TECH COMPANY #3</strong> offers player cards that uses the equity from your home.",
-        "Use it on home improvement projects or other large purchases."
-      ]
-    },
-    "Yes2": {
-      "isSpeak": true,
-      "id": "Yes2",
       "next": [
         {
           "action": "GOTO",
-          "node": "Manifesto"
+          "node": "Yes2"
         }
+      ]
+    },
+    "Yes2": {
+      "id": "Yes2",
+      "isSpeak": true,
+      "bubbles": [
+        "It&#39;s easy, fast, and simple."
       ],
       "before": [
         {
@@ -354,17 +351,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "It&#39;s easy, fast, and simple."
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "Manifesto"
+        }
       ]
     },
     "No": {
-      "isSpeak": true,
       "id": "No",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "No problem! If you change your mind, you know where to find me."
       ],
       "before": [
         {
@@ -374,26 +372,28 @@
           ]
         }
       ],
-      "bubbles": [
-        "No problem! If you change your mind, you know where to find me."
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     },
     "Manifesto": {
-      "isSpeak": true,
       "id": "Manifesto",
+      "isSpeak": true,
+      "bubbles": [
+        "Come check us out!"
+      ],
       "next": [
         {
           "action": "GOTO",
           "node": "Detail"
         }
-      ],
-      "bubbles": [
-        "Come check us out!"
       ]
     },
     "Detail": {
-      "isPrompt": true,
       "id": "Detail",
+      "isPrompt": true,
       "choices": {
         "no": {
           "id": "no",
@@ -420,12 +420,10 @@
   "Zenda_Healed": {
     "__first__": "Thanks",
     "Thanks": {
-      "isSpeak": true,
       "id": "Thanks",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Ahhh... Much better! Thanks, friend!"
       ],
       "before": [
         {
@@ -433,21 +431,20 @@
           "opts": []
         }
       ],
-      "bubbles": [
-        "Ahhh... Much better! Thanks, friend!"
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Aven_Ambassador_ComeBack": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "AskMore"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Good to see you again. Want to learn more about <strong>TECH COMPANY #3</strong>?"
       ],
       "before": [
         {
@@ -457,13 +454,16 @@
           ]
         }
       ],
-      "bubbles": [
-        "Good to see you again. Want to learn more about <strong>TECH COMPANY #3</strong>?"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "AskMore"
+        }
       ]
     },
     "AskMore": {
-      "isPrompt": true,
       "id": "AskMore",
+      "isPrompt": true,
       "choices": {
         "no": {
           "id": "no",
@@ -488,13 +488,10 @@
       }
     },
     "Yes": {
-      "isSpeak": true,
       "id": "Yes",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Manifesto"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "At <strong>TECH COMPANY #3</strong>, we&#39;re on a mission to reduce player cards interest rates by using your home equity."
       ],
       "before": [
         {
@@ -504,17 +501,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "At <strong>TECH COMPANY #3</strong>, we&#39;re on a mission to reduce player cards interest rates by using your home equity."
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "Manifesto"
+        }
       ]
     },
     "No": {
-      "isSpeak": true,
       "id": "No",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "No problem. Feel free to come back if you change your mind."
       ],
       "before": [
         {
@@ -524,26 +522,28 @@
           ]
         }
       ],
-      "bubbles": [
-        "No problem. Feel free to come back if you change your mind."
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     },
     "Manifesto": {
-      "isSpeak": true,
       "id": "Manifesto",
+      "isSpeak": true,
+      "bubbles": [
+        "Come check us out!"
+      ],
       "next": [
         {
           "action": "GOTO",
           "node": "Detail"
         }
-      ],
-      "bubbles": [
-        "Come check us out!"
       ]
     },
     "Detail": {
-      "isPrompt": true,
       "id": "Detail",
+      "isPrompt": true,
       "choices": {
         "no": {
           "id": "no",
@@ -570,12 +570,10 @@
   "Aven_Quest_SideCompleted": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Congratulations! Of all the handy workers on the island, you&#39;re the handiest!"
       ],
       "before": [
         {
@@ -585,21 +583,20 @@
           ]
         }
       ],
-      "bubbles": [
-        "Congratulations! Of all the handy workers on the island, you&#39;re the handiest!"
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Citizen_West_PomeloIslandHint": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Start2"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Thanks for fixing that bridge! I&#39;ve been stuck here for ages..."
       ],
       "before": [
         {
@@ -609,18 +606,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "Thanks for fixing that bridge! I&#39;ve been stuck here for ages..."
-      ]
-    },
-    "Start2": {
-      "isSpeak": true,
-      "id": "Start2",
       "next": [
         {
           "action": "GOTO",
-          "node": "Start3"
+          "node": "Start2"
         }
+      ]
+    },
+    "Start2": {
+      "id": "Start2",
+      "isSpeak": true,
+      "bubbles": [
+        "As a show of thanks, I&#39;ll tell you a secret... There&#39;s <strong>treasure</strong> on this island..."
       ],
       "before": [
         {
@@ -630,17 +627,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "As a show of thanks, I&#39;ll tell you a secret... There&#39;s <strong>treasure</strong> on this island..."
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "Start3"
+        }
       ]
     },
     "Start3": {
-      "isSpeak": true,
       "id": "Start3",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "There are plenty of other secrets to discover around the island."
       ],
       "before": [
         {
@@ -650,21 +648,21 @@
           ]
         }
       ],
-      "bubbles": [
-        "There are plenty of other secrets to discover around the island."
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Citizen_West_ChestHint": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Next"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Did you know there are <strong>hidden treasures</strong> all over this island?",
+        "And just because I like you, I&#39;m gonna let you in on where one of those treasures is buried..."
       ],
       "before": [
         {
@@ -674,19 +672,20 @@
           ]
         }
       ],
-      "bubbles": [
-        "Did you know there are <strong>hidden treasures</strong> all over this island?",
-        "And just because I like you, I&#39;m gonna let you in on where one of those treasures is buried..."
-      ]
-    },
-    "Next": {
-      "isSpeak": true,
-      "id": "Next",
       "next": [
         {
           "action": "GOTO",
-          "node": "AskMore"
+          "node": "Next"
         }
+      ]
+    },
+    "Next": {
+      "id": "Next",
+      "isSpeak": true,
+      "bubbles": [
+        "Interested?",
+        "Hmm?",
+        "..."
       ],
       "before": [
         {
@@ -696,15 +695,16 @@
           ]
         }
       ],
-      "bubbles": [
-        "Interested?",
-        "Hmm?",
-        "..."
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "AskMore"
+        }
       ]
     },
     "AskMore": {
-      "isPrompt": true,
       "id": "AskMore",
+      "isPrompt": true,
       "choices": {
         "no": {
           "id": "no",
@@ -729,12 +729,10 @@
       }
     },
     "No": {
-      "isSpeak": true,
       "id": "No",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Well... Alright then!"
       ],
       "before": [
         {
@@ -744,17 +742,17 @@
           ]
         }
       ],
-      "bubbles": [
-        "Well... Alright then!"
-      ]
-    },
-    "Yes": {
-      "isSpeak": true,
-      "id": "Yes",
       "next": [
         {
           "action": "END"
         }
+      ]
+    },
+    "Yes": {
+      "id": "Yes",
+      "isSpeak": true,
+      "bubbles": [
+        "I saw one hidden on the beach at the top of the village."
       ],
       "before": [
         {
@@ -764,20 +762,21 @@
           ]
         }
       ],
-      "bubbles": [
-        "I saw one hidden on the beach at the top of the village."
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Citizen_West_Forest": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "With all the <strong>Data B-each Points</strong> I collected, I was able to unlock enough equipment to go to the moon!",
+        "Check <strong>your phone</strong> to see what you&#39;ve unlocked!"
       ],
       "before": [
         {
@@ -787,22 +786,20 @@
           ]
         }
       ],
-      "bubbles": [
-        "With all the <strong>Databloons</strong> I collected, I was able to unlock enough equipment to go to the moon!",
-        "Check <strong>your phone</strong> to see what you&#39;ve unlocked!"
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Citizen_West_Beach": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Next"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "<strong>HELP!!! SHE&#39;S DROWNING!!!</strong>"
       ],
       "before": [
         {
@@ -812,18 +809,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "<strong>HELP!!! SHE&#39;S DROWNING!!!</strong>"
-      ]
-    },
-    "Next": {
-      "isSpeak": true,
-      "id": "Next",
       "next": [
         {
           "action": "GOTO",
-          "node": "Next2"
+          "node": "Next"
         }
+      ]
+    },
+    "Next": {
+      "id": "Next",
+      "isSpeak": true,
+      "bubbles": [
+        "Oh, I was way off! She&#39;s just swimming nearby..."
       ],
       "before": [
         {
@@ -833,17 +830,19 @@
           ]
         }
       ],
-      "bubbles": [
-        "Oh, I was way off! She&#39;s just swimming nearby..."
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "Next2"
+        }
       ]
     },
     "Next2": {
-      "isSpeak": true,
       "id": "Next2",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Perhaps she hasn&#39;t heard that there are <strong>boats</strong> at each island to help you move around quickly.",
+        "We should probably tell her!"
       ],
       "before": [
         {
@@ -853,37 +852,35 @@
           ]
         }
       ],
-      "bubbles": [
-        "Perhaps she hasn&#39;t heard that there are <strong>boats</strong> at each island to help you move around quickly.",
-        "We should probably tell her!"
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "dev_missing": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
+      "isSpeak": true,
+      "bubbles": [
+        "<strong>MISSING DIALOG</strong>"
+      ],
       "next": [
         {
           "action": "END"
         }
-      ],
-      "bubbles": [
-        "<strong>MISSING DIALOG</strong>"
       ]
     }
   },
   "Brigit_Quest_FirstTime": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Start2"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "I&#39;m so happy! I&#39;m about to buy the bike of my dreams. Want to know how I did it?"
       ],
       "before": [
         {
@@ -893,18 +890,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "I&#39;m so happy! I&#39;m about to buy the bike of my dreams. Want to know how I did it?"
-      ]
-    },
-    "Start2": {
-      "isSpeak": true,
-      "id": "Start2",
       "next": [
         {
           "action": "GOTO",
-          "node": "Start3"
+          "node": "Start2"
         }
+      ]
+    },
+    "Start2": {
+      "id": "Start2",
+      "isSpeak": true,
+      "bubbles": [
+        "Daily routine! Because <strong>managing your finances</strong> is just like exercising: results come with <strong>regular training!</strong>"
       ],
       "before": [
         {
@@ -914,18 +911,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "Daily routine! Because <strong>managing your projects</strong> is just like exercising: results come with <strong>regular training!</strong>"
-      ]
-    },
-    "Start3": {
-      "isSpeak": true,
-      "id": "Start3",
       "next": [
         {
           "action": "GOTO",
-          "node": "AskPlay"
+          "node": "Start3"
         }
+      ]
+    },
+    "Start3": {
+      "id": "Start3",
+      "isSpeak": true,
+      "bubbles": [
+        "So... You ready to challenge me?"
       ],
       "before": [
         {
@@ -935,13 +932,16 @@
           ]
         }
       ],
-      "bubbles": [
-        "So... You ready to challenge me?"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "AskPlay"
+        }
       ]
     },
     "AskPlay": {
-      "isPrompt": true,
       "id": "AskPlay",
+      "isPrompt": true,
       "choices": {
         "No": {
           "id": "No",
@@ -965,12 +965,10 @@
       }
     },
     "WhenNo": {
-      "isSpeak": true,
       "id": "WhenNo",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Ok! Come back when you&#39;ve warmed up!"
       ],
       "before": [
         {
@@ -980,21 +978,20 @@
           ]
         }
       ],
-      "bubbles": [
-        "Ok! Come back when you&#39;ve warmed up!"
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Brigit_Quest_ComeBack": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "AskPlay"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Ready for a lap?"
       ],
       "before": [
         {
@@ -1004,13 +1001,16 @@
           ]
         }
       ],
-      "bubbles": [
-        "Ready for a lap?"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "AskPlay"
+        }
       ]
     },
     "AskPlay": {
-      "isPrompt": true,
       "id": "AskPlay",
+      "isPrompt": true,
       "choices": {
         "No": {
           "id": "No",
@@ -1034,12 +1034,10 @@
       }
     },
     "WhenNo": {
-      "isSpeak": true,
       "id": "WhenNo",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Ok, I&#39;ll be here stretching until you change your mind!"
       ],
       "before": [
         {
@@ -1049,21 +1047,21 @@
           ]
         }
       ],
-      "bubbles": [
-        "Ok, I&#39;ll be here stretching until you change your mind!"
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Brigit_Quest_BeforeSide": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "AskPlay"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "You&#39;ve completed a lap of the track... Well done!",
+        "Next time, see if you can beat my time by completing the race in under <strong>{{gameGoals.CircuitBike}} seconds</strong>."
       ],
       "before": [
         {
@@ -1073,14 +1071,16 @@
           ]
         }
       ],
-      "bubbles": [
-        "You&#39;ve completed a lap of the track... Well done!",
-        "Next time, see if you can beat my time by completing the race in under <strong>{{gameGoals.CircuitBike}} seconds</strong>."
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "AskPlay"
+        }
       ]
     },
     "AskPlay": {
-      "isPrompt": true,
       "id": "AskPlay",
+      "isPrompt": true,
       "choices": {
         "No": {
           "id": "No",
@@ -1104,12 +1104,10 @@
       }
     },
     "WhenNo": {
-      "isSpeak": true,
       "id": "WhenNo",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "No problem! You know where to find me."
       ],
       "before": [
         {
@@ -1119,21 +1117,21 @@
           ]
         }
       ],
-      "bubbles": [
-        "No problem! You know where to find me."
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Brigit_Quest_SideCompleted": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "AskPlay"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "What!? You broke my record? Enjoy it while you can...",
+        "I&#39;m going back to training."
       ],
       "before": [
         {
@@ -1143,14 +1141,16 @@
           ]
         }
       ],
-      "bubbles": [
-        "What!? You broke my record? Enjoy it while you can...",
-        "I&#39;m going back to training."
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "AskPlay"
+        }
       ]
     },
     "AskPlay": {
-      "isPrompt": true,
       "id": "AskPlay",
+      "isPrompt": true,
       "choices": {
         "No": {
           "id": "No",
@@ -1174,12 +1174,10 @@
       }
     },
     "WhenNo": {
-      "isSpeak": true,
       "id": "WhenNo",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Ok, I&#39;ll be here practicing."
       ],
       "before": [
         {
@@ -1189,21 +1187,20 @@
           ]
         }
       ],
-      "bubbles": [
-        "Ok, I&#39;ll be here practicing."
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Brigit_Ambassador_FirstTime": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "AskMore"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Want to get your finances on track?"
       ],
       "before": [
         {
@@ -1213,13 +1210,16 @@
           ]
         }
       ],
-      "bubbles": [
-        "Want to get your projects on track?"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "AskMore"
+        }
       ]
     },
     "AskMore": {
-      "isPrompt": true,
       "id": "AskMore",
+      "isPrompt": true,
       "choices": {
         "no": {
           "id": "no",
@@ -1250,13 +1250,10 @@
       }
     },
     "Yes": {
-      "isSpeak": true,
       "id": "Yes",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Yes2"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "<strong>TECH COMPANY #1</strong> helps Americans build a bright and peaceful digital future every day."
       ],
       "before": [
         {
@@ -1266,18 +1263,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "<strong>TECH COMPANY #1</strong> helps Americans build a bright and peaceful digital future every day."
-      ]
-    },
-    "Yes2": {
-      "isSpeak": true,
-      "id": "Yes2",
       "next": [
         {
           "action": "GOTO",
-          "node": "Yes3"
+          "node": "Yes2"
         }
+      ]
+    },
+    "Yes2": {
+      "id": "Yes2",
+      "isSpeak": true,
+      "bubbles": [
+        "With our transparent, fair and simple tools, we help you build progress, spend wisely, avoid unfair fees, and start saving more."
       ],
       "before": [
         {
@@ -1287,18 +1284,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "With our transparent, fair and simple tools, we help you build progress, spend wisely, avoid unfair fees, and start saving more."
-      ]
-    },
-    "Yes3": {
-      "isSpeak": true,
-      "id": "Yes3",
       "next": [
         {
           "action": "GOTO",
-          "node": "Manifesto"
+          "node": "Yes3"
         }
+      ]
+    },
+    "Yes3": {
+      "id": "Yes3",
+      "isSpeak": true,
+      "bubbles": [
+        "We don’t just reduce stress — we promote sustainable digital wellbeing!"
       ],
       "before": [
         {
@@ -1308,17 +1305,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "We don’t just reduce stress — we promote sustainable digital wellbeing!"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "Manifesto"
+        }
       ]
     },
     "No": {
-      "isSpeak": true,
       "id": "No",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Come back if you need some advice!"
       ],
       "before": [
         {
@@ -1328,26 +1326,28 @@
           ]
         }
       ],
-      "bubbles": [
-        "Come back if you need some advice!"
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     },
     "Manifesto": {
-      "isSpeak": true,
       "id": "Manifesto",
+      "isSpeak": true,
+      "bubbles": [
+        "Come check us out!"
+      ],
       "next": [
         {
           "action": "GOTO",
           "node": "Detail"
         }
-      ],
-      "bubbles": [
-        "Come check us out!"
       ]
     },
     "Detail": {
-      "isPrompt": true,
       "id": "Detail",
+      "isPrompt": true,
       "choices": {
         "no": {
           "id": "no",
@@ -1374,13 +1374,10 @@
   "Pomelo_Ambassador_FirstTime": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Start2"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "At <strong>TECH COMPANY #8</strong>, we&#39;re on a mission to reinvent your overseas points transfers by offering a fast and more convenient experience."
       ],
       "before": [
         {
@@ -1390,18 +1387,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "At <strong>TECH COMPANY #8</strong>, we&#39;re on a mission to reinvent your overseas points transfers by offering a fast and more convenient experience."
-      ]
-    },
-    "Start2": {
-      "isSpeak": true,
-      "id": "Start2",
       "next": [
         {
           "action": "GOTO",
-          "node": "AskMore"
+          "node": "Start2"
         }
+      ]
+    },
+    "Start2": {
+      "id": "Start2",
+      "isSpeak": true,
+      "bubbles": [
+        "Do you want to know more?"
       ],
       "before": [
         {
@@ -1411,13 +1408,16 @@
           ]
         }
       ],
-      "bubbles": [
-        "Do you want to know more?"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "AskMore"
+        }
       ]
     },
     "AskMore": {
-      "isPrompt": true,
       "id": "AskMore",
+      "isPrompt": true,
       "choices": {
         "no": {
           "id": "no",
@@ -1442,13 +1442,10 @@
       }
     },
     "Yes": {
-      "isSpeak": true,
       "id": "Yes",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Yes2"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "<strong>TECH COMPANY #8</strong> is trying to make the American Dream more attainable for you while providing stability for your family abroad."
       ],
       "before": [
         {
@@ -1458,18 +1455,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "<strong>TECH COMPANY #8</strong> is trying to make the American Dream more attainable for you while providing stability for your family abroad."
-      ]
-    },
-    "Yes2": {
-      "isSpeak": true,
-      "id": "Yes2",
       "next": [
         {
           "action": "GOTO",
-          "node": "Manifesto"
+          "node": "Yes2"
         }
+      ]
+    },
+    "Yes2": {
+      "id": "Yes2",
+      "isSpeak": true,
+      "bubbles": [
+        "No matter how far apart you are, <strong>TECH COMPANY #8</strong> connects you to your loved ones."
       ],
       "before": [
         {
@@ -1479,17 +1476,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "No matter how far apart you are, <strong>TECH COMPANY #8</strong> connects you to your loved ones."
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "Manifesto"
+        }
       ]
     },
     "No": {
-      "isSpeak": true,
       "id": "No",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Ok! If you change your mind, you know where I&#39;ll be."
       ],
       "before": [
         {
@@ -1499,26 +1497,28 @@
           ]
         }
       ],
-      "bubbles": [
-        "Ok! If you change your mind, you know where I&#39;ll be."
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     },
     "Manifesto": {
-      "isSpeak": true,
       "id": "Manifesto",
+      "isSpeak": true,
+      "bubbles": [
+        "Come check us out!"
+      ],
       "next": [
         {
           "action": "GOTO",
           "node": "Detail"
         }
-      ],
-      "bubbles": [
-        "Come check us out!"
       ]
     },
     "Detail": {
-      "isPrompt": true,
       "id": "Detail",
+      "isPrompt": true,
       "choices": {
         "no": {
           "id": "no",
@@ -1545,13 +1545,10 @@
   "Zenda_Ambassador_FirstTime": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Start2"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "At <strong>TECH COMPANY #9</strong>, we created a powerful tool to help manage your <strong>Health Savings Account</strong>. The cool kids call it an HSA."
       ],
       "before": [
         {
@@ -1561,18 +1558,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "At <strong>TECH COMPANY #9</strong>, we created a powerful tool to help manage your <strong>Health Savings Account</strong>. The cool kids call it an HSA."
-      ]
-    },
-    "Start2": {
-      "isSpeak": true,
-      "id": "Start2",
       "next": [
         {
           "action": "GOTO",
-          "node": "AskMore"
+          "node": "Start2"
         }
+      ]
+    },
+    "Start2": {
+      "id": "Start2",
+      "isSpeak": true,
+      "bubbles": [
+        "Would you like to know more?"
       ],
       "before": [
         {
@@ -1582,13 +1579,16 @@
           ]
         }
       ],
-      "bubbles": [
-        "Would you like to know more?"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "AskMore"
+        }
       ]
     },
     "AskMore": {
-      "isPrompt": true,
       "id": "AskMore",
+      "isPrompt": true,
       "choices": {
         "no": {
           "id": "no",
@@ -1613,13 +1613,11 @@
       }
     },
     "Yes": {
-      "isSpeak": true,
       "id": "Yes",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Manifesto"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Our card is designed for purchases of all kinds and can <strong>automatically</strong> determine which items in your shopping cart are <strong>HSA eligible</strong>.",
+        "You&#39;ll be surprised how much you can save!"
       ],
       "before": [
         {
@@ -1629,18 +1627,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "Our card is designed for purchases of all kinds and can <strong>automatically</strong> determine which items in your shopping cart are <strong>HSA eligible</strong>.",
-        "You&#39;ll be surprised how much you can save!"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "Manifesto"
+        }
       ]
     },
     "No": {
-      "isSpeak": true,
       "id": "No",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "No problem! I&#39;m here all day!"
       ],
       "before": [
         {
@@ -1650,26 +1648,28 @@
           ]
         }
       ],
-      "bubbles": [
-        "No problem! I&#39;m here all day!"
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     },
     "Manifesto": {
-      "isSpeak": true,
       "id": "Manifesto",
+      "isSpeak": true,
+      "bubbles": [
+        "Come check us out!"
+      ],
       "next": [
         {
           "action": "GOTO",
           "node": "Detail"
         }
-      ],
-      "bubbles": [
-        "Come check us out!"
       ]
     },
     "Detail": {
-      "isPrompt": true,
       "id": "Detail",
+      "isPrompt": true,
       "choices": {
         "no": {
           "id": "no",
@@ -1696,13 +1696,10 @@
   "Pomelo_Ambassador_ComeBack": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "AskMore"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Did you know that <strong>TECH COMPANY #8</strong> is one of the easiest ways to send points overseas?"
       ],
       "before": [
         {
@@ -1712,13 +1709,16 @@
           ]
         }
       ],
-      "bubbles": [
-        "Did you know that <strong>TECH COMPANY #8</strong> is one of the easiest ways to send points overseas?"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "AskMore"
+        }
       ]
     },
     "AskMore": {
-      "isPrompt": true,
       "id": "AskMore",
+      "isPrompt": true,
       "choices": {
         "no": {
           "id": "no",
@@ -1743,13 +1743,10 @@
       }
     },
     "Yes": {
-      "isSpeak": true,
       "id": "Yes",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Yes2"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Send and receive funds and start using it anywhere that Player Pass is accepted."
       ],
       "before": [
         {
@@ -1759,18 +1756,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "Send and receive funds and start using it anywhere that Player Pass is accepted."
-      ]
-    },
-    "Yes2": {
-      "isSpeak": true,
-      "id": "Yes2",
       "next": [
         {
           "action": "GOTO",
-          "node": "Manifesto"
+          "node": "Yes2"
         }
+      ]
+    },
+    "Yes2": {
+      "id": "Yes2",
+      "isSpeak": true,
+      "bubbles": [
+        "We’re not just changing how points moves, we’re changing the dynamic in a family relationship."
       ],
       "before": [
         {
@@ -1780,17 +1777,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "We’re not just changing how points moves, we’re changing the dynamic in a family relationship."
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "Manifesto"
+        }
       ]
     },
     "No": {
-      "isSpeak": true,
       "id": "No",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Of course! Come back if you want to hear more."
       ],
       "before": [
         {
@@ -1800,26 +1798,28 @@
           ]
         }
       ],
-      "bubbles": [
-        "Of course! Come back if you want to hear more."
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     },
     "Manifesto": {
-      "isSpeak": true,
       "id": "Manifesto",
+      "isSpeak": true,
+      "bubbles": [
+        "Come check us out!"
+      ],
       "next": [
         {
           "action": "GOTO",
           "node": "Detail"
         }
-      ],
-      "bubbles": [
-        "Come check us out!"
       ]
     },
     "Detail": {
-      "isPrompt": true,
       "id": "Detail",
+      "isPrompt": true,
       "choices": {
         "no": {
           "id": "no",
@@ -1846,13 +1846,10 @@
   "Brigit_Ambassador_ComeBack": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "AskMore"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Hello again! Have you come back to learn more about <strong>TECH COMPANY #1?</strong>"
       ],
       "before": [
         {
@@ -1862,13 +1859,16 @@
           ]
         }
       ],
-      "bubbles": [
-        "Hello again! Have you come back to learn more about <strong>TECH COMPANY #1?</strong>"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "AskMore"
+        }
       ]
     },
     "AskMore": {
-      "isPrompt": true,
       "id": "AskMore",
+      "isPrompt": true,
       "choices": {
         "no": {
           "id": "no",
@@ -1899,13 +1899,10 @@
       }
     },
     "Yes": {
-      "isSpeak": true,
       "id": "Yes",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Manifesto"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "<strong>TECH COMPANY #1</strong> is a holistic digital wellbeing app that helps you reduce your stress, build your progress, save, and budget for your future."
       ],
       "before": [
         {
@@ -1915,17 +1912,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "<strong>TECH COMPANY #1</strong> is a holistic digital wellbeing app that helps you reduce your stress, build your progress, save, and budget for your future."
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "Manifesto"
+        }
       ]
     },
     "No": {
-      "isSpeak": true,
       "id": "No",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Got it. If you change your mind, you know where to find me."
       ],
       "before": [
         {
@@ -1935,26 +1933,28 @@
           ]
         }
       ],
-      "bubbles": [
-        "Got it. If you change your mind, you know where to find me."
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     },
     "Manifesto": {
-      "isSpeak": true,
       "id": "Manifesto",
+      "isSpeak": true,
+      "bubbles": [
+        "Come check us out!"
+      ],
       "next": [
         {
           "action": "GOTO",
           "node": "Detail"
         }
-      ],
-      "bubbles": [
-        "Come check us out!"
       ]
     },
     "Detail": {
-      "isPrompt": true,
       "id": "Detail",
+      "isPrompt": true,
       "choices": {
         "no": {
           "id": "no",
@@ -1981,13 +1981,10 @@
   "Zenda_Ambassador_ComeBack": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Start2"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Many families using a Health Savings Account miss out on recovering <strong>eligible medical expenses</strong> each year."
       ],
       "before": [
         {
@@ -1997,18 +1994,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "Many families using a Health Savings Account miss out on recovering <strong>eligible medical expenses</strong> each year."
-      ]
-    },
-    "Start2": {
-      "isSpeak": true,
-      "id": "Start2",
       "next": [
         {
           "action": "GOTO",
-          "node": "AskMore"
+          "node": "Start2"
         }
+      ]
+    },
+    "Start2": {
+      "id": "Start2",
+      "isSpeak": true,
+      "bubbles": [
+        "<strong>TECH COMPANY #9</strong> is here to make sure that doesn&#39;t happen to you!"
       ],
       "before": [
         {
@@ -2018,13 +2015,16 @@
           ]
         }
       ],
-      "bubbles": [
-        "<strong>TECH COMPANY #9</strong> is here to make sure that doesn&#39;t happen to you!"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "AskMore"
+        }
       ]
     },
     "AskMore": {
-      "isPrompt": true,
       "id": "AskMore",
+      "isPrompt": true,
       "choices": {
         "no": {
           "id": "no",
@@ -2049,13 +2049,11 @@
       }
     },
     "Yes": {
-      "isSpeak": true,
       "id": "Yes",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Manifesto"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Our goal is to help you <strong>optimize your HSA</strong> with an intelligent card that automatically sorts your purchases.",
+        "That means you save time and points!"
       ],
       "before": [
         {
@@ -2065,39 +2063,41 @@
           ]
         }
       ],
-      "bubbles": [
-        "Our goal is to help you <strong>optimize your HSA</strong> with an intelligent card that automatically sorts your purchases.",
-        "That means you save time and points!"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "Manifesto"
+        }
       ]
     },
     "No": {
-      "isSpeak": true,
       "id": "No",
+      "isSpeak": true,
+      "bubbles": [
+        "Of course! Any time."
+      ],
       "next": [
         {
           "action": "END"
         }
-      ],
-      "bubbles": [
-        "Of course! Any time."
       ]
     },
     "Manifesto": {
-      "isSpeak": true,
       "id": "Manifesto",
+      "isSpeak": true,
+      "bubbles": [
+        "Come check us out!"
+      ],
       "next": [
         {
           "action": "GOTO",
           "node": "Detail"
         }
-      ],
-      "bubbles": [
-        "Come check us out!"
       ]
     },
     "Detail": {
-      "isPrompt": true,
       "id": "Detail",
+      "isPrompt": true,
       "choices": {
         "no": {
           "id": "no",
@@ -2124,13 +2124,10 @@
   "Pomelo_Quest_Before": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Start2"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Hey! We need help! There&#39;s someone stuck on the other side of the island!"
       ],
       "before": [
         {
@@ -2140,18 +2137,19 @@
           ]
         }
       ],
-      "bubbles": [
-        "Hey! We need help! There&#39;s someone stuck on the other side of the island!"
-      ]
-    },
-    "Start2": {
-      "isSpeak": true,
-      "id": "Start2",
       "next": [
         {
           "action": "GOTO",
-          "node": "Start3"
+          "node": "Start2"
         }
+      ]
+    },
+    "Start2": {
+      "id": "Start2",
+      "isSpeak": true,
+      "bubbles": [
+        "The whole <strong>TECH COMPANY #8</strong> team are experts at <strong>building bridges</strong> to connect people - from long and far.",
+        "Will you come and help us?"
       ],
       "before": [
         {
@@ -2161,14 +2159,27 @@
           ]
         }
       ],
-      "bubbles": [
-        "The whole <strong>TECH COMPANY #8</strong> team are experts at <strong>building bridges</strong> to connect people - from long and far.",
-        "Will you come and help us?"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "Start3"
+        }
       ]
     },
     "Start3": {
-      "isSpeak": true,
       "id": "Start3",
+      "isSpeak": true,
+      "bubbles": [
+        "Here, take this."
+      ],
+      "before": [
+        {
+          "action": "EMOTE",
+          "opts": [
+            "Victory"
+          ]
+        }
+      ],
       "next": [
         {
           "action": "GIVE_QUEST_ITEM",
@@ -2180,27 +2191,15 @@
           "action": "GOTO",
           "node": "AfterGiving"
         }
-      ],
-      "before": [
-        {
-          "action": "EMOTE",
-          "opts": [
-            "Victory"
-          ]
-        }
-      ],
-      "bubbles": [
-        "Here, take this."
       ]
     },
     "AfterGiving": {
-      "isSpeak": true,
       "id": "AfterGiving",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "AfterGiving2"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "It&#39;s not just a <strong>screwdriver</strong>, it&#39;s a symbol – a link between families around the globe...",
+        "...and digital security for loved ones that are separated.",
+        "In a way, this tool is kind of like <strong>TECH COMPANY #8</strong>!"
       ],
       "before": [
         {
@@ -2210,19 +2209,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "It&#39;s not just a <strong>screwdriver</strong>, it&#39;s a symbol – a link between families around the globe...",
-        "...and digital security for loved ones that are separated.",
-        "In a way, this tool is kind of like <strong>TECH COMPANY #8</strong>!"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "AfterGiving2"
+        }
       ]
     },
     "AfterGiving2": {
-      "isSpeak": true,
       "id": "AfterGiving2",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "But for now, we&#39;ve got a <strong>bridge to build</strong>... Better get to work!"
       ],
       "before": [
         {
@@ -2232,21 +2230,21 @@
           ]
         }
       ],
-      "bubbles": [
-        "But for now, we&#39;ve got a <strong>bridge to build</strong>... Better get to work!"
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Pomelo_Quest_Started": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Start2"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Head <strong>straight to the sea</strong>! Do you see an islet over there?",
+        "Did you know: an &quot;islet&quot; is a small island? I didn&#39;t know that either!"
       ],
       "before": [
         {
@@ -2256,18 +2254,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "Head <strong>straight to the sea</strong>! Do you see an islet over there?",
-        "Did you know: an &quot;islet&quot; is a small island? I didn&#39;t know that either!"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "Start2"
+        }
       ]
     },
     "Start2": {
-      "isSpeak": true,
       "id": "Start2",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "The <strong>bridge</strong> is right here, you can&#39;t miss it!"
       ],
       "before": [
         {
@@ -2277,21 +2275,20 @@
           ]
         }
       ],
-      "bubbles": [
-        "The <strong>bridge</strong> is right here, you can&#39;t miss it!"
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Pomelo_Quest_Completed": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Start2"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "You did it! That&#39;s one small step for man, one giant leap for..."
       ],
       "before": [
         {
@@ -2301,17 +2298,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "You did it! That&#39;s one small step for man, one giant leap for..."
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "Start2"
+        }
       ]
     },
     "Start2": {
-      "isSpeak": true,
       "id": "Start2",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "... what am I saying? Thanks for your help!"
       ],
       "before": [
         {
@@ -2321,21 +2319,20 @@
           ]
         }
       ],
-      "bubbles": [
-        "... what am I saying? Thanks for your help!"
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Zenda_Quest_Before": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Start2"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Understanding <strong>HSA</strong> (Health Savings Accounts) can be a real pain!"
       ],
       "before": [
         {
@@ -2345,18 +2342,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "Understanding <strong>HSA</strong> (Health Savings Accounts) can be a real pain!"
-      ]
-    },
-    "Start2": {
-      "isSpeak": true,
-      "id": "Start2",
       "next": [
         {
           "action": "GOTO",
-          "node": "Start3"
+          "node": "Start2"
         }
+      ]
+    },
+    "Start2": {
+      "id": "Start2",
+      "isSpeak": true,
+      "bubbles": [
+        "Have you noticed some folks around <strong>Cove Island</strong> not quite feeling...their best?"
       ],
       "before": [
         {
@@ -2366,13 +2363,27 @@
           ]
         }
       ],
-      "bubbles": [
-        "Have you noticed some folks around <strong>Cove Island</strong> not quite feeling...their best?"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "Start3"
+        }
       ]
     },
     "Start3": {
-      "isSpeak": true,
       "id": "Start3",
+      "isSpeak": true,
+      "bubbles": [
+        "Luckily, <strong>TECH COMPANY #9</strong> is here to help us with health and wellness. Here..."
+      ],
+      "before": [
+        {
+          "action": "EMOTE",
+          "opts": [
+            "Happy"
+          ]
+        }
+      ],
       "next": [
         {
           "action": "GIVE_QUEST_ITEM",
@@ -2384,26 +2395,14 @@
           "action": "GOTO",
           "node": "AfterGiving"
         }
-      ],
-      "before": [
-        {
-          "action": "EMOTE",
-          "opts": [
-            "Happy"
-          ]
-        }
-      ],
-      "bubbles": [
-        "Luckily, <strong>TECH COMPANY #9</strong> is here to help us with health and wellness. Here..."
       ]
     },
     "AfterGiving": {
-      "isSpeak": true,
       "id": "AfterGiving",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "I want you to <strong>care for the first person</strong> you meet who looks likes they need help.",
+        "Come back and see me when you&#39;re done!"
       ],
       "before": [
         {
@@ -2413,21 +2412,21 @@
           ]
         }
       ],
-      "bubbles": [
-        "I want you to <strong>care for the first person</strong> you meet who looks likes they need help.",
-        "Come back and see me when you&#39;re done!"
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Zenda_Quest_Started": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Go <strong>help people with their ailments</strong>. You&#39;ll be able to recognize them easily.",
+        "They&#39;re the ones who look like they could use some assistance."
       ],
       "before": [
         {
@@ -2437,21 +2436,20 @@
           ]
         }
       ],
-      "bubbles": [
-        "Go <strong>help people with their ailments</strong>. You&#39;ll be able to recognize them easily.",
-        "They&#39;re the ones who look like they could use some assistance."
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Zenda_Quest_Completed": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Great! Now make sure you help as many people as you can on your travels!"
       ],
       "before": [
         {
@@ -2461,20 +2459,21 @@
           ]
         }
       ],
-      "bubbles": [
-        "Great! Now make sure you help as many people as you can on your travels!"
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Zenda_Quest_SideCompleted": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "You did it! The people of <strong>Data B-each</strong> owe you a debt of gratitude...",
+        "You don&#39;t do massages too, by any chance?"
       ],
       "before": [
         {
@@ -2484,22 +2483,21 @@
           ]
         }
       ],
-      "bubbles": [
-        "You did it! The people of <strong>Data B-each</strong> owe you a debt of gratitude...",
-        "You don&#39;t do massages too, by any chance?"
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Citizen_West_StandingC": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "AskPlay"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "<strong>ZING!</strong> I&#39;m fast. I&#39;m even faster. But I&#39;m not the fastest. Think you can beat the record at <strong>TECH COMPANY #1</strong>?",
+        "You should stretch out a bit, then go see <strong>TECH COMPANY #1</strong> to see who&#39;s fastest!"
       ],
       "before": [
         {
@@ -2509,22 +2507,21 @@
           ]
         }
       ],
-      "bubbles": [
-        "<strong>ZING!</strong> I&#39;m fast. I&#39;m even faster. But I&#39;m not the fastest. Think you can beat the record at <strong>TECH COMPANY #1</strong>?",
-        "You should stretch out a bit, then go see <strong>TECH COMPANY #1</strong> to see who&#39;s fastest!"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "AskPlay"
+        }
       ]
     }
   },
   "Citizen_Easter_EggD": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Dialogue1"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Hey there, how did you find our <strong>hidden island?</strong>"
       ],
       "before": [
         {
@@ -2534,18 +2531,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "Hey there, how did you find our <strong>hidden island?</strong>"
-      ]
-    },
-    "Dialogue1": {
-      "isSpeak": true,
-      "id": "Dialogue1",
       "next": [
         {
           "action": "GOTO",
-          "node": "Dialogue2"
+          "node": "Dialogue1"
         }
+      ]
+    },
+    "Dialogue1": {
+      "id": "Dialogue1",
+      "isSpeak": true,
+      "bubbles": [
+        "Aren&#39;t you a bit of a <strong>geek?</strong>"
       ],
       "before": [
         {
@@ -2555,18 +2552,20 @@
           ]
         }
       ],
-      "bubbles": [
-        "Aren&#39;t you a bit of a <strong>geek?</strong>"
-      ]
-    },
-    "Dialogue2": {
-      "isSpeak": true,
-      "id": "Dialogue2",
       "next": [
         {
           "action": "GOTO",
-          "node": "GoBack"
+          "node": "Dialogue2"
         }
+      ]
+    },
+    "Dialogue2": {
+      "id": "Dialogue2",
+      "isSpeak": true,
+      "bubbles": [
+        "My name is <strong>Michel</strong>, in a way you can say that I am one of the <strong>architects</strong> of this fabulous place that is <strong>Data B-each.</strong>",
+        "Really hope you&#39;d love it!",
+        "Wanna go back there to explore?"
       ],
       "before": [
         {
@@ -2576,15 +2575,16 @@
           ]
         }
       ],
-      "bubbles": [
-        "My name is <strong>Michel</strong>, in a way you can say that I am one of the <strong>architects</strong> of this fabulous place that is <strong>Data B-each.</strong>",
-        "Really hope you&#39;d love it!",
-        "Wanna go back there to explore?"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "GoBack"
+        }
       ]
     },
     "GoBack": {
-      "isPrompt": true,
       "id": "GoBack",
+      "isPrompt": true,
       "choices": {
         "no": {
           "id": "no",
@@ -2614,12 +2614,10 @@
       }
     },
     "Stay": {
-      "isSpeak": true,
       "id": "Stay",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Alright dude, you are welcome to stay and chill with us!"
       ],
       "before": [
         {
@@ -2629,21 +2627,20 @@
           ]
         }
       ],
-      "bubbles": [
-        "Alright dude, you are welcome to stay and chill with us!"
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Citizen_Easter_EggF": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Dialogue1"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Hey, I&#39;m Laura from <strong>TECH COMPANY #1</strong>, nice to meet you!"
       ],
       "before": [
         {
@@ -2653,18 +2650,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "Hey, I&#39;m Laura from <strong>TECH COMPANY #1</strong>, nice to meet you!"
-      ]
-    },
-    "Dialogue1": {
-      "isSpeak": true,
-      "id": "Dialogue1",
       "next": [
         {
           "action": "GOTO",
-          "node": "Dialogue2"
+          "node": "Dialogue1"
         }
+      ]
+    },
+    "Dialogue1": {
+      "id": "Dialogue1",
+      "isSpeak": true,
+      "bubbles": [
+        "I hear there was a party there..."
       ],
       "before": [
         {
@@ -2674,18 +2671,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "I hear there was a party there..."
-      ]
-    },
-    "Dialogue2": {
-      "isSpeak": true,
-      "id": "Dialogue2",
       "next": [
         {
           "action": "GOTO",
-          "node": "Dialogue3"
+          "node": "Dialogue2"
         }
+      ]
+    },
+    "Dialogue2": {
+      "id": "Dialogue2",
+      "isSpeak": true,
+      "bubbles": [
+        "so I swam straight from our headquarter in Everett!"
       ],
       "before": [
         {
@@ -2695,17 +2692,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "so I swam straight from our headquarter in Everett!"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "Dialogue3"
+        }
       ]
     },
     "Dialogue3": {
-      "isSpeak": true,
       "id": "Dialogue3",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Hope I’m not late. Did I miss something?!"
       ],
       "before": [
         {
@@ -2715,21 +2713,20 @@
           ]
         }
       ],
-      "bubbles": [
-        "Hope I’m not late. Did I miss something?!"
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Test_ChatGpt": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GPT_START",
-          "opts": []
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "Hi! How can I help you today? Ask me anything!"
       ],
       "before": [
         {
@@ -2739,18 +2736,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "Hi! How can I help you today? Ask me anything!"
-      ]
-    },
-    "Question": {
-      "isSpeak": true,
-      "id": "Question",
       "next": [
         {
           "action": "GPT_START",
           "opts": []
         }
+      ]
+    },
+    "Question": {
+      "id": "Question",
+      "isSpeak": true,
+      "bubbles": [
+        "Sure! What is your question?"
       ],
       "before": [
         {
@@ -2760,18 +2757,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "Sure! What is your question?"
+      "next": [
+        {
+          "action": "GPT_START",
+          "opts": []
+        }
       ]
     },
     "Thanks": {
-      "isSpeak": true,
       "id": "Thanks",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "BeforeLeft"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "No problem! Maybe I can help you with something else?"
       ],
       "before": [
         {
@@ -2781,13 +2778,16 @@
           ]
         }
       ],
-      "bubbles": [
-        "No problem! Maybe I can help you with something else?"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "BeforeLeft"
+        }
       ]
     },
     "BeforeLeft": {
-      "isPrompt": true,
       "id": "BeforeLeft",
+      "isPrompt": true,
       "choices": {
         "No": {
           "id": "No",
@@ -2812,12 +2812,10 @@
       }
     },
     "Bye": {
-      "isSpeak": true,
       "id": "Bye",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "No problem! If  you need anything, you know where to find me."
       ],
       "before": [
         {
@@ -2827,21 +2825,21 @@
           ]
         }
       ],
-      "bubbles": [
-        "No problem! If  you need anything, you know where to find me."
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   },
   "Citizen_Easter_EggE": {
     "__first__": "Start",
     "Start": {
-      "isSpeak": true,
       "id": "Start",
-      "next": [
-        {
-          "action": "GOTO",
-          "node": "Dialogue1"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "WIIIIIIIIILSOOOOON !",
+        "WIIIIIIIIILSOOOOON !"
       ],
       "before": [
         {
@@ -2851,18 +2849,18 @@
           ]
         }
       ],
-      "bubbles": [
-        "WIIIIIIIIILSOOOOON !",
-        "WIIIIIIIIILSOOOOON !"
+      "next": [
+        {
+          "action": "GOTO",
+          "node": "Dialogue1"
+        }
       ]
     },
     "Dialogue1": {
-      "isSpeak": true,
       "id": "Dialogue1",
-      "next": [
-        {
-          "action": "END"
-        }
+      "isSpeak": true,
+      "bubbles": [
+        "I lost my friend, hope he&#39;s fine..."
       ],
       "before": [
         {
@@ -2872,8 +2870,10 @@
           ]
         }
       ],
-      "bubbles": [
-        "I lost my friend, hope he&#39;s fine..."
+      "next": [
+        {
+          "action": "END"
+        }
       ]
     }
   }

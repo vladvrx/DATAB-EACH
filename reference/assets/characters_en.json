@@ -14,7 +14,7 @@
       "face": 0,
       "script": "Quest",
       "scriptArgs": {
-        "partner": "aven"
+        "fintech": "aven"
       }
     },
     "Aven_Ambassador": {
@@ -22,7 +22,7 @@
       "face": 0,
       "script": "Ambassador",
       "scriptArgs": {
-        "partner": "aven",
+        "fintech": "aven",
         "animation": "Idle2"
       }
     },
@@ -32,7 +32,7 @@
       "script": "MiniGame",
       "scriptArgs": {
         "scene": "CircuitBike",
-        "partner": "brigit",
+        "fintech": "brigit",
         "animation": "Thinking"
       }
     },
@@ -41,7 +41,7 @@
       "face": 0,
       "script": "Ambassador",
       "scriptArgs": {
-        "partner": "brigit",
+        "fintech": "brigit",
         "animation": "Idle2"
       }
     },
@@ -50,7 +50,7 @@
       "face": 0,
       "script": "Quest",
       "scriptArgs": {
-        "partner": "pomelo",
+        "fintech": "pomelo",
         "animation": "Thinking"
       }
     },
@@ -59,7 +59,7 @@
       "face": 1,
       "script": "Ambassador",
       "scriptArgs": {
-        "partner": "pomelo",
+        "fintech": "pomelo",
         "animation": "Idle2"
       }
     },
@@ -68,7 +68,7 @@
       "face": 1,
       "script": "Quest",
       "scriptArgs": {
-        "partner": "zenda",
+        "fintech": "zenda",
         "animation": "Thinking"
       }
     },
@@ -77,7 +77,7 @@
       "face": 1,
       "script": "Ambassador",
       "scriptArgs": {
-        "partner": "zenda",
+        "fintech": "zenda",
         "animation": "Idle2"
       }
     },
@@ -307,10 +307,10 @@
     }
   },
   "colors": {
-    "databeach": {
+    "coastal": {
       "gradientID": 0
     },
-    "databeach_alt": {
+    "coastal_alt": {
       "gradientID": 0
     },
     "aspiration": {

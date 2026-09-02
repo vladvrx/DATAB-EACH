@@ -1,0 +1,66 @@
+[
+  {
+    "id": "customize",
+    "type": "hint",
+    "title": "Change your style!",
+    "description": "Click here to change your alien color.",
+    "delayMs": 8000,
+    "icon": "arrow"
+  },
+  {
+    "id": "quest",
+    "type": "hint",
+    "title": "New quest available",
+    "description": "Click here to check your&nbsp;quests.",
+    "delayMs": 8000,
+    "icon": "arrow"
+  },
+  {
+    "id": "accessories",
+    "type": "hint",
+    "title": "New accessories available",
+    "description": "Click here to buy your&nbsp;new&nbsp;accessories.",
+    "delayMs": 8000,
+    "icon": "arrow"
+  },
+  {
+    "id": "map",
+    "type": "hint",
+    "title": "",
+    "description": "Open the map to quickly navigate and discover places to go",
+    "delayMs": 8000,
+    "icon": "arrow"
+  },
+  {
+    "id": "enroll",
+    "type": "hint",
+    "title": "Save your progress",
+    "description": "Tap here to keep your island progress.",
+    "delayMs": 8000,
+    "icon": "arrow"
+  },
+  {
+    "id": "MainQuestCompleted",
+    "type": "mainQuest",
+    "title": "Congratulations",
+    "description": "You finished a company quest. Claim your Data B-each Points."
+  },
+  {
+    "id": "QuestCompleted",
+    "type": "quest",
+    "title": "Quest complete",
+    "description": "Completed quests"
+  },
+  {
+    "id": "QuestProgress",
+    "type": "progress",
+    "title": "Quest update",
+    "description": "Keep going on!"
+  },
+  {
+    "id": "ChestOpen",
+    "type": "coastalPoints",
+    "title": "Chest opened",
+    "description": "You found Data B-each Points inside a chest."
+  }
+]
