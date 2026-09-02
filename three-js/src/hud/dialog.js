@@ -33,10 +33,22 @@ export function installDialog(app, host) {
 
   let token = 0;
   let typeTimer = 0;
+  let typed = false;
+  let advancing = false;
+  let bubbleRoot = null;
 
   function clear() {
     window.clearTimeout(typeTimer);
+    token += 1;
+    typed = false;
+    bubbleRoot = null;
     root.replaceChildren();
+  }
+
+  function revealAll() {
+    root.querySelectorAll(".char").forEach((node) => node.classList.add("visible"));
+    root.querySelector(".bubble")?.classList.add("is-done");
+    typed = true;
   }
 
   function typeBubble(content) {
@@ -46,6 +58,7 @@ export function installDialog(app, host) {
       const node = chars[index];
       if (!node) {
         content.closest(".bubble")?.classList.add("is-done");
+        typed = true;
         return;
       }
       node.classList.add("visible");
@@ -58,34 +71,28 @@ export function installDialog(app, host) {
 
   function renderSpeak(node) {
     const current = ++token;
-    const bubble = node.bubble ?? "";
-    const html = wrapChars(app.$tpl(bubble));
+    typed = false;
+    const html = wrapChars(app.$tpl(node.bubble ?? ""));
     const aside = el("aside", {
       class: "dialog-component dialog-bubble",
       "data-v-9946fd7c": "",
+      "data-pointer": "",
     });
     const section = el("section", { class: "bubble", "data-v-9946fd7c": "" });
     const content = el("div", { class: "content", "data-v-9946fd7c": "", html });
     section.append(content);
     aside.append(section);
     root.append(aside);
+    bubbleRoot = aside;
     window.setTimeout(() => {
       if (current !== token) return;
       aside.classList.add("visible");
       typeBubble(content);
     }, app.$dialogs.isFirstNode() ? 600 : 100);
-
-    const advance = (event) => {
-      if (event?.target?.tagName === "BUTTON") return;
-      if (!app.$dialogs.current?.node?.isSpeak) return;
-      app.$dialogs.nextNode();
-      playUiSound(app, "sfx_UI_dialog_next");
-    };
-    aside.addEventListener("mousedown", advance);
-    aside.addEventListener("touchend", advance);
   }
 
   function renderChoices(node) {
+    typed = true;
     const aside = el("aside", {
       class: "dialog-component dialog-buttons",
       "data-v-a65553f3": "",
@@ -111,6 +118,10 @@ export function installDialog(app, host) {
     requestAnimationFrame(() => aside.classList.add("visible"));
   }
 
+  function nodeId() {
+    return app.$dialogs.current?.node?.id ?? app.$dialogs.current?.node?.fullID ?? null;
+  }
+
   function render() {
     clear();
     const current = app.$dialogs.current;
@@ -133,12 +144,36 @@ export function installDialog(app, host) {
     else if (node.isPrompt) renderChoices(node);
   }
 
-  watch(() => app.$dialogs.current.node, render, { deep: true });
+  function speaking() {
+    return !!app.$store.isDialogVisible && !!app.$dialogs.current?.node?.isSpeak;
+  }
+
+  async function advanceSpeak(event) {
+    if (!speaking() || advancing) return;
+    const target = event?.target;
+    if (target?.closest?.("button, a, input, textarea, .menu.is-open")) return;
+    advancing = true;
+    event?.preventDefault?.();
+    event?.stopPropagation?.();
+    if (!typed) {
+      window.clearTimeout(typeTimer);
+      revealAll();
+    }
+    try {
+      await app.$dialogs.nextNode();
+      playUiSound(app, "sfx_UI_dialog_next");
+    } finally {
+      window.setTimeout(() => { advancing = false; }, 80);
+    }
+  }
+
+  watch(nodeId, render);
   watch(() => app.$store.isDialogVisible, (visible) => {
     if (!visible) clear();
     else render();
   });
 
+  window.addEventListener("pointerup", advanceSpeak, true);
   window.addEventListener("keydown", (event) => {
     const node = app.$dialogs.current?.node;
     if (!node) return;
@@ -147,10 +182,9 @@ export function installDialog(app, host) {
       app.$dialogs.exitDialog(true);
       return;
     }
-    if (node.isSpeak && ["Enter", "Space"].includes(event.code)) {
+    if (["Enter", "Space", "NumpadEnter"].includes(event.code)) {
       event.preventDefault();
-      app.$dialogs.nextNode();
-      playUiSound(app, "sfx_UI_dialog_next");
+      advanceSpeak(event);
     }
-  });
+  }, true);
 }

@@ -18,8 +18,23 @@
   pointer-events: none !important;
 }
 
+#threejs-hud header:not(.is-visible),
+#threejs-hud header:not(.is-visible) * {
+  pointer-events: none !important;
+}
+
 .page-intro[data-v-366b880d] {
   z-index: 16;
+}
+
+html.journey-started .page-intro {
+  z-index: 0;
+  pointer-events: none !important;
+}
+
+.dialog-bubble[data-v-9946fd7c],
+.dialog-buttons[data-v-a65553f3] {
+  pointer-events: auto;
 }
 
 .page-intro.threejs-start-fallback[hidden] {
