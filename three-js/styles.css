@@ -34,8 +34,15 @@
   fill: currentColor;
 }
 
-#threejs-hud .circle-button.muted .icon-svg {
-  opacity: 0.45;
+#threejs-hud .circle-button[data-sound-toggle] .icon-svg {
+  width: 52%;
+  height: 52%;
+}
+
+@media (max-width: 639px) {
+  #threejs-hud .app-header .buttons > :nth-child(2) {
+    display: flex !important;
+  }
 }
 
 #threejs-hud .menu-logo {

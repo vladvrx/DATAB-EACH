@@ -1,9 +1,30 @@
 import { w as watch } from "../../../vendor/vendor.75f6e6ae65453426.js";
-import { circleButton, ctaButton, el, lazyImg, playUiSound, unwrap } from "../dom.js";
+import { circleButton, ctaButton, el, lazyImg, playUiSound, setCircleIcon, unwrap } from "../dom.js";
 import { iconUrl } from "../icons.js";
 
 function flag(value) {
   return !!unwrap(value);
+}
+
+function installSoundButton(app, { tone, extraClass = "" } = {}) {
+  const button = circleButton({
+    label: app.$l("arialabel.sound"),
+    icon: flag(app.$store.isAudioMuted) ? "sound-off" : "sound-on",
+    tone,
+    extraClass: `pointer sound-toggle ${extraClass}`.trim(),
+    onClick: () => {
+      app.$store.isAudioMuted = !flag(app.$store.isAudioMuted);
+    },
+  });
+  button.setAttribute("data-sound-toggle", "");
+  const sync = () => {
+    const muted = flag(app.$store.isAudioMuted);
+    button.classList.toggle("muted", muted);
+    button.setAttribute("aria-pressed", muted ? "true" : "false");
+    setCircleIcon(button, muted ? "sound-off" : "sound-on");
+  };
+  watch(() => flag(app.$store.isAudioMuted), sync, { immediate: true });
+  return button;
 }
 
 function installHeader(app, host) {
@@ -16,16 +37,6 @@ function installHeader(app, host) {
   });
   logo.append(el("img", { src: "./reference/assets/databeach-logo.png", alt: "Data B-each", class: "logo-mark" }));
   const buttons = el("div", { class: "buttons", "data-v-08688f2d": "" });
-  const sound = circleButton({
-    label: app.$l("arialabel.sound"),
-    icon: "sound",
-    tone: "bordered",
-    extraClass: "pointer",
-    onClick: () => {
-      app.$store.isAudioMuted = !app.$store.isAudioMuted;
-      sound.classList.toggle("muted", flag(app.$store.isAudioMuted));
-    },
-  });
   buttons.append(
     circleButton({
       label: app.$l("arialabel.customize"),
@@ -38,7 +49,7 @@ function installHeader(app, host) {
         app.$router.push({ name: "Customize" });
       },
     }),
-    sound,
+    installSoundButton(app, { tone: "bordered" }),
   );
   header.append(logo, buttons);
   host.append(header);
@@ -146,13 +157,7 @@ function installMenu(app, host) {
       extraClass: "pointer",
       onClick: close,
     }),
-    circleButton({
-      label: app.$l("arialabel.sound"),
-      icon: "sound",
-      tone: "white",
-      extraClass: "pointer",
-      onClick: () => { app.$store.isAudioMuted = !app.$store.isAudioMuted; },
-    }),
+    installSoundButton(app, { tone: "white" }),
   );
   const infos = el("section", { class: "menu-infos", "data-v-2fd699fb": "" });
   infos.append(

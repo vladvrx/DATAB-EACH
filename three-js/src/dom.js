@@ -21,21 +21,47 @@ export function el(tag, attrs = {}, children = []) {
   return node;
 }
 
-export function svgIcon(path, viewBox = "0 0 24 24") {
+export const ICONS = {
+  cross: {
+    viewBox: "0 0 24 24",
+    html: '<path d="M18.3 5.71 12 12.01 5.7 5.7 4.29 7.11 10.59 13.4 4.29 19.7 5.7 21.11 12 14.82 18.3 21.11 19.71 19.7 13.41 13.4 19.71 7.11z" fill="currentColor"></path>',
+  },
+  burger: {
+    viewBox: "0 0 24 24",
+    html: '<path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" fill="currentColor"></path>',
+  },
+  profile: {
+    viewBox: "0 0 24 24",
+    html: '<path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" fill="currentColor"></path>',
+  },
+  "sound-on": {
+    viewBox: "0 0 17 16",
+    html: '<path d="M13.2 4.4c.3-.4.9-.5 1.4-.2C16.1 5.3 17 6.8 17 8.5c0 1.7-.9 3.2-2.4 4.3-.4.3-1.1.2-1.4-.2-.3-.4-.2-1.1.2-1.4 1.1-.8 1.6-1.8 1.6-2.7 0-.9-.5-1.9-1.6-2.7-.4-.3-.5-.9-.2-1.4zM10.4.1c.4.2.6.5.6.9v14c0 .4-.2.7-.6.9-.3.2-.8.1-1.1-.1L4.6 12H1c-.6 0-1-.4-1-1V5c0-.6.4-1 1-1h3.6L9.3.2c.4-.2.8-.3 1.1-.1zM9 3.1 5.6 5.8c-.2.1-.4.2-.6.2H2v4h3c.2 0 .4.1.6.2L9 12.9V3.1z" fill="currentColor"></path>',
+  },
+  "sound-off": {
+    viewBox: "0 0 17 16",
+    html: '<path d="M14.8 2c-.4-.4-1-.4-1.4 0L11 4.4l-2 2L5.4 10l-2 2-.6.6c-.4.4-.4 1 0 1.4.4.4 1 .4 1.4 0L14.8 3.4c.4-.4.4-1 0-1.4zM15.1 4.6 13.7 6c.9.7 1.3 1.6 1.3 2.5 0 .9-.5 1.9-1.6 2.7-.4.3-.5.9-.2 1.4.3.4.9.5 1.4.2 1.5-1.1 2.4-2.6 2.4-4.3 0-1.5-.7-2.9-1.9-3.9zM2 10V6h3c.2 0 .4-.1.6-.2L9 3.1V5l2-2V1c0-.4-.2-.7-.6-.9s-.7-.1-1 .1L4.6 4H1c-.6 0-1 .4-1 1v6c0 .6.4 1 1 1h1l.1-.1L4 10H2zM9 12.9l-1.3-1-1.4 1.4 3.1 2.4c.3.2.7.3 1.1.1s.5-.4.5-.8V8.7l-2 2v2.2z" fill="currentColor"></path>',
+  },
+};
+
+ICONS.sound = ICONS["sound-on"];
+
+export function svgIcon(name) {
+  const spec = ICONS[name] || ICONS.cross;
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("viewBox", viewBox);
+  svg.setAttribute("viewBox", spec.viewBox || "0 0 24 24");
   svg.setAttribute("class", "icon-svg");
   svg.setAttribute("aria-hidden", "true");
-  svg.innerHTML = `<path d="${path}" fill="currentColor"></path>`;
+  svg.setAttribute("data-icon", name);
+  svg.innerHTML = spec.html;
   return svg;
 }
 
-export const ICONS = {
-  cross: "M18.3 5.71 12 12.01 5.7 5.7 4.29 7.11 10.59 13.4 4.29 19.7 5.7 21.11 12 14.82 18.3 21.11 19.71 19.7 13.41 13.4 19.71 7.11z",
-  burger: "M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z",
-  sound: "M5 9v6h4l5 4V5L9 9H5zm11.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z",
-  profile: "M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z",
-};
+export function setCircleIcon(button, icon) {
+  const content = button.querySelector(".button-content");
+  if (!content) return;
+  content.replaceChildren(svgIcon(icon));
+}
 
 export function circleButton({ label, icon, tone = "white", onClick, extraClass = "" }) {
   const button = el("button", {
@@ -47,7 +73,7 @@ export function circleButton({ label, icon, tone = "white", onClick, extraClass 
     onClick,
   });
   const content = el("span", { class: "button-content", "data-v-1a897dbc": "" });
-  content.append(svgIcon(ICONS[icon] || ICONS.cross));
+  content.append(svgIcon(icon));
   button.append(content);
   return button;
 }
