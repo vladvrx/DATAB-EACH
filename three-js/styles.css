@@ -85,19 +85,33 @@ html.journey-started .page-intro {
   pointer-events: auto;
 }
 
-#threejs-hud .dialog-bubble[data-v-9946fd7c],
-.dialog-bubble[data-v-9946fd7c] {
-  top: 50%;
-  bottom: auto;
-  transform: translateY(-50%);
+#threejs-hud .dialog[data-v-fda03aae] {
+  position: fixed;
+  inset: 0;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+#threejs-hud .dialog-bubble[data-v-9946fd7c] {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  width: 100%;
+  transform: none;
 }
 
 #threejs-hud .dialog-component.dialog-bubble:not(.visible) {
-  transform: translateY(calc(-50% + 80px));
+  transform: translateY(80px);
 }
 
 #threejs-hud .dialog-component.dialog-bubble.visible {
-  transform: translateY(-50%);
+  transform: none;
 }
 
 .page-intro.threejs-start-fallback[hidden] {

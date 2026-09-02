@@ -2313,13 +2313,14 @@ button.keypressed .round[data-v-b03f534f] {
 }
 
 .dialog-bubble[data-v-9946fd7c] {
-  position:fixed;
-  top:50%;
-  right:var(--app-padding);
-  left:var(--app-padding);
+  position:relative;
+  top:auto;
+  right:auto;
+  left:auto;
   z-index:3;
-  text-align:center;
-  transform:translateY(-50%)
+  width:100%;
+  padding:0 var(--app-padding);
+  text-align:center
 }
 
 .bubble[data-v-9946fd7c] {
@@ -2703,7 +2704,14 @@ select[data-v-49ab79f6] {
 }
 
 .dialog[data-v-fda03aae] {
-  pointer-events:none
+  pointer-events:none;
+  position:fixed;
+  inset:0;
+  z-index:12;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center
 }
 
 .dialog-spinner[data-v-fda03aae] {
@@ -2786,18 +2794,6 @@ html.screenshot-mode .dialog-about[data-v-fda03aae] {
   opacity:0;
   transition:opacity .3s cubic-bezier(.23,1,.32,1),transform .4s cubic-bezier(.23,1,.32,1);
   transform:translateY(-80px)
-}
-
-.dialog-component.dialog-bubble[data-v-fda03aae]:not(.visible) {
-  transform:translateY(calc(-50% + 80px))
-}
-
-.dialog-component.dialog-bubble.visible[data-v-fda03aae] {
-  transform:translateY(-50%)
-}
-
-.dialog-component.dialog-bubble.hidden[data-v-fda03aae] {
-  transform:translateY(calc(-50% - 80px))
 }
 
 .phone-hud[data-v-3d9fa6fd] {
