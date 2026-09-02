@@ -1,5 +1,5 @@
 import { w as watch } from "../../../vendor/vendor.75f6e6ae65453426.js";
-import { ctaButton, el, playUiSound, unwrap } from "../dom.js";
+import { circleButton, ctaButton, el, playUiSound, unwrap } from "../dom.js";
 
 function wrapChars(text) {
   return String(text ?? "").replace(/(^|[ >])([^ ><]+)?/gi, (match, prefix, word) => {
@@ -27,6 +27,10 @@ function pauseFor(char) {
   return 0;
 }
 
+function promptChoices(node) {
+  return Object.values(node?.choices || {});
+}
+
 export function installDialog(app, host) {
   const root = el("section", { class: "dialog", "data-v-fda03aae": "" });
   host.append(root);
@@ -35,13 +39,14 @@ export function installDialog(app, host) {
   let typeTimer = 0;
   let typed = false;
   let advancing = false;
-  let bubbleRoot = null;
+  let skipping = false;
 
   function clear() {
     window.clearTimeout(typeTimer);
     token += 1;
     typed = false;
-    bubbleRoot = null;
+    skipping = false;
+    advancing = false;
     root.replaceChildren();
   }
 
@@ -49,6 +54,7 @@ export function installDialog(app, host) {
     root.querySelectorAll(".char").forEach((node) => node.classList.add("visible"));
     root.querySelector(".bubble")?.classList.add("is-done");
     typed = true;
+    skipping = false;
   }
 
   function typeBubble(content) {
@@ -59,12 +65,14 @@ export function installDialog(app, host) {
       if (!node) {
         content.closest(".bubble")?.classList.add("is-done");
         typed = true;
+        skipping = false;
         return;
       }
       node.classList.add("visible");
       const delay = pauseFor((node.textContent || "").trim());
       index += 1;
-      typeTimer = window.setTimeout(step, delay ? 30 + delay : 30);
+      const wait = skipping ? 8 : delay ? 30 + delay : 30;
+      typeTimer = window.setTimeout(step, wait);
     };
     typeTimer = window.setTimeout(step, 80);
   }
@@ -72,6 +80,7 @@ export function installDialog(app, host) {
   function renderSpeak(node) {
     const current = ++token;
     typed = false;
+    skipping = false;
     const html = wrapChars(app.$tpl(node.bubble ?? ""));
     const aside = el("aside", {
       class: "dialog-component dialog-bubble",
@@ -83,12 +92,19 @@ export function installDialog(app, host) {
     section.append(content);
     aside.append(section);
     root.append(aside);
-    bubbleRoot = aside;
     window.setTimeout(() => {
       if (current !== token) return;
       aside.classList.add("visible");
       typeBubble(content);
     }, app.$dialogs.isFirstNode() ? 600 : 100);
+  }
+
+  function choose(choice) {
+    if (!choice || advancing) return;
+    advancing = true;
+    app.$dialogs.makeChoice(choice);
+    playUiSound(app, "sfx_UI_dialog_answer");
+    window.setTimeout(() => { advancing = false; }, 80);
   }
 
   function renderChoices(node) {
@@ -98,18 +114,19 @@ export function installDialog(app, host) {
       "data-v-a65553f3": "",
     });
     const prompt = el("div", { class: "prompt", "data-v-3df37bd2": "" });
-    const choices = Object.values(node.choices || {});
-    for (const choice of choices) {
+    const choices = promptChoices(node);
+    const confirm = choices.at(-1);
+    const cancel = choices.at(-2);
+    const ordered = [cancel, confirm].filter(Boolean);
+    for (const choice of ordered.length ? ordered : choices) {
       const label = (choice.value || choice.id || "").trim();
-      const color = /^yes$/i.test(label) ? "green" : "white";
+      const isConfirm = choice === confirm;
+      const color = /^yes$/i.test(label) ? "green" : isConfirm ? "green" : "white";
       const button = ctaButton({
         text: label,
         color,
         extraClass: "pointer",
-        onClick: () => {
-          app.$dialogs.makeChoice(choice);
-          playUiSound(app, "sfx_UI_dialog_answer");
-        },
+        onClick: () => choose(choice),
       });
       prompt.append(button);
     }
@@ -122,21 +139,30 @@ export function installDialog(app, host) {
     return app.$dialogs.current?.node?.id ?? app.$dialogs.current?.node?.fullID ?? null;
   }
 
+  function showClose(node) {
+    const current = app.$dialogs.current;
+    if (!current?.opts?.closable || !node) return false;
+    if (unwrap(app.$store.isOverlayVisible) || unwrap(app.$store.currentFullscreenVideoDelayed)) return false;
+    const mobile = (app.$viewport.width || window.innerWidth) <= 700;
+    if (mobile && (node.isPrompt || node.isGPTPrompt || node.isGPTInput)) return false;
+    return true;
+  }
+
   function render() {
     clear();
     const current = app.$dialogs.current;
     const node = current?.node;
     if (!node || unwrap(app.$store.isOverlayVisible)) return;
 
-    if (current.opts?.closable && (app.$viewport.width > 700 || !(node.isPrompt || node.isGPTPrompt || node.isGPTInput))) {
-      const close = el("button", {
-        class: "dialog-close threejs-circle bordered pointer",
-        "data-v-fda03aae": "",
-        "aria-label": app.$l("arialabel.close"),
-        type: "button",
+    if (showClose(node)) {
+      const close = circleButton({
+        label: app.$l("arialabel.close"),
+        icon: "cross",
+        tone: "bordered",
+        extraClass: "dialog-close pointer",
         onClick: () => app.$dialogs.exitDialog(true),
       });
-      close.textContent = "×";
+      close.setAttribute("data-v-fda03aae", "");
       root.append(close);
     }
 
@@ -145,20 +171,16 @@ export function installDialog(app, host) {
   }
 
   function speaking() {
-    return !!app.$store.isDialogVisible && !!app.$dialogs.current?.node?.isSpeak;
+    return !!unwrap(app.$store.isDialogVisible) && !!app.$dialogs.current?.node?.isSpeak;
   }
 
-  async function advanceSpeak(event) {
-    if (!speaking() || advancing) return;
-    const target = event?.target;
-    if (target?.closest?.("button, a, input, textarea, .menu.is-open")) return;
+  function uiTarget(event) {
+    return event?.target?.closest?.("button, a, input, textarea, .menu.is-open");
+  }
+
+  async function nextSpeak() {
+    if (!speaking() || advancing || !typed) return;
     advancing = true;
-    event?.preventDefault?.();
-    event?.stopPropagation?.();
-    if (!typed) {
-      window.clearTimeout(typeTimer);
-      revealAll();
-    }
     try {
       await app.$dialogs.nextNode();
       playUiSound(app, "sfx_UI_dialog_next");
@@ -167,25 +189,57 @@ export function installDialog(app, host) {
     }
   }
 
+  function skipOrAdvance(event) {
+    if (!speaking()) return;
+    if (uiTarget(event)) return;
+    event?.preventDefault?.();
+    event?.stopPropagation?.();
+    if (!typed) {
+      skipping = true;
+      window.clearTimeout(typeTimer);
+      revealAll();
+      return;
+    }
+    nextSpeak();
+  }
+
   watch(nodeId, render);
-  watch(() => app.$store.isDialogVisible, (visible) => {
+  watch(() => unwrap(app.$store.isDialogVisible), (visible) => {
     if (!visible) clear();
     else render();
   });
 
-  window.addEventListener("pointerdown", advanceSpeak, true);
-  window.addEventListener("pointerup", advanceSpeak, true);
+  window.addEventListener("pointerdown", skipOrAdvance, true);
   window.addEventListener("keydown", (event) => {
     const node = app.$dialogs.current?.node;
     if (!node) return;
-    if (["Escape", "KeyX"].includes(event.code) && app.$dialogs.current.opts?.closable) {
+    const closable = !!app.$dialogs.current.opts?.closable;
+    if (node.isPrompt) {
+      const choices = promptChoices(node);
+      if (["Escape", "KeyN", "KeyX"].includes(event.code)) {
+        event.preventDefault();
+        event.stopPropagation();
+        const cancel = choices.at(-2);
+        if (cancel) choose(cancel);
+        else if (closable) app.$dialogs.exitDialog(true);
+        return;
+      }
+      if (["Enter", "Space", "NumpadEnter", "KeyY"].includes(event.code)) {
+        event.preventDefault();
+        event.stopPropagation();
+        const confirm = choices.at(-1);
+        if (confirm) choose(confirm);
+        return;
+      }
+      return;
+    }
+    if (["Escape", "KeyX"].includes(event.code) && closable) {
       event.preventDefault();
       app.$dialogs.exitDialog(true);
       return;
     }
     if (["Enter", "Space", "NumpadEnter"].includes(event.code)) {
-      event.preventDefault();
-      advanceSpeak(event);
+      skipOrAdvance(event);
     }
   }, true);
 }

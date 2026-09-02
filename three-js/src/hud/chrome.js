@@ -2,6 +2,10 @@ import { w as watch } from "../../../vendor/vendor.75f6e6ae65453426.js";
 import { circleButton, ctaButton, el, lazyImg, playUiSound, unwrap } from "../dom.js";
 import { iconUrl } from "../icons.js";
 
+function flag(value) {
+  return !!unwrap(value);
+}
+
 function installHeader(app, host) {
   const header = el("header", { class: "app-header", "data-v-08688f2d": "" });
   const logo = el("div", {
@@ -19,7 +23,7 @@ function installHeader(app, host) {
     extraClass: "pointer",
     onClick: () => {
       app.$store.isAudioMuted = !app.$store.isAudioMuted;
-      sound.classList.toggle("muted", app.$store.isAudioMuted);
+      sound.classList.toggle("muted", flag(app.$store.isAudioMuted));
     },
   });
   buttons.append(
@@ -41,21 +45,80 @@ function installHeader(app, host) {
 
   const visible = () => {
     const store = app.$store;
-    return store.isHeaderVisible
-      && !store.isTransitionActive
-      && !store.isMenuOpen
-      && !store.isCustomizeOpen
-      && !store.isDialogVisible
-      && !store.isOverlayVisible
-      && store.sceneState >= store.sceneStates.Playing
-      && !store.currentFullscreenVideo
-      && !store.isCinematicActive;
+    const sceneState = unwrap(store.sceneState);
+    const playing = unwrap(store.sceneStates?.Playing);
+    return flag(store.isHeaderVisible)
+      && !flag(store.isTransitionActive)
+      && !flag(store.isMenuOpen)
+      && !flag(store.isCustomizeOpen)
+      && !flag(store.isDialogVisible)
+      && !flag(store.isOverlayVisible)
+      && Number(sceneState) >= Number(playing)
+      && !unwrap(store.currentFullscreenVideo)
+      && !flag(store.isCinematicActive);
   };
   watch(visible, (show) => header.classList.toggle("is-visible", show), { immediate: true });
 }
 
+function installMenuCanvas(canvas) {
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return { setProgress() {}, dispose() {} };
+  let progress = 0;
+  let width = 1;
+  let height = 1;
+  const paint = () => {
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    const bounds = canvas.parentElement?.getBoundingClientRect();
+    width = Math.max(1, Math.round((bounds?.width || 400) * ratio));
+    height = Math.max(1, Math.round((bounds?.height || 400) * ratio));
+    canvas.width = width;
+    canvas.height = height;
+    canvas.style.width = `${Math.round(width / ratio)}px`;
+    canvas.style.height = `${Math.round(height / ratio)}px`;
+    ctx.clearRect(0, 0, width, height);
+    const stroke = Math.max(8, width / 19);
+    const gradient = ctx.createLinearGradient(0, 0, 0, height);
+    gradient.addColorStop(0, "#05ad90");
+    gradient.addColorStop(1, "#78e8c8");
+    ctx.beginPath();
+    ctx.arc(width / 2, height / 2, Math.max(1, (Math.min(width, height) - stroke) / 2), 0, Math.PI * 2);
+    ctx.lineWidth = stroke - 1;
+    ctx.strokeStyle = gradient;
+    ctx.stroke();
+    if (progress > 0) {
+      ctx.beginPath();
+      ctx.arc(
+        width / 2,
+        height / 2,
+        Math.max(1, (Math.min(width, height) - stroke) / 2),
+        -Math.PI / 2,
+        -Math.PI / 2 + Math.PI * 2 * progress,
+      );
+      ctx.strokeStyle = "#ffffff";
+      ctx.lineWidth = stroke;
+      ctx.stroke();
+    }
+  };
+  const observer = new ResizeObserver(paint);
+  if (canvas.parentElement) observer.observe(canvas.parentElement);
+  paint();
+  return {
+    setProgress(value) {
+      progress = value;
+      paint();
+    },
+    dispose() {
+      observer.disconnect();
+    },
+  };
+}
+
 function installMenu(app, host) {
   const menu = el("aside", { class: "menu", "data-v-2fd699fb": "", tabindex: "-1" });
+  const background = el("div", { class: "menu-background", "data-v-2fd699fb": "" });
+  const canvas = el("canvas");
+  background.append(canvas);
+  const wipe = installMenuCanvas(canvas);
   const container = el("div", { class: "menu-container", "data-v-2fd699fb": "" });
   const buttons = el("section", { class: "menu-buttons", "data-v-2fd699fb": "" });
   const close = () => { app.$store.isMenuOpen = false; };
@@ -77,18 +140,31 @@ function installMenu(app, host) {
   );
   const infos = el("section", { class: "menu-infos", "data-v-2fd699fb": "" });
   infos.append(
+    el("img", {
+      src: "./reference/assets/databeach-logo.png",
+      alt: "Data B-each",
+      "data-v-2fd699fb": "",
+      class: "menu-logo",
+    }),
     el("p", { "data-v-2fd699fb": "", html: app.$l("global.baseline") }),
     ctaButton({
       text: app.$l("cta.discover"),
       color: "white",
       extraClass: "menu-cta pointer",
+      href: app.$l("menu.islandlink"),
       onClick: () => app.$analytics.event({ event_category: "menu", event_action: "access_CCBUrl", event_value: "" }),
     }),
     ctaButton({
       text: app.$l("cta.start"),
-      color: "gray",
+      color: flag(app.$store.isGuest) ? "blue" : "gray",
       extraClass: "menu-cta pointer",
-      onClick: () => app.$savestate.clear(),
+      onClick: () => {
+        if (flag(app.$store.isGuest)) app.$savestate.clear();
+        else {
+          app.$store.isFormOpen = true;
+          close();
+        }
+      },
     }),
   );
   container.append(buttons, infos);
@@ -99,20 +175,21 @@ function installMenu(app, host) {
     hidden: true,
     onClick: close,
   });
-  menu.append(container, overlay);
+  menu.append(background, container, overlay);
   menu.inert = true;
   host.append(menu);
 
-  watch(() => app.$store.isMenuOpen, (open) => {
+  watch(() => flag(app.$store.isMenuOpen), (open) => {
     menu.classList.toggle("is-open", open);
     menu.tabIndex = open ? 0 : -1;
     overlay.hidden = !open;
     menu.inert = !open;
+    wipe.setProgress(open ? 1 : 0);
     if (open) playUiSound(app, "sfx_phone_swipe");
   }, { immediate: true });
 
   window.addEventListener("keydown", (event) => {
-    if (event.code === "Escape" && app.$store.isMenuOpen) close();
+    if (event.code === "Escape" && flag(app.$store.isMenuOpen)) close();
   });
 }
 

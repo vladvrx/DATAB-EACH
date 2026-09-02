@@ -39,13 +39,16 @@ export const ICONS = {
 
 export function circleButton({ label, icon, tone = "white", onClick, extraClass = "" }) {
   const button = el("button", {
-    class: `threejs-circle ${tone} ${extraClass}`.trim(),
+    class: `circle-button ${tone} is-hoverable ${extraClass}`.trim(),
     "aria-label": label,
     type: "button",
+    "data-v-1a897dbc": "",
     "data-pointer": "",
     onClick,
   });
-  button.append(svgIcon(ICONS[icon] || ICONS.cross));
+  const content = el("span", { class: "button-content", "data-v-1a897dbc": "" });
+  content.append(svgIcon(ICONS[icon] || ICONS.cross));
+  button.append(content);
   return button;
 }
 

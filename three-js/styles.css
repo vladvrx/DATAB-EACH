@@ -21,6 +21,22 @@
 #threejs-hud header:not(.is-visible),
 #threejs-hud header:not(.is-visible) * {
   pointer-events: none !important;
+  visibility: hidden;
+}
+
+#threejs-hud .circle-button .icon-svg {
+  width: 46%;
+  height: 46%;
+  fill: currentColor;
+}
+
+#threejs-hud .circle-button.muted .icon-svg {
+  opacity: 0.45;
+}
+
+#threejs-hud .menu-logo {
+  width: 180px;
+  margin-bottom: 10px;
 }
 
 .page-intro[data-v-366b880d] {
