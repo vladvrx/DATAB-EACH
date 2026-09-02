@@ -124,6 +124,7 @@ export async function startEngine() {
     });
     vueApp.mount("#app");
     installHud(app);
+    installCartoonOutline(app.$webgl);
     watch(() => app.$preloader.hidden, (hidden) => {
       if (hidden) installCartoonOutline(app.$webgl);
     }, { immediate: true });
