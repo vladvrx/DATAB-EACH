@@ -4,11 +4,24 @@ import path from "node:path";
 const PORT_ROOT = path.resolve(process.cwd(), "direct-port");
 
 const MIME_TYPES: Record<string, string> = {
+  ".avif": "image/avif",
+  ".bin": "application/octet-stream",
+  ".css": "text/css; charset=utf-8",
+  ".glb": "model/gltf-binary",
   ".html": "text/html; charset=utf-8",
   ".glsl": "text/plain; charset=utf-8",
+  ".ico": "image/x-icon",
+  ".jpg": "image/jpeg",
   ".js": "text/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
   ".map": "application/json; charset=utf-8",
+  ".m4a": "audio/mp4",
+  ".png": "image/png",
+  ".svg": "image/svg+xml",
+  ".wasm": "application/wasm",
+  ".webp": "image/webp",
+  ".woff": "font/woff",
+  ".woff2": "font/woff2",
 };
 
 type DirectPortRouteContext = {

@@ -1,26 +1,26 @@
 # DATAB-EACH recovered runtime map
 
 This map is generated from the authoritative production ESM chunks. Line ranges refer to the
-readable files in `direct-port/assets`. High-confidence engine and Vue component symbols receive
+readable files in `vendor`. High-confidence engine and Vue component symbols receive
 scope-safe names; all other compiler aliases remain untouched.
 
 ## Runtime boundaries
 
 | Order | Recovered subsystem | WebGL lines | Root contracts |
 | ---: | --- | ---: | --- |
-| 1 | `time` | 7610-7678 | `time` |
-| 2 | `renderer` | 7678-7745 | `renderer`, `threeRenderer` |
-| 3 | `viewport` | 7745-7782 | `viewport` |
-| 4 | `adaptive-quality` | 7782-7879 | `quality` |
-| 5 | `framebuffer-pool` | 7879-7888 | `fbo` |
-| 6 | `resources` | 7888-7960 | `resources` |
-| 7 | `transitions` | 7960-8032 | `transitions` |
-| 8 | `scene-manager` | 8032-8109 | `scenes` |
-| 9 | `runtime-store` | 8109-8215 | `store` |
-| 10 | `physics` | 8215-8221 | `initPhysics` |
-| 11 | `particles` | 8221-8309 | `particles` |
-| 12 | `audio` | 8309-8439 | `audio`, `smoothMute` |
-| 13 | `input` | 8439-8535 | `clickIn`, `clickOut`, `input`, `pressed`, `useTouch` |
+| 1 | `time` | 7588-7656 | `time` |
+| 2 | `renderer` | 7656-7723 | `renderer`, `threeRenderer` |
+| 3 | `viewport` | 7723-7760 | `viewport` |
+| 4 | `adaptive-quality` | 7760-7857 | `quality` |
+| 5 | `framebuffer-pool` | 7857-7866 | `fbo` |
+| 6 | `resources` | 7866-7938 | `resources` |
+| 7 | `transitions` | 7938-8010 | `transitions` |
+| 8 | `scene-manager` | 8010-8087 | `scenes` |
+| 9 | `runtime-store` | 8087-8193 | `store` |
+| 10 | `physics` | 8193-8199 | `initPhysics` |
+| 11 | `particles` | 8199-8287 | `particles` |
+| 12 | `audio` | 8287-8417 | `audio`, `smoothMute` |
+| 13 | `input` | 8417-8513 | `clickIn`, `clickOut`, `input`, `pressed`, `useTouch` |
 
 ## Build inventory
 

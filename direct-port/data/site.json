@@ -2,9 +2,9 @@
   "project": {
     "timestamp": "20250626-165126",
     "environment": "production",
-    "url": "https://databeach.local/",
-    "origin": "https://databeach.local",
-    "basepath": "/",
+    "url": "./",
+    "origin": "",
+    "basepath": "./",
     "locales": {
       "en": {
         "name": "English",
@@ -124,7 +124,7 @@
       }
     },
     "menu": {
-      "coastallink": "https://www.databeach.local/databeach/"
+      "coastallink": "#"
     },
     "game": {
       "timer": {
@@ -184,7 +184,7 @@
   "page": {
     "route": {
       "name": "Home",
-      "url": "https://databeach.local/",
+      "url": "./",
       "params": {}
     },
     "translations": {

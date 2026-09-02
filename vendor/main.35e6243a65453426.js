@@ -1,7 +1,5 @@
 //  Merci-Michel [R]
-//  https://www.merci-michel.com/
 //  Build 20250626-165126
-
 var e = Object.defineProperty,
   t = (t, n, i) => (((t, n, i) => {
     n in t ? e(t, n, {
@@ -30,9 +28,9 @@ const Ke = {
     __name: "RotateDevice",
     setup(e) {
       const t = i.select(i.list(Object.assign({
-          "/assets/images/rotate-background.avif": "/assets/rotate-background.be8447e265453426.avif",
-          "/assets/images/rotate-background.jpg": "/assets/rotate-background.3150193465453426.jpg",
-          "/assets/images/rotate-background.webp": "/assets/rotate-background.70bb5a6b65453426.webp"
+          "./reference/assets/images/rotate-background.avif": "./reference/assets/rotate-background.be8447e265453426.avif",
+          "./reference/assets/images/rotate-background.jpg": "./reference/assets/rotate-background.3150193465453426.jpg",
+          "./reference/assets/images/rotate-background.webp": "./reference/assets/rotate-background.70bb5a6b65453426.webp"
         }))),
         n = s();
       return a(o.$viewport, () => n.value = matchMedia("only screen and (max-width: 1024px) and (orientation: landscape)").matches, {
@@ -3553,19 +3551,19 @@ const Ea = {
     __name: "ItemNotification",
     setup(e) {
       const t = i.list(Object.assign({
-        "/assets/images/items-assets/compass.png": "/assets/compass.b2f451c665453426.png",
-        "/assets/images/items-assets/disk.png": "/assets/disk.f55f04a765453426.png",
-        "/assets/images/items-assets/flag.png": "/assets/flag.d3788bd965453426.png",
-        "/assets/images/items-assets/hammer.png": "/assets/hammer.2c9aee8665453426.png",
-        "/assets/images/items-assets/helmet.png": "/assets/helmet.da38033f65453426.png",
-        "/assets/images/items-assets/lightbulb.png": "/assets/lightbulb.cd23ded965453426.png",
-        "/assets/images/items-assets/resortkey.png": "/assets/resortkey.c1564def65453426.png",
-        "/assets/images/items-assets/scissor.png": "/assets/scissor.9a36d8ba65453426.png",
-        "/assets/images/items-assets/screwdriver.png": "/assets/screwdriver.dac0be1665453426.png",
-        "/assets/images/items-assets/shears.png": "/assets/shears.fc5233c565453426.png",
-        "/assets/images/items-assets/stethoscope.png": "/assets/stethoscope.325dc80665453426.png",
-        "/assets/images/items-assets/wateringcan.png": "/assets/wateringcan.734ea1e565453426.png",
-        "/assets/images/items-assets/zipline.png": "/assets/zipline.1612767b65453426.png"
+        "./reference/assets/images/items-assets/compass.png": "./reference/assets/compass.b2f451c665453426.png",
+        "./reference/assets/images/items-assets/disk.png": "./reference/assets/disk.f55f04a765453426.png",
+        "./reference/assets/images/items-assets/flag.png": "./reference/assets/flag.d3788bd965453426.png",
+        "./reference/assets/images/items-assets/hammer.png": "./reference/assets/hammer.2c9aee8665453426.png",
+        "./reference/assets/images/items-assets/helmet.png": "./reference/assets/helmet.da38033f65453426.png",
+        "./reference/assets/images/items-assets/lightbulb.png": "./reference/assets/lightbulb.cd23ded965453426.png",
+        "./reference/assets/images/items-assets/resortkey.png": "./reference/assets/resortkey.c1564def65453426.png",
+        "./reference/assets/images/items-assets/scissor.png": "./reference/assets/scissor.9a36d8ba65453426.png",
+        "./reference/assets/images/items-assets/screwdriver.png": "./reference/assets/screwdriver.dac0be1665453426.png",
+        "./reference/assets/images/items-assets/shears.png": "./reference/assets/shears.fc5233c565453426.png",
+        "./reference/assets/images/items-assets/stethoscope.png": "./reference/assets/stethoscope.325dc80665453426.png",
+        "./reference/assets/images/items-assets/wateringcan.png": "./reference/assets/wateringcan.734ea1e565453426.png",
+        "./reference/assets/images/items-assets/zipline.png": "./reference/assets/zipline.1612767b65453426.png"
       }));
       let n = s(),
         l = s(),
@@ -5159,30 +5157,30 @@ const Tl = {
         a = M.get(`item-${o.$store.newItem}`),
         l = {
           character0: i.list(Object.assign({
-            "/assets/images/character-assets/character_1.avif": _e,
-            "/assets/images/character-assets/character_1.png": we,
-            "/assets/images/character-assets/character_1.webp": ke
+            "./reference/assets/images/character-assets/character_1.avif": _e,
+            "./reference/assets/images/character-assets/character_1.png": we,
+            "./reference/assets/images/character-assets/character_1.webp": ke
           })),
           character1: i.list(Object.assign({
-            "/assets/images/character-assets/character_2.avif": xe,
-            "/assets/images/character-assets/character_2.png": $e,
-            "/assets/images/character-assets/character_2.webp": Ce,
-            "/assets/images/character-assets/character_2.xmp": Se
+            "./reference/assets/images/character-assets/character_2.avif": xe,
+            "./reference/assets/images/character-assets/character_2.png": $e,
+            "./reference/assets/images/character-assets/character_2.webp": Ce,
+            "./reference/assets/images/character-assets/character_2.xmp": Se
           })),
           character2: i.list(Object.assign({
-            "/assets/images/character-assets/character_3.avif": Me,
-            "/assets/images/character-assets/character_3.png": Te,
-            "/assets/images/character-assets/character_3.webp": Ee
+            "./reference/assets/images/character-assets/character_3.avif": Me,
+            "./reference/assets/images/character-assets/character_3.png": Te,
+            "./reference/assets/images/character-assets/character_3.webp": Ee
           })),
           character3: i.list(Object.assign({
-            "/assets/images/character-assets/character_4.avif": Le,
-            "/assets/images/character-assets/character_4.png": Pe,
-            "/assets/images/character-assets/character_4.webp": Ie
+            "./reference/assets/images/character-assets/character_4.avif": Le,
+            "./reference/assets/images/character-assets/character_4.png": Pe,
+            "./reference/assets/images/character-assets/character_4.webp": Ie
           })),
           character4: i.list(Object.assign({
-            "/assets/images/character-assets/character_5.avif": Ae,
-            "/assets/images/character-assets/character_5.png": De,
-            "/assets/images/character-assets/character_5.webp": Fe
+            "./reference/assets/images/character-assets/character_5.avif": Ae,
+            "./reference/assets/images/character-assets/character_5.png": De,
+            "./reference/assets/images/character-assets/character_5.webp": Fe
           }))
         };
       async function h() {
@@ -5476,8 +5474,8 @@ const hr = n({}, [["render", function (e, t) {
     class: "phone-video"
   },
   Xr = ["data-id"],
-  VueFintechVideoComponent = n({
-    __name: "FintechVideo",
+  VueOfflineArticleVideoPlaceholderComponent = n({
+    __name: "OfflineArticleVideoPlaceholder",
     props: {
       videoId: {
         type: String,
@@ -5485,43 +5483,10 @@ const hr = n({}, [["render", function (e, t) {
       }
     },
     emits: ["playVideo"],
-    setup(e, {
-      emit: t
-    }) {
-      const n = e,
-        i = s(),
-        a = s(),
-        l = s(),
-        f = n.videoId.trim();
-      function h() {
-        o.$store.isVideoPlaying = !0, l.value.style.display = "none", i.value = document.createElement("iframe"), i.value.setAttribute("src", "https://www.youtube-nocookie.com/embed/" + f + "?autoplay=1&controls=2&showinfo=0&modestbranding=0&rel=0&iv_load_policy=3"), i.value.setAttribute("frameborder", "0"), i.value.setAttribute("allowfullscreen", "1"), i.value.setAttribute("allow", "autoplay; fullscreen; encrypted-media;"), a.value.parentNode.replaceChild(i.value, a.value), t("playVideo"), o.$webgl.audio.playSound("sfx_phone_click_medium");
-      }
-      return _(() => {
-        !function () {
-          const e = document.createElement("div");
-          e.setAttribute("data-id", f), e.setAttribute("class", "thumbnail");
-          const t = document.createElement("img");
-          t.src = `https://img.youtube.com/vi/${f}/hqdefault.jpg`, e.appendChild(t), a.value.appendChild(e);
-        }();
-      }), q(() => {
-        i.value && i.value.parentNode && i.value.parentNode.removeChild(i.value), o.$store.isVideoPlaying = !1;
-      }), (e, t) => (r(), c("div", Rr, [u("div", {
-        ref_key: "player",
-        ref: a,
-        class: "phone-player",
-        "data-id": d(f)
-      }, null, 8, Xr), u("div", {
-        ref_key: "play",
-        ref: l,
-        class: "phone-play",
-        onClick: h
-      }, [p(k, {
-        "aria-label": e.$l("arialabel.play"),
-        icon: "play",
-        "bg-color": "white",
-        "icon-color": "blue",
-        class: "video-play"
-      }, null, 8, ["aria-label"])], 512)]));
+    setup: function offlineVideoSetup() {
+      return function renderOfflineVideo() {
+        return null;
+      };
     }
   }, [["__scopeId", "data-v-de14ca1a"]]),
   Wr = {
@@ -5642,7 +5607,7 @@ const hr = n({}, [["render", function (e, t) {
               key: 0,
               class: "text textA",
               innerHTML: a.value.textA
-            }, null, 8, Kr)) : f("", !0), a.value.video ? (r(), $(VueFintechVideoComponent, {
+            }, null, 8, Kr)) : f("", !0), a.value.video ? (r(), $(VueOfflineArticleVideoPlaceholderComponent, {
               key: 1,
               "video-id": a.value.video,
               class: "article-video",
@@ -5879,14 +5844,6 @@ const VueNewPhoneComponent = n({
     })) : f("", !0)], 64));
   }
 }, [["__scopeId", "data-v-99fe8ba9"]]);
-let ic = null;
-async function sc() {
-  return await (ic || (ic = new Promise(e => {
-    window.onYouTubeIframeAPIReady = e;
-    const t = document.createElement("script");
-    t.src = "https://www.youtube.com/iframe_api", document.head.appendChild(t);
-  }))), window.YT;
-}
 const ac = {
     class: "cover"
   },
@@ -5897,112 +5854,12 @@ const ac = {
   uc = 3,
   dc = 4,
   pc = 5,
-  VueYoutubePlayerComponent = n({
-    __name: "YoutubePlayer",
-    setup(e) {
-      const t = s(null),
-        n = s(),
-        i = s(null),
-        l = s(!1),
-        d = s(!1),
-        h = s(0);
-      let v = null,
-        m = null,
-        g = null,
-        y = 0,
-        b = Promise.resolve();
-      async function w() {
-        h.value = uc, g.playVideo();
-      }
-      function C() {
-        ++y, o.$store.isVideoPlaying = !1, h.value = lc, v && (g && g.destroy(), g = null, v = null);
-      }
-      function M(e) {
-        return function (t) {
-          if (e !== y) return;
-          const n = window.YT.PlayerState;
-          t.data === n.UNSTARTED && h.value === uc ? h.value = cc : t.data === n.BUFFERING && h.value === cc ? h.value = uc : t.data === n.PLAYING && h.value < dc ? (h.value = dc, o.$store.isVideoPlaying = !0) : t.data === n.ENDED && h.value < pc && P();
-        };
-      }
-      async function E(e) {
-        const s = ++y;
-        h.value = rc, function (e) {
-          if (!n.value) return;
-          const t = `https://i3.ytimg.com/vi/${e.id}/maxresdefault.jpg`;
-          if (t === i.value) return;
-          l.value = null, n.value.onload = () => {
-            n.value && (l.value = !0);
-          }, i.value = t;
-        }(e), await T(100), s === y && (v = await sc(), s === y && (g && g.destroy(), b = Ve(), g = new v.Player(t.value.firstElementChild, {
-          videoId: m,
-          width: "100%",
-          height: "100%",
-          playerVars: {
-            rel: 0,
-            modestbranding: 1,
-            playsinline: 1,
-            iv_load_policy: 3,
-            fullscreen: 0,
-            color: "white"
-          },
-          events: {
-            onReady: b.resolve,
-            onStateChange: M(s)
-          }
-        }), await b, s === y && (h.value = cc, o.$device.type.desktop && g.playVideo())));
-      }
-      function L() {
-        C();
-      }
-      function P() {
-        d.value && (++y, d.value = !1, o.$store.currentFullscreenVideo = !1, h.value = pc);
-      }
-      async function I(e) {
-        if (!e) return P();
-        d.value = !0, await Be(), d.value && (m = e.id, E(e));
-      }
-      return _(() => {
-        a(() => o.$store.currentFullscreenVideo, I, {
-          immediate: !0
-        });
-      }), q(() => {
-        C();
-      }), (e, s) => (r(), $(z, {
-        onAfterLeave: L
-      }, {
-        default: O(() => [d.value ? (r(), c("section", {
-          key: 0,
-          class: S(["video", {
-            ready: h.value >= cc,
-            buffering: h.value === uc,
-            playing: h.value >= dc,
-            exiting: h.value >= pc
-          }])
-        }, [p(x, {
-          class: "skip-cta",
-          text: "Skip",
-          onClick: P
-        }), u("div", ac, [p(k, {
-          "aria-label": e.$l("arialabel.play"),
-          icon: "play",
-          "bg-color": "white",
-          "icon-color": "blue",
-          class: "cover-play",
-          onClick: w
-        }, null, 8, ["aria-label"]), u("img", {
-          ref_key: "thumb",
-          ref: n,
-          "data-loaded": l.value,
-          src: i.value,
-          draggable: "false",
-          class: "cover-thumb"
-        }, null, 8, oc)]), u("div", {
-          ref_key: "container",
-          ref: t,
-          class: "videoContainer"
-        }, [s[0] || (He(-1), s[0] = u("div"), He(1), s[0])], 512)], 2)) : f("", !0)]),
-        _: 1
-      }));
+  VueOfflineFullscreenVideoPlaceholderComponent = n({
+    __name: "OfflineFullscreenVideoPlaceholder",
+    setup: function offlineVideoSetup() {
+      return function renderOfflineVideo() {
+        return null;
+      };
     }
   }, [["__scopeId", "data-v-fd236ed7"]]),
   hc = {
@@ -6084,7 +5941,7 @@ const ac = {
           key: 10
         })) : f("", !0), e.$preloader.finished ? (r(), $(VueApiNotifComponent, {
           key: 11
-        })) : f("", !0), e.$preloader.finished ? (r(), $(VueYoutubePlayerComponent, {
+        })) : f("", !0), e.$preloader.finished ? (r(), $(VueOfflineFullscreenVideoPlaceholderComponent, {
           key: 12
         })) : f("", !0)]), p(VueOverlayComponent), p(Pt), p(a), e.$preloader.finished && e.$device.type.phone ? (r(), $(VueRotateDeviceComponent, {
           key: 0

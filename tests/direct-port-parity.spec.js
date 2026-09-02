@@ -11,13 +11,27 @@ test.use({
 test.setTimeout(180_000);
 
 const ORIGINAL_URL = "http://127.0.0.1:43173/reference.html?noSupercache=1&parity=original";
-const PORT_URL = "http://127.0.0.1:43173/three-port/?noSupercache=1&parity=port";
+const PORT_URL = "http://127.0.0.1:43173/?noSupercache=1&parity=port";
+const THREE_PORT_URL = "http://127.0.0.1:43173/three-port/?noSupercache=1&parity=port";
 const PORT_ORIGIN = "http://127.0.0.1:43173/three-port";
+const BLOCKED_ONLINE_SERVICES =
+  /youtube|youtu\.be|ytimg|recaptcha|googletagmanager|cloudfunctions|gtm\.js|gtm-|datalayer/i;
+
+function watchRemoteRequests(page, remoteRequests) {
+  page.on("request", (request) => {
+    const url = request.url();
+    if (!url.startsWith("http://") && !url.startsWith("https://")) return;
+    const host = new URL(url).hostname;
+    if (host !== "127.0.0.1" && host !== "localhost") remoteRequests.push(url);
+  });
+}
 
 async function boot(context, url) {
   const page = await context.newPage();
   const errors = [];
   const failedRequests = [];
+  const remoteRequests = [];
+  watchRemoteRequests(page, remoteRequests);
   page.on("pageerror", (error) => errors.push(error.stack || error.message));
   page.on("requestfailed", (request) => {
     const reason = request.failure()?.errorText ?? "failed";
@@ -28,7 +42,7 @@ async function boot(context, url) {
   await page.goto(url, { waitUntil: "domcontentloaded" });
   await expect(page.locator("#preloader")).toBeHidden({ timeout: 90_000 });
   await expect(page.locator("canvas").first()).toBeVisible();
-  return { page, errors, failedRequests };
+  return { page, errors, failedRequests, remoteRequests };
 }
 
 async function visibleControls(page) {
@@ -65,6 +79,7 @@ async function runtimeState(page) {
       position: position?.toArray?.() ?? null,
       currentAnimation: player?.currentAnimation ?? null,
       activeAnimation: player?.animation?.animationID ?? null,
+      movementSpeed: player?.OptSpeed ?? null,
       canMove: player?.canMove ?? false,
       physicsReady: scene?.physics?.isReady ?? false,
       keyboardPressedCount: webgl?.input?.keyboard?.pressedCount ?? 0,
@@ -105,6 +120,7 @@ test("recovered Three.js runtime matches the authoritative start screen", async 
   expect(port.errors).toEqual([]);
   expect(original.failedRequests).toEqual([]);
   expect(port.failedRequests).toEqual([]);
+  expect(port.remoteRequests).toEqual([]);
 
   await Promise.all([
     original.page.addStyleTag({ content: "*,*::before,*::after{animation:none!important;transition:none!important}" }),
@@ -135,8 +151,10 @@ test("recovered Three.js runtime matches the authoritative start screen", async 
 
 test("direct port keeps alien customization and the two-tab phone", async ({ page }) => {
   const pageErrors = [];
+  const remoteRequests = [];
+  watchRemoteRequests(page, remoteRequests);
   page.on("pageerror", (error) => pageErrors.push(error.stack || error.message));
-  await page.goto(PORT_URL, { waitUntil: "domcontentloaded" });
+  await page.goto(THREE_PORT_URL, { waitUntil: "domcontentloaded" });
   await expect(page.locator("#preloader")).toBeHidden({ timeout: 90_000 });
 
   await page.evaluate(() =>
@@ -154,6 +172,68 @@ test("direct port keeps alien customization and the two-tab phone", async ({ pag
   await expect(page.locator(".nav-items > .nav-item")).toHaveCount(2);
   await expect(page.locator(".icons > div")).toHaveCount(2);
   expect(pageErrors).toEqual([]);
+  expect(remoteRequests).toEqual([]);
+});
+
+test("session pressure increases challenge with time, unlocks, and completions", async ({ page }) => {
+  const pageErrors = [];
+  const remoteRequests = [];
+  watchRemoteRequests(page, remoteRequests);
+  page.on("pageerror", (error) => pageErrors.push(error.stack || error.message));
+
+  await page.goto(PORT_URL, { waitUntil: "domcontentloaded" });
+  await expect(page.locator("#preloader")).toBeHidden({ timeout: 90_000 });
+  await expect
+    .poll(() => page.evaluate(() => window.__DATAB_EACH_SESSION_PRESSURE__?.snapshot() ?? null))
+    .not.toBeNull();
+  await expect
+    .poll(() => page.evaluate(() => window.__DATAB_EACH_SESSION_PRESSURE__.snapshot().ready))
+    .toBe(true);
+
+  const initial = await page.evaluate(() => window.__DATAB_EACH_SESSION_PRESSURE__.snapshot());
+  expect(initial).toMatchObject({ stage: 0, stageName: "Calm", targetTimeMultiplier: 1 });
+
+  await page.evaluate(() => {
+    const globals = document.querySelector("#app").__vue_app__.config.globalProperties;
+    globals.$circuit.targetTime = 70;
+    window.__DATAB_EACH_SESSION_PRESSURE__.advance(240);
+  });
+  await expect
+    .poll(() => page.evaluate(() => window.__DATAB_EACH_SESSION_PRESSURE__.snapshot().stage))
+    .toBe(1);
+  await expect
+    .poll(() => page.evaluate(() => {
+      const globals = document.querySelector("#app").__vue_app__.config.globalProperties;
+      return globals.$circuit.targetTime;
+    }))
+    .toBe(66.5);
+
+  await page.evaluate(() => {
+    const globals = document.querySelector("#app").__vue_app__.config.globalProperties;
+    globals.$savestate.game.quests.AvenMain = true;
+    globals.$savestate.setVariable("hasHammer", true);
+  });
+  await expect
+    .poll(() => page.evaluate(() => {
+      const globals = document.querySelector("#app").__vue_app__.config.globalProperties;
+      return globals.$quests.list.AvenSide.unlocked;
+    }))
+    .toBe(true);
+  await expect
+    .poll(() => page.evaluate(() => window.__DATAB_EACH_SESSION_PRESSURE__.snapshot().stage))
+    .toBe(2);
+  await expect(page.locator("#session-pressure")).toContainText("Charged");
+  expect(await page.evaluate(() => document.body.dataset.sessionPressureStage)).toBe("2");
+
+  await page.evaluate(() => {
+    const globals = document.querySelector("#app").__vue_app__.config.globalProperties;
+    globals.$savestate.game.vars.questsCompletedCount += 2;
+  });
+  await expect
+    .poll(() => page.evaluate(() => window.__DATAB_EACH_SESSION_PRESSURE__.snapshot().stage))
+    .toBe(3);
+  expect(pageErrors).toEqual([]);
+  expect(remoteRequests).toEqual([]);
 });
 
 test("direct port preserves the complete intro handoff and original walk clips", async ({ browser }) => {
@@ -193,6 +273,16 @@ test("direct port preserves the complete intro handoff and original walk clips",
   expect(beforeMove.run).toMatchObject({ id: "Run", startFrame: 33, endFrame: 57, fps: 30 });
   expect(beforeMove.questCount).toBeGreaterThan(0);
   expect(beforeMove.position).not.toBeNull();
+  expect(beforeMove.movementSpeed).toBeGreaterThan(0);
+
+  await port.page.evaluate(() => window.__DATAB_EACH_SESSION_PRESSURE__.advance(240));
+  await expect
+    .poll(async () => (await runtimeState(port.page)).movementSpeed)
+    .toBeLessThan(beforeMove.movementSpeed);
+  await port.page.evaluate(() => window.__DATAB_EACH_SESSION_PRESSURE__.advance(6));
+  await expect
+    .poll(async () => (await runtimeState(port.page)).movementSpeed)
+    .toBeCloseTo(beforeMove.movementSpeed, 5);
 
   const movementSamples = [];
   await port.page.keyboard.down("KeyW");
@@ -217,32 +307,46 @@ test("direct port preserves the complete intro handoff and original walk clips",
   expect(movementSamples.some((state) => state.currentAnimation === "Walk")).toBe(true);
   expect(port.errors).toEqual([]);
   expect(port.failedRequests).toEqual([]);
+  expect(port.remoteRequests).toEqual([]);
 
   await context.close();
 });
 
 test("direct port exposes recovered source contracts and reload-safe SPA routes", async ({ request }) => {
-  const [rootResponse, manifestResponse, modulesResponse, clipsResponse, sceneResponse, shaderResponse, routeResponse] =
-    await Promise.all([
-      request.get("http://127.0.0.1:43173/", { maxRedirects: 0 }),
-      request.get(`${PORT_ORIGIN}/PORT_MANIFEST.json`),
-      request.get(`${PORT_ORIGIN}/EXTRACTED_MODULES.json`),
-      request.get(`${PORT_ORIGIN}/data/character-animation-clips.json`),
-      request.get(`${PORT_ORIGIN}/data/scenes/Scene_IslandWest.json`),
-      request.get(`${PORT_ORIGIN}/src/shaders/water_depth_frag.glsl`),
-      request.get(`${PORT_ORIGIN}/phone`),
-    ]);
-
-  expect(rootResponse.status()).toBe(307);
-  expect(rootResponse.headers().location).toBe("/three-port/");
-
-  for (const response of [
+  const [
+    rootResponse,
+    rootRouteResponse,
     manifestResponse,
     modulesResponse,
     clipsResponse,
     sceneResponse,
     shaderResponse,
-    routeResponse,
+    threePortRouteResponse,
+    vendorResponse,
+  ] = await Promise.all([
+    request.get("http://127.0.0.1:43173/", { maxRedirects: 0 }),
+    request.get("http://127.0.0.1:43173/phone"),
+    request.get(`${PORT_ORIGIN}/PORT_MANIFEST.json`),
+    request.get(`${PORT_ORIGIN}/EXTRACTED_MODULES.json`),
+    request.get(`${PORT_ORIGIN}/data/character-animation-clips.json`),
+    request.get(`${PORT_ORIGIN}/data/scenes/Scene_IslandWest.json`),
+    request.get(`${PORT_ORIGIN}/src/shaders/water_depth_frag.glsl`),
+    request.get(`${PORT_ORIGIN}/phone`),
+    request.get("http://127.0.0.1:43173/vendor/main.35e6243a65453426.js"),
+  ]);
+
+  expect(rootResponse.status()).toBe(200);
+  expect(rootResponse.headers()["content-type"]).toContain("text/html");
+
+  for (const response of [
+    rootRouteResponse,
+    manifestResponse,
+    modulesResponse,
+    clipsResponse,
+    sceneResponse,
+    shaderResponse,
+    threePortRouteResponse,
+    vendorResponse,
   ]) {
     expect(response.ok()).toBe(true);
   }
@@ -254,7 +358,9 @@ test("direct port exposes recovered source contracts and reload-safe SPA routes"
   expect(manifest).toMatchObject({
     engine: "three.js",
     engineRevision: 150,
-    basePath: "/three-port/",
+    basePath: "./",
+    entryPoint: "../index.html",
+    vendorDirectory: "../vendor",
   });
   expect(modules.scenes).toContain("Scene_IslandWest.json");
   expect(modules.shaders).toContain("water_depth_frag.glsl");
@@ -265,5 +371,46 @@ test("direct port exposes recovered source contracts and reload-safe SPA routes"
   expect(scene.name).toBe("IslandWest");
   expect(scene.actors.length).toBeGreaterThan(0);
   expect(await shaderResponse.text()).toContain("waterDepth");
-  expect(await routeResponse.text()).toContain('"basepath":"/three-port/"');
+  expect(await rootRouteResponse.text()).toContain("startGame");
+  expect(await threePortRouteResponse.text()).toContain("startGame");
+
+  const runtimeFiles = [
+    "index.html",
+    "direct-port/index.html",
+    "direct-port/src/bootstrap.js",
+    "direct-port/src/page-behavior.js",
+    "direct-port/src/session-pressure.js",
+    "vendor/vendor.75f6e6ae65453426.js",
+    "vendor/webgl.3250e36a65453426.js",
+    "vendor/main.35e6243a65453426.js",
+  ];
+  for (const runtimeFile of runtimeFiles) {
+    const source = fs.readFileSync(runtimeFile, "utf8");
+    expect(source).not.toMatch(BLOCKED_ONLINE_SERVICES);
+  }
+
+  expect(fs.statSync("vendor").isDirectory()).toBe(true);
+  expect(fs.existsSync("direct-port/assets")).toBe(false);
+  const rootIndex = fs.readFileSync("index.html", "utf8");
+  const portIndex = fs.readFileSync("direct-port/index.html", "utf8");
+  for (const html of [rootIndex, portIndex]) {
+    expect(html).toContain("connect-src 'self'");
+    expect(html).toContain("frame-src 'none'");
+    expect(html).toContain("startGame");
+    expect(html).not.toMatch(/(?:src|href)=["']\//i);
+    expect(html).not.toMatch(/<style(?:\s[^>]*)?>/i);
+    expect(html).not.toContain("/three-port/assets/");
+  }
+
+  const recoveredCss = fs.readFileSync("direct-port/styles/recovered-game.css", "utf8");
+  expect(recoveredCss.split(/\r?\n/).length).toBeGreaterThan(500);
+  expect(recoveredCss).not.toMatch(/url\(\s*["']?\//i);
+
+  for (const bundle of [
+    "vendor/vendor.75f6e6ae65453426.js",
+    "vendor/webgl.3250e36a65453426.js",
+    "vendor/main.35e6243a65453426.js",
+  ]) {
+    expect(fs.readFileSync(bundle, "utf8")).not.toMatch(/["'`]\/assets\//);
+  }
 });

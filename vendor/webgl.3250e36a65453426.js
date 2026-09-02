@@ -1,7 +1,5 @@
 //  Merci-Michel [R]
-//  https://www.merci-michel.com/
 //  Build 20250626-165126
-
 import { aM as e, aN as t, aO as s, aP as i, aQ as o, aR as a, aS as n, aT as r, aU as l, aV as c, aW as h, aX as u, aY as d, a9 as p, aZ as f, s as m, a_ as g, a$ as y, b0 as b, w as v, a8 as w, b1 as _, b2 as x, b3 as S, b4 as M, b5 as T, b6 as O, b7 as P, b8 as A, b9 as I, ba as C, bb as R, bc as k, bd as D, be as L, bf as E, bg as F, j as U, bh as z, bi as B, bj as N, bk as j, bl as V, bm as H, y as W, aA as G, bn as q, G as Y, ah as K, bo as X, bp as $, bq as Z, br as J, bs as Q, bt as ee, bu as te, bv as se, bw as ie, bx as oe, by as ae, bz as ne, O as re, bA as le, bB as ce, bC as he, i as ue, bD as de, bE as pe, bF as fe, bG as me, bH as ge, bI as ye, bJ as be, bK as ve, bL as we, bM as _e, bN as xe, bO as Se, bP as Me, bQ as Te, bR as Oe, aH as Pe, bS as Ae, bT as Ie, bU as Ce, bV as Re, bW as ke, bX as De, bY as Le, bZ as Ee, b_ as Fe, b$ as Ue, c0 as ze, c1 as Be, c2 as Ne, c3 as je, c4 as Ve, c5 as He, c6 as We, c7 as Ge, c8 as qe, c9 as Ye, ca as Ke, cb as Xe, cc as $e, cd as Ze, ce as Je, cf as Qe, cg as et, ch as tt, ci as st, cj as it, ck as ot, cl as at, cm as nt, cn as rt, co as lt, cp as ct, cq as ht, cr as ut, cs as dt, ct as pt, cu as ft, cv as mt, cw as gt, cx as yt, cy as bt, cz as vt, a as wt, cA as _t, cB as xt, cC as St, cD as Mt, cE as Tt, cF as Ot, cG as Pt, ae as At, cH as It, cI as Ct, cJ as Rt, cK as kt, cL as Dt, cM as Lt, aC as Et, cN as Ft, cO as Ut, cP as zt, cQ as Bt, h as Nt, cR as jt, cS as Vt, cT as Ht, cU as Wt, cV as Gt, cW as qt, cX as Yt, cY as Kt, cZ as Xt, c_ as $t, c$ as Zt, d0 as Jt, d1 as Qt, d2 as es, d3 as ts, d4 as ss, d5 as is, d6 as os, d7 as as, d8 as ns, d9 as rs, da as ls, ad as cs, db as hs } from "./vendor.75f6e6ae65453426.js";
 const us = Object.freeze(Object.defineProperty({
     __proto__: null,
@@ -1246,27 +1244,7 @@ function Li() {
     a = e.face;
   this.mesh.colorId = i, this.mesh.faceColor.set(o), this.mesh.visible = !0, this.mesh.faceType = a, this.onOutfitChanged && this.onOutfitChanged();
 }
-async function Ei(e) {
-  if (!(e = (e => {
-    try {
-      return new URL(e);
-    } catch (t) {
-      return null;
-    }
-  })(e))) return;
-  if (!(e.host.includes("youtu.be") || e.host.includes("youtube.com"))) return;
-  const t = e.searchParams.get("v") || e.pathname.split("/").pop();
-  t && (await function (e) {
-    const t = p.app.$store;
-    return t.currentFullscreenVideo = q({
-      id: e
-    }), new Promise(e => {
-      const s = v(() => t.currentFullscreenVideo, t => {
-        t || (s(), e());
-      });
-    });
-  }(t), await W(500), await G());
-}
+async function Ei(e) {}
 const Fi = new n(),
   Ui = new n(),
   zi = new n(),
@@ -3721,7 +3699,7 @@ const On = new vt(),
       return this.workerPool.length = 0, this;
     }
   }();
-Pn.setDecoderPath("/vendors/draco/"), Pn.preload(), Pn.setWorkerLimit(4);
+Pn.setDecoderPath("./reference/vendors/draco/"), Pn.preload(), Pn.setWorkerLimit(4);
 const An = new class extends Ae {
   constructor(e) {
     super(e), this.dracoLoader = null, this.ktx2Loader = null, this.meshoptDecoder = null, this.pluginCallbacks = [], this.enroll(function (e) {
@@ -3878,10 +3856,10 @@ An.setDRACOLoader(Pn), In.loader = {
   extensions: [".json"],
   function: Cn
 };
-const Rn = "/assets/sprites.d8373bb465453426.json",
+const Rn = "./reference/assets/sprites.d8373bb465453426.json",
   kn = wt.list(Object.assign({
-    "/assets/canvas/sprites/sprites.json": Rn,
-    "/assets/canvas/sprites/sprites.png": "/assets/sprites.ca9a51e965453426.png"
+    "./reference/assets/canvas/sprites/sprites.json": Rn,
+    "./reference/assets/canvas/sprites/sprites.png": "./reference/assets/sprites.ca9a51e965453426.png"
   })),
   Dn = (e, t, s, i) => Ln[e] = {
     default: t,
@@ -3889,7 +3867,7 @@ const Rn = "/assets/sprites.d8373bb465453426.json",
     avif: i
   },
   Ln = {};
-Dn("noise", "/assets/noise_perlin.956753cf65453426.png"), Dn("clouds", "/assets/clouds.657c06ba65453426.png"), Ln.sprites = kn, Ln.spritesData = Rn;
+Dn("noise", "./reference/assets/noise_perlin.956753cf65453426.png"), Dn("clouds", "./reference/assets/clouds.657c06ba65453426.png"), Ln.sprites = kn, Ln.spritesData = Rn;
 const En = Ln;
 function Fn(e) {
   const t = p.threeRenderer.capabilities.isWebGL2,
@@ -3914,7 +3892,7 @@ function Un(e, t, s, i = 0) {
   for (let d = 0, p = n.meshCoords.length; d < p; d++) n.meshCoords[d] *= a;
   return n.anchor = r, n.sourceSize = e.sourceSize, n.spriteSourceSize = e.spriteSourceSize, n.vertices = e.vertices, n.verticesUV = e.verticesUV, n.triangles = e.triangles, n;
 }
-const zn = "/assets/character.df6ab95f65453426.glb",
+const zn = "./reference/assets/character.df6ab95f65453426.glb",
   Bn = wt.select,
   Nn = Mt.load;
 Mt.load = (e, t) => Pe.get(e) ? Promise.resolve(Pe.get(e)) : Nn(e, t);
@@ -7390,7 +7368,7 @@ const mu = {
       hu.onStuck = e;
     }
   },
-  gu = "/assets/audiosprites.5d69e49165453426.m4a",
+  gu = "./reference/assets/audiosprites.5d69e49165453426.m4a",
   yu = {};
 JSON.parse('[["music_minigame_jingle",0,1.9355,1.9355],["sfx_UI_Dialog_CameraMove_In",2.0355,2.4533,0.4178],["sfx_UI_Dialog_CameraMove_Out",2.5533,2.8976,0.3443],["sfx_UI_coastalPoints",2.9976,4.3615,1.3639],["sfx_UI_customPlayer_changeAccessories_body",4.4615,4.571,0.1096],["sfx_UI_customPlayer_changeAccessories_bottom",4.671,4.7788,0.1078],["sfx_UI_customPlayer_changeAccessories_head",4.8788,4.9884,0.1096],["sfx_UI_customPlayer_changeColor",5.0884,5.1517,0.0633],["sfx_UI_customPlayer_changeFace",5.2517,5.4016,0.1499],["sfx_UI_customPlayer_open",5.5016,5.914,0.4124],["sfx_UI_customPlayer_shuffle",6.014,6.3996,0.3856],["sfx_UI_customPlayer_validate",6.4996,7.0085,0.5089],["sfx_UI_dialog_answer",[[7.1085,7.2848,0.1763]]],["sfx_UI_dialog_next",[[7.3848,7.4883,0.1035]]],["sfx_UI_dialog_opendialog",[[7.5883,7.7111,0.1228]]],["sfx_UI_notif_NPCcall",[[7.8111,8.1144,0.3033],[8.2144,8.5177,0.3033],[8.6177,8.921,0.3033]]],["sfx_UI_notif_quest_object",[[9.021,9.2419,0.2209]]],["sfx_UI_transition_close",[[9.3419,9.9492,0.6073]]],["sfx_UI_transition_open",[[10.0492,10.654,0.6049]]],["sfx_dialog_syllab",[[10.754,10.9083,0.1542],[12.0128,12.159,0.1463],[12.259,12.4225,0.1635],[12.5225,12.6964,0.1739],[12.7964,12.9626,0.1663],[13.0626,13.2184,0.1557],[13.3184,13.4665,0.1481],[13.5665,13.7201,0.1536],[13.8201,13.9703,0.1502],[11.0083,11.1581,0.1499],[11.2581,11.4015,0.1434],[11.5015,11.6575,0.156],[11.7575,11.9128,0.1553]]],["sfx_minigame_bike_drift",14.0703,19.3375,5.2672],["sfx_minigame_bike_impact",[[19.4375,20.1613,0.7237],[20.2613,20.985,0.7237],[21.085,21.7661,0.6811]]],["sfx_minigame_bike_land",21.8661,22.7811,0.915],["sfx_minigame_bike_loop",22.8811,27.8968,5.0156],["sfx_minigame_boat_drift",27.9968,32.7799,4.7831],["sfx_minigame_boat_impact",[[32.8799,34.5303,1.6504],[34.6303,36.0418,1.4115],[36.1418,37.5378,1.396]]],["sfx_minigame_boat_loop",37.6378,41.6378,4],["sfx_minigame_car_impact",[[41.7378,42.3593,0.6215],[42.4593,43.0809,0.6215],[43.1809,43.8024,0.6215]]],["sfx_minigame_car_loop",[[43.9024,47.2301,3.3277]]],["sfx_minigame_car_tireSkid",[[47.3301,48.903,1.5728]]],["sfx_minigame_countdown_go",49.003,50.503,1.5],["sfx_minigame_countdown_number",50.603,51.603,1],["sfx_minigame_finish",51.703,53.785,2.082],["sfx_minigame_jetSki_land",[[53.885,55.8196,1.9347],[55.9196,57.8543,1.9347],[57.9543,59.889,1.9347]]],["sfx_minigame_jetSki_loop",59.989,63.989,4],["sfx_minigame_jetSki_rampTouch",[[64.089,65.1557,1.0667],[65.2557,66.2224,0.9667],[66.3224,67.289,0.9667]]],["sfx_minigame_result_lose",67.389,70.1988,2.8098],["sfx_minigame_result_win",70.2988,75.9183,5.6195],["sfx_phone_claim",76.0183,77.1137,1.0954],["sfx_phone_click_medium",77.2137,77.4663,0.2526],["sfx_phone_click_soft",77.5663,77.7144,0.1482],["sfx_phone_close",77.8144,78.2937,0.4792],["sfx_phone_open",78.3937,79.1201,0.7264],["sfx_phone_scroll_tic",79.2201,79.2368,0.0167],["sfx_phone_swipe",79.3368,79.7661,0.4294],["sfx_player_footsteps",[[79.8661,80.0217,0.1556],[80.1218,80.2774,0.1556],[80.3774,80.533,0.1556],[80.633,80.7886,0.1556],[80.8886,81.0443,0.1556],[81.1442,81.2999,0.1556],[81.3999,81.5555,0.1556],[81.6555,81.8111,0.1556],[81.9111,82.0667,0.1556]]],["sfx_player_footsteps_water",[[82.1667,82.6916,0.5249],[82.7916,83.3165,0.5249],[83.4165,83.9413,0.5249],[84.0413,84.5662,0.5249],[84.6662,85.191,0.5249],[85.291,85.8159,0.5249],[85.9159,86.4407,0.5249],[86.5407,87.0656,0.5249],[87.1656,87.6904,0.5249]]],["sfx_player_jetpack_loop",87.7904,91.7964,4.006],["sfx_quest_Skatepark_cleaned",[[91.8964,93.8877,1.9912]]],["sfx_quest_Skatepark_interact_loop",[[93.9877,94.6466,0.659]]],["sfx_quest_bridge_repair",[[94.7466,96.074,1.3273]]],["sfx_quest_chest_lockpick_loop",[[96.174,97.092,0.918]]],["sfx_quest_chest_open",[[97.192,98.2603,1.0683]]],["sfx_quest_compas_interact_loop",98.3603,99.4515,1.0912],["sfx_quest_completed_close",99.5515,100.0352,0.4838],["sfx_quest_completed_main",100.1352,101.3182,1.183],["sfx_quest_completed_side",101.4182,102.6012,1.183],["sfx_quest_completed_super",102.7012,108.0649,5.3636],["sfx_quest_getObject",108.1649,110.4251,2.2603],["sfx_quest_hammerImpact",[[110.5251,110.6365,0.1113],[110.942,111.0476,0.1056],[111.1476,111.2532,0.1056],[111.3532,111.4587,0.1056],[111.5587,111.6555,0.0968],[111.7555,111.861,0.1056],[111.961,112.0666,0.1056],[112.1666,112.2722,0.1056],[112.3722,112.4777,0.1056],[110.7365,110.842,0.1056]]],["sfx_quest_healing_done",112.5777,114.3936,1.8158],["sfx_quest_healing_interact_loop",114.4936,115.6936,1.2],["sfx_quest_house_build",[[115.7936,117.4248,1.6312]]],["sfx_quest_inauguration",[[117.5248,120.1122,2.5874]]],["sfx_quest_inauguration_interact_loop",[[120.2122,120.6922,0.48]]],["sfx_quest_lighthouse_build",[[120.7922,123.5056,2.7134]]],["sfx_quest_lighthouse_interact_loop",123.6056,124.9242,1.3186],["sfx_quest_locked",125.0242,125.3778,0.3536],["sfx_quest_plant_grow",[[125.4778,126.5305,1.0527]]],["sfx_quest_plant_interact_watering_loop",[[126.6305,127.3419,0.7113]]],["sfx_quest_progress",127.4419,128.4822,1.0403],["sfx_quest_scissors_interact",[[128.5822,128.6964,0.1142],[128.7964,128.8962,0.0998],[128.9962,129.1078,0.1115],[129.2078,129.322,0.1142],[129.422,129.5362,0.1142]]],["sfx_quest_screwdriver_interact_loop",129.6362,131.4168,1.7806],["sfx_quest_shop_open",131.5168,133.198,1.6812],["sfx_quest_sono_interact_loop",[[133.298,137.298,4]]],["sfx_quest_sono_loop",137.398,146.9994,9.6014],["sfx_quest_sono_turnedOn",[[147.0994,148.7302,1.6308]]],["sfx_quest_zipline_interact_done",148.8302,150.0302,1.2],["sfx_quest_zipline_interact_loop",150.1302,151.4636,1.3333],["sfx_quest_zipline_jumpGrab",151.5636,152.6302,1.0667],["sfx_quest_zipline_slide_end",152.7302,153.6636,0.9333],["sfx_quest_zipline_slide_loop",153.7636,157.7636,4],["sfx_secret_interact_tamtam_loop",157.8636,160.2636,2.4],["sfx_telescope_cameraMovement",160.3636,161.279,0.9154],["sfx_travel_taxi_klaxon",161.379,161.7508,0.3718],["sfx_travel_taxi_loop",161.8508,164.06,2.2092]]').forEach(([e, t, s, i]) => {
   yu[e] = Array.isArray(t) ? {
@@ -7410,28 +7388,28 @@ JSON.parse('[["music_minigame_jingle",0,1.9355,1.9355],["sfx_UI_Dialog_CameraMov
     duration: i
   };
 }), yu.music_intro = {
-  path: "/assets/music_intro.552fc27765453426.m4a",
+  path: "./reference/assets/music_intro.552fc27765453426.m4a",
   unique: !0
 }, yu.music_island_west = {
-  path: "/assets/music_island_west.ee940d9a65453426.m4a",
+  path: "./reference/assets/music_island_west.ee940d9a65453426.m4a",
   unique: !0
 }, yu.music_minigame_loop = {
-  path: "/assets/music_minigame_loop.44a6ebcf65453426.m4a",
+  path: "./reference/assets/music_minigame_loop.44a6ebcf65453426.m4a",
   unique: !0
 }, yu.music_secret = {
-  path: "/assets/music_secret.3a1d5b4165453426.m4a",
+  path: "./reference/assets/music_secret.3a1d5b4165453426.m4a",
   unique: !0
 }, yu.sfx_amb_beach_loop = {
-  path: "/assets/sfx_amb_beach_loop.be1083c965453426.m4a",
+  path: "./reference/assets/sfx_amb_beach_loop.be1083c965453426.m4a",
   unique: !0
 }, yu.sfx_amb_forestBird_loop = {
-  path: "/assets/sfx_amb_forestBird_loop.d09bb86465453426.m4a",
+  path: "./reference/assets/sfx_amb_forestBird_loop.d09bb86465453426.m4a",
   unique: !0
 }, yu.sfx_amb_main_loop = {
-  path: "/assets/sfx_amb_main_loop.01a57afe65453426.m4a",
+  path: "./reference/assets/sfx_amb_main_loop.01a57afe65453426.m4a",
   unique: !0
 }, yu.sfx_amb_waterfall_loop = {
-  path: "/assets/sfx_amb_waterfall_loop.e183d30165453426.m4a",
+  path: "./reference/assets/sfx_amb_waterfall_loop.e183d30165453426.m4a",
   unique: !0
 };
 const bu = yu,

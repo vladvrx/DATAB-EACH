@@ -9,15 +9,33 @@ The original build uses Three.js revision 150. The repository pins `three` and `
 `0.150.1` so extracted modules do not change renderer, animation, color-management, or loader
 behavior during source recovery.
 
-Run `npm run port:recover`, then open `/three-port/`. The root URL now redirects to this port. The
-authoritative game remains at `/reference.html` for side-by-side checks, and the rejected prototype
-is inactive under `prototypes/threejs-recreation`.
+Run `npm run port:recover`, then open `/`. The root `index.html` is the primary game entry point and
+`/three-port/` remains as a compatibility mount. Both entry points load the same readable bootstrap,
+formatted stylesheets, and recovered runtime. The authoritative game remains at `/reference.html`
+for side-by-side checks, and the rejected prototype is inactive under
+`prototypes/threejs-recreation`.
 
 The port extracts exact scene manifests, GLSL chunks, character animation frame ranges, and the
-audio-sprite table into `direct-port/data` and `direct-port/src`. Both builds share the canonical
-GLB, texture, audio, locale, and Draco assets under `reference`; `analysis/asset-inventory.json`
-pins every file by SHA-256.
+audio-sprite table into `direct-port/data` and `direct-port/src`. Recovered production chunks live
+under the root `vendor/` directory. First-party startup and session-pressure code stays readable in
+`direct-port/src`, while formatted recovered CSS lives in `direct-port/styles`. All page and runtime
+asset URLs are relative. Both builds share the canonical GLB, texture, audio, locale, and Draco
+assets under `reference`; `analysis/asset-inventory.json` pins every file by SHA-256.
 
-`npm run test:port` verifies the start view, alien color-only customization, Map/Quests phone,
-complete intro dialogue and island handoff, actual keyboard movement, original Walk/Run clips, and
-reload-safe port routes.
+Session pressure starts at Calm, rises every four active gameplay minutes and when quests complete
+or new quests unlock during the current page session, and tops out at Critical. A completion that
+also unlocks a quest counts as one milestone. Each stage tightens bike-race target times. Signal
+surges become more frequent and temporarily slow traversal, then restore the player's original
+movement settings when the surge ends. Reloading starts a new pressure session; quest completion
+itself remains saved by the original game.
+
+The active port is local-only. Its recovery pass removes remote analytics, verification, account
+services, and hosted video code, then installs inert compatibility objects for legacy call sites.
+The generated page also restricts connections and frames to local content through its content
+security policy. Source maps omit embedded copies of the unsanitized reference chunks.
+
+`npm run test:port` verifies the root entry point, pressure escalation, start view, alien color-only
+customization, Map/Quests phone, complete intro dialogue and island handoff, actual keyboard
+movement, original Walk/Run clips, and reload-safe routes. It also fails the suite if an active port
+page requests a remote host, a root-absolute asset path returns, or blocked online-service code
+returns to the generated runtime.

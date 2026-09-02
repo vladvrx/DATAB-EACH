@@ -10,6 +10,7 @@ const traverse = traversePackage.default ?? traversePackage;
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, "..");
 const portRoot = path.join(projectRoot, "direct-port");
+const vendorRoot = path.join(projectRoot, "vendor");
 const dataRoot = path.join(portRoot, "data");
 const sourceRoot = path.join(portRoot, "src");
 
@@ -231,8 +232,8 @@ async function recoverAudioSprite(webglAst) {
 }
 
 const [vendorSource, webglSource] = await Promise.all([
-  fs.readFile(path.join(portRoot, "assets", bundleNames.vendor), "utf8"),
-  fs.readFile(path.join(portRoot, "assets", bundleNames.webgl), "utf8"),
+  fs.readFile(path.join(vendorRoot, bundleNames.vendor), "utf8"),
+  fs.readFile(path.join(vendorRoot, bundleNames.webgl), "utf8"),
 ]);
 const vendorAst = parseModule(vendorSource);
 const webglAst = parseModule(webglSource);

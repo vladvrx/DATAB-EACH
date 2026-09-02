@@ -23,6 +23,7 @@ const eslintConfig = [
       "public/**",
       "reference/**",
       "test-results/**",
+      "vendor/**",
       "next-env.d.ts",
     ],
   },

@@ -12,6 +12,7 @@ const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, "..");
 const referenceRoot = path.join(projectRoot, "reference");
 const portRoot = path.join(projectRoot, "direct-port");
+const vendorRoot = path.join(projectRoot, "vendor");
 const analysisRoot = path.join(portRoot, "analysis");
 
 const bundles = [
@@ -266,7 +267,7 @@ function markdownRuntimeMap(bundleAnalysis, assetInventory) {
   return `# DATAB-EACH recovered runtime map
 
 This map is generated from the authoritative production ESM chunks. Line ranges refer to the
-readable files in \`direct-port/assets\`. High-confidence engine and Vue component symbols receive
+readable files in \`vendor\`. High-confidence engine and Vue component symbols receive
 scope-safe names; all other compiler aliases remain untouched.
 
 ## Runtime boundaries
@@ -291,7 +292,7 @@ await fs.mkdir(analysisRoot, { recursive: true });
 
 const bundleAnalysis = [];
 for (const name of bundles) {
-  const source = await fs.readFile(path.join(portRoot, "assets", name), "utf8");
+  const source = await fs.readFile(path.join(vendorRoot, name), "utf8");
   bundleAnalysis.push(analyzeBundle(name, source));
 }
 

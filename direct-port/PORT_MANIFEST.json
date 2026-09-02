@@ -1,9 +1,15 @@
 {
-  "format": "datab-each-direct-port-v1",
+  "format": "datab-each-direct-port-v2",
   "sourceBuild": "20250626-165126",
   "engine": "three.js",
   "engineRevision": 150,
-  "basePath": "/three-port/",
+  "basePath": "./",
+  "entryPoint": "../index.html",
+  "mounts": [
+    "/",
+    "/three-port/"
+  ],
+  "vendorDirectory": "../vendor",
   "sourceStrategy": "Scope-safe AST recovery from the authoritative ESM production chunks",
   "recoveredSymbols": [
     "shaderChunks",
@@ -26,14 +32,15 @@
     "loadWebGL"
   ],
   "sharedAssetRoot": "../reference",
+  "offlineRuntime": true,
   "bundles": [
     {
       "name": "vendor.75f6e6ae65453426.js",
       "sourceBytes": 1185681,
-      "recoveredBytes": 1535666,
+      "recoveredBytes": 1535262,
       "sourceSha256": "9e339b1203f6220e1be4e5dcf24d0c56e676e14d55f5a58515d4401364320125",
-      "recoveredSha256": "1ae17aac743d3f6aab05a63c728b94ef7925b11e45466a26a8e2bc0180352d63",
-      "sourceMap": "assets/vendor.75f6e6ae65453426.js.map",
+      "recoveredSha256": "2567a9be8b449be3243107265f0bf52ad73228a2f1ecff1f2c94d204d0c427fa",
+      "sourceMap": "../vendor/vendor.75f6e6ae65453426.js.map",
       "recoveredVueComponents": [
         {
           "compiledName": "Mc",
@@ -190,19 +197,19 @@
     {
       "name": "webgl.3250e36a65453426.js",
       "sourceBytes": 271073,
-      "recoveredBytes": 351568,
+      "recoveredBytes": 351183,
       "sourceSha256": "3fee2c7cda04705f3603e8a9918fa769668bff62374129403b513bf5cc05655f",
-      "recoveredSha256": "2736e0e351a721c5f6be7478ad516116f50ab1b3b18d28e4b63a93f5b2a68861",
-      "sourceMap": "assets/webgl.3250e36a65453426.js.map",
+      "recoveredSha256": "658c7243e2e48186228b66dcdc016c21e256c623f65eab39891cb543eed43160",
+      "sourceMap": "../vendor/webgl.3250e36a65453426.js.map",
       "recoveredVueComponents": []
     },
     {
       "name": "main.35e6243a65453426.js",
       "sourceBytes": 129714,
-      "recoveredBytes": 195792,
+      "recoveredBytes": 191353,
       "sourceSha256": "03c0743f3a153067c89c89956d99325c28905f475d60aa36e534c549c0e16e48",
-      "recoveredSha256": "774ebd5bf7f6c77fde22e3988f59c491b22e1c599b39f2e4b55002dede4cdcb8",
-      "sourceMap": "assets/main.35e6243a65453426.js.map",
+      "recoveredSha256": "7b6043cc1748205548831e3e065fb528ff0f7dd16ec8a330757fa1a3eec36f4a",
+      "sourceMap": "../vendor/main.35e6243a65453426.js.map",
       "recoveredVueComponents": [
         {
           "compiledName": "tt",
@@ -431,8 +438,8 @@
         },
         {
           "compiledName": "qr",
-          "componentName": "FintechVideo",
-          "recoveredName": "VueFintechVideoComponent"
+          "componentName": "OfflineArticleVideoPlaceholder",
+          "recoveredName": "VueOfflineArticleVideoPlaceholderComponent"
         },
         {
           "compiledName": "tc",
@@ -446,8 +453,8 @@
         },
         {
           "compiledName": "fc",
-          "componentName": "YoutubePlayer",
-          "recoveredName": "VueYoutubePlayerComponent"
+          "componentName": "OfflineFullscreenVideoPlaceholder",
+          "recoveredName": "VueOfflineFullscreenVideoPlaceholderComponent"
         },
         {
           "compiledName": "vc",
