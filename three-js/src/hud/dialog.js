@@ -173,6 +173,7 @@ export function installDialog(app, host) {
     else render();
   });
 
+  window.addEventListener("pointerdown", advanceSpeak, true);
   window.addEventListener("pointerup", advanceSpeak, true);
   window.addEventListener("keydown", (event) => {
     const node = app.$dialogs.current?.node;
