@@ -1,5 +1,5 @@
 import { w as watch } from "../../../vendor/vendor.75f6e6ae65453426.js";
-import { circleButton, ctaButton, el, playUiSound, unwrap } from "../dom.js";
+import { circleButton, ctaButton, el, lazyImg, playUiSound, unwrap } from "../dom.js";
 import { iconUrl } from "../icons.js";
 
 function installHeader(app, host) {
@@ -96,14 +96,18 @@ function installMenu(app, host) {
     class: "menu-overlay",
     "data-bypass-touch": "",
     "data-v-2fd699fb": "",
+    hidden: true,
     onClick: close,
   });
   menu.append(container, overlay);
+  menu.inert = true;
   host.append(menu);
 
   watch(() => app.$store.isMenuOpen, (open) => {
     menu.classList.toggle("is-open", open);
     menu.tabIndex = open ? 0 : -1;
+    overlay.hidden = !open;
+    menu.inert = !open;
     if (open) playUiSound(app, "sfx_phone_swipe");
   }, { immediate: true });
 

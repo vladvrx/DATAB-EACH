@@ -9,6 +9,30 @@
   pointer-events: auto;
 }
 
+.page-intro[data-v-366b880d] {
+  z-index: 16;
+}
+
+.page-intro .start-btn,
+.start .start-btn,
+.start.v-enter-active .start-btn,
+.start.v-leave-active .start-btn {
+  pointer-events: auto !important;
+}
+
+#threejs-hud .menu:not(.is-open),
+#threejs-hud .menu:not(.is-open) * {
+  pointer-events: none !important;
+}
+
+.menu.is-open .menu-overlay[data-v-2fd699fb] {
+  pointer-events: auto;
+}
+
+.phone-overlay[data-v-99fe8ba9]:not([hidden]) {
+  pointer-events: auto;
+}
+
 .threejs-circle {
   position: relative;
   display: inline-flex;
@@ -47,10 +71,3 @@
   opacity: 0.45;
 }
 
-.phone-overlay[data-v-99fe8ba9] {
-  pointer-events: auto;
-}
-
-.menu-overlay[data-v-2fd699fb] {
-  pointer-events: auto;
-}

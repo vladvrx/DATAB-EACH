@@ -26,9 +26,9 @@ export function installHud(app) {
       if (!app.$preloader.finished && !app.$preloader.hidden) return false;
       installed = true;
       installStartScreen(app, host);
-      installChrome(app, host);
-      installPhone(app, host);
-      installDialog(app, host);
+      try { installChrome(app, host); } catch (error) { console.error("Three.js HUD chrome failed", error); }
+      try { installPhone(app, host); } catch (error) { console.error("Three.js HUD phone failed", error); }
+      try { installDialog(app, host); } catch (error) { console.error("Three.js HUD dialog failed", error); }
       document.documentElement.classList.add("threejs-hud-ready");
       return true;
     };
