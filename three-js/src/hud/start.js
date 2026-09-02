@@ -8,6 +8,10 @@ function startJourney(app) {
   return true;
 }
 
+function vueStartButton() {
+  return [...document.querySelectorAll(".page-intro .start-btn")].find((node) => !node.closest("#threejs-hud"));
+}
+
 export function installStartScreen(app, host) {
   const layer = el("div", {
     class: "start",
@@ -21,32 +25,24 @@ export function installStartScreen(app, host) {
     onClick: () => startJourney(app),
   });
   button.setAttribute("data-v-a8ff0715", "");
-  button.addEventListener("pointerup", (event) => {
-    event.preventDefault();
-    startJourney(app);
-  });
   layer.append(button);
 
-  const page = el("div", { class: "page page-intro", "data-v-366b880d": "" });
+  const page = el("div", { class: "page page-intro threejs-start-fallback", "data-v-366b880d": "" });
   page.hidden = true;
+  page.inert = true;
   page.append(layer);
   host.prepend(page);
 
-  document.addEventListener("pointerup", (event) => {
-    const start = event.target?.closest?.(".start-btn");
-    if (!start) return;
-    startJourney(app);
-  }, true);
-
   const sync = () => {
     const intro = app.$webgl?.store?.intro;
-    const vueStart = document.querySelector("main.ui .page-intro .start-btn:not(.pointer)");
-    const visible = intro
+    const vueStart = vueStartButton();
+    const visible = !!intro
       && unwrap(intro.startJourneyVisible)
       && !unwrap(intro.journeyStarted)
       && !vueStart;
     layer.hidden = !visible;
     page.hidden = !visible;
+    page.inert = !visible;
   };
 
   const bind = () => {
@@ -59,4 +55,9 @@ export function installStartScreen(app, host) {
   if (!bind()) {
     const timer = window.setInterval(() => { if (bind()) window.clearInterval(timer); }, 200);
   }
+
+  new MutationObserver(sync).observe(document.querySelector("main.ui") ?? document.body, {
+    childList: true,
+    subtree: true,
+  });
 }

@@ -9,8 +9,21 @@
   pointer-events: auto;
 }
 
+#threejs-hud .hidden,
+#threejs-hud .hidden *,
+#threejs-hud [hidden],
+#threejs-hud [hidden] *,
+#threejs-hud .menu:not(.is-open),
+#threejs-hud .menu:not(.is-open) * {
+  pointer-events: none !important;
+}
+
 .page-intro[data-v-366b880d] {
   z-index: 16;
+}
+
+.page-intro.threejs-start-fallback[hidden] {
+  display: none !important;
 }
 
 .page-intro .start-btn,
@@ -18,11 +31,6 @@
 .start.v-enter-active .start-btn,
 .start.v-leave-active .start-btn {
   pointer-events: auto !important;
-}
-
-#threejs-hud .menu:not(.is-open),
-#threejs-hud .menu:not(.is-open) * {
-  pointer-events: none !important;
 }
 
 .menu.is-open .menu-overlay[data-v-2fd699fb] {
