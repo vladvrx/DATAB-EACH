@@ -85,6 +85,21 @@ html.journey-started .page-intro {
   pointer-events: auto;
 }
 
+#threejs-hud .dialog-bubble[data-v-9946fd7c],
+.dialog-bubble[data-v-9946fd7c] {
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+}
+
+#threejs-hud .dialog-component.dialog-bubble:not(.visible) {
+  transform: translateY(calc(-50% + 80px));
+}
+
+#threejs-hud .dialog-component.dialog-bubble.visible {
+  transform: translateY(-50%);
+}
+
 .page-intro.threejs-start-fallback[hidden] {
   display: none !important;
 }
