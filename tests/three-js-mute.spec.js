@@ -25,6 +25,8 @@ test("header mute button sits beside profile and swaps on/off icons", async ({ p
   const mute = page.locator("#threejs-hud .app-header [data-sound-toggle]");
   await expect(profile).toBeVisible();
   await expect(mute).toBeVisible();
+  const display = await mute.evaluate((node) => getComputedStyle(node).display);
+  expect(display).not.toBe("none");
 
   const profileBox = await profile.boundingBox();
   const muteBox = await mute.boundingBox();

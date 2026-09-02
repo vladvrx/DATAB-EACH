@@ -60,10 +60,10 @@
   }
 }
 
-@media (max-width: 639px) {
-  #threejs-hud .app-header .buttons > :nth-child(2) {
-    display: flex !important;
-  }
+#threejs-hud .app-header [data-sound-toggle] {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1;
 }
 
 #threejs-hud .menu-logo {

@@ -1562,7 +1562,7 @@ html.screenshot-mode header[data-v-08688f2d] {
 
 @media(max-width: 639px) {
   .buttons[data-v-08688f2d]>:nth-child(2) {
-    display:none
+    display:flex
   }
 }
 
