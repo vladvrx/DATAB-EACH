@@ -1,5 +1,5 @@
 import { w as watch } from "../../../vendor/vendor.75f6e6ae65453426.js";
-import { circleButton, ctaButton, el, lazyImg, playUiSound, setCircleIcon, unwrap } from "../dom.js";
+import { circleButton, ctaButton, el, lazyImg, playUiSound, svgIcon, unwrap } from "../dom.js";
 import { iconUrl } from "../icons.js";
 
 function flag(value) {
@@ -17,13 +17,16 @@ function installSoundButton(app, { tone, extraClass = "" } = {}) {
     },
   });
   button.setAttribute("data-sound-toggle", "");
-  const sync = () => {
+  const paint = () => {
     const muted = flag(app.$store.isAudioMuted);
+    const wrap = el("div", { class: "sound", "data-v-272a9e1b": "", "data-v-1a897dbc": "" });
+    wrap.append(svgIcon(muted ? "sound-off" : "sound-on"));
+    const content = button.querySelector(".button-content");
+    content.replaceChildren(wrap);
     button.classList.toggle("muted", muted);
     button.setAttribute("aria-pressed", muted ? "true" : "false");
-    setCircleIcon(button, muted ? "sound-off" : "sound-on");
   };
-  watch(() => flag(app.$store.isAudioMuted), sync, { immediate: true });
+  watch(() => flag(app.$store.isAudioMuted), paint, { immediate: true });
   return button;
 }
 

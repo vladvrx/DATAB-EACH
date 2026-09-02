@@ -34,9 +34,30 @@
   fill: currentColor;
 }
 
-#threejs-hud .circle-button[data-sound-toggle] .icon-svg {
+#threejs-hud .circle-button .button-content {
+  position: relative;
+  z-index: 1;
+}
+
+#threejs-hud .circle-button[data-sound-toggle] .sound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+#threejs-hud .circle-button[data-sound-toggle] .sound .icon-svg {
   width: 52%;
   height: 52%;
+}
+
+@media (hover: hover) {
+  #threejs-hud .circle-button.bordered.is-hoverable:hover,
+  #threejs-hud .circle-button.bordered.is-hoverable:hover .icon-svg {
+    color: #3b3777;
+  }
 }
 
 @media (max-width: 639px) {
