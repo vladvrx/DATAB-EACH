@@ -65,6 +65,7 @@ try {
       `Alien character written to ${outputPath}`,
       `Base vertices: ${designStats.originalVertexCount}`,
       `Alien detail vertices: ${designStats.addedVertexCount}`,
+      `Collapsed upper-head vertices: ${designStats.collapsedUpperHeadVertices}`,
       `Removed customization nodes: ${customizationStats.removedNodeCount}`,
       `Removed shoe nodes: ${customizationStats.removedShoeNodeCount}`,
       `Removed belt-bag nodes: ${customizationStats.removedBeltBagNodeCount}`,
@@ -245,7 +246,7 @@ function alienizeCharacter(glb) {
   const bodyNode = json.nodes[bodyNodeIndex];
   const primitive = json.meshes[bodyNode.mesh]?.primitives?.[0];
   if (!primitive) throw new Error("The shared character body has no mesh primitive.");
-  if (primitive.extras?.databEachAlienDesign === 1) {
+  if (primitive.extras?.databEachAlienDesign != null) {
     throw new Error("This character already contains the alien design.");
   }
 
@@ -270,14 +271,46 @@ function alienizeCharacter(glb) {
   const originalVertexCount = positions.length / 3;
   const skin = json.skins[bodyNode.skin];
   const jointNames = skin.joints.map((nodeIndex) => json.nodes[nodeIndex]?.name || "");
-  const headJoint = jointNames.findIndex((name) => name.endsWith("Head_M"));
-  if (headJoint < 0) throw new Error("Could not find the character's head joint.");
+  const chestJoint = jointNames.findIndex((name) => name.endsWith("Chest_M"));
+  if (chestJoint < 0) throw new Error("Could not find the character's chest joint.");
 
-  deformBody({ positions, joints, weights, jointNames });
-  addAntenna(positions, uvs, joints, weights, indices, headJoint, -1);
-  addAntenna(positions, uvs, joints, weights, indices, headJoint, 1);
-  addEarFin(positions, uvs, joints, weights, indices, headJoint, -1);
-  addEarFin(positions, uvs, joints, weights, indices, headJoint, 1);
+  const collapsedUpperHeadVertices = collapseUpperHeadGeometry({
+    positions,
+    uvs,
+    joints,
+    weights,
+    jointNames,
+    chestJoint,
+  });
+  addCollapsedFacePatch({
+    positions,
+    uvs,
+    joints,
+    weights,
+    indices,
+    chestJoint,
+    originalVertexCount,
+  });
+  moveFaceToTorso({
+    positions,
+    uvs,
+    joints,
+    weights,
+    chestJoint,
+    originalVertexCount,
+  });
+  lowerArms({
+    positions,
+    joints,
+    weights,
+    jointNames,
+    originalVertexCount,
+  });
+  addTorsoCap(positions, uvs, joints, weights, indices, chestJoint);
+  addAntenna(positions, uvs, joints, weights, indices, chestJoint, -1);
+  addAntenna(positions, uvs, joints, weights, indices, chestJoint, 1);
+  addEarFin(positions, uvs, joints, weights, indices, chestJoint, -1);
+  addEarFin(positions, uvs, joints, weights, indices, chestJoint, 1);
 
   const normals = recomputeNormals(positions, indices);
   const vertexCount = positions.length / 3;
@@ -360,13 +393,14 @@ function alienizeCharacter(glb) {
   }) - 1;
   primitive.extras = {
     ...(primitive.extras || {}),
-    databEachAlienDesign: 1,
+    databEachAlienDesign: 2,
   };
   json.buffers[0].byteLength = combinedBin.length;
 
   return {
     originalVertexCount,
     addedVertexCount: vertexCount - originalVertexCount,
+    collapsedUpperHeadVertices,
   };
 }
 
@@ -419,70 +453,234 @@ function normalizeAllSkinWeights(glb) {
   return weightAccessors.size;
 }
 
-function deformBody({ positions, joints, weights, jointNames }) {
-  const jointGroups = jointNames.map((name) => ({
-    head: name.endsWith("Head_M"),
-    torso:
-      name.endsWith("Root_M") ||
-      name.endsWith("Spine1_M") ||
-      name.endsWith("Chest_M"),
-    hip: name.includes("Hip_"),
-  }));
+function collapseUpperHeadGeometry({
+  positions,
+  uvs,
+  joints,
+  weights,
+  jointNames,
+  chestJoint,
+}) {
+  const vertexCount = positions.length / 3;
+  let collapsedVertexCount = 0;
+  for (let vertex = 0; vertex < vertexCount; vertex += 1) {
+    if (uvs[vertex * 2] < 0.7) continue;
 
-  for (let vertex = 0; vertex < positions.length / 3; vertex += 1) {
     let headWeight = 0;
-    let torsoWeight = 0;
-    let hipWeight = 0;
     for (let component = 0; component < 4; component += 1) {
       const offset = vertex * 4 + component;
-      const group = jointGroups[joints[offset]];
-      if (!group) continue;
-      if (group.head) headWeight += weights[offset];
-      if (group.torso) torsoWeight += weights[offset];
-      if (group.hip) hipWeight += weights[offset];
+      const jointName = jointNames[joints[offset]] || "";
+      if (jointName.endsWith("Head_M")) {
+        headWeight += weights[offset];
+      }
     }
+    if (headWeight <= 0.15) continue;
 
     const offset = vertex * 3;
-    let x = positions[offset];
-    let y = positions[offset + 1];
-    let z = positions[offset + 2];
+    const collapsed = collapseHeadPosition(
+      positions[offset],
+      positions[offset + 1],
+      positions[offset + 2],
+    );
+    positions[offset] = collapsed[0];
+    positions[offset + 1] = collapsed[1];
+    positions[offset + 2] = collapsed[2];
+    uvs[vertex * 2] = 0.876;
+    uvs[vertex * 2 + 1] = 0.3;
+    bindVertexToJoint(joints, weights, vertex, chestJoint);
+    collapsedVertexCount += 1;
+  }
 
-    if (headWeight > 0.001) {
-      const upperCranium = smoothstep(1.78, 2.28, y);
-      const lowerFace = 1 - smoothstep(1.68, 1.94, y);
-      const widthScale =
-        1 + headWeight * (0.08 + 0.27 * upperCranium - 0.1 * lowerFace);
-      x *= widthScale;
-      z = 0.05 + (z - 0.05) * (1 + headWeight * (0.08 + 0.15 * upperCranium));
-      y += headWeight * (0.025 + 0.095 * upperCranium);
-      y -= headWeight * lowerFace * (1 - Math.min(1, Math.abs(x) / 0.45)) * 0.025;
+  return collapsedVertexCount;
+}
+
+function collapseHeadPosition(x, y, z) {
+  const t = Math.max(0, Math.min(1, (y - 1.5) / 0.9));
+  const horizontalScale = 0.82 - t * 0.22;
+  return [
+    x * horizontalScale,
+    1.37 + t * 0.19,
+    0.04 + (z - 0.04) * horizontalScale,
+  ];
+}
+
+function addCollapsedFacePatch({
+  positions,
+  uvs,
+  joints,
+  weights,
+  indices,
+  chestJoint,
+  originalVertexCount,
+}) {
+  const originalIndices = indices.slice();
+  const replacements = new Map();
+  const duplicateFaceVertex = (vertex) => {
+    if (replacements.has(vertex)) return replacements.get(vertex);
+    const offset = vertex * 3;
+    const duplicate = appendVertex(
+      positions,
+      uvs,
+      joints,
+      weights,
+      collapseHeadPosition(
+        positions[offset],
+        positions[offset + 1],
+        positions[offset + 2],
+      ),
+      [0.876, 0.3],
+      chestJoint,
+    );
+    replacements.set(vertex, duplicate);
+    return duplicate;
+  };
+
+  for (let index = 0; index < originalIndices.length; index += 3) {
+    const a = originalIndices[index];
+    const b = originalIndices[index + 1];
+    const c = originalIndices[index + 2];
+    if (a >= originalVertexCount || b >= originalVertexCount || c >= originalVertexCount) {
+      continue;
     }
-
-    if (torsoWeight > 0.001) {
-      const torsoScale = 1 - 0.11 * torsoWeight;
-      x *= torsoScale;
-      z = 0.04 + (z - 0.04) * (1 - 0.06 * torsoWeight);
+    if (uvs[a * 2] >= 0.7 || uvs[b * 2] >= 0.7 || uvs[c * 2] >= 0.7) {
+      continue;
     }
-
-    if (hipWeight > 0.001) x *= 1 - 0.045 * hipWeight;
-
-    positions[offset] = x;
-    positions[offset + 1] = y;
-    positions[offset + 2] = z;
+    indices.push(
+      duplicateFaceVertex(a),
+      duplicateFaceVertex(b),
+      duplicateFaceVertex(c),
+    );
   }
 }
 
-function addAntenna(positions, uvs, joints, weights, indices, headJoint, side) {
+function moveFaceToTorso({
+  positions,
+  uvs,
+  joints,
+  weights,
+  chestJoint,
+  originalVertexCount,
+}) {
+  for (let vertex = 0; vertex < originalVertexCount; vertex += 1) {
+    if (uvs[vertex * 2] >= 0.7) continue;
+
+    const offset = vertex * 3;
+    const x = positions[offset];
+    const y = positions[offset + 1];
+    const z = positions[offset + 2];
+    positions[offset] = x * 0.56;
+    positions[offset + 1] = 1.29 + (y - 1.9605) * 0.4;
+    positions[offset + 2] = 0.45 + (z - 0.32) * 0.2;
+    bindVertexToJoint(joints, weights, vertex, chestJoint);
+  }
+}
+
+function lowerArms({
+  positions,
+  joints,
+  weights,
+  jointNames,
+  originalVertexCount,
+}) {
+  const armJointPattern = /(?:Shoulder|Elbow|Wrist)_[LR]$/;
+  const verticalOffset = 0.35;
+
+  for (let vertex = 0; vertex < originalVertexCount; vertex += 1) {
+    let armWeight = 0;
+    for (let component = 0; component < 4; component += 1) {
+      const skinOffset = vertex * 4 + component;
+      if (armJointPattern.test(jointNames[joints[skinOffset]] || "")) {
+        armWeight += weights[skinOffset];
+      }
+    }
+    positions[vertex * 3 + 1] -= verticalOffset * armWeight;
+  }
+}
+
+function bindVertexToJoint(joints, weights, vertex, jointIndex) {
+  const offset = vertex * 4;
+  joints[offset] = jointIndex;
+  joints[offset + 1] = 0;
+  joints[offset + 2] = 0;
+  joints[offset + 3] = 0;
+  weights[offset] = 1;
+  weights[offset + 1] = 0;
+  weights[offset + 2] = 0;
+  weights[offset + 3] = 0;
+}
+
+function addTorsoCap(positions, uvs, joints, weights, indices, chestJoint) {
+  const segmentCount = 16;
+  const center = appendVertex(
+    positions,
+    uvs,
+    joints,
+    weights,
+    [0, 1.66, 0.04],
+    [0.876, 0.3],
+    chestJoint,
+  );
+  const innerRing = [];
+  const outerRing = [];
+  for (let segment = 0; segment < segmentCount; segment += 1) {
+    const angle = (segment / segmentCount) * Math.PI * 2;
+    innerRing.push(
+      appendVertex(
+        positions,
+        uvs,
+        joints,
+        weights,
+        [
+          Math.cos(angle) * 0.18,
+          1.615,
+          0.04 + Math.sin(angle) * 0.15,
+        ],
+        [0.876, 0.3],
+        chestJoint,
+      ),
+    );
+    outerRing.push(
+      appendVertex(
+        positions,
+        uvs,
+        joints,
+        weights,
+        [
+          Math.cos(angle) * 0.37,
+          1.4,
+          0.04 + Math.sin(angle) * 0.31,
+        ],
+        [0.876, 0.3],
+        chestJoint,
+      ),
+    );
+  }
+
+  for (let segment = 0; segment < segmentCount; segment += 1) {
+    const next = (segment + 1) % segmentCount;
+    indices.push(center, innerRing[next], innerRing[segment]);
+    indices.push(
+      innerRing[segment],
+      innerRing[next],
+      outerRing[segment],
+      innerRing[next],
+      outerRing[next],
+      outerRing[segment],
+    );
+  }
+}
+
+function addAntenna(positions, uvs, joints, weights, indices, jointIndex, side) {
   const ringCount = 6;
   const sideCount = 8;
   const rings = [];
 
   for (let ring = 0; ring < ringCount; ring += 1) {
     const t = ring / (ringCount - 1);
-    const centerX = side * (0.205 + 0.115 * t);
-    const centerY = 2.205 + 0.35 * t + Math.sin(t * Math.PI) * 0.035;
-    const centerZ = 0.015 - 0.015 * t;
-    const radius = 0.065 - 0.033 * t;
+    const centerX = side * (0.16 + 0.085 * t);
+    const centerY = 1.45 + 0.25 * t + Math.sin(t * Math.PI) * 0.02;
+    const centerZ = 0.015 - 0.01 * t;
+    const radius = 0.045 - 0.022 * t;
     const ringVertices = [];
     for (let segment = 0; segment < sideCount; segment += 1) {
       const angle = (segment / sideCount) * Math.PI * 2;
@@ -497,8 +695,8 @@ function addAntenna(positions, uvs, joints, weights, indices, headJoint, side) {
             centerY,
             centerZ + Math.sin(angle) * radius,
           ],
-          [segment / sideCount, t],
-          headJoint,
+          [0.876, 0.3],
+          jointIndex,
         ),
       );
     }
@@ -516,43 +714,44 @@ function addAntenna(positions, uvs, joints, weights, indices, headJoint, side) {
     }
   }
 
-  const tipCenter = [side * 0.33, 2.59, 0];
-  addUvSphere(
+  const tipCenter = [side * 0.245, 1.74, 0.005];
+  addUvEllipsoid(
     positions,
     uvs,
     joints,
     weights,
     indices,
-    headJoint,
+    jointIndex,
     tipCenter,
-    0.082,
+    [0.06, 0.06, 0.06],
     5,
     8,
+    [0.876, 0.3],
   );
 }
 
-function addEarFin(positions, uvs, joints, weights, indices, headJoint, side) {
-  const innerX = side * 0.43;
-  const outerX = side * 0.69;
-  const frontZ = 0.105;
-  const backZ = -0.035;
+function addEarFin(positions, uvs, joints, weights, indices, jointIndex, side) {
+  const innerX = side * 0.33;
+  const outerX = side * 0.55;
+  const frontZ = 0.13;
+  const backZ = -0.02;
   const points = [
-    [innerX, 1.86, frontZ],
-    [outerX, 2.025, frontZ],
-    [innerX, 2.18, frontZ],
-    [innerX, 1.86, backZ],
-    [outerX, 2.025, backZ],
-    [innerX, 2.18, backZ],
+    [innerX, 1.27, frontZ],
+    [outerX, 1.39, frontZ],
+    [innerX, 1.53, frontZ],
+    [innerX, 1.27, backZ],
+    [outerX, 1.39, backZ],
+    [innerX, 1.53, backZ],
   ];
-  const vertices = points.map((point, index) =>
+  const vertices = points.map((point) =>
     appendVertex(
       positions,
       uvs,
       joints,
       weights,
       point,
-      [index === 1 || index === 4 ? 1 : 0, index % 3 === 2 ? 1 : 0],
-      headJoint,
+      [0.876, 0.3],
+      jointIndex,
     ),
   );
   const [a, b, c, d, e, f] = vertices;
@@ -567,17 +766,18 @@ function addEarFin(positions, uvs, joints, weights, indices, headJoint, side) {
   indices.push(c, f, a, a, f, d);
 }
 
-function addUvSphere(
+function addUvEllipsoid(
   positions,
   uvs,
   joints,
   weights,
   indices,
-  headJoint,
+  jointIndex,
   center,
-  radius,
+  radii,
   latitudeCount,
   longitudeCount,
+  fixedUv,
 ) {
   const rows = [];
   for (let latitude = 0; latitude <= latitudeCount; latitude += 1) {
@@ -594,12 +794,12 @@ function addUvSphere(
           joints,
           weights,
           [
-            center[0] + Math.sin(phi) * Math.cos(theta) * radius,
-            center[1] + Math.cos(phi) * radius,
-            center[2] + Math.sin(phi) * Math.sin(theta) * radius,
+            center[0] + Math.sin(phi) * Math.cos(theta) * radii[0],
+            center[1] + Math.cos(phi) * radii[1],
+            center[2] + Math.sin(phi) * Math.sin(theta) * radii[2],
           ],
-          [u, v],
-          headJoint,
+          fixedUv || [u, v],
+          jointIndex,
         ),
       );
     }
@@ -613,7 +813,7 @@ function addUvSphere(
       const b = rows[latitude][next];
       const c = rows[latitude + 1][longitude];
       const d = rows[latitude + 1][next];
-      indices.push(a, c, b, b, c, d);
+      indices.push(a, b, c, b, d, c);
     }
   }
 }
@@ -882,11 +1082,6 @@ function writeComponent(buffer, offset, componentType, value) {
     default:
       throw new Error(`Unsupported accessor component type ${componentType}.`);
   }
-}
-
-function smoothstep(min, max, value) {
-  const t = Math.max(0, Math.min(1, (value - min) / (max - min)));
-  return t * t * (3 - 2 * t);
 }
 
 function align4(value) {
