@@ -40,7 +40,9 @@ void main() {
   float r = luma(texture2D(tColor, vUv + vec2( uTexel.x, 0.0)).rgb);
   float d = luma(texture2D(tColor, vUv + vec2(0.0, -uTexel.y)).rgb);
   float u = luma(texture2D(tColor, vUv + vec2(0.0,  uTexel.y)).rgb);
-  float edge = smoothstep(0.04, 0.12, abs(r - l) + abs(u - d));
+  float edge = smoothstep(0.14, 0.32, abs(r - l) + abs(u - d));
+  float bright = max(c, max(l, max(r, max(d, u))));
+  edge *= step(0.12, bright);
   float neon = color.g - max(color.r, color.b);
   edge *= 1.0 - step(0.45, neon) * step(0.58, color.g) * 0.85;
   gl_FragColor = vec4(0.0, 0.0, 0.0, edge);
@@ -62,12 +64,10 @@ class FramebufferTexture extends Texture {
   }
 }
 
-function drawingSize(webgl, renderer) {
-  const size = webgl?.renderer?.drawingBufferSize?.value;
-  if (size?.x && size?.y) return { width: Math.max(1, size.x | 0), height: Math.max(1, size.y | 0) };
-  const fallback = new Vector2();
-  renderer.getDrawingBufferSize(fallback);
-  return { width: Math.max(1, fallback.x | 0), height: Math.max(1, fallback.y | 0) };
+function drawingSize(renderer) {
+  const size = new Vector2();
+  renderer.getDrawingBufferSize(size);
+  return { width: Math.max(1, size.x | 0), height: Math.max(1, size.y | 0) };
 }
 
 function attachOutline(webgl, renderer) {
@@ -108,7 +108,7 @@ function attachOutline(webgl, renderer) {
   let height = 0;
 
   function resize() {
-    const next = drawingSize(webgl, renderer);
+    const next = drawingSize(renderer);
     if (next.width === width && next.height === height) return;
     width = next.width;
     height = next.height;
@@ -125,6 +125,7 @@ function attachOutline(webgl, renderer) {
     if (sceneObject === overlay) return;
     try {
       resize();
+      if (width < 2 || height < 2) return;
       this.copyFramebufferToTexture(origin, color);
       stamping = true;
       const previousAutoClear = this.autoClear;
