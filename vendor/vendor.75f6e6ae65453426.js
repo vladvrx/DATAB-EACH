@@ -32455,7 +32455,7 @@ const RU = {
   },
   NU = {
     route: "MiniGame",
-    bgm: "music_minigame_loop",
+    bgm: "music_island_west",
     transition: "games",
     biome: "default"
   },
@@ -32471,12 +32471,12 @@ const RU = {
     EasterEgg: {
       ...RU,
       biome: "sunfall",
-      bgm: "music_secret",
+      bgm: "music_island_west",
       savePosition: !1
     },
     IslandIntro: {
       ...zU,
-      bgm: "music_intro",
+      bgm: "music_island_west",
       pageview: {
         title: "glorb - Intro",
         path: "/intro"
@@ -34918,13 +34918,13 @@ function pG(e) {
       u -= .4 * p;
       const m = self.canvas.width,
         f = self.canvas.height,
-        g = p * f,
+        g = (1 - p) * f,
         v = m + (u + 1) * c * m;
-      let b = f;
+      let b = 0;
       const y = e + 1;
       if (y < self.waves.length) {
         const e = a * (n - y);
-        b = dG(cG(i, e, e + r, 0, 1)) * f;
+        b = (1 - dG(cG(i, e, e + r, 0, 1))) * f;
       }
       const _ = (u - 1) * c * m,
         x = _ + (v - _) * (.5 + .2 * i),
@@ -34954,17 +34954,17 @@ function fG(e = !1) {
       duration: 1e3
     },
     waves: [{
-      color: "rgb(255, 255, 255)",
+      color: "rgb(255, 64, 96)",
       bleed: .3,
       offset: -.3,
       height: .9
     }, {
-      color: "rgb(186, 226, 245)",
+      color: "rgb(255, 214, 0)",
       bleed: .24,
       offset: 1,
       height: .75
     }, {
-      color: "rgb(137, 206, 237)",
+      color: "rgb(48, 220, 120)",
       bleed: .2,
       offset: -.3,
       height: .75

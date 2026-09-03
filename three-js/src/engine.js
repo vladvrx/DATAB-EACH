@@ -26,6 +26,21 @@ function disablePhoneAndMap(app) {
   if (app.$store?.phone) app.$store.phone.isVisible = false;
 }
 
+function keepOnlyWestIslandMusic(app) {
+  const audio = app.$webgl?.audio;
+  if (!audio || audio.__westIslandOnly) return;
+  audio.__westIslandOnly = true;
+  const allowed = "music_island_west";
+  const blocked = (id) => typeof id === "string" && id.startsWith("music_") && id !== allowed;
+  const playSound = audio.playSound.bind(audio);
+  audio.playSound = (id, opts) => (blocked(id) ? undefined : playSound(id, opts));
+  if (!audio.bgm) return;
+  const play = audio.bgm.play.bind(audio.bgm);
+  audio.bgm.play = (id) => play(blocked(id) ? allowed : id);
+  const preload = audio.bgm.preload.bind(audio.bgm);
+  audio.bgm.preload = (id) => preload(blocked(id) ? allowed : id);
+}
+
 export async function startEngine() {
   await restoreReloadOverlay();
   await assets.test();
@@ -42,6 +57,7 @@ export async function startEngine() {
 
   const app = await vueApp.pluginManager.install();
   disablePhoneAndMap(app);
+  keepOnlyWestIslandMusic(app);
   watch(() => app.$store.isMovingWithMouse, (moving) => {
     document.body.classList.toggle("moving-with-mouse", !!moving);
   }, { immediate: true });
@@ -122,6 +138,7 @@ export async function startEngine() {
       }, 700);
     });
     vueApp.mount("#app");
+    keepOnlyWestIslandMusic(app);
     installHud(app);
     window.__THREE_JS_GAME__ = { vueApp, app };
   };
