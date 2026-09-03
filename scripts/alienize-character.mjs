@@ -25,7 +25,9 @@ const defaultAsset = resolve(
 );
 const extraArgs = process.argv
   .slice(2)
-  .filter((value) => value !== "--slim-only" && value !== "--stubby-only");
+  .filter((value) =>
+    value !== "--slim-only" && value !== "--stubby-only" && value !== "--retune-face"
+  );
 const sourcePath = resolve(extraArgs[0] || defaultAsset);
 const outputPath = resolve(extraArgs[1] || defaultAsset);
 const workDirectory = mkdtempSync(join(tmpdir(), "datab-each-alien-"));
@@ -43,7 +45,10 @@ try {
   const decoded = parseGlb(readFileSync(decodedPath));
   const customizationStats = stripCustomizationNodes(decoded);
   const normalizedWeightAccessors = normalizeAllSkinWeights(decoded);
-  const designStats = alienizeCharacter(decoded, { slimOnly: process.argv.includes("--slim-only") });
+  const designStats = alienizeCharacter(decoded, {
+    slimOnly: process.argv.includes("--slim-only"),
+    retuneFaceOnly: process.argv.includes("--retune-face"),
+  });
   writeFileSync(rebuiltPath, encodeGlb(decoded));
   pruneGeometry(rebuiltPath, prunedPath);
   compressGeometry(prunedPath, compressedPath);
@@ -69,6 +74,7 @@ try {
       `Base vertices: ${designStats.originalVertexCount}`,
       `Alien detail vertices: ${designStats.addedVertexCount}`,
       `Collapsed upper-head vertices: ${designStats.collapsedUpperHeadVertices}`,
+      `Retuned face vertices: ${designStats.retunedFaceVertices}`,
       `Slimmed leg vertices: ${designStats.slimmedLegVertices}`,
       `Stubby foot vertices: ${designStats.stubbyFootVertices}`,
       `Removed customization nodes: ${customizationStats.removedNodeCount}`,
@@ -241,7 +247,7 @@ function assertNoCustomizationGeometry(glb) {
   }
 }
 
-function alienizeCharacter(glb, { slimOnly = false } = {}) {
+function alienizeCharacter(glb, { slimOnly = false, retuneFaceOnly = false } = {}) {
   const { json } = glb;
   const bodyNodeIndex = json.nodes.findIndex(
     (node) => node.name === "Chara_Low_Rig:BODY_01",
@@ -251,7 +257,7 @@ function alienizeCharacter(glb, { slimOnly = false } = {}) {
   const bodyNode = json.nodes[bodyNodeIndex];
   const primitive = json.meshes[bodyNode.mesh]?.primitives?.[0];
   if (!primitive) throw new Error("The shared character body has no mesh primitive.");
-  if (primitive.extras?.databEachStubbyFeet) {
+  if (primitive.extras?.databEachStubbyFeet && !retuneFaceOnly) {
     throw new Error("This character already has stubby feet.");
   }
   const alreadySlimmed = Boolean(primitive.extras?.databEachSlimLegs);
@@ -287,6 +293,19 @@ function alienizeCharacter(glb, { slimOnly = false } = {}) {
   if (chestJoint < 0) throw new Error("Could not find the character's chest joint.");
 
   let collapsedUpperHeadVertices = 0;
+  let retunedFaceVertices = 0;
+  if (retuneFaceOnly) {
+    retunedFaceVertices = retuneFaceOnBody({ positions, uvs });
+    writeBodyPrimitive(glb, primitive, { positions, uvs, joints, weights, indices });
+    return {
+      originalVertexCount,
+      addedVertexCount: 0,
+      collapsedUpperHeadVertices: 0,
+      retunedFaceVertices,
+      slimmedLegVertices: 0,
+      stubbyFootVertices: 0,
+    };
+  }
   if (!slimOnly) {
     collapsedUpperHeadVertices = collapseUpperHeadGeometry({
       positions,
@@ -348,6 +367,7 @@ function alienizeCharacter(glb, { slimOnly = false } = {}) {
     originalVertexCount,
     addedVertexCount: positions.length / 3 - originalVertexCount,
     collapsedUpperHeadVertices,
+    retunedFaceVertices,
     slimmedLegVertices,
     stubbyFootVertices,
   };
@@ -518,10 +538,40 @@ function moveFaceToTorso({
     const y = positions[offset + 1];
     const z = positions[offset + 2];
     positions[offset] = x * 0.56;
-    positions[offset + 1] = 1.29 + (y - 1.9605) * 0.4;
+    positions[offset + 1] = 1.29 + (y - 1.9605) * 0.55;
     positions[offset + 2] = 0.45 + (z - 0.32) * 0.2;
     bindVertexToJoint(joints, weights, vertex, chestJoint);
   }
+}
+
+function retuneFaceOnBody({ positions, uvs }) {
+  const vertexCount = positions.length / 3;
+  const faceVertices = [];
+  for (let vertex = 0; vertex < vertexCount; vertex += 1) {
+    if (uvs[vertex * 2] >= 0.7) continue;
+    faceVertices.push(vertex);
+  }
+  if (faceVertices.length === 0) {
+    throw new Error("No face vertices found to centre on the body.");
+  }
+
+  let meanX = 0;
+  let meanY = 0;
+  for (const vertex of faceVertices) {
+    meanX += positions[vertex * 3];
+    meanY += positions[vertex * 3 + 1];
+  }
+  meanX /= faceVertices.length;
+  meanY /= faceVertices.length;
+
+  const stretchY = 1.38;
+  const dropY = 0.05;
+  for (const vertex of faceVertices) {
+    const offset = vertex * 3;
+    positions[offset] -= meanX;
+    positions[offset + 1] = meanY + (positions[offset + 1] - meanY) * stretchY - dropY;
+  }
+  return faceVertices.length;
 }
 
 function slimLegs({ positions, joints, weights, jointNames }) {
@@ -745,6 +795,7 @@ function writeBodyPrimitive(glb, primitive, { positions, uvs, joints, weights, i
     databEachAlienDesign: primitive.extras?.databEachAlienDesign ?? 2,
     databEachSlimLegs: primitive.extras?.databEachSlimLegs ?? 1,
     databEachStubbyFeet: 1,
+    databEachFaceRetune: 1,
   };
   json.buffers[0].byteLength = combinedBin.length;
 }
