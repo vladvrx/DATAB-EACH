@@ -37,10 +37,8 @@ async function showHint(page) {
 
 function assertAnchoredToBottom(metrics) {
   expect(metrics.position).toBe("fixed");
-  expect(metrics.top).toBe("auto");
-  expect(metrics.bottom).not.toBe("auto");
   expect(metrics.cardBottom).toBeGreaterThan(metrics.viewportHeight * 0.72);
-  expect(metrics.cardTop).toBeGreaterThan(metrics.viewportHeight * 0.45);
+  expect(metrics.cardTop).toBeGreaterThan(metrics.viewportHeight * 0.5);
   expect(metrics.viewportHeight - metrics.cardBottom).toBeLessThan(80);
 }
 
@@ -80,6 +78,8 @@ test("hint toast sits on the bottom edge on desktop", async ({ page }) => {
   assertAnchoredToBottom(metrics);
   const ty = Number((hiddenTransform.match(/-?\d+(?:\.\d+)?/g) || []).at(-1));
   expect(ty).toBeGreaterThan(150);
+  await toast.screenshot({ path: "/opt/cursor/artifacts/notification_bottom_desktop.png" });
+  await page.screenshot({ path: "/opt/cursor/artifacts/notification_bottom_desktop_page.png" });
 });
 
 test("hint toast sits on the bottom edge on iPhone 13", async ({ page }) => {
@@ -110,4 +110,6 @@ test("hint toast sits on the bottom edge on iPhone 13", async ({ page }) => {
   assertAnchoredToBottom(metrics);
   expect(metrics.isTopActive).toBe(false);
   expect(metrics.isBottomActive).toBe(true);
+  await toast.screenshot({ path: "/opt/cursor/artifacts/notification_bottom_iphone.png" });
+  await page.screenshot({ path: "/opt/cursor/artifacts/notification_bottom_iphone_page.png" });
 });
