@@ -6715,7 +6715,7 @@ const VueWebGLComponent = {
         a.addEventListener("load", t), a.addEventListener("error", () => s(new Error(`Unable to preload CSS for ${e}`)));
       }) : void 0;
     })).then(() => e());
-  }(() => import("./webgl.3250e36a65453426.js?v=neon-water-runfx"), []);
+  }(() => import("./webgl.3250e36a65453426.js?v=neon-water-runfx-nn"), []);
 const Uc = "./reference/assets/Asset_Algae.e4fb453265453426.glb",
   Hc = "./reference/assets/Asset_AlgaeGroup.df25307b65453426.glb",
   Gc = "./reference/assets/Asset_ArrowSign.6f0ccda865453426.glb",
@@ -29819,12 +29819,12 @@ class Qz extends ML {
     if (n.playerDistanceFromFloor < .1 ? this.timeNotOnFloor = 0 : this.timeNotOnFloor += this.webgl.time.dt, this.isOnFloorDebounced = this.timeNotOnFloor < 1300, n.takeOver.active ? (this.base.position.copy(n.takeOver.player.position), this.base.rotation.copy(n.takeOver.player.rotation), this.base.rotation.y -= Math.PI) : (this.base.position.copy(n.playerPosition), this.base.rotation.copy(n.playerRotation)), n.takeOver.active) {
       if (this.isDancing) {
         const e = this.animation.animationID;
-        this.isDancing = !1, "Dancing" === e && this.playEmote("Neutral");
+        this.isDancing = !1, "Dancing" === e && this.setIdleAnimation();
       }
     } else {
       const t = null == (e = this.animation) ? void 0 : e.animationID,
         s = this.easedSpeed < 85e-5 && this.canMove && this.canDance;
-      s && !this.isDancing && "Idle3" === t ? (this.isDancing = !0, this.playEmote("Dancing", 700)) : !s && this.isDancing && (this.isDancing = !1, "Dancing" === t && this.playEmote("Neutral"));
+      s && !this.isDancing && "Idle3" === t ? (this.isDancing = !0, this.playEmote("Dancing", 700)) : !s && this.isDancing && (this.isDancing = !1, "Dancing" === t && this.setIdleAnimation());
     }
     this.bodyPosition.copy(this.base.position), this.bodyRotation.copy(this.base.rotation), this.bodyQuaternion.copy(this.base.quaternion), this.optionsNeedsUpdate && (this.optionsNeedsUpdate = !1, this.updateOptions({
       absoluteMove: !0,
@@ -33477,7 +33477,7 @@ const GU = [["router", function (e = {}) {
   async function l() {
     if (a) return a;
     let t;
-    a = io(), t || (t = await fetch(Gb + "?v=65453426").then(e => e.json()));
+    a = io(), t || (t = await fetch(Gb + "?v=no-neutral").then(e => e.json()));
     for (let e in t) {
       const s = t[e],
         i = s.__first__;

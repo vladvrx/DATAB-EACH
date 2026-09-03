@@ -1142,7 +1142,8 @@ const Ai = {
   ZiplineFall: !0
 };
 function Ii(e, t) {
-  "Neutral" === e ? this.setIdleAnimation() : characterAnimationFrames[e] ? this.setAnimation(e, {
+  if ("Neutral" === e) return;
+  characterAnimationFrames[e] ? this.setAnimation(e, {
     duration: t,
     loop: Ai[e] ? E : F
   }) : this.setIdleAnimation();
