@@ -5956,7 +5956,7 @@ const mc = Re(VueAppComponent),
 let bc = null;
 if ("Home" === gc.name) {
   const e = window.location.pathname.slice(yc.length);
-  bc = (e.split("/").filter(Boolean)[0] || "").toLowerCase(), "onepay" === bc || "one-pay" === bc ? bc = "one" : "greenfi" === bc ? bc = "aspiration" : ("incomm" === bc || "incomm-benefits" === bc) && (bc = "zenda");
+  bc = (e.split("/").filter(Boolean)[0] || "").toLowerCase(), "onepay" === bc || "one-pay" === bc ? bc = "one" : "greenfi" === bc ? bc = "aspiration" : ("incomm" === bc || "incomm-benefits" === bc) && (bc = "salve");
 }
 (/iPad|iPhone|iPod/.test(navigator.platform) || "MacIntel" === navigator.platform && navigator.maxTouchPoints > 1) && (Xe.add = () => {}), qe(async () => {
   await i.test(), await mc.usePreview(), mc.pluginManager.setOptions("router", {

@@ -9,97 +9,97 @@
         "point": "PortSpawnB"
       }
     },
-    "Aven_Quest": {
+    "Cobble_Quest": {
       "gradientID": 2,
       "face": 0,
       "script": "Quest",
       "scriptArgs": {
-        "fintech": "aven"
+        "fintech": "cobble"
       }
     },
-    "Aven_Ambassador": {
+    "Cobble_Ambassador": {
       "gradientID": 2,
       "face": 0,
       "script": "Ambassador",
       "scriptArgs": {
-        "fintech": "aven",
+        "fintech": "cobble",
         "animation": "Idle2"
       }
     },
-    "Brigit_Quest": {
+    "Trail_Quest": {
       "gradientID": 3,
       "face": 1,
       "script": "MiniGame",
       "scriptArgs": {
         "scene": "CircuitBike",
-        "fintech": "brigit",
+        "fintech": "trail",
         "animation": "Thinking"
       }
     },
-    "Brigit_Ambassador": {
+    "Trail_Ambassador": {
       "gradientID": 3,
       "face": 0,
       "script": "Ambassador",
       "scriptArgs": {
-        "fintech": "brigit",
+        "fintech": "trail",
         "animation": "Idle2"
       }
     },
-    "Pomelo_Quest": {
+    "Pylon_Quest": {
       "gradientID": 7,
       "face": 0,
       "script": "Quest",
       "scriptArgs": {
-        "fintech": "pomelo",
+        "fintech": "pylon",
         "animation": "Thinking"
       }
     },
-    "Pomelo_Ambassador": {
+    "Pylon_Ambassador": {
       "gradientID": 7,
       "face": 1,
       "script": "Ambassador",
       "scriptArgs": {
-        "fintech": "pomelo",
+        "fintech": "pylon",
         "animation": "Idle2"
       }
     },
-    "Zenda_Quest": {
+    "Salve_Quest": {
       "gradientID": 10,
       "face": 1,
       "script": "Quest",
       "scriptArgs": {
-        "fintech": "zenda",
+        "fintech": "salve",
         "animation": "Thinking"
       }
     },
-    "Zenda_Ambassador": {
+    "Salve_Ambassador": {
       "gradientID": 10,
       "face": 1,
       "script": "Ambassador",
       "scriptArgs": {
-        "fintech": "zenda",
+        "fintech": "salve",
         "animation": "Idle2"
       }
     },
-    "Zenda_Sick_WestA": {
+    "Salve_Sick_WestA": {
       "gradientID": 26,
       "face": 0,
-      "script": "ZendaSick",
+      "script": "SalveSick",
       "scriptArgs": {}
     },
-    "Zenda_Sick_WestC": {
+    "Salve_Sick_WestC": {
       "gradientID": 26,
       "face": 0,
-      "script": "ZendaSick",
+      "script": "SalveSick",
       "scriptArgs": {}
     },
-    "Zenda_Sick_WestD": {
+    "Salve_Sick_WestD": {
       "gradientID": 26,
       "face": 0,
-      "script": "ZendaSick",
+      "script": "SalveSick",
       "scriptArgs": {}
     },
-    "Citizen_West_PomeloIslandHint": {
+    "Citizen_West_PylonIslandHint": {
       "gradientID": 22,
       "face": 0,
       "script": "TalkingCitizen",
@@ -316,10 +316,10 @@
     "aspiration": {
       "gradientID": 1
     },
-    "aven": {
+    "cobble": {
       "gradientID": 2
     },
-    "brigit": {
+    "trail": {
       "gradientID": 3
     },
     "till": {
@@ -331,7 +331,7 @@
     "prosper": {
       "gradientID": 6
     },
-    "pomelo": {
+    "pylon": {
       "gradientID": 7
     },
     "one": {
@@ -340,7 +340,7 @@
     "kikoff": {
       "gradientID": 9
     },
-    "zenda": {
+    "salve": {
       "gradientID": 10
     },
     "bluevine": {

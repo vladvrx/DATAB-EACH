@@ -50,7 +50,7 @@
       0,
       0.956827
     ],
-    "PartnerSpawnPomelo.001": [
+    "PartnerSpawnPylon.001": [
       -144.80751,
       3.400204,
       23.634537,
@@ -62,7 +62,7 @@
       -0.00498,
       0.354695
     ],
-    "PartnerSpawnZenda.001": [
+    "PartnerSpawnSalve.001": [
       -89.491516,
       3.604354,
       56.093676,
@@ -74,7 +74,7 @@
       -0.002755,
       0.133893
     ],
-    "PartnerSpawnBrigit.001": [
+    "PartnerSpawnTrail.001": [
       -64.348121,
       10.964539,
       105.459394,
@@ -86,7 +86,7 @@
       0.023833,
       0.5297
     ],
-    "PartnerSpawnAven.001": [
+    "PartnerSpawnCobble.001": [
       -42.36013200000001,
       2.905344,
       168.22311200000001,
@@ -896,10 +896,10 @@
     "StairsA",
     "StairsB",
     "HouseCabinC",
-    "StandBrigit",
+    "StandA",
     "SolidGroundRoundB",
-    "StandPomelo",
-    "StandZenda",
+    "StandA",
+    "StandA",
     "TreeRoundB",
     "Hospital",
     "HouseBlackA",
@@ -915,7 +915,7 @@
     "TruckFood",
     "SurfShop",
     "BeachBar",
-    "StandAven",
+    "StandA",
     "TreeSquareA",
     "StairsC",
     "CoffeeShop",
@@ -1058,10 +1058,10 @@
       ]
     },
     {
-      "uid": "NPC_Pomelo_Ambassador.001",
+      "uid": "NPC_Pylon_Ambassador.001",
       "type": "NPC",
       "params": {
-        "subtype": "Pomelo_Ambassador"
+        "subtype": "Pylon_Ambassador"
       },
       "transforms": [
         -146.705948,
@@ -1077,10 +1077,10 @@
       ]
     },
     {
-      "uid": "NPC_Pomelo_Quest.001",
+      "uid": "NPC_Pylon_Quest.001",
       "type": "NPC",
       "params": {
-        "subtype": "Pomelo_Quest"
+        "subtype": "Pylon_Quest"
       },
       "transforms": [
         -157.71669,
@@ -1136,10 +1136,10 @@
       ]
     },
     {
-      "uid": "NPC_Zenda_Sick_WestA.001",
+      "uid": "NPC_Salve_Sick_WestA.001",
       "type": "NPC",
       "params": {
-        "subtype": "Zenda_Sick_WestA",
+        "subtype": "Salve_Sick_WestA",
         "move": "radius=2.5"
       },
       "transforms": [
@@ -1272,10 +1272,10 @@
       ]
     },
     {
-      "uid": "NPC_Brigit_Ambassador.001",
+      "uid": "NPC_Trail_Ambassador.001",
       "type": "NPC",
       "params": {
-        "subtype": "Brigit_Ambassador"
+        "subtype": "Trail_Ambassador"
       },
       "transforms": [
         -70.39961600000001,
@@ -1291,10 +1291,10 @@
       ]
     },
     {
-      "uid": "NPC_Brigit_Quest.001",
+      "uid": "NPC_Trail_Quest.001",
       "type": "NPC",
       "params": {
-        "subtype": "Brigit_Quest"
+        "subtype": "Trail_Quest"
       },
       "transforms": [
         -59.98957800000001,
@@ -1310,10 +1310,10 @@
       ]
     },
     {
-      "uid": "NPC_Zenda_Ambassador.001",
+      "uid": "NPC_Salve_Ambassador.001",
       "type": "NPC",
       "params": {
-        "subtype": "Zenda_Ambassador"
+        "subtype": "Salve_Ambassador"
       },
       "transforms": [
         -89.644676,
@@ -1329,10 +1329,10 @@
       ]
     },
     {
-      "uid": "NPC_Zenda_Quest.001",
+      "uid": "NPC_Salve_Quest.001",
       "type": "NPC",
       "params": {
-        "subtype": "Zenda_Quest"
+        "subtype": "Salve_Quest"
       },
       "transforms": [
         -79.20296400000001,
@@ -1348,10 +1348,10 @@
       ]
     },
     {
-      "uid": "NPC_Zenda_Sick_WestD.001",
+      "uid": "NPC_Salve_Sick_WestD.001",
       "type": "NPC",
       "params": {
-        "subtype": "Zenda_Sick_WestD"
+        "subtype": "Salve_Sick_WestD"
       },
       "transforms": [
         -116.45475,
@@ -1387,10 +1387,10 @@
       ]
     },
     {
-      "uid": "NPC_Aven_Ambassador.001",
+      "uid": "NPC_Cobble_Ambassador.001",
       "type": "NPC",
       "params": {
-        "subtype": "Aven_Ambassador"
+        "subtype": "Cobble_Ambassador"
       },
       "transforms": [
         -43.20383400000001,
@@ -1425,10 +1425,10 @@
       ]
     },
     {
-      "uid": "NPC_Aven_Quest.001",
+      "uid": "NPC_Cobble_Quest.001",
       "type": "NPC",
       "params": {
-        "subtype": "Aven_Quest"
+        "subtype": "Cobble_Quest"
       },
       "transforms": [
         -53.16564100000001,
@@ -1560,10 +1560,10 @@
       ]
     },
     {
-      "uid": "NPC_Citizen_West_PomeloIslandHint.001",
+      "uid": "NPC_Citizen_West_PylonIslandHint.001",
       "type": "NPC",
       "params": {
-        "subtype": "Citizen_West_PomeloIslandHint",
+        "subtype": "Citizen_West_PylonIslandHint",
         "move": "radius=5"
       },
       "transforms": [
@@ -1740,8 +1740,8 @@
       ]
     },
     {
-      "uid": "AvenHouse.004",
-      "type": "AvenHouse",
+      "uid": "CobbleHouse.004",
+      "type": "CobbleHouse",
       "transforms": [
         -64.20283900000001,
         2.721215,
@@ -1756,8 +1756,8 @@
       ]
     },
     {
-      "uid": "AvenHouse.005",
-      "type": "AvenHouse",
+      "uid": "CobbleHouse.005",
+      "type": "CobbleHouse",
       "transforms": [
         12.771865999999992,
         2.748981,
@@ -1772,8 +1772,8 @@
       ]
     },
     {
-      "uid": "AvenHouse.006",
-      "type": "AvenHouse",
+      "uid": "CobbleHouse.006",
+      "type": "CobbleHouse",
       "transforms": [
         -39.71268400000001,
         2.772789,
@@ -1788,8 +1788,8 @@
       ]
     },
     {
-      "uid": "AvenHouse.007",
-      "type": "AvenHouse",
+      "uid": "CobbleHouse.007",
+      "type": "CobbleHouse",
       "transforms": [
         -121.777961,
         2.746909,
@@ -1938,10 +1938,10 @@
       ]
     },
     {
-      "uid": "NPC_Zenda_Sick_WestC.001",
+      "uid": "NPC_Salve_Sick_WestC.001",
       "type": "NPC",
       "params": {
-        "subtype": "Zenda_Sick_WestC",
+        "subtype": "Salve_Sick_WestC",
         "move": "radius=3.3"
       },
       "transforms": [
@@ -2017,7 +2017,7 @@
       "uid": "PartnerStandGround.004",
       "type": "PartnerStandGround",
       "params": {
-        "partner": "zenda"
+        "partner": "salve"
       },
       "transforms": [
         -86.218574,
@@ -2036,7 +2036,7 @@
       "uid": "PartnerStandGround.005",
       "type": "PartnerStandGround",
       "params": {
-        "partner": "brigit"
+        "partner": "trail"
       },
       "transforms": [
         -74.70890800000001,
@@ -2055,7 +2055,7 @@
       "uid": "PartnerStandGround.006",
       "type": "PartnerStandGround",
       "params": {
-        "partner": "aven"
+        "partner": "cobble"
       },
       "transforms": [
         -46.51503300000001,
@@ -2074,7 +2074,7 @@
       "uid": "PartnerStandGround.007",
       "type": "PartnerStandGround",
       "params": {
-        "partner": "pomelo"
+        "partner": "pylon"
       },
       "transforms": [
         -153.156555,

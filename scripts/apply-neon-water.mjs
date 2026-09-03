@@ -5,10 +5,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-// Cartoon outline lives in three-js/src/outline.js (iPhone 13-safe fullscreen overlay).
-// Keep this cache token in sync so Apply/reload does not serve a stale webgl bundle
-// without the neon-water/run-fx patches that this script owns.
-const WEBGL_CACHE = "neon-water-runfx-outline";
+const WEBGL_CACHE = "neon-water-runfx";
 
 const CHARACTER_URL_SWAPS = [];
 
@@ -172,34 +169,12 @@ for (const file of vendorFiles) {
   }
 }
 
-function ensureOutlineHook(source) {
-  if (source.includes("installCartoonOutline")) return source;
-  if (!source.includes("installHud")) return source;
-  return source
-    .replace(
-      'import { installHud } from "./hud.js";',
-      'import { installHud } from "./hud.js";\nimport { installCartoonOutline } from "./outline.js";',
-    )
-    .replace(
-      "installHud(app);\n    window.__THREE_JS_GAME__",
-      "installHud(app);\n    watch(() => app.$preloader.hidden, (hidden) => {\n      if (hidden) installCartoonOutline(app.$webgl);\n    }, { immediate: true });\n    window.__THREE_JS_GAME__",
-    );
-}
-
 const indexFiles = [
   path.join(projectRoot, "three-js", "index.html"),
   path.join(projectRoot, "index.html"),
 ];
 for (const file of indexFiles) {
   if (patchFile(file, bustWebgl)) patched.push(path.relative(projectRoot, file));
-}
-
-const engineFile = path.join(projectRoot, "three-js", "src", "engine.js");
-if (patchFile(engineFile, ensureOutlineHook)) patched.push(path.relative(projectRoot, engineFile));
-
-const outlineFile = path.join(projectRoot, "three-js", "src", "outline.js");
-if (!fs.existsSync(outlineFile)) {
-  console.warn("Missing three-js/src/outline.js — cartoon outlines will not install.");
 }
 
 if (!patched.length) {

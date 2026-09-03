@@ -463,7 +463,7 @@ export class ThreeGameEngine {
         rig.play(animation, 0);
         this.scene.add(rig.group);
         this.mixers.push(rig);
-        const isSick = subtype.startsWith("Zenda_Sick");
+        const isSick = subtype.startsWith("Salve_Sick");
         this.interactables.push({
           id: actor.uid,
           type: isSick ? "sick" : "npc",
@@ -484,7 +484,7 @@ export class ThreeGameEngine {
     const names: Record<string, string> = {
       Chest: "Chest",
       ChestBig: "ChestBig",
-      AvenHouse: "TechCompany03HouseOff",
+      CobbleHouse: "TechCompany03HouseOff",
       BrokenBridge: "BridgeOff",
       GrowableTree: "GrowableTreeSmall",
       Speakers: "Speakers",
@@ -506,7 +506,7 @@ export class ThreeGameEngine {
       this.scene.add(object);
       if (actor.type === "Chest" || actor.type === "ChestBig") {
         this.interactables.push({ id: actor.uid, type: "chest", label: "Open chest", object, radius: 3.5 });
-      } else if (actor.type === "AvenHouse") {
+      } else if (actor.type === "CobbleHouse") {
         this.interactables.push({ id: actor.uid, type: "house", label: "Restore house", object, radius: 5.2 });
       } else if (actor.type === "BrokenBridge") {
         this.interactables.push({ id: actor.uid, type: "bridge", label: "Repair bridge", object, radius: 5.5 });
@@ -680,7 +680,7 @@ export class ThreeGameEngine {
       this.callbacks.onDialogue(null);
       this.callbacks.onToast(quest.item ? `${quest.item} added. ${quest.objective}.` : quest.objective);
       this.audio.setDialogueDucking(false);
-      if (questId === "BrigitMain") this.startRace();
+      if (questId === "TrailMain") this.startRace();
     }
   }
 
@@ -822,7 +822,7 @@ export class ThreeGameEngine {
         actions: completed || accepted
           ? [{ id: "close", label: "Continue", primary: true }]
           : [
-              { id: `accept:${questId}`, label: questId === "BrigitMain" ? "Start race" : "Accept", primary: true },
+              { id: `accept:${questId}`, label: questId === "TrailMain" ? "Start race" : "Accept", primary: true },
               { id: "close", label: "Later" },
             ],
       });
@@ -869,8 +869,8 @@ export class ThreeGameEngine {
     this.store.update((state) => {
       state.repairedHouses.push(item.id);
       state.points += 10;
-      if (!state.completedQuests.includes("AvenMain")) {
-        state.completedQuests.push("AvenMain");
+      if (!state.completedQuests.includes("CobbleMain")) {
+        state.completedQuests.push("CobbleMain");
         state.points += 20;
       }
       if (state.repairedHouses.length >= 4) state.points += 50;
@@ -888,7 +888,7 @@ export class ThreeGameEngine {
     if (this.store.state.bridgeRepaired) return;
     this.store.update((state) => {
       state.bridgeRepaired = true;
-      state.completedQuests.push("PomeloMain");
+      state.completedQuests.push("PylonMain");
       state.points += 20;
     });
     this.tintObject(item.object, 0x55e6ae);
@@ -905,8 +905,8 @@ export class ThreeGameEngine {
     this.store.update((state) => {
       state.healedCitizens.push(item.id);
       state.points += 10;
-      if (!state.completedQuests.includes("ZendaMain")) {
-        state.completedQuests.push("ZendaMain");
+      if (!state.completedQuests.includes("SalveMain")) {
+        state.completedQuests.push("SalveMain");
         state.points += 20;
       }
       if (state.healedCitizens.length >= 3) state.points += 50;
@@ -955,7 +955,7 @@ export class ThreeGameEngine {
     this.race.active = false;
     this.raceCheckpoints.forEach((checkpoint) => { checkpoint.visible = false; });
     this.store.update((state) => {
-      state.completedQuests.push("BrigitMain");
+      state.completedQuests.push("TrailMain");
       state.points += 20;
       if (state.bikeBestTime === null || elapsed < state.bikeBestTime) state.bikeBestTime = elapsed;
       if (elapsed <= 45) state.points += 50;

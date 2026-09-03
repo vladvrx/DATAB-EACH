@@ -85,7 +85,7 @@ export const PLAYER_COLORS = [
   { id: "gold", body: "#ffd25f", accent: "#493719" },
 ] as const;
 
-export type QuestId = "AvenMain" | "BrigitMain" | "PomeloMain" | "ZendaMain";
+export type QuestId = "CobbleMain" | "TrailMain" | "PylonMain" | "SalveMain";
 
 export const QUESTS: Record<
   QuestId,
@@ -97,27 +97,27 @@ export const QUESTS: Record<
     objective: string;
   }
 > = {
-  AvenMain: {
+  CobbleMain: {
     title: "Restore the houses",
     company: "TECH COMPANY #3",
     description: "The Cove homes need repairs. Take the repair tool and restore a house.",
     item: "Hammer",
     objective: "Repair one of the marked houses",
   },
-  BrigitMain: {
+  TrailMain: {
     title: "Cove time trial",
     company: "TECH COMPANY #1",
     description: "Run the glowing checkpoint route before the timer expires.",
     objective: "Complete the checkpoint route",
   },
-  PomeloMain: {
+  PylonMain: {
     title: "Repair the bridge",
     company: "TECH COMPANY #8",
     description: "The bridge is down. Take the tool and repair it so the path is safe again.",
     item: "Screwdriver",
     objective: "Repair the broken bridge",
   },
-  ZendaMain: {
+  SalveMain: {
     title: "Help a sick Glorb",
     company: "TECH COMPANY #9",
     description: "Some Glorbs are in pain. Take the medical scanner and help one of them.",
@@ -127,10 +127,10 @@ export const QUESTS: Record<
 };
 
 export const QUEST_BY_NPC: Record<string, QuestId> = {
-  Aven_Quest: "AvenMain",
-  Brigit_Quest: "BrigitMain",
-  Pomelo_Quest: "PomeloMain",
-  Zenda_Quest: "ZendaMain",
+  Cobble_Quest: "CobbleMain",
+  Trail_Quest: "TrailMain",
+  Pylon_Quest: "PylonMain",
+  Salve_Quest: "SalveMain",
 };
 
 export const NPC_IDLE_ANIMATION: Record<string, AnimationName> = {
@@ -146,12 +146,12 @@ export const NPC_IDLE_ANIMATION: Record<string, AnimationName> = {
   Citizen_West_SwimmingC: "Swimming",
   Citizen_West_TowelA: "Towel",
   Citizen_West_TowelB: "Towel",
-  Brigit_Quest: "Thinking",
-  Pomelo_Quest: "Thinking",
-  Zenda_Quest: "Thinking",
-  Zenda_Sick_WestA: "Sick",
-  Zenda_Sick_WestC: "Sick",
-  Zenda_Sick_WestD: "Sick",
+  Trail_Quest: "Thinking",
+  Pylon_Quest: "Thinking",
+  Salve_Quest: "Thinking",
+  Salve_Sick_WestA: "Sick",
+  Salve_Sick_WestC: "Sick",
+  Salve_Sick_WestD: "Sick",
 };
 
 export function actorPosition(actor: IslandActor) {

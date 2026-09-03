@@ -1,7 +1,7 @@
 {
   "partners": {
-    "brigit": {
-      "id": "brigit",
+    "trail": {
+      "id": "trail",
       "isHidden": false,
       "name": "TECH COMPANY #1",
       "description": "<strong>TECH COMPANY #1</strong> - A playful technology team building digital tools for curious explorers.",
@@ -24,8 +24,8 @@
         "secondary": "#67D389"
       }
     },
-    "aven": {
-      "id": "aven",
+    "cobble": {
+      "id": "cobble",
       "isHidden": false,
       "name": "TECH COMPANY #3",
       "description": "<strong>TECH COMPANY #3</strong> - A playful technology team building digital tools for curious explorers.",
@@ -48,8 +48,8 @@
         "secondary": "#C1C1C1"
       }
     },
-    "pomelo": {
-      "id": "pomelo",
+    "pylon": {
+      "id": "pylon",
       "isHidden": false,
       "name": "TECH COMPANY #8",
       "description": "<strong>TECH COMPANY #8</strong> - A playful technology team building digital tools for curious explorers.",
@@ -72,8 +72,8 @@
         "secondary": "#02b198"
       }
     },
-    "zenda": {
-      "id": "zenda",
+    "salve": {
+      "id": "salve",
       "isHidden": false,
       "name": "TECH COMPANY #9",
       "description": "<strong>TECH COMPANY #9</strong> - A playful technology team building digital tools for curious explorers.",

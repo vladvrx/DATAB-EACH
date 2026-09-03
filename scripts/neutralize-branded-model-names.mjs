@@ -7,23 +7,19 @@ const reference = path.join(root, 'reference');
 const assets = path.join(reference, 'assets');
 
 const replacements = [
-  ['Asset_AvenHouse', 'Asset_TechCompany03House'],
+  ['Asset_CobbleHouse', 'Asset_TechCompany03House'],
   ['Asset_BlueVineRibbon', 'Asset_TechCompany04Ribbon'],
   ['Asset_CarMovo', 'Asset_CarNeutral'],
   ['Asset_StandAspiration', 'Asset_StandTechCompany02'],
-  ['Asset_StandAven', 'Asset_StandTechCompany03'],
   ['Asset_StandBluevine', 'Asset_StandTechCompany04'],
-  ['Asset_StandBrigit', 'Asset_StandTechCompany01'],
   ['Asset_StandGreenwood', 'Asset_StandTechCompany05'],
   ['Asset_StandKikoff', 'Asset_StandTechCompany10'],
   ['Asset_StandLendingPoint', 'Asset_StandTechCompany13'],
   ['Asset_StandOne', 'Asset_StandTechCompany07'],
-  ['Asset_StandPomelo', 'Asset_StandTechCompany08'],
   ['Asset_StandPossible', 'Asset_StandTechCompany12'],
   ['Asset_StandProsper', 'Asset_StandTechCompany11'],
   ['Asset_StandTill', 'Asset_StandTechCompany06'],
   ['Asset_StandX1', 'Asset_StandTechCompany15'],
-  ['Asset_StandZenda', 'Asset_StandTechCompany09'],
   ['Asset_StandMovo', 'Asset_StandNeutral05'],
 ];
 

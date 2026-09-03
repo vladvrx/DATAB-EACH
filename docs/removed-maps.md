@@ -50,4 +50,4 @@ Scene/support files deleted:
 - Deleted the three island soundtrack files: `music_island_east.39dc426365453426.m4a`, `music_island_four.4cbbfea965453426.m4a`, and `music_island_north.cb7f8dae65453426.m4a`.
 - Removed all corresponding manifest, GLTF logical-to-hashed, route, bundle, and inventory references.
 
-Kept: Cove Island, its nine collectible chests, Aven/Brigit/Pomelo/Zenda content, the Bike race, shared collectible models, and avatar cosmetics.
+Kept: Cove Island, its nine collectible chests, house / bike / bridge / heal quests, the Bike race, shared collectible models, and avatar cosmetics.

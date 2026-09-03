@@ -1,8 +1,8 @@
 {
-  "AvenMain": {
-    "id": "AvenMain",
+  "CobbleMain": {
+    "id": "CobbleMain",
     "type": "Fintech",
-    "icon": "fintech-aven",
+    "icon": "interactions-hammer",
     "item": "Hammer",
     "title": "TECH COMPANY #3",
     "description": "Talk with TECH COMPANY #3<br>to renovate a house.",
@@ -10,14 +10,14 @@
     "unlockCondition": "",
     "reward": 20,
     "rewardItem": null,
-    "rewardText": "<strong>Well done!</strong> There are <strong>{{actorCounts.AvenHouse - 1}} other houses</strong> to find on the islands. Renovate them to unlock more glorb Points.",
+    "rewardText": "<strong>Well done!</strong> There are <strong>{{actorCounts.CobbleHouse - 1}} other houses</strong> to find on the islands. Renovate them to unlock more Data B-each Points.",
     "rewardCondition": "$hasHammer && $builtHouseCount >= 1",
-    "fintechID": "aven"
+    "fintechID": "cobble"
   },
-  "BrigitMain": {
-    "id": "BrigitMain",
+  "TrailMain": {
+    "id": "TrailMain",
     "type": "Fintech",
-    "icon": "fintech-brigit",
+    "icon": "misc-bike",
     "item": null,
     "title": "TECH COMPANY #1",
     "description": "Talk with TECH COMPANY #1<br>and participate in a<br>bike race.",
@@ -25,14 +25,14 @@
     "unlockCondition": "",
     "reward": 20,
     "rewardItem": null,
-    "rewardText": "<strong>Congratulations!</strong> Come back anytime and finish your lap in <strong>less than {{gameGoals.CircuitBike}} seconds</strong> to unlock more glorb Points.",
+    "rewardText": "<strong>Congratulations!</strong> Come back anytime and finish your lap in <strong>less than {{gameGoals.CircuitBike}} seconds</strong> to unlock more Data B-each Points.",
     "rewardCondition": "$hasPlayedCircuitBike",
-    "fintechID": "brigit"
+    "fintechID": "trail"
   },
-  "PomeloMain": {
-    "id": "PomeloMain",
+  "PylonMain": {
+    "id": "PylonMain",
     "type": "Fintech",
-    "icon": "fintech-pomelo",
+    "icon": "interactions-screwdriver",
     "item": "Screwdriver",
     "title": "TECH COMPANY #8",
     "description": "Talk with TECH COMPANY #8<br>to build the bridge.",
@@ -42,12 +42,12 @@
     "rewardItem": null,
     "rewardText": "<strong>Nice!</strong> Keep your eyes open, there are chests on the island, next to the house.",
     "rewardCondition": "$hasScrewdriver && $isBridgeRepaired",
-    "fintechID": "pomelo"
+    "fintechID": "pylon"
   },
-  "ZendaMain": {
-    "id": "ZendaMain",
+  "SalveMain": {
+    "id": "SalveMain",
     "type": "Fintech",
-    "icon": "fintech-zenda",
+    "icon": "interactions-stethoscope",
     "item": "Stethoscope",
     "title": "TECH COMPANY #9",
     "description": "Talk with TECH COMPANY #9,<br>and aid someone in pain.",
@@ -55,53 +55,53 @@
     "unlockCondition": "",
     "reward": 20,
     "rewardItem": null,
-    "rewardText": "<strong>So nice!</strong> There is <strong>{{actorCounts.CitizenSick - 1}} other people</strong> that need assistance on the islands. Help them and you&#39;ll be rewarded with more glorb Points!",
+    "rewardText": "<strong>So nice!</strong> There is <strong>{{actorCounts.CitizenSick - 1}} other people</strong> that need assistance on the islands. Help them and you&#39;ll be rewarded with more Data B-each Points!",
     "rewardCondition": "$hasStethoscope && $healedCitizenCount >= 1",
-    "fintechID": "zenda"
+    "fintechID": "salve"
   },
-  "AvenSide": {
-    "id": "AvenSide",
+  "CobbleSide": {
+    "id": "CobbleSide",
     "type": "Side",
     "icon": "interactions-hammer",
     "item": null,
     "title": "Restore houses",
     "description": "Renovate all the houses",
     "unlockText": "Complete TECH COMPANY #3&#39;s quest",
-    "unlockCondition": "$$quests.AvenMain && $hasHammer",
+    "unlockCondition": "$$quests.CobbleMain && $hasHammer",
     "reward": 50,
     "rewardItem": null,
     "rewardText": "Help renovate the houses",
-    "rewardCondition": "$builtHouseCount [===] #actorCounts.AvenHouse",
-    "fintechID": "aven"
+    "rewardCondition": "$builtHouseCount [===] #actorCounts.CobbleHouse",
+    "fintechID": "cobble"
   },
-  "BrigitSide": {
-    "id": "BrigitSide",
+  "TrailSide": {
+    "id": "TrailSide",
     "type": "Side",
     "icon": "misc-bike",
     "item": null,
     "title": "Bike Race",
     "description": "Complete the bike race in under {{gameGoals.CircuitBike}}s.",
     "unlockText": "Complete TECH COMPANY #1&#39;s quest",
-    "unlockCondition": "$$quests.BrigitMain && $hasPlayedCircuitBike",
+    "unlockCondition": "$$quests.TrailMain && $hasPlayedCircuitBike",
     "reward": 50,
     "rewardItem": null,
     "rewardText": "Complete the bike race in under {{gameGoals.CircuitBike}}s.",
     "rewardCondition": "$gameCircuitBikeTime > 0 && $gameCircuitBikeTime <= #gameGoals.CircuitBike",
-    "fintechID": "brigit"
+    "fintechID": "trail"
   },
-  "ZendaSide": {
-    "id": "ZendaSide",
+  "SalveSide": {
+    "id": "SalveSide",
     "type": "Side",
     "icon": "interactions-stethoscope",
     "item": null,
     "title": "Help people in pain",
     "description": "Help all the people in pain",
     "unlockText": "Complete TECH COMPANY #9&#39;s quest",
-    "unlockCondition": "$$quests.ZendaMain && $hasStethoscope",
+    "unlockCondition": "$$quests.SalveMain && $hasStethoscope",
     "reward": 50,
     "rewardItem": null,
     "rewardText": "Help the people in pain",
     "rewardCondition": "$healedCitizenCount [===] #actorCounts.CitizenSick",
-    "fintechID": "zenda"
+    "fintechID": "salve"
   }
 }

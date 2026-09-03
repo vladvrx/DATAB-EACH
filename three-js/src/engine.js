@@ -11,7 +11,6 @@ import {
 } from "../../vendor/vendor.75f6e6ae65453426.js";
 import { ThreeJsRoot } from "./root.js";
 import { installHud } from "./hud.js";
-import { installCartoonOutline } from "./outline.js?v=toon-outline-10";
 
 function disablePhoneAndMap(app) {
   const blocked = new Set(["Phone", "QuestsDebug"]);
@@ -124,10 +123,6 @@ export async function startEngine() {
     });
     vueApp.mount("#app");
     installHud(app);
-    installCartoonOutline(app.$webgl);
-    watch(() => app.$preloader.hidden, (hidden) => {
-      if (hidden) installCartoonOutline(app.$webgl);
-    }, { immediate: true });
     window.__THREE_JS_GAME__ = { vueApp, app };
   };
 
