@@ -50,7 +50,7 @@ test("intro ship, west-island music, and loader wipe are wired in the bundles", 
     const offset = (view.byteOffset || 0) + index * 8;
     uvs.add(`${glb.bin.readFloatLE(offset).toFixed(5)},${glb.bin.readFloatLE(offset + 4).toFixed(5)}`);
   }
-  expect([...uvs].sort()).toEqual(["0.00049,0.29883", "0.06787,0.45898"]);
+  expect([...uvs].sort()).toEqual(["0.00049,0.29492", "0.00049,0.29883"]);
 });
 
 test("Three.js intro ship is red/yellow and only west-island music plays", async ({ page }) => {
@@ -95,7 +95,7 @@ test("Three.js intro ship is red/yellow and only west-island music plays", async
   expect(info.sceneBgm).toBe("music_island_west");
   expect(info.wrapped).toBe(true);
   expect(info.blockedIntro).toBeUndefined();
-  expect(info.uniqueUvs).toEqual(["0.00049,0.29883", "0.06787,0.45898"]);
+  expect(info.uniqueUvs).toEqual(["0.00049,0.29492", "0.00049,0.29883"]);
   expect(errors).toEqual([]);
 
   await page.screenshot({ path: "/tmp/intro-ship-red-yellow.png", type: "png" });

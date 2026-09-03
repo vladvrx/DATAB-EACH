@@ -14,7 +14,7 @@ const GLB_MAGIC = 0x46546c67;
 const JSON_CHUNK = 0x4e4f534a;
 const BIN_CHUNK = 0x004e4942;
 const ATLAS = [1024, 256];
-const YELLOW_UV = [(69 + 0.5) / ATLAS[0], (117 + 0.5) / ATLAS[1]];
+const YELLOW_UV = [(0 + 0.5) / ATLAS[0], (75 + 0.5) / ATLAS[1]];
 const RED_UV = [(0 + 0.5) / ATLAS[0], (76 + 0.5) / ATLAS[1]];
 
 function align4(value) {
@@ -135,7 +135,7 @@ glb.json.asset.extras = {
 };
 
 fs.writeFileSync(boatPath, encodeGlb(glb.json, glb.bin));
-const yellowCount = uvs.filter((_, i) => i % 2 === 0 && Math.abs(uvs[i] - YELLOW_UV[0]) < 1e-6).length;
+const yellowCount = uvs.filter((_, i) => i % 2 === 1 && Math.abs(uvs[i] - YELLOW_UV[1]) < 1e-6).length;
 const redCount = uvs.length / 2 - yellowCount;
 console.log(
   `Painted intro ship ${path.relative(projectRoot, boatPath)} (${fs.statSync(boatPath).size} bytes, yellow=${yellowCount} red=${redCount})`,
