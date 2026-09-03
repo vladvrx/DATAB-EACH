@@ -15,7 +15,9 @@ function routerBasePath() {
 }
 
 async function loadSiteData() {
-  const response = await fetch(siteDataUrl);
+  const url = new URL(siteDataUrl);
+  url.searchParams.set("v", "lets-go");
+  const response = await fetch(url);
   if (!response.ok) throw new Error(`Site data returned HTTP ${response.status}`);
   const data = await response.json();
   data.project.basepath = routerBasePath();
