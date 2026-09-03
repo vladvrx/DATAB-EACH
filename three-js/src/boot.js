@@ -29,7 +29,7 @@ async function boot() {
   document.documentElement.classList.remove("no-js");
   initializePageBehavior({ logoUrl, cursorUrl });
   window.__DATA = await loadSiteData();
-  const { startEngine } = await import("./engine.js?v=toon-outline-9");
+  const { startEngine } = await import("./engine.js?v=toon-outline-10");
   return startEngine();
 }
 
