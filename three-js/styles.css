@@ -207,3 +207,35 @@ html.journey-started .databeach-home-logo {
   opacity: 0.45;
 }
 
+
+/* Toast banners rise from the bottom edge instead of dropping from the top. */
+.notif[data-v-25064164] {
+  top: auto !important;
+  bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: var(--app-padding) !important;
+  align-items: flex-end !important;
+}
+
+@media (min-width: 640px) {
+  .notif[data-v-25064164] {
+    padding-bottom: calc(var(--app-padding) / 2) !important;
+  }
+}
+
+.notif:not(.visible) .notification[data-v-25064164] {
+  transform: translateY(200px) rotate(-4deg) !important;
+}
+
+html.phone .notif[data-v-72a9796e],
+html.phone .notif[data-v-788c7aca] {
+  top: auto !important;
+  bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: var(--app-padding) !important;
+}
+
+html.phone .popin[data-v-72a9796e],
+html.phone .popin[data-v-788c7aca] {
+  transform: translateY(25em) rotate(-4deg) !important;
+}
