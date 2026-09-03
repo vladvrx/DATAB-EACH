@@ -2223,7 +2223,7 @@
         {
           "action": "EMOTE",
           "opts": [
-            "Idle2"
+            "Idle"
           ]
         }
       ],

@@ -1143,6 +1143,7 @@ const Ai = {
 };
 function Ii(e, t) {
   if ("Neutral" === e) return;
+  if ("Idle2" === e) e = "Idle";
   characterAnimationFrames[e] ? this.setAnimation(e, {
     duration: t,
     loop: Ai[e] ? E : F
@@ -1329,7 +1330,7 @@ function Ki(e, t) {
   });
 }
 let Xi = null,
-  $i = ["Idle", "Idle2", "Idle3"],
+  $i = ["Idle", "Idle3"],
   Zi = ["Idle", "Idle3"];
 const Ji = .095,
   Qi = .9888;

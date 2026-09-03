@@ -5,7 +5,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const WEBGL_CACHE = "neon-water-runfx-nn";
+const WEBGL_CACHE = "neon-water-runfx-no2";
 
 const CHARACTER_URL_SWAPS = [];
 

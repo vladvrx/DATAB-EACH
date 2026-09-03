@@ -6715,7 +6715,7 @@ const VueWebGLComponent = {
         a.addEventListener("load", t), a.addEventListener("error", () => s(new Error(`Unable to preload CSS for ${e}`)));
       }) : void 0;
     })).then(() => e());
-  }(() => import("./webgl.3250e36a65453426.js?v=neon-water-runfx-nn"), []);
+  }(() => import("./webgl.3250e36a65453426.js?v=neon-water-runfx-no2"), []);
 const Uc = "./reference/assets/Asset_Algae.e4fb453265453426.glb",
   Hc = "./reference/assets/Asset_AlgaeGroup.df25307b65453426.glb",
   Gc = "./reference/assets/Asset_ArrowSign.6f0ccda865453426.glb",
@@ -33418,7 +33418,7 @@ const GU = [["router", function (e = {}) {
   async function n() {
     if (s) return s;
     let i;
-    s = io(), i || (i = await fetch(Ub + "?v=65453426").then(e => e.json())), Object.assign(e, i.colors), Object.assign(t, i.npcs), s.resolve();
+    s = io(), i || (i = await fetch(Ub + "?v=no-idle2").then(e => e.json())), Object.assign(e, i.colors), Object.assign(t, i.npcs), s.resolve();
   }
   return function (e) {
     const t = e.config.globalProperties;
@@ -33477,7 +33477,7 @@ const GU = [["router", function (e = {}) {
   async function l() {
     if (a) return a;
     let t;
-    a = io(), t || (t = await fetch(Gb + "?v=no-neutral").then(e => e.json()));
+    a = io(), t || (t = await fetch(Gb + "?v=no-idle2").then(e => e.json()));
     for (let e in t) {
       const s = t[e],
         i = s.__first__;
