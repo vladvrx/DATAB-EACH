@@ -6715,7 +6715,7 @@ const VueWebGLComponent = {
         a.addEventListener("load", t), a.addEventListener("error", () => s(new Error(`Unable to preload CSS for ${e}`)));
       }) : void 0;
     })).then(() => e());
-  }(() => import("./webgl.3250e36a65453426.js?v=neon-water-runfx-no2"), []);
+  }(() => import("./webgl.3250e36a65453426.js?v=west-music-wipe"), []);
 const Uc = "./reference/assets/Asset_Algae.e4fb453265453426.glb",
   Hc = "./reference/assets/Asset_AlgaeGroup.df25307b65453426.glb",
   Gc = "./reference/assets/Asset_ArrowSign.6f0ccda865453426.glb",

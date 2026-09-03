@@ -101,6 +101,19 @@ const BGM_SWAPS = [
   ['bgm:"music_intro"', 'bgm:"music_island_west"'],
 ];
 
+const PLAYSOUND_SWAPS = [
+  [
+    "function M(e, t = {}) {\n    if (t.delay, !mu.isUnlocked()) return;",
+    'function M(e, t = {}) {\n    if ("string" == typeof e && e.startsWith("music_") && "music_island_west" !== e) return;\n    if (t.delay, !mu.isUnlocked()) return;',
+  ],
+  [
+    "function M(e,t={}){if(t.delay,!mu.isUnlocked())return;",
+    'function M(e,t={}){if("string"==typeof e&&e.startsWith("music_")&&"music_island_west"!==e)return;if(t.delay,!mu.isUnlocked())return;',
+  ],
+];
+
+const WEBGL_CACHE = "west-music-wipe";
+
 function applySwaps(source, swaps) {
   let next = source;
   for (const [from, to] of swaps) {
@@ -128,12 +141,23 @@ function listHashed(dir, prefix) {
     .map((name) => path.join(dir, name));
 }
 
+function bustWebgl(source) {
+  return source.replace(
+    /webgl\.([a-z0-9]+)\.js(?:\?v=[^"&\s]*)?/g,
+    `webgl.$1.js?v=${WEBGL_CACHE}`,
+  );
+}
+
 const vendorFiles = [
   ...listHashed(path.join(projectRoot, "vendor"), "vendor."),
   ...listHashed(path.join(projectRoot, "reference", "assets"), "vendor."),
 ];
+const webglFiles = [
+  ...listHashed(path.join(projectRoot, "vendor"), "webgl."),
+  ...listHashed(path.join(projectRoot, "reference", "assets"), "webgl."),
+];
 
-const swaps = [
+const vendorSwaps = [
   ...WAVE_COLORS_MIN,
   ...WAVE_COLORS_PRETTY,
   ...WIPE_FLIP_MIN,
@@ -143,9 +167,22 @@ const swaps = [
 
 const patched = [];
 for (const file of vendorFiles) {
-  if (patchFile(file, (source) => applySwaps(source, swaps))) {
+  if (patchFile(file, (source) => bustWebgl(applySwaps(source, vendorSwaps)))) {
     patched.push(path.relative(projectRoot, file));
   }
+}
+for (const file of webglFiles) {
+  if (patchFile(file, (source) => applySwaps(source, PLAYSOUND_SWAPS))) {
+    patched.push(path.relative(projectRoot, file));
+  }
+}
+
+const indexFiles = [
+  path.join(projectRoot, "three-js", "index.html"),
+  path.join(projectRoot, "index.html"),
+];
+for (const file of indexFiles) {
+  if (patchFile(file, bustWebgl)) patched.push(path.relative(projectRoot, file));
 }
 
 if (!patched.length) {

@@ -27,18 +27,26 @@ function disablePhoneAndMap(app) {
 }
 
 function keepOnlyWestIslandMusic(app) {
-  const audio = app.$webgl?.audio;
-  if (!audio || audio.__westIslandOnly) return;
-  audio.__westIslandOnly = true;
-  const allowed = "music_island_west";
-  const blocked = (id) => typeof id === "string" && id.startsWith("music_") && id !== allowed;
-  const playSound = audio.playSound.bind(audio);
-  audio.playSound = (id, opts) => (blocked(id) ? undefined : playSound(id, opts));
-  if (!audio.bgm) return;
-  const play = audio.bgm.play.bind(audio.bgm);
-  audio.bgm.play = (id) => play(blocked(id) ? allowed : id);
-  const preload = audio.bgm.preload.bind(audio.bgm);
-  audio.bgm.preload = (id) => preload(blocked(id) ? allowed : id);
+  const wrap = () => {
+    const audio = app.$webgl?.audio;
+    if (!audio || audio.__westIslandOnly) return !!audio?.__westIslandOnly;
+    audio.__westIslandOnly = true;
+    const allowed = "music_island_west";
+    const blocked = (id) => typeof id === "string" && id.startsWith("music_") && id !== allowed;
+    const playSound = audio.playSound.bind(audio);
+    audio.playSound = (id, opts) => (blocked(id) ? undefined : playSound(id, opts));
+    if (audio.bgm) {
+      const play = audio.bgm.play.bind(audio.bgm);
+      audio.bgm.play = (id) => play(blocked(id) ? allowed : id);
+      const preload = audio.bgm.preload.bind(audio.bgm);
+      audio.bgm.preload = (id) => preload(blocked(id) ? allowed : id);
+    }
+    return true;
+  };
+  if (wrap()) return;
+  const timer = window.setInterval(() => {
+    if (wrap()) window.clearInterval(timer);
+  }, 50);
 }
 
 export async function startEngine() {

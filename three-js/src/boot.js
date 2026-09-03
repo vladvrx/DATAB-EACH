@@ -31,7 +31,7 @@ async function boot() {
   document.documentElement.classList.remove("no-js");
   initializePageBehavior({ logoUrl, cursorUrl });
   window.__DATA = await loadSiteData();
-  const { startEngine } = await import("./engine.js?v=west-music");
+  const { startEngine } = await import("./engine.js?v=west-music-2");
   return startEngine();
 }
 

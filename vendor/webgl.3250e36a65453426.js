@@ -8388,6 +8388,7 @@ const runtimePlugins = [function timePlugin(e) {
     for (const e in l) l[e].forEach(e => e.stop());
   }
   function M(e, t = {}) {
+    if ("string" == typeof e && e.startsWith("music_") && "music_island_west" !== e) return;
     if (t.delay, !mu.isUnlocked()) return;
     const s = bu[e];
     if (!s) return;
