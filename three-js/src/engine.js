@@ -11,7 +11,7 @@ import {
 } from "../../vendor/vendor.75f6e6ae65453426.js";
 import { ThreeJsRoot } from "./root.js";
 import { installHud } from "./hud.js";
-import { installCartoonOutline } from "./outline.js";
+import { installCartoonOutline } from "./outline.js?v=toon-outline-8";
 
 function disablePhoneAndMap(app) {
   const blocked = new Set(["Phone", "QuestsDebug"]);

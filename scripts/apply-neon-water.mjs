@@ -5,7 +5,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-// Cartoon outline lives in three-js/src/outline.js (fullscreen depth pass).
+// Cartoon outline lives in three-js/src/outline.js (iPhone 13-safe fullscreen overlay).
 // Keep this cache token in sync so Apply/reload does not serve a stale webgl bundle
 // without the neon-water/run-fx patches that this script owns.
 const WEBGL_CACHE = "neon-water-runfx-outline";
@@ -173,7 +173,7 @@ for (const file of vendorFiles) {
 }
 
 function ensureOutlineHook(source) {
-  if (source.includes("from \"./outline.js\"")) return source;
+  if (source.includes("installCartoonOutline")) return source;
   if (!source.includes("installHud")) return source;
   return source
     .replace(
